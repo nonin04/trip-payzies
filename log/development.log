@@ -1,0 +1,1070 @@
+Started GET "/" for 172.22.0.1 at 2025-04-15 20:32:48 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActiveRecord::NoDatabaseError (We could not find your database: Group3_development. Which can be found in the database configuration file located at config/database.yml.
+
+To resolve this issue:
+
+- Did you create the database for this app, or delete it? You may need to create your database.
+- Has the database name changed? Check your database.yml config has the correct database name.
+
+To create your database, run:
+
+        bin/rails db:create
+):
+  
+activerecord (7.0.8.7) lib/active_record/connection_adapters/mysql2_adapter.rb:47:in `rescue in new_client'
+activerecord (7.0.8.7) lib/active_record/connection_adapters/mysql2_adapter.rb:43:in `new_client'
+activerecord (7.0.8.7) lib/active_record/connection_adapters/mysql2_adapter.rb:23:in `mysql2_connection'
+activerecord (7.0.8.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:656:in `public_send'
+activerecord (7.0.8.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:656:in `new_connection'
+activerecord (7.0.8.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:700:in `checkout_new_connection'
+activerecord (7.0.8.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:679:in `try_to_checkout_new_connection'
+activerecord (7.0.8.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:640:in `acquire_connection'
+activerecord (7.0.8.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:341:in `checkout'
+activerecord (7.0.8.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:181:in `connection'
+activerecord (7.0.8.7) lib/active_record/connection_adapters/abstract/connection_handler.rb:211:in `retrieve_connection'
+activerecord (7.0.8.7) lib/active_record/connection_handling.rb:313:in `retrieve_connection'
+activerecord (7.0.8.7) lib/active_record/connection_handling.rb:280:in `connection'
+activerecord (7.0.8.7) lib/active_record/migration.rb:648:in `connection'
+activerecord (7.0.8.7) lib/active_record/migration.rb:643:in `build_watcher'
+activerecord (7.0.8.7) lib/active_record/migration.rb:625:in `block in call'
+activerecord (7.0.8.7) lib/active_record/migration.rb:624:in `synchronize'
+activerecord (7.0.8.7) lib/active_record/migration.rb:624:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.8.7) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:19:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/show_exceptions.rb:29:in `call'
+railties (7.0.8.7) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.8.7) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.8.7) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.8.7) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.8.7) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.8.7) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.5.2) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.10) lib/rack/method_override.rb:24:in `call'
+rack (2.2.10) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.8.7) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.10) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/host_authorization.rb:138:in `call'
+railties (7.0.8.7) lib/rails/engine.rb:530:in `call'
+puma (5.6.9) lib/puma/configuration.rb:252:in `call'
+puma (5.6.9) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.9) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.9) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.9) lib/puma/server.rb:443:in `process_client'
+puma (5.6.9) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE DATABASE `Group3_development` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE DATABASE `Group3_test` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (8.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS `Group3_development`[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS `Group3_test`[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE DATABASE `Trip-payzies_development` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE DATABASE `Trip-payzies_test` DEFAULT CHARACTER SET `utf8mb4`[0m
+Started GET "/" for 172.22.0.1 at 2025-04-15 21:51:31 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActiveRecord::NoDatabaseError (We could not find your database: Group3_development. Which can be found in the database configuration file located at config/database.yml.
+
+To resolve this issue:
+
+- Did you create the database for this app, or delete it? You may need to create your database.
+- Has the database name changed? Check your database.yml config has the correct database name.
+
+To create your database, run:
+
+        bin/rails db:create
+):
+  
+activerecord (7.0.8.7) lib/active_record/connection_adapters/mysql2_adapter.rb:47:in `rescue in new_client'
+activerecord (7.0.8.7) lib/active_record/connection_adapters/mysql2_adapter.rb:43:in `new_client'
+activerecord (7.0.8.7) lib/active_record/connection_adapters/mysql2_adapter.rb:23:in `mysql2_connection'
+activerecord (7.0.8.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:656:in `public_send'
+activerecord (7.0.8.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:656:in `new_connection'
+activerecord (7.0.8.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:700:in `checkout_new_connection'
+activerecord (7.0.8.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:679:in `try_to_checkout_new_connection'
+activerecord (7.0.8.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:640:in `acquire_connection'
+activerecord (7.0.8.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:341:in `checkout'
+activerecord (7.0.8.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:181:in `connection'
+activerecord (7.0.8.7) lib/active_record/connection_adapters/abstract/connection_handler.rb:211:in `retrieve_connection'
+activerecord (7.0.8.7) lib/active_record/connection_handling.rb:313:in `retrieve_connection'
+activerecord (7.0.8.7) lib/active_record/connection_handling.rb:280:in `connection'
+activerecord (7.0.8.7) lib/active_record/migration.rb:648:in `connection'
+activerecord (7.0.8.7) lib/active_record/migration.rb:643:in `build_watcher'
+activerecord (7.0.8.7) lib/active_record/migration.rb:625:in `block in call'
+activerecord (7.0.8.7) lib/active_record/migration.rb:624:in `synchronize'
+activerecord (7.0.8.7) lib/active_record/migration.rb:624:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.8.7) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:19:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/show_exceptions.rb:29:in `call'
+railties (7.0.8.7) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.8.7) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.8.7) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.8.7) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.8.7) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.8.7) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.5.2) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.10) lib/rack/method_override.rb:24:in `call'
+rack (2.2.10) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.8.7) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.10) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/host_authorization.rb:138:in `call'
+railties (7.0.8.7) lib/rails/engine.rb:530:in `call'
+puma (5.6.9) lib/puma/configuration.rb:252:in `call'
+puma (5.6.9) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.9) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.9) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.9) lib/puma/server.rb:443:in `process_client'
+puma (5.6.9) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/" for 172.22.0.1 at 2025-04-15 21:51:36 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActiveRecord::NoDatabaseError (We could not find your database: Group3_development. Which can be found in the database configuration file located at config/database.yml.
+
+To resolve this issue:
+
+- Did you create the database for this app, or delete it? You may need to create your database.
+- Has the database name changed? Check your database.yml config has the correct database name.
+
+To create your database, run:
+
+        bin/rails db:create
+):
+  
+activerecord (7.0.8.7) lib/active_record/connection_adapters/mysql2_adapter.rb:47:in `rescue in new_client'
+activerecord (7.0.8.7) lib/active_record/connection_adapters/mysql2_adapter.rb:43:in `new_client'
+activerecord (7.0.8.7) lib/active_record/connection_adapters/mysql2_adapter.rb:23:in `mysql2_connection'
+activerecord (7.0.8.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:656:in `public_send'
+activerecord (7.0.8.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:656:in `new_connection'
+activerecord (7.0.8.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:700:in `checkout_new_connection'
+activerecord (7.0.8.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:679:in `try_to_checkout_new_connection'
+activerecord (7.0.8.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:640:in `acquire_connection'
+activerecord (7.0.8.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:341:in `checkout'
+activerecord (7.0.8.7) lib/active_record/connection_adapters/abstract/connection_pool.rb:181:in `connection'
+activerecord (7.0.8.7) lib/active_record/connection_adapters/abstract/connection_handler.rb:211:in `retrieve_connection'
+activerecord (7.0.8.7) lib/active_record/connection_handling.rb:313:in `retrieve_connection'
+activerecord (7.0.8.7) lib/active_record/connection_handling.rb:280:in `connection'
+activerecord (7.0.8.7) lib/active_record/migration.rb:648:in `connection'
+activerecord (7.0.8.7) lib/active_record/migration.rb:643:in `build_watcher'
+activerecord (7.0.8.7) lib/active_record/migration.rb:625:in `block in call'
+activerecord (7.0.8.7) lib/active_record/migration.rb:624:in `synchronize'
+activerecord (7.0.8.7) lib/active_record/migration.rb:624:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.8.7) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:19:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/show_exceptions.rb:29:in `call'
+railties (7.0.8.7) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.8.7) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.8.7) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.8.7) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.8.7) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.8.7) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.5.2) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.10) lib/rack/method_override.rb:24:in `call'
+rack (2.2.10) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.8.7) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.10) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.8.7) lib/action_dispatch/middleware/host_authorization.rb:138:in `call'
+railties (7.0.8.7) lib/rails/engine.rb:530:in `call'
+puma (5.6.9) lib/puma/configuration.rb:252:in `call'
+puma (5.6.9) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.9) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.9) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.9) lib/puma/server.rb:443:in `process_client'
+puma (5.6.9) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/" for 172.22.0.1 at 2025-04-15 21:52:04 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 0.8ms | Allocations: 338)
+  Rendered shared/_header.html.erb (Duration: 0.5ms | Allocations: 115)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 96)
+  Rendered layout layouts/application.html.erb (Duration: 2903.1ms | Allocations: 236853)
+Completed 200 OK in 2917ms (Views: 2906.2ms | ActiveRecord: 0.0ms | Allocations: 241464)
+
+
+Started GET "/" for 172.22.0.1 at 2025-04-15 23:00:55 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 1.1ms | Allocations: 338)
+  Rendered layout layouts/application.html.erb (Duration: 9.5ms | Allocations: 4077)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.0ms | Allocations: 8216)
+
+
+  
+ActionView::Template::Error (The asset "tailwind.css" is not present in the asset pipeline.
+):
+     5:     <meta name="viewport" content="width=device-width,initial-scale=1">
+     6:     <%= csrf_meta_tags %>
+     7:     <%= csp_meta_tag %>
+     8:     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+     9: 
+    10:     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    11:     <%= javascript_importmap_tags %>
+  
+app/views/layouts/application.html.erb:8
+Started GET "/" for 172.22.0.1 at 2025-04-15 23:03:50 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 0.2ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | Allocations: 2674)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms | Allocations: 2952)
+
+
+  
+ActionView::Template::Error (The asset "tailwind.css" is not present in the asset pipeline.
+):
+     5:     <meta name="viewport" content="width=device-width,initial-scale=1">
+     6:     <%= csrf_meta_tags %>
+     7:     <%= csp_meta_tag %>
+     8:     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+     9: 
+    10:     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    11:     <%= javascript_importmap_tags %>
+  
+app/views/layouts/application.html.erb:8
+Started GET "/" for 172.22.0.1 at 2025-04-15 23:16:49 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 0.5ms | Allocations: 7)
+  Rendered shared/_header.html.erb (Duration: 1.1ms | Allocations: 107)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 96)
+  Rendered layout layouts/application.html.erb (Duration: 872.3ms | Allocations: 132865)
+Completed 200 OK in 877ms (Views: 873.8ms | ActiveRecord: 0.0ms | Allocations: 133183)
+
+
+Started GET "/" for 172.22.0.1 at 2025-04-15 23:17:29 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 1.3ms | Allocations: 200)
+  Rendered shared/_header.html.erb (Duration: 0.7ms | Allocations: 99)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 95)
+  Rendered layout layouts/application.html.erb (Duration: 34.2ms | Allocations: 5828)
+Completed 200 OK in 44ms (Views: 40.6ms | ActiveRecord: 0.0ms | Allocations: 6744)
+
+
+Started GET "/img/logo.svg" for 172.22.0.1 at 2025-04-15 23:17:29 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/img/logo-dark.svg" for 172.22.0.1 at 2025-04-15 23:17:29 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/img/logo.svg"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/img/logo-dark.svg"):
+  
+Started GET "/" for 172.22.0.1 at 2025-04-15 23:18:16 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 0.4ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 10.0ms | Allocations: 2630)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms | Allocations: 2916)
+
+
+  
+ActionView::Template::Error (The asset "tailwind.css" is not present in the asset pipeline.
+):
+     5:     <meta name="viewport" content="width=device-width,initial-scale=1">
+     6:     <%= csrf_meta_tags %>
+     7:     <%= csp_meta_tag %>
+     8:     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+     9: 
+    10:     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    11:     <%= javascript_importmap_tags %>
+  
+app/views/layouts/application.html.erb:8
+Started GET "/" for 172.22.0.1 at 2025-04-15 23:21:28 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 1.9ms | Allocations: 199)
+  Rendered layout layouts/application.html.erb (Duration: 20.0ms | Allocations: 3232)
+Completed 500 Internal Server Error in 32ms (ActiveRecord: 0.0ms | Allocations: 4111)
+
+
+  
+ActionView::Template::Error (The asset "tailwind.css" is not present in the asset pipeline.
+):
+     5:     <meta name="viewport" content="width=device-width,initial-scale=1">
+     6:     <%= csrf_meta_tags %>
+     7:     <%= csp_meta_tag %>
+     8:     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+     9: 
+    10:     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    11:     <%= javascript_importmap_tags %>
+  
+app/views/layouts/application.html.erb:8
+Started GET "/" for 172.22.0.1 at 2025-04-15 23:21:30 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | Allocations: 2557)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms | Allocations: 2817)
+
+
+  
+ActionView::Template::Error (The asset "tailwind.css" is not present in the asset pipeline.
+):
+     5:     <meta name="viewport" content="width=device-width,initial-scale=1">
+     6:     <%= csrf_meta_tags %>
+     7:     <%= csp_meta_tag %>
+     8:     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+     9: 
+    10:     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    11:     <%= javascript_importmap_tags %>
+  
+app/views/layouts/application.html.erb:8
+Started GET "/" for 172.22.0.1 at 2025-04-15 23:23:50 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 0.3ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 11.2ms | Allocations: 2557)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms | Allocations: 2797)
+
+
+  
+ActionView::Template::Error (The asset "tailwind.css" is not present in the asset pipeline.
+):
+     5:     <meta name="viewport" content="width=device-width,initial-scale=1">
+     6:     <%= csrf_meta_tags %>
+     7:     <%= csp_meta_tag %>
+     8:     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+     9: 
+    10:     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    11:     <%= javascript_importmap_tags %>
+  
+app/views/layouts/application.html.erb:8
+Started GET "/" for 172.22.0.1 at 2025-04-15 23:25:10 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 1.9ms | Allocations: 199)
+  Rendered shared/_header.html.erb (Duration: 0.6ms | Allocations: 99)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 95)
+  Rendered layout layouts/application.html.erb (Duration: 106.6ms | Allocations: 48029)
+Completed 200 OK in 118ms (Views: 114.3ms | ActiveRecord: 0.0ms | Allocations: 48939)
+
+
+Started GET "/img/logo.svg" for 172.22.0.1 at 2025-04-15 23:25:10 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/img/logo-dark.svg" for 172.22.0.1 at 2025-04-15 23:25:10 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/img/logo.svg"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/img/logo-dark.svg"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/assets/font-awesome"):
+  
+Started GET "/" for 172.22.0.1 at 2025-04-15 23:25:44 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 0.4ms | Allocations: 7)
+  Rendered shared/_header.html.erb (Duration: 0.1ms | Allocations: 9)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 39.5ms | Allocations: 1687)
+Completed 200 OK in 45ms (Views: 41.7ms | ActiveRecord: 0.0ms | Allocations: 1972)
+
+
+Started GET "/img/logo.svg" for 172.22.0.1 at 2025-04-15 23:25:44 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/img/logo-dark.svg" for 172.22.0.1 at 2025-04-15 23:25:44 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/img/logo.svg"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/img/logo-dark.svg"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/assets/font-awesome"):
+  
+Started GET "/" for 172.22.0.1 at 2025-04-15 23:26:05 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 0.3ms | Allocations: 7)
+  Rendered shared/_header.html.erb (Duration: 0.1ms | Allocations: 9)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 28.4ms | Allocations: 1687)
+Completed 200 OK in 33ms (Views: 30.4ms | ActiveRecord: 0.0ms | Allocations: 1953)
+
+
+Started GET "/img/logo.svg" for 172.22.0.1 at 2025-04-15 23:26:06 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/img/logo-dark.svg" for 172.22.0.1 at 2025-04-15 23:26:06 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/img/logo.svg"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/img/logo-dark.svg"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/assets/font-awesome"):
+  
+Started GET "/" for 172.22.0.1 at 2025-04-15 23:29:21 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 1.1ms | Allocations: 124)
+  Rendered shared/_header.html.erb (Duration: 0.7ms | Allocations: 99)
+  Rendered shared/_footer.html.erb (Duration: 0.6ms | Allocations: 95)
+  Rendered layout layouts/application.html.erb (Duration: 46.7ms | Allocations: 18368)
+Completed 200 OK in 54ms (Views: 51.3ms | ActiveRecord: 0.0ms | Allocations: 19283)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/assets/font-awesome"):
+  
+Started GET "/" for 172.22.0.1 at 2025-04-15 23:32:47 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 0.2ms | Allocations: 7)
+  Rendered shared/_header.html.erb (Duration: 0.1ms | Allocations: 9)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 9.0ms | Allocations: 1680)
+Completed 200 OK in 13ms (Views: 10.6ms | ActiveRecord: 0.0ms | Allocations: 1965)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/assets/font-awesome"):
+  
+Started GET "/" for 172.22.0.1 at 2025-04-15 23:34:04 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 1.2ms | Allocations: 336)
+  Rendered shared/_header.html.erb (Duration: 0.9ms | Allocations: 115)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 96)
+  Rendered layout layouts/application.html.erb (Duration: 439.5ms | Allocations: 108137)
+Completed 200 OK in 452ms (Views: 442.6ms | ActiveRecord: 0.0ms | Allocations: 112317)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/assets/font-awesome"):
+  
+Started GET "/" for 172.22.0.1 at 2025-04-15 23:35:05 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 0.2ms | Allocations: 7)
+  Rendered shared/_header.html.erb (Duration: 0.1ms | Allocations: 9)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 10.5ms | Allocations: 1917)
+Completed 200 OK in 14ms (Views: 12.3ms | ActiveRecord: 0.0ms | Allocations: 2233)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/assets/font-awesome"):
+  
+Started GET "/" for 172.22.0.1 at 2025-04-15 23:43:18 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 2.2ms | Allocations: 124)
+  Rendered layout layouts/application.html.erb (Duration: 13.5ms | Allocations: 3260)
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 0.0ms | Allocations: 4163)
+
+
+  
+ActionView::Template::Error (The asset "tailwind.css" is not present in the asset pipeline.
+):
+     5:     <meta name="viewport" content="width=device-width,initial-scale=1">
+     6:     <%= csrf_meta_tags %>
+     7:     <%= csp_meta_tag %>
+     8:     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+     9:     <%= stylesheet_link_tag "application.tailwind", "data-turbo-track": "reload" %>
+    10:     <%= javascript_importmap_tags %>
+    11:   </head>
+  
+app/views/layouts/application.html.erb:8
+Started GET "/" for 172.22.0.1 at 2025-04-15 23:44:50 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 1.0ms | Allocations: 336)
+  Rendered shared/_header.html.erb (Duration: 3.6ms | Allocations: 115)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 96)
+  Rendered layout layouts/application.html.erb (Duration: 429.5ms | Allocations: 103550)
+Completed 200 OK in 450ms (Views: 432.6ms | ActiveRecord: 0.0ms | Allocations: 107736)
+
+
+Started GET "/" for 172.22.0.1 at 2025-04-15 23:54:08 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 3.3ms | Allocations: 126)
+  Rendered layout layouts/application.html.erb (Duration: 47.9ms | Allocations: 6576)
+Completed 500 Internal Server Error in 64ms (ActiveRecord: 0.0ms | Allocations: 7526)
+
+
+  
+ActionView::Template::Error (The asset "application.css" is not present in the asset pipeline.
+):
+     6:     <%= csrf_meta_tags %>
+     7:     <%= csp_meta_tag %>
+     8:     <%= javascript_importmap_tags %>
+     9:     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    10:   </head>
+    11: 
+    12:   <body>
+  
+app/views/layouts/application.html.erb:9
+Started GET "/" for 172.22.0.1 at 2025-04-15 23:55:28 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 2.6ms | Allocations: 123)
+  Rendered layout layouts/application.html.erb (Duration: 15.0ms | Allocations: 3600)
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 0.0ms | Allocations: 4506)
+
+
+  
+ActionView::Template::Error (The asset "application.css" is not present in the asset pipeline.
+):
+     6:     <%= csrf_meta_tags %>
+     7:     <%= csp_meta_tag %>
+     8:     <%= javascript_importmap_tags %>
+     9:     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    10:   </head>
+    11: 
+    12:   <body>
+  
+app/views/layouts/application.html.erb:9
+Started GET "/" for 172.22.0.1 at 2025-04-15 23:55:44 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 2.5ms | Allocations: 123)
+  Rendered layout layouts/application.html.erb (Duration: 117.1ms | Allocations: 31604)
+Completed 500 Internal Server Error in 127ms (ActiveRecord: 0.0ms | Allocations: 32504)
+
+
+  
+ActionView::Template::Error (Asset `application.tailwind.css` was not declared to be precompiled in production.
+Declare links to your assets in `app/assets/config/manifest.js`.
+
+  //= link application.tailwind.css
+
+and restart your server):
+     6:     <%= csrf_meta_tags %>
+     7:     <%= csp_meta_tag %>
+     8:     <%= javascript_importmap_tags %>
+     9:     <%= stylesheet_link_tag "application.tailwind", "data-turbo-track": "reload" %>
+    10:   </head>
+    11: 
+    12:   <body>
+  
+app/views/layouts/application.html.erb:9
+Started GET "/" for 172.22.0.1 at 2025-04-15 23:56:25 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 0.2ms | Allocations: 7)
+  Rendered shared/_header.html.erb (Duration: 1.6ms | Allocations: 98)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 95)
+  Rendered layout layouts/application.html.erb (Duration: 82.7ms | Allocations: 30306)
+Completed 200 OK in 87ms (Views: 84.5ms | ActiveRecord: 0.0ms | Allocations: 30601)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/assets/tailwindcss"):
+  
+Started GET "/" for 172.22.0.1 at 2025-04-15 23:57:04 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 0.2ms | Allocations: 7)
+  Rendered shared/_header.html.erb (Duration: 0.3ms | Allocations: 9)
+  Rendered shared/_footer.html.erb (Duration: 0.9ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 27.6ms | Allocations: 1885)
+Completed 200 OK in 35ms (Views: 31.5ms | ActiveRecord: 0.0ms | Allocations: 2197)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/assets/tailwindcss"):
+  
+Started GET "/" for 172.22.0.1 at 2025-04-16 00:01:40 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 2.5ms | Allocations: 130)
+  Rendered shared/_header.html.erb (Duration: 0.7ms | Allocations: 100)
+  Rendered shared/_footer.html.erb (Duration: 0.6ms | Allocations: 95)
+  Rendered layout layouts/application.html.erb (Duration: 15.5ms | Allocations: 2707)
+Completed 200 OK in 32ms (Views: 22.4ms | ActiveRecord: 0.0ms | Allocations: 3615)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/assets/tailwindcss"):
+  
+Started GET "/" for 172.22.0.1 at 2025-04-16 00:07:31 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 0.4ms | Allocations: 7)
+  Rendered shared/_header.html.erb (Duration: 0.1ms | Allocations: 9)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 35.5ms | Allocations: 3311)
+Completed 200 OK in 41ms (Views: 37.4ms | ActiveRecord: 0.0ms | Allocations: 3596)
+
+
+Started GET "/" for 172.22.0.1 at 2025-04-16 00:07:57 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 2.6ms | Allocations: 200)
+  Rendered shared/_header.html.erb (Duration: 0.7ms | Allocations: 99)
+  Rendered shared/_footer.html.erb (Duration: 0.6ms | Allocations: 95)
+  Rendered layout layouts/application.html.erb (Duration: 16.6ms | Allocations: 2573)
+Completed 200 OK in 30ms (Views: 24.4ms | ActiveRecord: 0.0ms | Allocations: 3480)
+
+
+Started GET "/img/logo.svg" for 172.22.0.1 at 2025-04-16 00:07:57 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/img/logo-dark.svg" for 172.22.0.1 at 2025-04-16 00:07:57 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/img/logo.svg"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/img/logo-dark.svg"):
+  
+Started GET "/" for 172.22.0.1 at 2025-04-16 00:08:14 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 0.5ms | Allocations: 7)
+  Rendered shared/_header.html.erb (Duration: 0.1ms | Allocations: 9)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 41.3ms | Allocations: 3562)
+Completed 200 OK in 46ms (Views: 43.2ms | ActiveRecord: 0.0ms | Allocations: 3850)
+
+
+Started GET "/img/logo-dark.svg" for 172.22.0.1 at 2025-04-16 00:08:14 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/img/logo.svg" for 172.22.0.1 at 2025-04-16 00:08:14 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/img/logo-dark.svg"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/img/logo.svg"):
+  
+Started GET "/" for 172.22.0.1 at 2025-04-16 00:10:36 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 1.5ms | Allocations: 124)
+  Rendered shared/_header.html.erb (Duration: 0.7ms | Allocations: 99)
+  Rendered shared/_footer.html.erb (Duration: 0.7ms | Allocations: 95)
+  Rendered layout layouts/application.html.erb (Duration: 13.8ms | Allocations: 2513)
+Completed 200 OK in 24ms (Views: 19.2ms | ActiveRecord: 0.0ms | Allocations: 3420)
+
+
+Started GET "/" for 172.22.0.1 at 2025-04-16 00:10:38 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  Rendered shared/_header.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | Allocations: 1562)
+Completed 200 OK in 8ms (Views: 6.2ms | ActiveRecord: 0.0ms | Allocations: 1847)
+
+
+Started GET "/" for 172.22.0.1 at 2025-04-16 00:10:46 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 1.6ms | Allocations: 124)
+  Rendered shared/_header.html.erb (Duration: 1.2ms | Allocations: 99)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 95)
+  Rendered layout layouts/application.html.erb (Duration: 16.6ms | Allocations: 2527)
+Completed 200 OK in 27ms (Views: 23.4ms | ActiveRecord: 0.0ms | Allocations: 3441)
+
+
+Started GET "/" for 172.22.0.1 at 2025-04-16 00:12:21 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 0.4ms | Allocations: 7)
+  Rendered shared/_header.html.erb (Duration: 0.1ms | Allocations: 9)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 8.3ms | Allocations: 1547)
+Completed 200 OK in 13ms (Views: 10.0ms | ActiveRecord: 0.0ms | Allocations: 1832)
+
+
+Started GET "/" for 172.22.0.1 at 2025-04-16 00:12:29 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 0.7ms | Allocations: 7)
+  Rendered shared/_header.html.erb (Duration: 0.2ms | Allocations: 9)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 13.6ms | Allocations: 1572)
+Completed 200 OK in 19ms (Views: 15.7ms | ActiveRecord: 0.0ms | Allocations: 1837)
+
+
+Started GET "/" for 172.22.0.1 at 2025-04-16 00:12:48 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 0.8ms | Allocations: 336)
+  Rendered shared/_header.html.erb (Duration: 0.7ms | Allocations: 110)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 96)
+  Rendered layout layouts/application.html.erb (Duration: 297.9ms | Allocations: 55341)
+Completed 200 OK in 310ms (Views: 301.0ms | ActiveRecord: 0.0ms | Allocations: 59520)
+
+
+Started GET "/" for 172.22.0.1 at 2025-04-16 00:13:18 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 0.4ms | Allocations: 7)
+  Rendered shared/_header.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 9.9ms | Allocations: 1567)
+Completed 200 OK in 18ms (Views: 12.0ms | ActiveRecord: 0.0ms | Allocations: 1871)
+
+
+Started GET "/" for 172.22.0.1 at 2025-04-16 00:13:19 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 0.2ms | Allocations: 7)
+  Rendered shared/_header.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 1563)
+Completed 200 OK in 8ms (Views: 6.6ms | ActiveRecord: 0.0ms | Allocations: 1831)
+
+
+Started GET "/" for 172.22.0.1 at 2025-04-16 00:15:18 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 1.1ms | Allocations: 336)
+  Rendered shared/_header.html.erb (Duration: 0.6ms | Allocations: 110)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 96)
+  Rendered layout layouts/application.html.erb (Duration: 291.8ms | Allocations: 51288)
+Completed 200 OK in 304ms (Views: 294.8ms | ActiveRecord: 0.0ms | Allocations: 55467)
+
+
+Started GET "/" for 172.22.0.1 at 2025-04-16 00:15:58 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 0.3ms | Allocations: 7)
+  Rendered shared/_header.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 10.3ms | Allocations: 1561)
+Completed 200 OK in 15ms (Views: 12.4ms | ActiveRecord: 0.0ms | Allocations: 1864)
+
+
+Started GET "/" for 172.22.0.1 at 2025-04-16 00:16:10 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 0.4ms | Allocations: 7)
+  Rendered shared/_header.html.erb (Duration: 0.1ms | Allocations: 9)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 10.7ms | Allocations: 1563)
+Completed 200 OK in 15ms (Views: 12.6ms | ActiveRecord: 0.0ms | Allocations: 1831)
+
+
+Started GET "/" for 172.22.0.1 at 2025-04-16 00:17:16 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 0.2ms | Allocations: 7)
+  Rendered shared/_header.html.erb (Duration: 0.1ms | Allocations: 9)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 21.4ms | Allocations: 3431)
+Completed 200 OK in 25ms (Views: 23.1ms | ActiveRecord: 0.0ms | Allocations: 3699)
+
+
+Started GET "/" for 172.22.0.1 at 2025-04-16 00:17:32 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 1.5ms | Allocations: 124)
+  Rendered shared/_header.html.erb (Duration: 1.7ms | Allocations: 99)
+  Rendered shared/_footer.html.erb (Duration: 1.3ms | Allocations: 95)
+  Rendered layout layouts/application.html.erb (Duration: 31.7ms | Allocations: 4247)
+Completed 200 OK in 43ms (Views: 38.8ms | ActiveRecord: 0.0ms | Allocations: 5161)
+
+
+Started GET "/" for 172.22.0.1 at 2025-04-16 00:17:53 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 1.7ms | Allocations: 200)
+  Rendered shared/_header.html.erb (Duration: 0.8ms | Allocations: 102)
+  Rendered shared/_footer.html.erb (Duration: 0.7ms | Allocations: 95)
+  Rendered layout layouts/application.html.erb (Duration: 71.8ms | Allocations: 4584)
+Completed 200 OK in 83ms (Views: 78.4ms | ActiveRecord: 0.0ms | Allocations: 5524)
+
+
+Started GET "/img/logo.svg" for 172.22.0.1 at 2025-04-16 00:17:53 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/img/logo-dark.svg" for 172.22.0.1 at 2025-04-16 00:17:53 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/img/logo.svg"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/img/logo-dark.svg"):
+  
+Started GET "/" for 172.22.0.1 at 2025-04-16 00:20:03 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 2.0ms | Allocations: 185)
+  Rendered shared/_header.html.erb (Duration: 0.9ms | Allocations: 99)
+  Rendered shared/_footer.html.erb (Duration: 1.0ms | Allocations: 95)
+  Rendered layout layouts/application.html.erb (Duration: 23.2ms | Allocations: 2577)
+Completed 200 OK in 35ms (Views: 29.0ms | ActiveRecord: 0.0ms | Allocations: 3519)
+
+
+Started GET "/img/logo.svg" for 172.22.0.1 at 2025-04-16 00:20:03 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/img/ss.png" for 172.22.0.1 at 2025-04-16 00:20:03 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/img/logo.svg"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/img/ss.png"):
+  
+Started GET "/" for 172.22.0.1 at 2025-04-16 00:21:15 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 1.2ms | Allocations: 185)
+  Rendered shared/_header.html.erb (Duration: 0.6ms | Allocations: 100)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 95)
+  Rendered layout layouts/application.html.erb (Duration: 36.0ms | Allocations: 2578)
+Completed 200 OK in 45ms (Views: 40.8ms | ActiveRecord: 0.0ms | Allocations: 3506)
+
+
+Started GET "/image/ss.png" for 172.22.0.1 at 2025-04-16 00:21:15 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/image/ss.png"):
+  
+Started GET "/" for 172.22.0.1 at 2025-04-16 00:21:34 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 1.7ms | Allocations: 185)
+  Rendered shared/_header.html.erb (Duration: 0.7ms | Allocations: 99)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 95)
+  Rendered layout layouts/application.html.erb (Duration: 37.3ms | Allocations: 2565)
+Completed 200 OK in 49ms (Views: 43.6ms | ActiveRecord: 0.0ms | Allocations: 3492)
+
+
+Started GET "/Users/laketorrens/programing/trip_payzies/app/assets/images/ss.png" for 172.22.0.1 at 2025-04-16 00:21:34 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/image/ss.png" for 172.22.0.1 at 2025-04-16 00:21:34 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/Users/laketorrens/programing/trip_payzies/app/assets/images/ss.png"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/image/ss.png"):
+  
+Started GET "/" for 172.22.0.1 at 2025-04-16 00:21:46 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 1.2ms | Allocations: 185)
+  Rendered shared/_header.html.erb (Duration: 0.7ms | Allocations: 99)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 95)
+  Rendered layout layouts/application.html.erb (Duration: 23.8ms | Allocations: 2580)
+Completed 200 OK in 32ms (Views: 28.6ms | ActiveRecord: 0.0ms | Allocations: 3508)
+
+
+Started GET "/app/assets/images/ss.png" for 172.22.0.1 at 2025-04-16 00:21:47 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/image/ss.png" for 172.22.0.1 at 2025-04-16 00:21:47 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/app/assets/images/ss.png"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/image/ss.png"):
+  
+Started GET "/" for 172.22.0.1 at 2025-04-16 00:21:55 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 2.1ms | Allocations: 185)
+  Rendered shared/_header.html.erb (Duration: 0.7ms | Allocations: 99)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 95)
+  Rendered layout layouts/application.html.erb (Duration: 12.9ms | Allocations: 2586)
+Completed 200 OK in 21ms (Views: 17.8ms | ActiveRecord: 0.0ms | Allocations: 3517)
+
+
+Started GET "/app/assets/images/ss.png" for 172.22.0.1 at 2025-04-16 00:21:55 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/app/assets/images/ss.png"):
+  
+Started GET "/" for 172.22.0.1 at 2025-04-16 00:24:30 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 1.3ms | Allocations: 185)
+  Rendered shared/_header.html.erb (Duration: 0.6ms | Allocations: 99)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 95)
+  Rendered layout layouts/application.html.erb (Duration: 15.5ms | Allocations: 2583)
+Completed 200 OK in 23ms (Views: 19.8ms | ActiveRecord: 0.0ms | Allocations: 3511)
+
+
+Started GET "/images/image_name.png" for 172.22.0.1 at 2025-04-16 00:24:30 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/images/image_name.png"):
+  
+Started GET "/" for 172.22.0.1 at 2025-04-16 00:24:31 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 0.2ms | Allocations: 7)
+  Rendered shared/_header.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | Allocations: 1572)
+Completed 200 OK in 8ms (Views: 6.4ms | ActiveRecord: 0.0ms | Allocations: 1858)
+
+
+Started GET "/images/image_name.png" for 172.22.0.1 at 2025-04-16 00:24:31 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/images/image_name.png"):
+  
+Started GET "/" for 172.22.0.1 at 2025-04-16 00:25:04 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 1.8ms | Allocations: 186)
+  Rendered shared/_header.html.erb (Duration: 0.6ms | Allocations: 99)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 95)
+  Rendered layout layouts/application.html.erb (Duration: 15.3ms | Allocations: 2590)
+Completed 200 OK in 27ms (Views: 22.9ms | ActiveRecord: 0.0ms | Allocations: 3498)
+
+
+Started GET "/" for 172.22.0.1 at 2025-04-16 00:26:28 +0900
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 0.3ms | Allocations: 7)
+  Rendered shared/_header.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 19.5ms | Allocations: 1565)
+Completed 200 OK in 23ms (Views: 20.7ms | ActiveRecord: 0.0ms | Allocations: 1850)
+
+
