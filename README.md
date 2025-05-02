@@ -81,6 +81,7 @@
 
 - LINE messaging API (メンバーに支払い情報を通知)
 - ransack gem
+- canvas.jsやchart.js (グラフ表示)
 
 
 
