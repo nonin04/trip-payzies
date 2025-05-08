@@ -57,3 +57,8 @@ RSpecなどでRails APIのテスト
 5	APIと連携	Axios、リアルなデータ表示
 6	認証（必要なら）	JWT, Devise Token Authなど
 7	UI調整 & テスト	デザイン調整、RSpec等
+
+----
+5/8 修正
+ rails APIの使用はMVPリリース後とする
+ 
