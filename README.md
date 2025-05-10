@@ -84,4 +84,4 @@ Xやソーシャルポートフォリオを利用しRUNTEQ生に利用しても�
 Figma：https://www.figma.com/design/8JN7kY58d5PfqbbzSJ2daH/trip-payzies-MVP-%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=60-120&t=8fvL2ZWYz5JIDJn0-1
 
 ## ER図
-[![Image from Gyazo](https://i.gyazo.com/b7adff54922a3fb4d9967b2cb6ed86db.png)](https://gyazo.com/b7adff54922a3fb4d9967b2cb6ed86db)
+[![Image from Gyazo](https://i.gyazo.com/ef4b6560d32fd2e518a06e444cbee328.png)](https://gyazo.com/ef4b6560d32fd2e518a06e444cbee328)
