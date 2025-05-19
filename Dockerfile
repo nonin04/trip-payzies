@@ -43,7 +43,7 @@ RUN yarn install
 
 COPY tailwind.config.js ./
 COPY app/assets/stylesheets ./app/assets/stylesheets
-RUN yarn build:css
+RUN ./node_modules/.bin/tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify
 
 # あとから全体コピー
 COPY . .
