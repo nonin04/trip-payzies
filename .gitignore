@@ -34,7 +34,5 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-
-
 #ここから追加記述
 /.vscode

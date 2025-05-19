@@ -1,33 +1,28 @@
 services:
   db:
     image: postgres:15
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_DB: app_development
-    ports:
-      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
 
   web:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -b 0.0.0.0 -p 3000"
     volumes:
-      - ".:/app"
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -b 0.0.0.0"
+      - .:/app:cached
     ports:
       - "4000:3000"
     depends_on:
       - db
-    environment:
-      DATABASE_HOST: db
-      DATABASE_USERNAME: postgres
-      DATABASE_PASSWORD: password
-      RAILS_ENV: development
-    stdin_open: true
     tty: true
+    stdin_open: true
 
 volumes:
   postgres-data:
