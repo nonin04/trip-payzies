@@ -32,6 +32,22 @@
 
 # Ignore assets.
 /node_modules/
-/app/assets/builds/*
 !/app/assets/builds/.keep
 /public/assets
+
+# macOS特有の不要ファイル
+.DS_Store
+
+# テスト関連
+/test
+/spec
+/coverage
+
+# IDE・エディタファイル
+*.swp
+*.swo
+*.bak
+*.tmp
+.idea/
+.vscode/
+
