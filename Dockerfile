@@ -39,13 +39,14 @@ RUN bundle install && \
 
 # Copy package.json and yarn.lock for JS build
 COPY package.json yarn.lock ./
-RUN yarn install && yarn build:css
+RUN yarn install
 
 # Copy application code
 COPY . .
 
 # Install Node modules and build Tailwind CSS
-RUN yarn install && yarn build:css
+COPY app/assets/stylesheets ./app/assets/stylesheets
+RUN yarn build:css
 
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
