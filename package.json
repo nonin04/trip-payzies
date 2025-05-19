@@ -1,5 +1,12 @@
 {
-  "scripts": {
-    "build:css": "npx @tailwindcss/cli -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
+  "name": "trip-payzies",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/nonin04/trip-payzies.git",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17"
   }
 }
