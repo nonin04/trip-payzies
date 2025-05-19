@@ -19,7 +19,7 @@ gem 'kaminari'
 gem 'kaminari-i18n'
 gem 'validate_url'
 gem 'validates_email_format_of'
-gem "cssbundling-rails"
+gem 'cssbundling-rails', '1.4.3'
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"

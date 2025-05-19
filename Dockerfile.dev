@@ -1,31 +1,25 @@
-# Dockerfile.dev
 FROM ruby:3.2.2
 
 ENV LANG=C.UTF-8 \
     TZ=Asia/Tokyo
 
-# Node/Yarnのインストール（開発では柔軟性重視でNodeSourceなどもOK）
+# Node.js（v18）と npm をインストール
 RUN apt-get update -qq && \
     apt-get install -y curl gnupg build-essential libpq-dev libssl-dev && \
     curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
-    apt-get install -y nodejs yarn
+    apt-get install -y nodejs
 
-# 🔽 ここを追加（Bundler 2.x をインストール）
-RUN gem install bundler -v "~> 2.0"
+# Bundler
+RUN gem install bundler -v "~> 2.4"
 
-# 作業ディレクトリ
 WORKDIR /app
 
-# Gemfile系先にコピー（キャッシュ効かせるため）
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
 
-# package.json などがあれば
-COPY package.json yarn.lock ./
-RUN yarn install || true
+COPY package.json package-lock.json ./ # yarn.lock を package-lock.json に変更
+RUN npm install
 
-# アプリケーション全体をコピー
 COPY . .
 
-# ポートは3000開けて、コマンドはdocker-compose側で指定
 EXPOSE 3000
