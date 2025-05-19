@@ -10,6 +10,9 @@ RUN apt-get update -qq && \
     curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
     apt-get install -y nodejs yarn
 
+# 🔽 ここを追加（Bundler 2.x をインストール）
+RUN gem install bundler -v "~> 2.0"
+
 # 作業ディレクトリ
 WORKDIR /app
 
