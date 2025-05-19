@@ -37,16 +37,16 @@ RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile
 
-# Copy package.json and yarn.lock for JS build
+# Copy only necessary files for Tailwind build
 COPY package.json yarn.lock ./
 RUN yarn install
 
-# Copy application code
-COPY . .
-
-# Install Node modules and build Tailwind CSS
+COPY tailwind.config.js ./
 COPY app/assets/stylesheets ./app/assets/stylesheets
 RUN yarn build:css
+
+# あとから全体コピー
+COPY . .
 
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
