@@ -17,7 +17,7 @@ WORKDIR /app
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
 
-COPY package.json package-lock.json ./ # yarn.lock を package-lock.json に変更
+COPY package.json package-lock.json ./
 RUN npm install
 
 COPY . .

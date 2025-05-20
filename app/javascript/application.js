@@ -1,3 +1,4 @@
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-import "@hotwired/turbo-rails"
-import "controllers"
+// app/javascript/application.js
+
+// JavaScriptのエントリーポイント（今は中身なしでもOK）
+console.log("JavaScript is working!");
