@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title><%= content_for(:title) || "Trip-payzies" %></title>
+    <title><%= content_for?(:title) ? yield(:title) + " | Trip-payzies(トリップペイジーズ)" : "Trip-payzies(トリップペイジーズ)" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -21,6 +21,16 @@
   </head>
 
   <body class="<%= content_for?(:body_class) ? yield(:body_class) : 'bg-white' %>">
+
+    <% unless controller.controller_name == "homes", && controller.action_name == "top" %>
+      <%= render "layout/header"%>
+    <% end %>
+    
     <%= yield %>
+
+    <% unless controller.controller_name == "homes", && controller.action_name == "top" %>
+      <%= render "layout/footer"%>
+    <% end %>
+    
   </body>
 </html>
