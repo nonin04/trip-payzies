@@ -1,11 +1,12 @@
+<% content_for(:body_class, "bg-panel-navy") %>
+
 <div class="bg-panel-navy max-w-sm lg:max-w-[640px] mx-auto">
   <%# ↓↓↓ロゴとタイトル↓↓↓ %>
   <div class="flex w-1/3 justify-center">
     <img class="h-16" src="/svg/map-pin.svg" alt="">
     <h1 class="font-for_icon font-bold text-white text-3xl ml-2">
       <span class="text-action-yellow">TRIP</span>
-      <br>
-      <span>PAYZIES</span>
+      <br><span>PAYZIES</span>
     </h1>
   </div>
 
@@ -16,7 +17,8 @@
     <li>最後に、誰が誰にいくら払うかを自動計算!</li>
   </ol>
 
-  <a href="#" class="font-bold bg-action-yellow cursor-pointer inline-flex item-center rounded gap-1 px-3">
-    Start!<img src="/svg/plane.svg" alt="飛行機アイコン"> 
-  </a>
+<%= link_to new_user_session_path, class: "font-bold bg-action-yellow cursor-pointer inline-flex items-center rounded gap-1 px-3" do %>
+  Start!<img src="/svg/plane.svg" alt="飛行機アイコン">
+<% end %>
+
 </div>
