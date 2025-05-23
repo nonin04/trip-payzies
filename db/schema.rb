@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_05_23_014818) do
+ActiveRecord::Schema[7.2].define(version: 2025_05_23_092631) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,6 +35,22 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_23_014818) do
     t.datetime "updated_at", null: false
     t.index ["payer_id"], name: "index_expenses_on_payer_id"
     t.index ["trip_id"], name: "index_expenses_on_trip_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_groups_on_user_id"
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.bigint "group_id", null: false
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_members_on_group_id"
   end
 
   create_table "participants", force: :cascade do |t|
@@ -78,6 +94,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_23_014818) do
   add_foreign_key "advance_payments", "participants"
   add_foreign_key "expenses", "participants", column: "payer_id"
   add_foreign_key "expenses", "trips"
+  add_foreign_key "groups", "users"
+  add_foreign_key "members", "groups"
   add_foreign_key "participants", "trips"
   add_foreign_key "trips", "users"
 end
