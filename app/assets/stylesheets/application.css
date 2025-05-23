@@ -15,7 +15,21 @@
   --color-panel-grey: #E8E8E8;
   /* ------- ボタン系 ------- */
   --color-action-yellow: #F9FF40;
-  --color-primary-blue: #0A9EFB;
+  --color-primary-blue-100: #0A9EFB;
+  --color-primary-blue-200: #0A9EFB;
   --color-primary-red: #F24822;
+  /* ------- フォーム系 ------- */
+  --color-form-gray: #F3F4F6;
+}
+
+.btn {
+  @apply bg-primary-blue hover:bg-blue-600 text-white font-bold py-2 px-4 rounded
+}
+
+.form-style {
+  @apply 
+  bg-form-gray w-full px-3 py-2 font-normal rounded-md border border-form-gray
+  placeholder:text-gray-300 placeholder:font-normal
+  focus:bg-gray-50 focus:border-gray-300 focus:outline-none
 }
 
