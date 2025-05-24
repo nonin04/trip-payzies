@@ -11,25 +11,24 @@
 /* カスタムカラー*/
   /* ------- 背景色 ------- */
   --color-panel-navy: #112436;
-  --color-panel-sky: #95CBDA;
+  --color-panel-sky: #B4D5DE;
   --color-panel-grey: #E8E8E8;
   /* ------- ボタン系 ------- */
   --color-action-yellow: #F9FF40;
   --color-primary-blue-100: #0A9EFB;
-  --color-primary-blue-200: #0A9EFB;
+  --color-primary-blue-200: #0D98EE;
   --color-primary-red: #F24822;
   /* ------- フォーム系 ------- */
-  --color-form-gray: #F3F4F6;
+  --color-form-gray: #E8E8E8;
 }
 
 .btn {
-  @apply bg-primary-blue hover:bg-blue-600 text-white font-bold py-2 px-4 rounded
+  @apply bg-primary-blue-100 hover:bg-primary-blue-200 text-white font-bold py-2 px-4 rounded cursor-pointer
 }
 
 .form-style {
   @apply 
-  bg-form-gray w-full px-3 py-2 font-normal rounded-md border border-form-gray
+  bg-form-gray px-3 py-2 font-normal rounded-md border border-form-gray
   placeholder:text-gray-300 placeholder:font-normal
   focus:bg-gray-50 focus:border-gray-300 focus:outline-none
 }
-

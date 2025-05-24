@@ -14,23 +14,27 @@
     <link rel="icon" href="/icon.png?v=2" type="image/png">
     <link rel="icon" href="/icon.svg?v=2" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
 
+    <%# iconfy[アイコンパック]を導入 %> 
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 
   </head>
 
   <body class="<%= content_for?(:body_class) ? yield(:body_class) : 'bg-white' %>">
+    <div class="xl:w-1/3 md:w-1/2 sm:full mx-auto">
+      <% unless controller.controller_name == "homes" && controller.action_name == "top" %>
+        <%= render "layouts/header"%>
+      <% end %>
+      
+      <%= yield %>
 
-    <% unless controller.controller_name == "homes" && controller.action_name == "top" %>
-      <%= render "layouts/header"%>
-    <% end %>
-    
-    <%= yield %>
-
-    <% unless controller.controller_name == "homes" && controller.action_name == "top" %>
-      <%= render "layouts/footer"%>
-    <% end %>
+      <% unless controller.controller_name == "homes" && controller.action_name == "top" %>
+        <%= render "layouts/footer"%>
+      <% end %>
+    </div>
     
   </body>
 </html>
