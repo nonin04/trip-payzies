@@ -1,14 +1,19 @@
 <div class="h-14 bg-panel-sky flex items-center justify-between">
+  
   <%# logo&text %>
-  <div class="flex h-full items-center ml-4">
+  <%= link_to root_path, class:"flex h-full items-center ml-4" do %>
     <img class="ml-2" src="/svg/map-pin.svg" alt="">
     <div class="font-for_icon font-bold text-xl ml-2 leading-none">
       <span class="text-action-yellow">TRIP</span>
       <br><span class="text-white">PAYZIES</span>
     </div>
-  </div>
+  <% end %>
+
   <%# humbergur-menu %>
-  <div class="flex">
-    <iconify-icon icon="material-symbols-light:menu-rounded" width="40" height="40" class="text-white my-auto mr-4 cursor-pointer"></iconify-icon>
-  </div>
+  <% unless devise_controller? %>
+    <div class="flex">
+      <iconify-icon icon="material-symbols-light:menu-rounded" width="36" height="36" class="humberger-menu"></iconify-icon>
+    </div>
+  <% end %>
+
 </div>

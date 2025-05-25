@@ -15,26 +15,36 @@
     <link rel="icon" href="/icon.svg?v=2" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
 
     <%# iconfy[アイコンパック]を導入 %> 
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-
   </head>
 
-  <body class="<%= content_for?(:body_class) ? yield(:body_class) : 'bg-white' %>">
-    <div class="xl:w-1/3 md:w-1/2 sm:full mx-auto">
-      <% unless controller.controller_name == "homes" && controller.action_name == "top" %>
-        <%= render "layouts/header"%>
-      <% end %>
-      
-      <%= yield %>
 
-      <% unless controller.controller_name == "homes" && controller.action_name == "top" %>
-        <%= render "layouts/footer"%>
+  <body class="<%= content_for?(:body_class) ? yield(:body_class) : 'bg-white' %>">
+    <div class="page-width">
+      <header>
+          <% unless controller.controller_name == "homes"%>
+            <%= render "layouts/header"%>
+          <% end %>
+      </header>
+
+      <p class="notice bg-red-500 text-white text-sm"><%= notice %></p>
+      <p class="alert bg-red-500 text-white text-sm"><%= alert %></p>
+
+      <main class="<%= content_for?(:main_class) ? yield(:main_class) : 'bg-form-gray flex-1' %>">
+          <%= yield %>
+      </main>
+
+      <footer>
+          <% unless controller.controller_name == "homes"%>
+            <%= render "layouts/footer"%>
+          <% end %>
+      </footer>
+
+      <% unless controller.controller_name == "homes" || devise_controller? %>
+        <%= render "layouts/sidebar"%>
       <% end %>
     </div>
-    
   </body>
 </html>
