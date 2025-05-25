@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title><%= content_for(:title) || "Trip-payzies" %></title>
+    <title><%= content_for?(:title) ? yield(:title) + " | Trip-payzies(トリップペイジーズ)" : "Trip-payzies(トリップペイジーズ)" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -14,13 +14,37 @@
     <link rel="icon" href="/icon.png?v=2" type="image/png">
     <link rel="icon" href="/icon.svg?v=2" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
 
-
+    <%# iconfy[アイコンパック]を導入 %> 
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
   </head>
 
+
   <body class="<%= content_for?(:body_class) ? yield(:body_class) : 'bg-white' %>">
-    <%= yield %>
+    <div class="page-width">
+      <header>
+          <% unless controller.controller_name == "homes"%>
+            <%= render "layouts/header"%>
+          <% end %>
+      </header>
+
+      <p class="notice bg-red-500 text-white text-sm"><%= notice %></p>
+      <p class="alert bg-red-500 text-white text-sm"><%= alert %></p>
+
+      <main class="<%= content_for?(:main_class) ? yield(:main_class) : 'bg-form-gray flex-1' %>">
+          <%= yield %>
+      </main>
+
+      <footer>
+          <% unless controller.controller_name == "homes"%>
+            <%= render "layouts/footer"%>
+          <% end %>
+      </footer>
+
+      <% unless controller.controller_name == "homes" || devise_controller? %>
+        <%= render "layouts/sidebar"%>
+      <% end %>
+    </div>
   </body>
 </html>

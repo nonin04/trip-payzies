@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    models:
+      user: "ユーザー"
+    attributes:
+      user: 
+        name: "ユーザーネーム"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード(確認)"
+    errors:
+      messages:
+        blank: "必須項目です。"
+        not_saved: "%{resource}を保存できませんでした。"
+        confirmation: "確認用の内容と一致していません。"
+        too_short: "%{count}文字以上で入力してください。"
