@@ -1,0 +1,14 @@
+1. developからブランチを切る
+git checkout develop
+git pull origin develop
+git checkout -b feature/awesome-feature
+
+2. 作業＆コミット&プッシュ
+git add .
+git commit -m "Add awesome feature"
+git push -u origin feature/awesome-feature
+
+4. GitHubで Pull Request 作成（feature → develop）
+ → レビュー・確認してからマージ
+
+ 以上繰り返し
