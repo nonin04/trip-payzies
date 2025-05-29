@@ -1,4 +1,4 @@
-class ExpensesController < ApplicationController
+class MembersController < ApplicationController
   def show
   end
 

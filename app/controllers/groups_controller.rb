@@ -1,5 +1,5 @@
-class ExpensesController < ApplicationController
-  def show
+class GroupsController < ApplicationController
+  def index
   end
 
   def new
