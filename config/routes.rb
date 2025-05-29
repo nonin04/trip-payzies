@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  devise_for :users
+
   authenticated :user do
     root to: 'trips#index', as: :authenticated_root
   end
@@ -7,10 +9,21 @@ Rails.application.routes.draw do
     root to: 'homes#index', as: :unauthenticated_root
   end
 
-
   resources :trip do
-
+    resources :expense, only: [:show, :new, :create, :edit, :update, :destroy]
+    
+    resource :participants, only: [] do
+      collection do
+        get 'new'
+        post 'create'
+        get 'edit'
+        patch 'update'
+        delete 'destroy'
+      end
+    end
   end
+
+
 
   # -------------------------------------------------------------------------------------------------
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
