@@ -1,6 +1,6 @@
 class Participant < ApplicationRecord
   belongs_to :trip
-  has_many :paid_expenses, class_name: 'Expense', dependent: destroy, foregin_key: 'payer_id'
+  has_many :paid_expenses, class_name: 'Expense', dependent: :destroy, foregin_key: 'payer_id'
 
   has_many :advance_payments, dependent: :destroy
   
