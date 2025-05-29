@@ -1,7 +1,4 @@
-class ExpensesController < ApplicationController
-  def show
-  end
-
+class ParticipantsController < ApplicationController
   def new
   end
 
