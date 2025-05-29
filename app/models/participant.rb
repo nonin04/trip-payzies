@@ -1,8 +1,8 @@
 class Participant < ApplicationRecord
   belongs_to :trip
-  has_many :paid_expenses, class_name: 'Expense', dependent: :destroy, foregin_key: 'payer_id'
+  has_many :paid_expenses, class_name: 'Expense', dependent: :restrict_with_error, foreign_key: 'payer_id'
 
-  has_many :advance_payments, dependent: :destroy
+  has_many :advance_payments, dependent: :restrict_with_error
   
   validates :trip_id, presence: true
   validates :name, presence: true, length: {maximum: 12, message: "は12字以内"}
