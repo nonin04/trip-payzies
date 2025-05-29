@@ -2,10 +2,10 @@ Rails.application.routes.draw do
 
 
   authenticated :user do
-    root 'trips#index', as: :authenticated_root
+    root to: 'trips#index', as: :authenticated_root
   end
   unauthenticated do
-    root 'homes#index', as: :unauthenticated_root
+    root to: 'homes#index', as: :unauthenticated_root
   end
 
 
@@ -13,11 +13,7 @@ Rails.application.routes.draw do
 
   end
 
-
-  devise_for :users
-  root to: 'homes#top'
-
-
+  # -------------------------------------------------------------------------------------------------
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
