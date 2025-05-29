@@ -10,11 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_05_28_232738) do
+ActiveRecord::Schema[7.2].define(version: 2025_05_29_142122) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  # ---------------------------------------------------------------------
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -44,7 +42,19 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_28_232738) do
   end
 
   # ---------------------------------------------------------------------
-  
+
+  create_table "trips", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "title", null: false
+    t.integer "settlement_status", default: 0, null: false
+    t.date "departure_date", default: -> { "CURRENT_DATE" }, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "group_id"
+    t.index ["group_id"], name: "index_trips_on_group_id"
+    t.index ["user_id"], name: "index_trips_on_user_id"
+  end
+
   create_table "advance_payments", force: :cascade do |t|
     t.bigint "expense_id", null: false
     t.bigint "participant_id", null: false
@@ -69,9 +79,20 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_28_232738) do
     t.index ["trip_id"], name: "index_expenses_on_trip_id"
   end
 
+  create_table "participants", force: :cascade do |t|
+    t.bigint "trip_id", null: false
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id", "name"], name: "index_participants_on_trip_id_and_name", unique: true
+    t.index ["trip_id"], name: "index_participants_on_trip_id"
+  end
+
+  # ---------------------------------------------------------------------
+
   create_table "groups", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_groups_on_user_id"
@@ -86,26 +107,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_28_232738) do
     t.index ["group_id"], name: "index_members_on_group_id"
   end
 
-  create_table "participants", force: :cascade do |t|
-    t.bigint "trip_id", null: false
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["trip_id", "name"], name: "index_participants_on_trip_id_and_name", unique: true
-    t.index ["trip_id"], name: "index_participants_on_trip_id"
-  end
-
-  create_table "trips", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.string "title", null: false
-    t.integer "settlement_status", default: 0, null: false
-    t.date "departure_date", default: -> { "CURRENT_DATE" }, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "group_id"
-    t.index ["group_id"], name: "index_trips_on_group_id"
-    t.index ["user_id"], name: "index_trips_on_user_id"
-  end
+  # ---------------------------------------------------------------------
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
@@ -119,6 +121,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_28_232738) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  # ---------------------------------------------------------------------
 
   add_foreign_key "advance_payments", "expenses"
   add_foreign_key "advance_payments", "participants"
