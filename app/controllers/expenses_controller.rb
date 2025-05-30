@@ -16,4 +16,10 @@ class ExpensesController < ApplicationController
 
   def destroy
   end
+
+  private
+  
+  def expense_params
+    params.require(:expense).permit(:trip_id, :payer_id, :amount, :title, :payment_date, :place, :memo)
+  end
 end

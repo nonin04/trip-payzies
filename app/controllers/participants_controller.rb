@@ -1,5 +1,6 @@
 class ParticipantsController < ApplicationController
   def new
+    
   end
 
   def create
@@ -12,5 +13,13 @@ class ParticipantsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def participant_params
+    params.require(:participants).map do |p|
+      .permit(:name)
+    end
   end
 end
