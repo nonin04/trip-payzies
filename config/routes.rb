@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  # 認証状態によるトップページ分岐
   authenticated :user do
     root to: 'trips#index', as: :authenticated_root
   end
@@ -9,18 +10,17 @@ Rails.application.routes.draw do
     root to: 'homes#index', as: :unauthenticated_root
   end
 
-  resources :trip do
-    resources :expense, only: [:show, :new, :create, :edit, :update, :destroy]
-    
-    resource :participants, only: [] do
-      collection do
-        get 'new'
-        post 'create'
-        get 'edit'
-        patch 'update'
-        delete 'destroy'
-      end
+  resources :trips do
+    #精算画面・処理
+    member do
+      get :result
+      patch :settle
     end
+    #立替(複数,個別管理)
+    resources :expenses, only: [:show, :new, :create, :edit, :update, :destroy]
+
+    #参加者(単数,一括管理)
+    resource :participants, only: [:new, :create, :edit, :update, :destroy]
   end
 
 
