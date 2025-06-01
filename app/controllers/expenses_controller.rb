@@ -1,5 +1,9 @@
 class ExpensesController < ApplicationController
   def show
+    @trip = current_user.trips.find(params[:trip_id])
+    @expense = @trip.expenses.find(params[:id])
+    @participants = @trip.participants
+    
   end
 
   def new

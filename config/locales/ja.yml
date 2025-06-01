@@ -8,6 +8,10 @@ ja:
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "パスワード(確認)"
+      trip:
+        settlement_status:
+          settled: "精算済み"
+          unsettled: "未精算"
     errors:
       messages:
         blank: "必須項目です。"

@@ -2,16 +2,16 @@
 
 
 <h2 class="text-center text-2xl my-4">ログイン</h2>
-<div class="bg-white mx-4 px-10 pt-5 rounded-md">
+<div class=" card-style px-10 pt-5">
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
     <div class="field w-full mb-4">
-      <%= f.label :email, "メールアドレス", class: "devise_form_label"%>
+      <%= f.label :email, "メールアドレス", class: "deviseform-label"%>
       <%= f.email_field :email, placeholder: "メールアドレスを入力してください", autocomplete: "email", class: "form-style" %>
     </div>
     <div class="field w-full mb-4">
-      <%= f.label :password, "パスワード", class: "devise_form_label"%>
+      <%= f.label :password, "パスワード", class: "devise-form-label"%>
       <%= f.password_field :password, placeholder: "パスワードを入力してください", autocomplete: "current-password", class: "form-style text-sm" %>
     </div>
 
