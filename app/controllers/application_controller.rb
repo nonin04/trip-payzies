@@ -6,12 +6,12 @@ class ApplicationController < ActionController::Base
  before_action :authenticate_user!
  before_action :configure_permitted_parameters, if: :devise_controller?
 
- def afiter_sign_in_path()
-  
+ def after_sign_in_path_for(resource)
+  trips_path
  end
 
- def after_sign_up_path()
-
+ def after_sign_up_path_for(resource)
+  trips_path
  end
 
 

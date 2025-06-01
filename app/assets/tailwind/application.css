@@ -45,6 +45,13 @@
   cursor-pointer hover:border hover:border-white
 }
 
-.devise_form_label {@apply
+.devise-form-label {@apply
   block text-gray-500 py-1
+}
+
+.card-style {@apply
+  mx-4 rounded-md bg-white
+}
+.icon-arrorw-right{@apply
+  inline-block box-border w-[12px] h-[12px] border-solid border-t-0 border-r-0 border-[2px] border-black rotate-225
 }

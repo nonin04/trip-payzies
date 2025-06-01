@@ -1,0 +1,19 @@
+<div>
+  <h1 class="font-bold">Trips#show</h1>
+  <%= render 'trips/trip_card', trip: @trip, mode: :show %>
+  <div class="card-style px-10 py-5">
+    <ul class="list-disc">
+      <% @participants.each do |participant|%>
+      <li><%= participant.name %></li>
+      <% end %>
+    </ul>
+  </div>
+
+
+  <% @expenses.each do |expense|%>
+    <%= link_to trip_expense_path(@trip, expense) do %>
+      <%= render 'expenses/expense_card', expense: expense %>
+    <% end %>
+  <% end %>
+
+</div>
