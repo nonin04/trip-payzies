@@ -1,8 +1,9 @@
 class ExpensesController < ApplicationController
   def show
     @trip = current_user.trips.find(params[:trip_id])
-    @expense = @trip.expenses.find(params[:id])
+    @expense = @trip.expenses.includes(:payer).find(params[:id])
     @participants = @trip.participants
+    @advance_payments = @expense.advance_payments.includes(:participant)
     
   end
 

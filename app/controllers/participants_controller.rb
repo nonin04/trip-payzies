@@ -1,6 +1,5 @@
 class ParticipantsController < ApplicationController
   def new
-    
   end
 
   def create
@@ -18,8 +17,9 @@ class ParticipantsController < ApplicationController
   private
 
   def participant_params
-    params.require(:participants).map do |p|
-      .permit(:name)
-    end
+    # params.require(:participants).map do |p|
+     # .permit(:name)
+    # end
   end
+
 end
