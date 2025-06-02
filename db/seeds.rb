@@ -32,7 +32,6 @@ groupB = user.groups.create!(
   name: "高校仲良し3人組"
 )
 
-
 # tripデータNo.1 =============================================
 tripA = user.trips.create!(
   group: groupA,
@@ -47,8 +46,6 @@ personE = tripA.participants.create!(name: "しずか")
 personF = tripA.participants.create!(name: "つばさ")
 personG = tripA.participants.create!(name: "torrens")
 
-
-
           # --------------expenseデータNo.1
 get_expense_by_personA = tripA.expenses.create!(
   payer: personA,
@@ -58,8 +55,6 @@ get_expense_by_personA = tripA.expenses.create!(
 )
 get_expense_by_personA.advance_payments.create!(participant: personA)
 get_expense_by_personA.advance_payments.create!(participant: personB)
-
-
 
           # --------------expenseデータNo.2
 get_expense_by_personB = tripA.expenses.create!(
@@ -72,8 +67,6 @@ get_expense_by_personB.advance_payments.create!(participant: personB)
 get_expense_by_personB.advance_payments.create!(participant: personC)
 get_expense_by_personB.advance_payments.create!(participant: personE)
 
-
-
           # --------------expenseデータNo.3
 get_expense_by_personC = tripA.expenses.create!(
   payer: personC,
@@ -84,8 +77,6 @@ get_expense_by_personC = tripA.expenses.create!(
 get_expense_by_personC.advance_payments.create!(participant: personE)
 get_expense_by_personC.advance_payments.create!(participant: personF)
 get_expense_by_personC.advance_payments.create!(participant: personG)
-
-
 
           # --------------expenseデータNo.4
 get_expense_by_personD = tripA.expenses.create!(
@@ -102,8 +93,6 @@ get_expense_by_personD.advance_payments.create!(participant: personE)
 get_expense_by_personD.advance_payments.create!(participant: personF)
 get_expense_by_personD.advance_payments.create!(participant: personG)
 
-
-
           # --------------expenseデータNo.5
 get_expense_by_personE = tripA.expenses.create!(
   payer: personE,
@@ -113,8 +102,6 @@ get_expense_by_personE = tripA.expenses.create!(
 )
 get_expense_by_personE.advance_payments.create!(participant: personA)
 get_expense_by_personE.advance_payments.create!(participant: personG)
-
-
 
           # --------------expenseデータNo.6
 get_expense_by_personA = tripA.expenses.create!(
@@ -126,7 +113,6 @@ get_expense_by_personA = tripA.expenses.create!(
 get_expense_by_personA.advance_payments.create!(participant: personA)
 get_expense_by_personA.advance_payments.create!(participant: personG)
 
-
           # --------------expenseデータNo.7
 get_expense_by_personB = tripA.expenses.create!(
   payer: personB,
@@ -137,6 +123,28 @@ get_expense_by_personB = tripA.expenses.create!(
 get_expense_by_personB.advance_payments.create!(participant: personB)
 get_expense_by_personB.advance_payments.create!(participant: personC)
 get_expense_by_personB.advance_payments.create!(participant: personF)
+
+          # --------------expenseデータNo.7
+get_expense_by_personC = tripA.expenses.create!(
+  payer: personC,
+  amount: 7240,
+  title: "コンビニおにぎり大量買",
+  payment_date: Date.today
+)
+get_expense_by_personC.advance_payments.create!(participant: personB)
+get_expense_by_personC.advance_payments.create!(participant: personC)
+get_expense_by_personC.advance_payments.create!(participant: personF)
+
+          # --------------expenseデータNo.7
+get_expense_by_personF = tripA.expenses.create!(
+  payer: personF,
+  amount: 600,
+  title: "駐車場代(in札幌)",
+  payment_date: Date.today
+)
+get_expense_by_personF.advance_payments.create!(participant: personB)
+get_expense_by_personF.advance_payments.create!(participant: personC)
+get_expense_by_personF.advance_payments.create!(participant: personF)
 
 Rails.logger.info "Loading db/seeds/full_length_check.rb......"
 load Rails.root.join('db/seeds/full_length_check.rb')
@@ -154,15 +162,40 @@ load Rails.root.join('db/seeds/second_user.rb')
 
 tripB = user.trips.create!(
   title: "東北旅",
-  departure_date: Date.today
-)
+  departure_date: Date.today)
 
 tripC = user.trips.create!(
   title: "日帰り温泉旅",
-  departure_date: Date.today
-)
+  departure_date: Date.today)
 
 tripD = user.trips.create!(
   title: "卒業旅行inヨーロッパ",
-  departure_date: Date.today
+  departure_date: Date.today)
+
+tripE = user.trips.create!(
+  title: "大阪同期タコパ会",
+  departure_date: Date.today)
+
+tripF = user.trips.create!(
+  title: "5月ユニバ",
+  departure_date: Date.today)
+
+tripG = user.trips.create!(
+  title: "新潟-長岡花火大会",
+  departure_date: Date.today)
+
+tripH = user.trips.create!(
+  title: "安高ゼミフィールドワーク淡路島",
+  departure_date: Date.today)
+
+
+
+
+
+
+
+userB = User.create!(
+  name: "test_user3", 
+  email: "test3@example.com", 
+  password: "password"
 )

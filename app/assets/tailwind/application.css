@@ -52,6 +52,9 @@
 .card-style {@apply
   mx-4 rounded-md bg-white
 }
-.icon-arrorw-right{@apply
-  inline-block box-border w-[12px] h-[12px] border-solid border-t-0 border-r-0 border-[2px] border-black rotate-225
+
+.shadow-primary{@apply
+  shadow-[4px_4px_rgba(17,_36,_54,_0.2)]
+  transition duration-400 ease-in-out transform hover:translate-x-[3px] hover:translate-y-[3px]
+  hover:shadow-none
 }

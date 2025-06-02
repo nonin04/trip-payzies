@@ -1,10 +1,29 @@
 <div>
-  <h1 class="font-bold text-4xl">Expenses#show</h1>
-  <p>Find me in app/views/expenses/show.html.erb</p>
-  <p><%= @expense.title %></p>
-  <p><%= @expense.amount %></p>
+  <h1 class="font-bold text-xl">Expenses#show</h1>
 
-  <% @participants.each do |participant|%>
-   <p><%= participant.name %></p>
-  <% end %>
+  <div class="relative card-style my-4 py-2">
+    <div class="absolute left-0 top-0 h-full w-2 bg-panel-navy rounded-l"></div>
+    <div class="ml-6">
+      <p class="pt-2 font-bold text-2xl"><%= @expense.title %></p>
+      <p class="pt-2 font-bold text-2xl">¥<%= number_with_delimiter(@expense.amount) %></p>
+      <p class="pt-8 text-lg">by <%= @expense.payer.name %></p>
+    </div>
+  </div>
+
+  <div class="relative card-style my-4 py-2">
+    <p class="ml-6 mr-4 text-lg">決済日： <%= @expense.payment_date.strftime('%Y/%m/%d') %></p>
+  </div>
+
+  
+  <div class="card-style px-4 py-3">
+    <ul class="px-2 text-lg">対象者</ul>
+      <% @advance_payments.each do |advance_payment|%>
+        <li><%= advance_payment.participant.name %></li>
+      <% end %>
+    </ul>
+    <div class="px-2 pt-3">
+      <p class="text-lg">負担額</p>
+      <p class=""><%= number_with_delimiter(@expense.amount / @advance_payments.count) %>円/人</p>
+    </div>
+  </div>
 </div>

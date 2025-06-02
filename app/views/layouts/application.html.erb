@@ -30,8 +30,8 @@
           <% end %>
       </header>
 
-      <p class="notice bg-red-500 text-white text-sm"><%= notice %></p>
-      <p class="alert bg-red-500 text-white text-sm"><%= alert %></p>
+      <p class="notice bg-primary-blue-200 text-white text-sm"><%= notice %></p>
+      <p class="alert bg-primary-red text-white text-sm"><%= alert %></p>
 
       <main class="<%= content_for?(:main_class) ? yield(:main_class) : 'bg-form-gray flex-1' %>">
           <%= yield %>
