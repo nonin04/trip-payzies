@@ -2,7 +2,6 @@ class TripsController < ApplicationController
 
   before_action :set_trip, only: [:show, :edit, :update, :destroy, :result, :settle]
 
-
   def index
     @trips = current_user.trips
   end
@@ -14,10 +13,11 @@ class TripsController < ApplicationController
 
   def new
     @trip = Trip.new
+    10.times{@trip.participants.build}
   end
 
   def create
-    @trip = current_user.trips.build(trip_params)
+    @trip = current_user.trips.build(trip_participants_params)
     if @trip.save
       redirect_to new_trip_participants_path(@trip)
     else
@@ -67,6 +67,14 @@ class TripsController < ApplicationController
   end
 
   def trip_params
-    params.require(:trip).permit(:title, :group_id, :departure_date)
+    params.require(:trip).permit(
+      :title, :group_id, :departure_date)
+  end
+
+  def trip_participants_params
+    params.require(:trip).permit(
+      :title, :group_id, :departure_date,
+      participants_attributes:[:name]
+      )
   end
 end

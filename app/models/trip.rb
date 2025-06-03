@@ -4,6 +4,7 @@ class Trip < ApplicationRecord
 
   has_many :expenses, dependent: :destroy
   has_many :participants, dependent: :destroy
+  accepts_nested_attributes_for :participants
 
   enum settlement_status: {unsettled: 0, settled: 1}
 
@@ -18,5 +19,4 @@ class Trip < ApplicationRecord
   def set_default_status
     self.settlement_status ||= :unsettled
   end
-
 end
