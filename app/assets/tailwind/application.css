@@ -55,6 +55,6 @@
 
 .shadow-primary{@apply
   shadow-[4px_4px_rgba(17,_36,_54,_0.2)]
-  transition duration-400 ease-in-out transform hover:translate-x-[3px] hover:translate-y-[3px]
+  transition duration-300 ease-in-out transform hover:translate-x-[3px] hover:translate-y-[3px]
   hover:shadow-none
 }
