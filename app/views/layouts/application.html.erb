@@ -24,20 +24,20 @@
 
   <body class="<%= content_for?(:body_class) ? yield(:body_class) : 'bg-white' %>">
     <div class="page-width">
-      <header>
+      <header class="h-12 bg-panel-sky flex items-center justify-between">
           <% unless controller.controller_name == "homes"%>
             <%= render "layouts/header"%>
           <% end %>
       </header>
 
-      <p class="notice bg-red-500 text-white text-sm"><%= notice %></p>
-      <p class="alert bg-red-500 text-white text-sm"><%= alert %></p>
+      <p class="notice bg-primary-blue-200 text-white text-sm"><%= notice %></p>
+      <p class="alert bg-primary-red text-white text-sm"><%= alert %></p>
 
-      <main class="<%= content_for?(:main_class) ? yield(:main_class) : 'bg-form-gray flex-1' %>">
+      <main class="<%= content_for?(:main_class) ? yield(:main_class) : 'bg-form-gray flex-1 min-h-0 flex flex-col' %>">
           <%= yield %>
       </main>
 
-      <footer>
+      <footer class="h-10 flex items-center justify-center bg-panel-navy">
           <% unless controller.controller_name == "homes"%>
             <%= render "layouts/footer"%>
           <% end %>
