@@ -15,11 +15,4 @@ class ParticipantsController < ApplicationController
   end
 
   private
-
-  def participant_params
-    # params.require(:participants).map do |p|
-     # .permit(:name)
-    # end
-  end
-
 end
