@@ -3,7 +3,7 @@ class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update, :destroy, :result, :settle]
 
   def index
-    @trips = current_user.trips
+    @trips = current_user.trips.order(departure_date: :desc)
   end
 
   def show
@@ -22,7 +22,7 @@ class TripsController < ApplicationController
       redirect_to new_trip_participants_path(@trip)
     else
       flash.now[:alert] = "保存に失敗しました。"
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -35,7 +35,7 @@ class TripsController < ApplicationController
       redirect_to trip_path(@trip)
     else
       flash.now[:alert] = "更新に失敗しました。"
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -55,7 +55,7 @@ class TripsController < ApplicationController
        redirect_to trip_path(@trip), notice: "精算が完了しました"
     else
       flash.now[:alert] = "ステータスを更新できませんでした。"
-      render :result
+      render :result, status: :unprocessable_entity
     end
 
   end

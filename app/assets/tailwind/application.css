@@ -9,20 +9,29 @@
 
 /* カスタムカラー*/
   /* ------- 背景色 ------- */
-  --color-panel-navy: #112436;
+  --color-panel-navy: #244463;
   --color-panel-sky: #b4d5de;
-  --color-panel-grey: #E8E8E8;
+  --color-panel-grey: #E6E6E6;
   /* ------- ボタン系 ------- */
   --color-action-yellow: #F9FF40;
+  --color-theme-brown: #BC945F;
   --color-primary-blue-100: #0A9EFB;
-  --color-primary-blue-200: #0D98EE;
+  --color-primary-blue-200: #0C81CA;
   --color-primary-red: #f24822;
   /* ------- フォーム系 ------- */
   --color-form-gray: #F6F6F6;
 }
 
 .btn {@apply
-  bg-primary-blue-100 hover:bg-primary-blue-200 text-white font-bold py-1 px-14 rounded cursor-pointer
+  bg-primary-blue-100 hover:bg-primary-blue-200 text-white font-bold py-1 px-14 rounded text-center cursor-pointer 
+}
+
+.btn-cancel {@apply
+  bg-gray-400 text-white font-bold rounded text-center cursor-pointer  border-2 border-black
+}
+
+.btn-submit {@apply
+  bg-primary-blue-100 text-white font-bold rounded text-center cursor-pointer border-2 border-black
 }
 
 .lp-btn {@apply
@@ -37,12 +46,18 @@
   bg-gray-100 px-3 py-2 font-normal text-sm rounded-md border border-gray-100 w-full
   placeholder:text-gray-300 placeholder:font-normal
   focus:bg-gray-50 focus:border-gray-300 focus:outline-none
+  transition duration-300 
+}
+
+.form-style-2 {@apply 
+  bg-white
+
 }
 
 .humberger-menu {@apply
-  text-white my-auto mr-4 border rounded border-panel-sky  
-  transition duration-200 
-  cursor-pointer hover:border hover:border-white
+  text-black my-auto mr-4 border rounded border-black bg-white
+  transition duration-300 
+  cursor-pointer
 }
 
 .devise-form-label {@apply
@@ -50,11 +65,11 @@
 }
 
 .card-style {@apply
-  mx-4 rounded-md bg-white
+  mx-4 rounded-md bg-white border-2 border-black
 }
 
 .shadow-primary{@apply
   shadow-[4px_4px_rgba(17,_36,_54,_0.2)]
-  transition duration-300 ease-in-out transform hover:translate-x-[3px] hover:translate-y-[3px]
+  transition duration-200 ease-in-out transform hover:translate-y-[3px] hover:translate-x-[3px]
   hover:shadow-none
 }

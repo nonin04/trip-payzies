@@ -1,12 +1,24 @@
 <div>
-  <h1 class="mx-8 my-2 text-xl font-bold">立替記録一覧</h1>
+  <h1 class="mx-8 my-2 text-xl font-bold">立替記録詳細</h1>
 
   <div class="relative card-style py-2">
     <div class="absolute left-0 top-0 h-full w-2 bg-panel-navy rounded-l"></div>
-    <div class="pl-6">
-      <p class="pt-2 font-bold text-2xl"><%= @expense.title %></p>
-      <p class="pt-2 font-bold text-2xl">¥<%= number_with_delimiter(@expense.amount) %></p>
-      <p class="pt-8 text-lg">by <%= @expense.payer.name %></p>
+      <div class="pl-5">
+        <%# 立替タイトルと削除編集アイコン %>
+        <div class="flex items-center justify-between pr-2 py-1">
+          <p class="font-bold text-2xl"><%= @expense.title %></p>
+          <div class="flex flex-shrink-0 pl-5">
+            <%= link_to edit_trip_expense_path(@trip, @expense), class: "pr-3 pt-0.5" do %>
+              <img class="w-4 h-4" src="/svg/edit-icon.svg" alt="" draggable="false">
+            <% end %>
+            <%= link_to trip_expense_path(@trip, @expense), class: "pr-3 pt-0.5", data: {turbo_method: :delete, turbo_confirm: "立替記録を削除しますか？"} do %>
+              <img class="w-4 h-4" src="/svg/trash-icon.svg" alt="" draggable="false">
+            <% end %>
+          </div>
+        </div>
+
+        <p class="pt-2 font-bold text-2xl">¥<%= number_with_delimiter(@expense.amount) %></p>
+        <p class="pt-8 text-lg">by <%= @expense.payer.name %></p>
     </div>
   </div>
 

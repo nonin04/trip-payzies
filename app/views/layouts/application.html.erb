@@ -21,31 +21,40 @@
     <%= javascript_importmap_tags %>
   </head>
 
+  <% unless controller.controller_name == "homes" %>
+    <body class="bg-white">
+      <div class="page-width">
 
-  <body class="<%= content_for?(:body_class) ? yield(:body_class) : 'bg-white' %>">
-    <div class="page-width">
-      <header class="h-12 bg-panel-sky flex items-center justify-between">
-          <% unless controller.controller_name == "homes"%>
-            <%= render "layouts/header"%>
-          <% end %>
-      </header>
+        <header class="h-15 bg-panel-navy flex items-center justify-between border-2 border-black">
+            <% unless controller.controller_name == "homes"%>
+              <%= render "layouts/header"%>
+            <% end %>
+        </header>
 
-      <p class="notice bg-primary-blue-200 text-white text-sm"><%= notice %></p>
-      <p class="alert bg-primary-red text-white text-sm"><%= alert %></p>
+        <p class="notice bg-primary-blue-100 text-white text-sm "><%= notice %></p>
+        <p class="alert bg-primary-red text-white text-sm "><%= alert %></p>
 
-      <main class="<%= content_for?(:main_class) ? yield(:main_class) : 'bg-form-gray flex-1 min-h-0 flex flex-col' %>">
-          <%= yield %>
-      </main>
+        <main class="bg-form-gray flex-1 min-h-0 flex flex-col border-2  border-x-black border-y-form-gray">
+            <%= yield %>
+        </main>
 
-      <footer class="h-10 flex items-center justify-center bg-panel-navy">
-          <% unless controller.controller_name == "homes"%>
-            <%= render "layouts/footer"%>
-          <% end %>
-      </footer>
+        <footer class="h-10 flex items-center justify-center bg-panel-navy border-2 border-black">
+            <% unless controller.controller_name == "homes"%>
+              <%= render "layouts/footer"%>
+            <% end %>
+        </footer>
 
-      <% unless controller.controller_name == "homes" || devise_controller? %>
-        <%= render "layouts/sidebar"%>
-      <% end %>
-    </div>
-  </body>
+        <% unless devise_controller? %>
+          <%= render "layouts/sidebar"%>
+        <% end %>
+
+      </div>
+    </body>
+
+  <% else %>
+    <%= yield %> 
+  <% end %>
+
+
+
 </html>
