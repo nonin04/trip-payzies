@@ -1,12 +1,12 @@
 <div class="relative mb-4 py-2 card-style  <%= mode == :index ? 'shadow-primary' : '' %>">
-  <div class="absolute left-0 top-0 h-full w-2 rounded-l bg-action-yellow"></div>
+  <div class="absolute left-0 top-0 h-full w-2 rounded-l bg-theme-brown"></div>
 
   <div class="flex items-start justify-between pl-5 pr-2 py-1">
     <h2 class="font-semibold text-xl"><%=trip.title %></h2>
     <% if mode == :index %>
-    <div class="px-3 pt-0.5 flex-shrink-0">
-      <img class="h-6" src="/svg/navigation-arrow.svg" alt="" draggable="false">
-    </div>
+      <div class="px-3 pt-0.5 flex-shrink-0">
+        <img class="h-6" src="/svg/navigation-arrow.svg" alt="" draggable="false">
+      </div>
     <% elsif mode == :show %>
       <div class="flex flex-shrink-0 pl-5">
         <%= link_to edit_trip_path(trip), class: "pr-3 pt-0.5" do %>
@@ -32,7 +32,7 @@
   <div class="pl-6 pr-4 pt-6 flex items-center justify-between">
     <p class="text-gray-400 font-mono"><%= trip.departure_date.strftime("%Y/%m/%d") + "~" %></p>
     <% status_color = case trip.settlement_status
-                      when "settled" then 'bg-gray-500'
+                      when "settled" then 'bg-gray-300'
                       when "unsettled" then 'bg-primary-red'
                       end %>
     <p class="px-6 py-0.5 text-xs text-white rounded-sm <%= status_color %>">

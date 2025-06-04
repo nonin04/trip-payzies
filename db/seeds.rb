@@ -186,7 +186,9 @@ tripG = user.trips.create!(
 
 tripH = user.trips.create!(
   title: "安高ゼミフィールドワーク淡路島",
-  departure_date: Date.today)
+  departure_date: Date.today,
+  settlement_status: :settled
+  )
 
 
 
