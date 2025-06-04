@@ -1,6 +1,10 @@
 <div>
-  <h1 class="mx-8 my-2 text-center text-xl font-bold">旅行作成</h1>
-
-
-
+  <h1 class="mx-8 my-2 text-xl font-bold">旅行作成</h1>
+  <%= form_with model: @trip do |f| %>
+    <%= render 'trips/form_card', f: f %>
+    <div class="flex px-4 py-4">
+      <%= link_to "キャンセル", trips_path, class:"w-1/2 mx-6 py-2 btn-cancel shadow-primary" %>
+      <%= f.submit "次へ", class: "w-1/2 mx-6 py-2  btn-submit shadow-primary" %>
+    </div>
+  <% end %>
 </div>
