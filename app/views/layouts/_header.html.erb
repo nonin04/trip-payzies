@@ -1,15 +1,12 @@
   <%# logo&text %>
-  <%= link_to unauthenticated_root_path, class:"flex h-full items-center ml-4" do %>
-    <img class="ml-2" src="/svg/map-icon.svg" alt="" draggable="false">
-    <div class="font-for_icon font-bold text-xl ml-2 leading-none">
+  <%= link_to unauthenticated_root_path, class:"flex h-full items-center ml-6" do %>
+    <%= inline_svg("svg/map-icon.svg", class:"w-7") %>
+    <div class="font-for-icon font-bold text-xl ml-2 leading-none">
       <span class="text-theme-brown tracking-widest">TRIP</span>
       <br><span class="text-white tracking-widest">PAYZIES</span>
     </div>
   <% end %>
-
   <%# humbergur-menu %>
   <% unless devise_controller? %>
-    <div class="flex">
-      <iconify-icon icon="material-symbols-light:menu-rounded" width="36" height="36" class="humberger-menu"></iconify-icon>
-    </div>
+    <iconify-icon id="menu-btn" icon="material-symbols-light:menu-rounded" width="36" height="36" class="z-50 mx-4 humberger-menu"></iconify-icon>
   <% end %>

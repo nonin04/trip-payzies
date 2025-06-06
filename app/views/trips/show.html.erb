@@ -4,12 +4,13 @@
     <div class="px-2 font-bold">参加者</div>
     <ul class="list-disc px-8 pt-2">
       <% @participants.each do |participant|%>
-      <li class="text-gray-700"><%= participant.name %></li>
+      <li><%= participant.name %></li>
       <% end %>
     </ul>
   </div>
 
-  <div class="mt-4 flex-1 overflow-y-auto flex flex-col">
+  <h1 class="mx-8 my-2 text-xl font-bold">立替一覧</h1>
+  <div class="flex-1 overflow-y-auto flex flex-col">
     <div class="">
       <% @expenses.each do |expense|%>
         <%= link_to trip_expense_path(@trip, expense) do %>

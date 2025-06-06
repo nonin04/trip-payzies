@@ -1,19 +1,19 @@
 <div class="relative mb-4 py-2 card-style  <%= mode == :index ? 'shadow-primary' : '' %>">
   <div class="absolute left-0 top-0 h-full w-2 rounded-l bg-theme-brown"></div>
 
-  <div class="flex items-start justify-between pl-5 pr-2 py-1">
+  <div class="flex items-start justify-between pl-5 pr-3 py-1">
     <h2 class="font-semibold text-xl"><%=trip.title %></h2>
     <% if mode == :index %>
-      <div class="px-3 pt-0.5 flex-shrink-0">
-        <img class="h-6" src="/svg/navigation-arrow.svg" alt="" draggable="false">
+      <div class="px-3 pt-0.5">
+        <%= inline_svg("svg/navigation-arrow.svg", class: "w-4", draggable:"false") %>
       </div>
     <% elsif mode == :show %>
-      <div class="flex flex-shrink-0 pl-5">
-        <%= link_to edit_trip_path(trip), class: "pr-3 pt-0.5" do %>
-          <img class="w-4 h-4" src="/svg/edit-icon.svg" alt="" draggable="false">
+      <div class="flex  pl-5">
+        <%= link_to edit_trip_path(trip) do %>
+          <%= inline_svg("svg/edit.svg", class: "w-8 h-8 text-gray-400", draggable:"false") %>
         <% end %>
-        <%= link_to trip_path(trip), class: "pr-3 pt-0.5", data: {turbo_method: :delete, turbo_confirm: "旅行を削除しますか？"} do %>
-          <img class="w-4 h-4" src="/svg/trash-icon.svg" alt="" draggable="false">
+        <%= link_to trip_path(trip), data: {turbo_method: :delete, turbo_confirm: "旅行を削除しますか？"} do %>
+          <%= inline_svg("svg/trash.svg", class: "w-8 h-8 text-gray-400", draggable:"false") %>
         <% end %>
       </div>
     <% end %>

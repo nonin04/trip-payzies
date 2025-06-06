@@ -1,11 +1,11 @@
 <% content_for(:title, "トップ") %>
 
 <body class="bg-panel-navy">
-  <div class="xl:w-1/3 md:w-1/2 sm:w-full mx-auto">
+  <div class="xl:w-1/3 md:w-1/2 w-full mx-auto">
 
     <%# ↓↓↓ロゴとタイトル↓↓↓ %>
     <div class="flex justify-center mt-10">
-      <img src="/svg/map-pin.svg" alt="" class="h-26">
+      <%= inline_svg("svg/map-icon.svg", class: "h-26") %>
       <h1 class="font-for_icon text-white text-6xl ml-2">
         <span class="text-action-yellow">TRIP</span>
         <br><span>PAYZIES</span>
@@ -33,7 +33,7 @@
     <%# ↓↓↓startボタン↓↓↓ %>
     <div class="flex justify-center my-10">
     <%= link_to new_user_session_path, class: "lp-btn" do %>
-      Start!<img src="/svg/plane.svg" alt="飛行機アイコン" class="h-[1em] align-middle inline">
+      Start!<%= inline_svg("svg/plane.svg", alt:"飛行機アイコン", class:"h-[1em] align-middle inline")%>
     <% end %>
     </div>
 

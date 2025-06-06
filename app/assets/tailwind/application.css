@@ -5,19 +5,21 @@
 
 @theme {
   --font-secondary: "Dela Gothic One", "sans-serif";
-  --font-for_icon: "Kanit", sans-serif;
+  --font-for-icon: "Kanit", sans-serif;
 
 /* カスタムカラー*/
   /* ------- 背景色 ------- */
-  --color-panel-navy: #244463;
   --color-panel-sky: #b4d5de;
-  --color-panel-grey: #E6E6E6;
+  --color-panel-gray: #E6E6E6;
+  --color-panel-navy: #102E4A;
+
   /* ------- ボタン系 ------- */
   --color-action-yellow: #F9FF40;
   --color-theme-brown: #BC945F;
   --color-primary-blue-100: #0A9EFB;
   --color-primary-blue-200: #0C81CA;
   --color-primary-red: #f24822;
+
   /* ------- フォーム系 ------- */
   --color-form-gray: #F6F6F6;
 }
@@ -39,7 +41,7 @@
 }
 
 .page-width{@apply
-  h-screen flex flex-col bg-form-gray xl:w-1/3 md:w-1/2 sm:w-full mx-auto
+    bg-form-gray xl:w-1/3 md:w-1/2 sm:w-full mx-auto
 }
 
 .form-style {@apply 
@@ -55,7 +57,7 @@
 }
 
 .humberger-menu {@apply
-  text-black my-auto mr-4 border rounded border-black bg-white
+  text-black border-2 rounded border-black bg-white
   transition duration-300 
   cursor-pointer
 }

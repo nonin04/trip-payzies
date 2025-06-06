@@ -18,40 +18,53 @@
 
     <%# iconfy[アイコンパック]を導入 %> 
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <%= javascript_include_tag "first", type: "module" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <% unless controller.controller_name == "homes" %>
     <body class="bg-white">
-      <div class="page-width">
 
-        <header class="h-15 bg-panel-navy flex items-center justify-between border-2 border-black">
+      <div class="@container relative h-screen flex flex-col page-width">
+        <% unless controller.controller_name == "homes" || devise_controller? %>
+          <%= render 'layouts/sidebar' %>
+        <%end%>
+        <header class="z-30 h-15 bg-panel-navy flex items-center justify-between border-2 border-black">
             <% unless controller.controller_name == "homes"%>
-              <%= render "layouts/header"%>
+              <%= render 'layouts/header'%>
             <% end %>
         </header>
 
-        <p class="notice bg-primary-blue-100 text-white text-sm "><%= notice %></p>
-        <p class="alert bg-primary-red text-white text-sm "><%= alert %></p>
+        <main class=" bg-form-gray flex-1 min-h-0 flex flex-col border-x-2  border-x-black border-y-form-gray">
+          <div 
+            data-controller="flash" 
+            data-flash-target="message" 
+            class="-translate-y-full transition-transform transform duration-700">
+            <% if notice.present? %>
+              <p class="notice z-10 bg-primary-blue-100 text-white text-sm border-b-2 border-b-black"><%= notice %></p>
+            <% elsif alert.present? %>
+              <p class="alert z-10 bg-primary-red text-white text-sm border-b-2 border-b-black"><%= alert %></p>
+            <% end %>
+          </div>
 
-        <main class="bg-form-gray flex-1 min-h-0 flex flex-col border-2  border-x-black border-y-form-gray">
-            <%= yield %>
+          <%= yield %>
         </main>
 
-        <footer class="h-10 flex items-center justify-center bg-panel-navy border-2 border-black">
+        <footer class="z-30 h-10 flex items-center justify-center bg-panel-navy border-2 border-black">
             <% unless controller.controller_name == "homes"%>
-              <%= render "layouts/footer"%>
+              <%= render 'layouts/footer'%>
             <% end %>
         </footer>
 
         <% unless devise_controller? %>
-          <%= render "layouts/sidebar"%>
         <% end %>
 
       </div>
+
     </body>
 
   <% else %>
+    <%# home#indexのみ %>
     <%= yield %> 
   <% end %>
 
