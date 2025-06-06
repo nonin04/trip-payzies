@@ -6,7 +6,7 @@
       <br><span class="text-white tracking-widest">PAYZIES</span>
     </div>
   <% end %>
-  <%# humbergur-menu %>
+  <%# humburger-menu %>
   <% unless devise_controller? %>
-    <iconify-icon id="menu-btn" icon="material-symbols-light:menu-rounded" width="36" height="36" class="z-50 mx-4 humberger-menu"></iconify-icon>
+    <%= inline_svg("svg/menu.svg", id:"menu-btn", class:"w-8 text-white mr-4 cursor-pointer hover:text-gray-400") %>
   <% end %>

@@ -2,7 +2,7 @@
   <%# header分の余白%>
   <div class="h-15"></div>
 
-  <div class="flex-1 flex flex-col justify-between px-5 py-4">
+  <div class="flex-1 flex flex-col justify-between px-5 py-2">
 
     <%# ユーザーネームとアイコン %>
     <div class="flex items-center"> 
@@ -11,13 +11,13 @@
     </div>
 
     <%# 区切り線 %>
-    <div class=" h-[2px] bg-white my-4"></div> 
+    <div class=" h-[2px] bg-white my-2"></div> 
 
     <div class="flex-1 flex flex-col justify-between">
       <%# 各リンク %>
-      <div class="flex flex-col"> 
-        <%= link_to "TOP", authenticated_root_path, class:"text-white text-xl my-2" %>
-        <span class="text-white text-xl my-2">グループ</span> 
+      <div class="flex flex-col px-2 my-4"> 
+        <%= link_to "TOP", authenticated_root_path, class:"text-white text-xl" %>
+        <span class="text-white text-xl pt-4">グループ</span> 
       </div>
       <%# ログアウト %>
       <%= link_to destroy_user_session_path, class:"flex items-center justify-center cursor-pointer", data: {turbo_method: :delete, turbo_confirm: "ログアウトしますか？"} do %>
