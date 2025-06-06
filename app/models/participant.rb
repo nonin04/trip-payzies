@@ -4,7 +4,7 @@ class Participant < ApplicationRecord
 
   has_many :advance_payments, dependent: :restrict_with_error
   
-  validates :trip_id, presence: true
+
   validates :name, presence: true, length: {maximum: 15, message: "は15字以内"}
   validates :name, uniqueness: {scope: :trip_id, message: "が既に存在します。"}
 
