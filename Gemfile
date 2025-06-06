@@ -28,6 +28,8 @@ gem "importmap-rails", "~> 2.1"
 
 gem "sprockets-rails"
 
+gem 'inline_svg'
+
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
