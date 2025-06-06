@@ -18,6 +18,8 @@ class ExpensesController < ApplicationController
   end
 
   def destroy
+    @expense.destroy
+    redirect_to trip_path(@trip), notice: "立替記録を一件削除しました"
   end
 
   private

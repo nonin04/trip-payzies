@@ -2,6 +2,7 @@ class TripsController < ApplicationController
 
   before_action :set_trip, only: [:show, :edit, :update, :destroy, :result, :settle]
 
+
   def index
     @trips = current_user.trips.order(departure_date: :desc)
   end
@@ -17,11 +18,11 @@ class TripsController < ApplicationController
   end
 
   def create
-    @trip = current_user.trips.build(trip_participants_params)
+    @trip = current_user.trips.build(trip_and_participants_params)
     if @trip.save
-      redirect_to new_trip_participants_path(@trip)
+      redirect_to trip_path(@trip)
     else
-      flash.now[:alert] = "保存に失敗しました。"
+      flash.now[:alert] = @trip.errors.full_messages.join(", ")
       render :new, status: :unprocessable_entity
     end
   end
@@ -71,7 +72,7 @@ class TripsController < ApplicationController
       :title, :group_id, :departure_date)
   end
 
-  def trip_participants_params
+  def trip_and_participants_params
     params.require(:trip).permit(
       :title, :group_id, :departure_date,
       participants_attributes:[:name]
