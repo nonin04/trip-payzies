@@ -11,7 +11,6 @@ class Trip < ApplicationRecord
   validates :user_id, presence: true
   validates :title, presence: true, length: {maximum: 20, message: "20字以内で入力してください"}
   validates :settlement_status, presence: true
-  validates :departure_date, presence: true
 
   before_validation :set_default_status
 
