@@ -4,7 +4,7 @@ class Trip < ApplicationRecord
 
   has_many :expenses, dependent: :destroy
   has_many :participants, dependent: :destroy
-  accepts_nested_attributes_for :participants
+  accepts_nested_attributes_for :participants, reject_if: :all_blank, limit: 10
 
   enum settlement_status: {unsettled: 0, settled: 1}
 
