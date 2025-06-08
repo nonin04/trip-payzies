@@ -1,13 +1,16 @@
-<div class="font-bold">参加者</div>
+<%# 最初はhidden、表示時はflex %>
+<div class="hidden flex flex-col flex-1 min-h-0" data-form-step-target="participantForm">
+  <div class="flex items-center mx-8 mt-2 mb-1">
+    <h2 class="text-lg font-bold">参加者</h2>
+    <span class="text-sm px-2">※10人まで設定可</span>
+  </div>
 
-<div class="card-style flex flex-col px-4 pt-4 pb-8">
-
-  <%= f.fields_for :participants do |p| %>
-    <div class="relative">
-      <%= p.text_field :name, class:"form-style #{'!border-red-500 !bg-red-100' if p.object.errors[:name].any?}" %>
-      <div class="absolute top-1/2 -translate-y-1/2 right-4 text-white bg-primary-red rounded px-2">削除</div>
-    </div>
-  <% end %>
-  
-
+  <div class="flex-1 overflow-y-auto flex flex-col card-style px-4 py-2">
+    <%= f.fields_for :participants do |p| %>
+      <div class="flex items-center py-1">
+        <%= p.text_field :name, class:"form-style mr-2 #{'!border-red-500 !bg-red-100' if p.object.errors[:name].any?}" %>
+        <div class="w-15 h-full flex justify-center items-center text-white bg-primary-red rounded cursor-pointer">削除</div>
+      </div>
+    <% end %>
+  </div>
 </div>
