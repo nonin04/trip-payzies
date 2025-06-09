@@ -1,13 +1,29 @@
-<div class="font-bold">参加者</div>
+<%# 最初はhidden、表示時はflex %>
+<div class="hidden flex flex-col flex-1 min-h-0" data-form-step-target="participantForm">
+  <div class="flex items-center mx-8 mt-2 mb-1">
+    <h2 class="text-lg font-bold">参加者</h2>
+  </div>
 
-<div class="card-style flex flex-col px-4 pt-4 pb-8">
-
-  <%= f.fields_for :participants do |p| %>
-    <div class="relative">
-      <%= p.text_field :name, class:"form-style #{'!border-red-500 !bg-red-100' if p.object.errors[:name].any?}" %>
-      <div class="absolute top-1/2 -translate-y-1/2 right-4 text-white bg-primary-red rounded px-2">削除</div>
+  <div class="card-style flex flex-1 flex-col overflow-y-auto px-4 py-2">
+    <div class="flex flex-col pb-2 text-xs">
+      <span>※人数の上限は10人です</span>
+      <span>※名前は15字以内でご入力ください</span>
+      <span>※同じ名前は登録できません</span>
     </div>
-  <% end %>
-  
+    <div class="font-bold">名前</div>
+    <% @trip.participants.each_with_index do |participant, i| %>
+      <%= f.fields_for :participants, participant do |p| %>
+        <div data-participant-form-target="eachParticipantForm" class="flex items-center py-2">
+          <%= p.text_field :name, class:"form-style mr-2", data:{"form-step-target": "eachParticipantName"} %>
+          <div data-participant-form-target="eachDeleteBtn" data-action="click->participant-form#deleteForm">
+            <%= inline_svg("svg/delete.svg", class:"text-primary-red w-10 cursor-pointer") %> 
+          </div>
+        </div>
+      <% end %>
+    <% end %>
 
+    <div data-participant-form-target="addBtn" data-action="click->participant-form#addForm", class="hidden w-10 cursor-pointer ml-auto">
+      <%= inline_svg("svg/add.svg", class:"text-primary-blue-100") %> 
+    </div>
+  </div>
 </div>
