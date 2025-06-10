@@ -14,13 +14,9 @@ export default class extends Controller {
     "dateErrorMessage",
     "deleteBtn",
     "eachParticipantForm",
-
+    "flashError"
   ];
-
-  setError(element) {
-    element.classList.add("!border-red-500", "!bg-red-100")
-  }
-  
+//actions
   connect() {
     requestAnimationFrame(() => {
       this.stepGaugeTarget.style.width = "50%";
@@ -28,29 +24,20 @@ export default class extends Controller {
     this.isStep2 = false
   };
 
+
+  checkInput() {
+    this.validate()
+  }
+
   changeForm() {
-    const title = this.tripTitleTarget
-    const date = this.tripDateTarget
-    let hasError = false;
+    const hasError = this.validate()
 
-    if (!title.value) {
-      this.setError(title);
-      this.titleErrorMessageTarget.textContent = "※入力必須項目です"
-      hasError = true;
-    } else if (title.value.length > 20) {
-      this.setError(title);
-      this.titleErrorMessageTarget.textContent = "※20字以内で入力してください"
-      hasError = true;
+    if (hasError) {
+      this.setFlashEl("※保存に失敗しました")
+      return;
     }
 
-    if (!date.value) {
-      this.setError(date);
-      this.dateErrorMessageTarget.textContent = "※入力必須項目です"
-      hasError = true;
-    }
-
-    if (hasError) return;
-    
+    this.removeFlashEl()
     this.isStep2 = !this.isStep2
     this.stepGaugeTarget.style.width = this.isStep2 ? "100%" : "50%";
     this.stepTitleTarget.textContent = this.isStep2 ? "STEP2" : "STEP1";
@@ -59,16 +46,60 @@ export default class extends Controller {
     this.participantFormTarget.classList.toggle("hidden")
   }
 
-
-  saveParticipants() {
-    const participants = this.tripParticipantTargets
+  // references
+  addErrorStyle(formEl) {
+    formEl.classList.add("!border-red-500", "!bg-red-100")
+  }l
+  addErrorMessage(formEl, errorMessage) {
+    formEl.textContent = errorMessage
+  }
+  removeError(formEl, messageEl) {
+    formEl.classList.remove("!border-red-500", "!bg-red-100")
+    messageEl.textContent = ""
+  }
+  setFlashEl(message) {
+    const flashErrorEl = this.flashErrorTarget
+    const errorMessageEl = flashErrorEl.querySelector('p')
+    errorMessageEl.textContent = message
+    flashErrorEl.classList.remove("-translate-y-full")
+    flashErrorEl.classList.add("translate-y-0")
+    setTimeout(() => this.removeFlashEl(), 3000)
+  }
+  removeFlashEl() {
+    const flashErrorEl = this.flashErrorTarget
+    flashErrorEl.classList.remove("translate-y-0")
+    flashErrorEl.classList.add("-translate-y-full")
+  }
+  validate() {
+    const titleInput = this.tripTitleTarget
+    const dateInput = this.tripDateTarget
+    const titleErrorMessage = this.titleErrorMessageTarget
+    const dateErrorMessage = this.dateErrorMessageTarget
 
     let hasError = false;
 
-    if (participants.forEach(p => p.value > 15)) {
-      this.participantErrorMessageTarget.textContent = "15字以内で入力してください"
+    if (!titleInput.value) {
+      this.addErrorStyle(titleInput)
+      this.addErrorMessage(titleErrorMessage, "※入力必須項目です")
       hasError = true;
+    } 
+    else if (titleInput.value.length > 20) {
+      this.addErrorStyle(titleInput)
+      this.addErrorMessage(titleErrorMessage, "※20字以内で入力してください")
+      hasError = true;
+    } 
+    else {
+      this.removeError(titleInput, titleErrorMessage)
     }
 
+    if (!dateInput.value) {
+      this.addErrorStyle(dateInput)
+      this.addErrorMessage(dateErrorMessage, "※入力必須項目です")
+      hasError = true;
+    }
+    else {
+      this.removeError(dateInput, dateErrorMessage)
+    }
+    return hasError;
   }
 }

@@ -13,17 +13,14 @@
     <div class="font-bold">名前</div>
     <% @trip.participants.each_with_index do |participant, i| %>
       <%= f.fields_for :participants, participant do |p| %>
-        <div data-participant-form-target="eachParticipantForm" class="flex items-center py-2">
-          <%= p.text_field :name, class:"form-style mr-2", data:{"form-step-target": "eachParticipantName"} %>
-          <div data-participant-form-target="eachDeleteBtn" data-action="click->participant-form#deleteForm">
-            <%= inline_svg("svg/delete.svg", class:"text-primary-red w-10 cursor-pointer") %> 
+        <div data-participant-validate-target="eachTemplate">
+          <div class="flex items-center py-2">
+            <span class="font-bold font-mono w-6 flex justify-center mr-1"><%= i + 1 %></span>
+            <%= p.text_field :name, class:"form-style mr-2", data:{"participant-validate-target": "name", "action": "input->participant-validate#checkInput keydown->participant-validate#submitPrevent"} %>
           </div>
+          <p class="text-primary-red text-xs pt-0.5" data-participant-validate-target="dateErrorMessage"></p>
         </div>
       <% end %>
     <% end %>
-
-    <div data-participant-form-target="addBtn" data-action="click->participant-form#addForm", class="hidden w-10 cursor-pointer ml-auto">
-      <%= inline_svg("svg/add.svg", class:"text-primary-blue-100") %> 
-    </div>
   </div>
 </div>
