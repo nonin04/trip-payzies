@@ -6,16 +6,13 @@
     </div>
     <div class="pb-2">
       <%= f.label :title, class:"font-bold" %>
-      <%= f.text_field :title, data: {"form-step-target": "tripTitle"}, class: "form-style" %>
-      <% if f.object.errors[:title].any?%>
-        <p class="text-primary-red text-xs pt-0.5">※<%= @trip.errors[:title].join(', ') %></p>
-      <% end %>
+      <%= f.text_field :title, data: {"form-step-target": "tripTitle", "action":"input->form-step#checkInput"}, class: "form-style" %>
       <p class="text-primary-red text-xs pt-0.5" data-form-step-target="titleErrorMessage"></p>
     </div>
 
     <div class="pt-4">
       <%= f.label :departure_date, class:"font-bold"%>
-      <%= f.date_field :departure_date, value: @trip.departure_date || Date.current, data: {"form-step-target": "tripDate"}, class: "form-style" %>
+      <%= f.date_field :departure_date, value: @trip.departure_date || Date.current, data: {"form-step-target": "tripDate", "action":"input->form-step#checkInput"}, class: "form-style" %>
       <p class="text-primary-red text-xs pt-0.5" data-form-step-target="dateErrorMessage"></p>
     </div>
   </div>
