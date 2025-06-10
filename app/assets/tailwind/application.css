@@ -7,10 +7,9 @@
   --font-secondary: "Dela Gothic One", "sans-serif";
   --font-for-icon: "Kanit", sans-serif;
 
-/* カスタムカラー*/
   /* ------- 背景色 ------- */
   --color-panel-sky: #b4d5de;
-  --color-panel-gray: #E6E6E6;
+  --color-panel-brown: #D2B48C;
   --color-panel-navy: #102E4A;
 
   /* ------- ボタン系 ------- */
@@ -37,7 +36,7 @@
 }
 
 .lp-btn {@apply
-  font-bold text-2xl bg-action-yellow cursor-pointer inline-flex items-center rounded gap-1 px-8
+  font-bold text-2xl bg-white cursor-pointer inline-flex items-center rounded gap-1 px-8
 }
 
 .page-width{@apply
@@ -52,7 +51,7 @@
 }
 
 .form-style-2 {@apply 
-  bg-gray-100 px-3 py-1 font-normal text-md rounded-md border border-gray-100 w-full
+  bg-gray-100 px-3 py-1 font-normal rounded-md border border-gray-100 w-full
   placeholder:text-gray-300 placeholder:font-normal
   focus:bg-gray-50 focus:border-gray-300 focus:outline-none
   transition duration-300 
@@ -74,6 +73,12 @@
 
 .shadow-primary{@apply
   shadow-[4px_4px_rgba(17,_36,_54,_0.2)]
+  transition duration-200 ease-in-out transform hover:translate-y-[3px] hover:translate-x-[3px]
+  hover:shadow-none
+}
+
+.shadow-secondary{@apply
+  shadow-[4px_4px_rgba(255,255,255,0.2)]
   transition duration-200 ease-in-out transform hover:translate-y-[3px] hover:translate-x-[3px]
   hover:shadow-none
 }
