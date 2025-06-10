@@ -1,19 +1,19 @@
-<div class="card-style flex flex-col px-4 pt-4 pb-8">
+<div class="flex flex-col flex-1 h-min-0" data-form-step-target="tripForm">
+  <h2 class="mx-8 mt-2 mb-1 text-lg font-bold">基本情報</h2>
+  <div class="card-style flex flex-1 flex-col px-4 py-2">
+    <div class="flex flex-col pb-2">
+      <span class="text-xs">※旅行名は20字以内でご入力ください</span>
+    </div>
+    <div class="pb-2">
+      <%= f.label :title, class:"font-bold" %>
+      <%= f.text_field :title, data: {"form-step-target": "tripTitle", "action":"input->form-step#checkInput"}, class: "form-style" %>
+      <p class="text-primary-red text-xs pt-0.5" data-form-step-target="titleErrorMessage"></p>
+    </div>
 
-  <div class="pb-2">
-    <%= f.label :title, class:"font-bold"%>
-    <%= f.text_field :title, class: "form-style #{'!border-red-500' if @trip.errors[:title].any?}" %>
-    <% if @trip.errors[:title].any?%>
-      <p class="text-primary-red text-xs pt-0.5">※<%= @trip.errors[:title].join(', ') %></p>
-    <% end %>
+    <div class="pt-4">
+      <%= f.label :departure_date, class:"font-bold"%>
+      <%= f.date_field :departure_date, value: @trip.departure_date || Date.current, data: {"form-step-target": "tripDate", "action":"input->form-step#checkInput"}, class: "form-style" %>
+      <p class="text-primary-red text-xs pt-0.5" data-form-step-target="dateErrorMessage"></p>
+    </div>
   </div>
-
-  <div class="pt-4">
-    <%= f.label :departure_date, class:"font-bold"%>
-    <%= f.date_field :departure_date, class: "form-style #{'!border-red-500' if @trip.errors[:departure_date].any?}" %>
-    <% if @trip.errors[:departure_date].any?%>
-      <p class="text-primary-red text-xs pt-0.5">※<%= @trip.errors[:departure_date].join(', ') %></p>
-    <% end %>
-  </div>
-
 </div>

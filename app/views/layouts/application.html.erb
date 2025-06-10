@@ -22,8 +22,9 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <% unless controller.controller_name == "homes" %>
-    <body class="bg-white">
+  
+  <body class="bg-[url('/images/background2.png')] bg-cover h-full">
+    <% unless controller.controller_name == "homes" %>
       <div class="@container relative h-screen flex flex-col page-width">
         <% unless devise_controller? %>
           <%= render 'layouts/sidebar' %>
@@ -53,15 +54,10 @@
         </footer>
 
       </div>
-      <% else %><%# home#indexのみ %>
-        <body>
-          <%= yield %> 
-        </body>
-      <% end %>
-    </body>
-
-
-
+    <% else %><%# home#indexのみ %>
+      <%= yield %> 
+    <% end %>
+  </body>
 
 
 </html>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_05_29_151329) do
+ActiveRecord::Schema[7.2].define(version: 2025_06_07_015320) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -116,13 +116,13 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_29_151329) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "advance_payments", "expenses"
+  add_foreign_key "advance_payments", "expenses", on_delete: :cascade
   add_foreign_key "advance_payments", "participants", on_delete: :restrict
   add_foreign_key "expenses", "participants", column: "payer_id", on_delete: :restrict
-  add_foreign_key "expenses", "trips"
-  add_foreign_key "groups", "users"
-  add_foreign_key "members", "groups"
-  add_foreign_key "participants", "trips"
-  add_foreign_key "trips", "groups"
-  add_foreign_key "trips", "users"
+  add_foreign_key "expenses", "trips", on_delete: :cascade
+  add_foreign_key "groups", "users", on_delete: :cascade
+  add_foreign_key "members", "groups", on_delete: :cascade
+  add_foreign_key "participants", "trips", on_delete: :cascade
+  add_foreign_key "trips", "groups", on_delete: :nullify
+  add_foreign_key "trips", "users", on_delete: :cascade
 end
