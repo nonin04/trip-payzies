@@ -1,4 +1,10 @@
-  <h1 class="mt-2 my-2 text-xl font-bold mx-6">旅行詳細</h1>
+<div class="flex items-center relative">
+  <%= link_to trips_path(@trips), class:"absolute flex items-center border-2 border-black rounded-md h-6 w-10 py-0.5 px-0.5 ml-4" do %>
+    <%= inline_svg("svg/navigation-arrow.svg", class:"w-full h-full rotate-180 text-panel-navy")%>
+  <% end %>
+  <h1 class="mt-2 my-2 text-xl font-bold w-full text-center">旅行詳細</h1>
+</div>
+
   <%= render 'trips/trip_card', trip: @trip, mode: :show %>
   <div class="card-style px-4 py-3">
     <div class="px-2 font-bold">参加者</div>
