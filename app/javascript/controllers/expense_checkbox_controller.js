@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="expense-checkbox"
 export default class extends Controller {
   static targets = [
-    "checkForm",
+    "checkBox",
     "unChecked",
     "checked"
   ]

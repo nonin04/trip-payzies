@@ -6,14 +6,14 @@
     </div>
     <div class="pb-2">
       <%= f.label :title, class:"font-bold" %>
-      <%= f.text_field :title, data: {"form-step-target": "tripTitle", "action":"input->form-step#checkInput"}, class: "form-style" %>
-      <p class="text-primary-red text-xs pt-0.5" data-form-step-target="titleErrorMessage"></p>
+      <%= f.text_field :title, data: {"form-step-target": "tripTitle", "action":"input->form-step#titleValidate"}, class: "form-style" %>
+      <p class="text-primary-red text-xs pb-0.5" data-form-step-target="titleErrorMessage"></p>
     </div>
 
     <div class="pt-4">
       <%= f.label :departure_date, class:"font-bold"%>
-      <%= f.date_field :departure_date, value: @trip.departure_date || Date.current, data: {"form-step-target": "tripDate", "action":"input->form-step#checkInput"}, class: "form-style" %>
-      <p class="text-primary-red text-xs pt-0.5" data-form-step-target="dateErrorMessage"></p>
+      <%= f.date_field :departure_date, value: @trip.departure_date || Date.current, data: {"form-step-target": "tripDate", "action":"input->form-step#dateValidate"}, class: "form-style" %>
+      <p class="text-primary-red text-xs pb-0.5" data-form-step-target="dateErrorMessage"></p>
     </div>
   </div>
 </div>

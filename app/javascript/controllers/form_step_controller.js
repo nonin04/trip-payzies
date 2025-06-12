@@ -48,13 +48,13 @@ export default class extends Controller {
 
   // references
   addErrorStyle(formEl) {
-    formEl.classList.add("!border-red-500", "!bg-red-100")
+    formEl.classList.add("!border-red-400", "!bg-red-50")
   }l
   addErrorMessage(formEl, errorMessage) {
     formEl.textContent = errorMessage
   }
   removeError(formEl, messageEl) {
-    formEl.classList.remove("!border-red-500", "!bg-red-100")
+    formEl.classList.remove("!border-red-400", "!bg-red-50")
     messageEl.textContent = ""
   }
   setFlashEl(message) {
@@ -63,21 +63,28 @@ export default class extends Controller {
     errorMessageEl.textContent = message
     flashErrorEl.classList.remove("-translate-y-full")
     flashErrorEl.classList.add("translate-y-0")
-    setTimeout(() => this.removeFlashEl(), 3000)
+    setTimeout(() => this.removeFlashEl(), 5000)
   }
   removeFlashEl() {
     const flashErrorEl = this.flashErrorTarget
     flashErrorEl.classList.remove("translate-y-0")
     flashErrorEl.classList.add("-translate-y-full")
   }
+
+
   validate() {
-    const titleInput = this.tripTitleTarget
-    const dateInput = this.tripDateTarget
-    const titleErrorMessage = this.titleErrorMessageTarget
-    const dateErrorMessage = this.dateErrorMessageTarget
+    const hasTitleError = this.titleValidate()
+    const hasDateError = this.dateValidate()
 
+    return hasTitleError || hasDateError
+  }
+
+
+//旅行名バリデーションチェック------------------------------------------
+  titleValidate() {
     let hasError = false;
-
+    const titleInput = this.tripTitleTarget
+    const titleErrorMessage = this.titleErrorMessageTarget
     if (!titleInput.value) {
       this.addErrorStyle(titleInput)
       this.addErrorMessage(titleErrorMessage, "※入力必須項目です")
@@ -90,8 +97,16 @@ export default class extends Controller {
     } 
     else {
       this.removeError(titleInput, titleErrorMessage)
+      hasError = false;
     }
+    return hasError;
+  }
 
+//出発日バリデーションチェック------------------------------------------
+  dateValidate() {
+    let hasError = false;
+    const dateInput = this.tripDateTarget
+    const dateErrorMessage = this.dateErrorMessageTarget
     if (!dateInput.value) {
       this.addErrorStyle(dateInput)
       this.addErrorMessage(dateErrorMessage, "※入力必須項目です")
@@ -99,6 +114,7 @@ export default class extends Controller {
     }
     else {
       this.removeError(dateInput, dateErrorMessage)
+      hasError = false;
     }
     return hasError;
   }

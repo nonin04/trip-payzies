@@ -42,7 +42,7 @@ export default class extends Controller {
     errorMessageEl.textContent = message
     flashErrorEl.classList.remove("-translate-y-full")
     flashErrorEl.classList.add("translate-y-0")
-    setTimeout(() => this.removeFlashEl(), 3000)
+    setTimeout(() => this.removeFlashEl(), 5000)
   }
   removeFlashEl() {
     const flashErrorEl = this.flashErrorTarget
@@ -61,7 +61,7 @@ export default class extends Controller {
     //一人以上かチェック
     const emptyCounts = this.nameTargets.filter(el => el.value.trim())
     if (emptyCounts.length === 0) {
-      firstNameForm.classList.add("!border-red-500", "!bg-red-100")
+      firstNameForm.classList.add("!border-red-400", "!bg-red-50")
       firstErrorMessageArea.textContent = "※1人以上の参加者を追加してください"
       noParticipantError = true
       console.log("0人エラー")
@@ -72,13 +72,13 @@ export default class extends Controller {
         const textArea = f.querySelector('input')
         const errorMessageArea = f.querySelector('[data-participant-validate-target="dateErrorMessage"]')
         if(textArea.value.trim().length > 15) {
-          textArea.classList.add("!border-red-500", "!bg-red-100")
+          textArea.classList.add("!border-red-400", "!bg-red-50")
           errorMessageArea.textContent = "※15字以内で入力してください"
           textLengthError = true
           console.log("15字エラー")
         }
         else {
-          textArea.classList.remove("!border-red-500", "!bg-red-100")
+          textArea.classList.remove("!border-red-400", "!bg-red-50")
           errorMessageArea.textContent = ""
         }
       })
