@@ -57,6 +57,13 @@
   transition duration-300 
 }
 
+.select-style {@apply 
+  bg-white px-3 py-2 font-normal text-sm rounded-md border border-gray-100 w-full
+  placeholder:font-normal
+  focus:bg-gray-50 focus:border-gray-300 focus:outline-none
+  transition duration-300 
+}
+
 .humberger-menu {@apply
   text-black border-2 rounded border-black bg-white
   transition duration-300 

@@ -3,6 +3,7 @@ class Expense < ApplicationRecord
   belongs_to :payer, class_name: 'Participant'
 
   has_many :advance_payments, dependent: :destroy
+  has_many :owed_participants, through: :advance_payments, source: :participant
   accepts_nested_attributes_for :advance_payments, allow_destroy: true
 
   validates :trip_id, presence: true
