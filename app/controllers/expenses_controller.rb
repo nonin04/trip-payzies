@@ -1,6 +1,5 @@
 class ExpensesController < ApplicationController
-  before_action :set_expense, only: [:show, :edit, :update, :destroy]
-  
+  before_action :set_expense, only: [ :show, :edit, :update, :destroy ]
   def show
   end
 
@@ -19,7 +18,6 @@ class ExpensesController < ApplicationController
       flash.now[:alert] = "保存に失敗しました: #{@expense.errors.full_messages.join(', ')}"
       render :new, status: :unprocessable_entity
     end
-
   end
 
   def edit
@@ -52,7 +50,7 @@ class ExpensesController < ApplicationController
   def expense_params
     params.require(:expense).permit(
       :payer_id, :amount, :title, :payment_date, :place, :memo,
-      advance_payments_attributes:[:id, :participant_id]
+      advance_payments_attributes: [ :id, :participant_id ]
       )
   end
 end
