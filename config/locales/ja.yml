@@ -24,8 +24,8 @@ ja:
         name: "名前"
       expense: 
         payer: "決済者"
+        title: "項目"
         amount: "金額"
-        title: "タイトル"
         payment_date: "決済日"
     errors:
       messages:

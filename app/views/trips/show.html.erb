@@ -1,6 +1,12 @@
-  <h1 class="mx-8 my-2 text-xl font-bold">旅行詳細</h1>
+<div class="flex items-center relative">
+  <%= link_to trips_path(@trips), class:"absolute flex items-center border-2 border-black rounded-md shadow-secondary h-6 w-10 py-0.5 px-0.5 ml-4" do %>
+    <%= inline_svg("svg/navigation-arrow.svg", class:"w-full h-full rotate-180 text-panel-navy")%>
+  <% end %>
+  <h1 class="mt-2 my-2 text-xl font-bold w-full text-center">旅行詳細</h1>
+</div>
+
   <%= render 'trips/trip_card', trip: @trip, mode: :show %>
-  <div class="card-style px-4 py-3">
+  <div class="card-style px-4 py-2 h-7/20 overflow-y-auto">
     <div class="px-2 font-bold">参加者</div>
     <ul class="list-disc px-8 pt-2">
       <% @participants.each do |participant|%>
@@ -10,19 +16,45 @@
   </div>
 
   <h1 class="mx-8 my-2 text-xl font-bold">立替一覧</h1>
-  <div class="flex-1 overflow-y-auto flex flex-col">
-      <% @expenses.each do |expense|%>
-        <%= link_to trip_expense_path(@trip, expense) do %>
-          <%= render 'expenses/expense_card', expense: expense %>
+
+  <% if @expenses.present? %>
+    <div class="flex-1 overflow-y-auto flex flex-col">
+        <% @expenses.each do |expense|%>
+          <%= link_to trip_expense_path(@trip, expense) do %>
+            <%= render 'expenses/expense_card', expense: expense %>
+          <% end %>
         <% end %>
-      <% end %>
-  </div>
+    </div>
+  <% else %>
+    <div class="flex-1 overflow-y-auto flex flex-col">
+      <%= inline_svg("svg/no-payment.svg", class:"w-3/5 my-auto mx-auto", draggable:"false") %>
+    </div>
+
+  <% end %>
+
+
+
 
   <div class="px-4 py-3">
     <div class="h-1 bg-panel-navy"></div>
-    <%= link_to new_trip_expense_path(@trip) do %>
-      <div class="mt-2 rounded-md bg-action-yellow py-3 shadow-primary border-2 border-black">
-        <p class="text-gray-700 text-2xl text-center font-bold">立替記録を作成</p>
+
+    <section class="w-full flex">
+      <%= link_to new_trip_expense_path(@trip) , class:"flex-1" do %>
+        <div class="mt-2 rounded-md bg-action-yellow py-2 shadow-primary border-2 border-black">
+          <p class="text-gray-700 text-2xl text-center font-bold">立替記録を作成</p>
+        </div>
+      <% end %>
+
+      <% if @expenses.present?%>
+        <%= link_to result_trip_path(@trip), class:"w-3/10 ml-4" do %>
+          <div class=" mt-2 rounded-md bg-primary-red py-2 shadow-primary border-2 border-black">
+            <p class="text-white text-2xl text-center font-bold">精算結果</p>
+          </div>
+        <% end %>    
+      <% end %>
+      <div>
+
       </div>
-    <% end %>
+    </section>
+
   </div>

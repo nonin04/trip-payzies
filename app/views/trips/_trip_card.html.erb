@@ -10,10 +10,10 @@
     <% elsif mode == :show %>
       <div class="flex  pl-5">
         <%= link_to edit_trip_path(trip) do %>
-          <%= inline_svg("svg/edit.svg", class: "w-8 h-8 text-gray-400", draggable:"false") %>
+          <%= inline_svg("svg/edit2.svg", class: "w-[28px] h-[28px] px-0.5 py-0.5 rounded-md border-2 text-black bg-white shadow-secondary mx-1", draggable:"false") %>
         <% end %>
         <%= link_to trip_path(trip), data: {turbo_method: :delete, turbo_confirm: "旅行を削除しますか？"} do %>
-          <%= inline_svg("svg/trash.svg", class: "w-8 h-8 text-gray-400", draggable:"false") %>
+          <%= inline_svg("svg/delete2.svg", class: "w-[28px] h-[28px] px-0.5 py-0.5 rounded-md border-2 text-black bg-white shadow-secondary mx-1", draggable:"false") %>
         <% end %>
       </div>
     <% end %>
