@@ -1,7 +1,5 @@
 class TripsController < ApplicationController
-
-  before_action :set_trip, only: [:show, :edit, :update, :destroy, :result, :settle]
-
+  before_action :set_trip, only: [ :show, :edit, :update, :destroy, :result, :settle ]
 
   def index
     @trips = current_user.trips.order(departure_date: :desc)
@@ -14,7 +12,7 @@ class TripsController < ApplicationController
 
   def new
     @trip = Trip.new
-    10.times{@trip.participants.build}
+    10.times { @trip.participants.build }
   end
 
   def create
@@ -47,7 +45,6 @@ class TripsController < ApplicationController
   end
 
   def result
-    
   end
 
   def settle
@@ -57,7 +54,6 @@ class TripsController < ApplicationController
       flash.now[:alert] = "ステータスを更新できませんでした。"
       render :result, status: :unprocessable_entity
     end
-
   end
 
   private
@@ -74,7 +70,7 @@ class TripsController < ApplicationController
   def trip_and_participants_params
     params.require(:trip).permit(
       :title, :group_id, :departure_date,
-      participants_attributes:[:name]
+      participants_attributes: [ :name ]
       )
   end
 end
