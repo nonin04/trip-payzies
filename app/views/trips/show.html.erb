@@ -6,7 +6,7 @@
 </div>
 
   <%= render 'trips/trip_card', trip: @trip, mode: :show %>
-  <div class="card-style px-4 py-2 h-7/20 overflow-y-auto">
+  <div class="card-style px-4 py-2 max-h-7/20 overflow-y-auto">
     <div class="px-2 font-bold">参加者</div>
     <ul class="list-disc px-8 pt-2">
       <% @participants.each do |participant|%>

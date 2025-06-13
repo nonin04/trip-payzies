@@ -1,43 +1,61 @@
 <% content_for(:title, "トップ") %>
 
-<body class="bg-white">
-  <div class="xl:w-1/3 md:w-1/2 w-full mx-auto h-screen bg-panel-navy">
+<div class="xl:w-1/3 md:w-1/2 w-full mx-auto flex flex-col h-screen bg-gray-50">
 
-    <%# ↓↓↓ロゴとタイトル↓↓↓ %>
-    <div class="flex justify-center">
-      <%= inline_svg("svg/map-icon.svg", class: "h-26") %>
-      <h1 class="font-for_icon text-white text-6xl ml-2">
+  <header class="h-6/80 relative flex items-center no-interact" draggable="false">
+    <%= inline_svg("svg/lp/header-bg.svg", class:"w-full") %>
+    <div class="absolute top-0 left-0.5 h-15 flex items-center">
+      <%= inline_svg("svg/app-icon/header-icon.svg", class:"w-6 ml-2 pb-1") %>
+      <div class="font-for-icon ml-2 leading-none tracking-widest">
         <span class="text-theme-brown">TRIP</span>
-        <br><span>PAYZIES</span>
-      </h1>
-
-    <%# ↓↓↓キャッチコピー↓↓↓ %> 
-    </div mx-4>
-    <div class="flex justify-center my-20 mx-4">
-      <h2 class="text-white text-right text-2xl">
-        <div class="flex items-start">グループ旅行の立替を</div>
-        <div class="flex items-end justify-end"><span class="text-action-yellow text-4xl">さくっ</span>と記録</div>
-        <div class="flex items-start">面倒な精算も</div>
-        <div class="flex items-end justify-end"><span class="text-action-yellow text-4xl">さくっ</span>と解決</div>
-      </h2>
+        <br><span class="text-white">PAYZIES</span>
+      </div>
     </div>
+  </header>
 
-    <%# ↓↓↓アプリ利用手順↓↓↓ %>
-    <div class="flex justify-center my-5">
-      <ol class="list-decimal pl-6 text-xl text-white mx-auto space-y-8">
-        <li>旅行メンバーを入力してスタート!</li>
-        <li>「誰が・いくら・誰の分を」かんたん入力</li>
-        <%# <li>グラフで立替状況をひとめいでチェック</li> %>
-        <li>最後に、誰が誰にいくら払うかを自動計算!</li>
-      </ol>
+  <%# ロゴ大 %>
+  <section class="flex-1 flex justify-center items-center">
+    <%= inline_svg("svg/app-icon/lp-icon.svg", class: "h-22") %>
+    <h1 class="text-white">
+      <span class="text-theme-brown font-for-icon text-5xl">TRIP</span>
+      <br><span class="text-panel-navy font-for-icon text-5xl">PAYZIES</span>
+    </h1>
+  </section>
+
+  <%# キャッチコピー %>
+  <section class="h-11/80 flex justify-center items-center">
+    <h2 class="flex flex-col text-right text-xl">
+      <div class="my-2">グループ旅行の立替を<span class="text-theme-brown text-2xl font-bold">さくっ</span>と記録</div>
+      <div class="my-2">面倒な精算も<span class="text-theme-brown text-2xl font-bold">さくっ</span>と解決</div>
+    </h2>
+  </section>
+
+  <%# gyazo? %>
+  <section class="h-18/80 flex flex-col justify-center">
+    <div class="h-4/5 mx-4 border-2 rounded-md border-gray-300 bg-gray-200 flex items-center justify-center">
+      <span class="font-mono text-gray-600">///// 準備中 /////</span>
     </div>
+  </section>
 
-    <%# ↓↓↓startボタン↓↓↓ %>
-    <div class="flex justify-center my-10">
-    <%= link_to new_user_session_path, class: "lp-btn shadow-secondary" do %>
-      Start!<%= inline_svg("svg/plane.svg", alt:"飛行機アイコン", class:"h-[1em] align-middle inline")%>
-    <% end %>
-    </div>
+  <%# 説明 %>
+  <section class="flex-1 pl-4 flex justify-center items-center">
+    <ol class="list-decimal space-y-3">
+      <li>旅行メンバーを入力してスタート!</li>
+      <li>"誰が・誰の分を・いくら" かんたん入力</li>
+      <li>グラフで立替状況をひとめいでチェック</li>
+      <li>最後に、誰が誰にいくら払うかを自動で計算!</li>
+    </ol>
+  </section>
 
-  </div>
-</body>
+  <%# Startボタン %>
+  <section class="h-7/80 flex justify-center items-center">
+      <%= link_to new_user_session_path, class: "h-fit px-10 py-1 text-3xl text-white bg-theme-brown tracking-widest cursor-pointer flex items-center rounded shadow-primary" do %>
+        Start!<%= inline_svg("svg/plane.svg", alt:"飛行機アイコン", class:"w-8 ml-4 align-middle inline")%>
+      <% end %>
+  </section>
+
+  <footer class="h-7/80 flex relative no-interact" draggable="false">
+      <%= inline_svg("svg/lp/footer-bg.svg", class:"w-full") %>
+      <span class="absolute bottom-0 mb-2 text-white text-sm w-full text-center">©︎ 2025 Trip Payzies by NONIN</span>
+  </footer>
+</div>
