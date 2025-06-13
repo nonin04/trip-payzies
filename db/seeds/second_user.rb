@@ -1,7 +1,7 @@
 # //////////////////////////////////////////////////////////////////////////////
 userB = User.create!(
-  name: "test_user2", 
-  email: "test2@example.com", 
+  name: "test_user2",
+  email: "test2@example.com",
   password: "password"
 )
 # tripデータNo.1 =============================================
@@ -13,7 +13,7 @@ person1A = trip1.participants.create!(name: "参加者1A")
 person1B = trip1.participants.create!(name: "参加者1B")
 person1C = trip1.participants.create!(name: "参加者1C")
 
-          # --------------expenseデータNo.1
+# --------------expenseデータNo.1
 get_expense_by_person1A = trip1.expenses.create!(
   payer: person1A,
   amount: 5000,
@@ -23,7 +23,7 @@ get_expense_by_person1A = trip1.expenses.create!(
 get_expense_by_person1A.advance_payments.create!(participant: person1A)
 get_expense_by_person1A.advance_payments.create!(participant: person1B)
 
-          # --------------expenseデータNo.2
+# --------------expenseデータNo.2
 get_expense_by_person1B = trip1.expenses.create!(
   payer: person1B,
   amount: 5000,
@@ -33,7 +33,7 @@ get_expense_by_person1B = trip1.expenses.create!(
 get_expense_by_person1B.advance_payments.create!(participant: person1A)
 get_expense_by_person1B.advance_payments.create!(participant: person1C)
 
-          # --------------expenseデータNo.3
+# --------------expenseデータNo.3
 get_expense_by_person1B = trip1.expenses.create!(
   payer: person1B,
   amount: 5000,
@@ -43,7 +43,7 @@ get_expense_by_person1B = trip1.expenses.create!(
 get_expense_by_person1B.advance_payments.create!(participant: person1A)
 get_expense_by_person1B.advance_payments.create!(participant: person1C)
 
-          # --------------expenseデータNo.4
+# --------------expenseデータNo.4
 get_expense_by_person1B = trip1.expenses.create!(
   payer: person1B,
   amount: 1200,
@@ -53,7 +53,7 @@ get_expense_by_person1B = trip1.expenses.create!(
 get_expense_by_person1B.advance_payments.create!(participant: person1A)
 get_expense_by_person1B.advance_payments.create!(participant: person1C)
 
-          # --------------expenseデータNo.5
+# --------------expenseデータNo.5
 get_expense_by_person1B = trip1.expenses.create!(
   payer: person1C,
   amount: 340,
@@ -76,7 +76,7 @@ person2A = trip2.participants.create!(name: "参加者2A")
 person2B = trip2.participants.create!(name: "参加者2B")
 person2C = trip2.participants.create!(name: "参加者2C")
 
-          # --------------expenseデータNo.1
+# --------------expenseデータNo.1
 get_expense_by_person2A = trip2.expenses.create!(
   payer: person2A,
   amount: 5000,
@@ -86,7 +86,7 @@ get_expense_by_person2A = trip2.expenses.create!(
 get_expense_by_person2A.advance_payments.create!(participant: person2A)
 get_expense_by_person2A.advance_payments.create!(participant: person2B)
 
-          # --------------expenseデータNo.2
+# --------------expenseデータNo.2
 get_expense_by_person2B = trip2.expenses.create!(
   payer: person2B,
   amount: 5000,
