@@ -17,10 +17,10 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
-gem 'actioncable'
+gem "actioncable"
 # gem "redis", ">= 4.0.1"
 
-gem 'devise'
+gem "devise"
 
 gem "tailwindcss-rails"
 
@@ -28,7 +28,7 @@ gem "importmap-rails", "~> 2.1"
 
 gem "sprockets-rails"
 
-gem 'inline_svg'
+gem "inline_svg"
 
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
@@ -69,4 +69,3 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
-
