@@ -47,7 +47,6 @@ class TripsController < ApplicationController
   end
 
   def result
-    # のちに実装
     
   end
 
