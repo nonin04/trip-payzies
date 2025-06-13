@@ -79,12 +79,18 @@
 }
 
 .shadow-primary{@apply
-  shadow-[4px_4px_rgba(17,_36,_54,_0.2)]
-  transition duration-200 ease-in-out transform hover:translate-y-[3px] hover:translate-x-[3px]
+  shadow-[5px_3px_rgba(0,0,0,0.5)]
+  transition duration-300 ease-in-out transform hover:translate-y-[4px] hover:translate-x-[3px]
   hover:shadow-none
 }
 
 .shadow-secondary{@apply
+  shadow-[3px_2px_rgba(0,0,0,0.5)]
+  transition duration-300 ease-in-out transform hover:translate-y-[3px] hover:translate-x-[2px]
+  hover:shadow-none
+}
+
+.shadow-for-lp{@apply
   shadow-[4px_4px_rgba(255,255,255,0.2)]
   transition duration-200 ease-in-out transform hover:translate-y-[3px] hover:translate-x-[3px]
   hover:shadow-none

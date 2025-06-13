@@ -1,6 +1,6 @@
-<div data-controller="form-step participant-validate" class="flex flex-col h-full">
+<div data-controller="trip-validate participant-validate" data-trip-validate-mode-value="new" class="flex flex-col h-full">
   <%# stimulus用フラッシュエラーメッセージ %>
-  <div data-form-step-target="flashError" data-participant-validate-target="flashError" class="-translate-y-full transition-transform transform duration-700">
+  <div data-trip-validate-target="flashError" data-participant-validate-target="flashError" class="-translate-y-full transition-transform transform duration-700">
     <p class="z-10 bg-primary-red text-white text-sm border-b-2 border-b-black"></p>
   </div>
   <h1 class="mt-2 my-2 text-xl font-bold text-center">旅行作成</h1>
@@ -10,15 +10,15 @@
     <%= render 'participants/form_card', f: f %>
     <div class="flex px-4 py-4 ">
 
-      <div data-form-step-target="toggleBtn" class="w-1/2 mx-6 py-2 btn-cancel shadow-primary">
+      <div data-trip-validate-target="toggleBtn" class="w-1/2 mx-6 py-2 btn-cancel shadow-primary">
         <%= link_to "キャンセル", trips_path, class:"h-full w-full" %>
       </div>
       
-      <button data-form-step-target="toggleBtn" data-action="click->form-step#changeForm" type="button" class="w-1/2 mx-6 py-2  btn-submit shadow-primary">次へ</button>
+      <button data-trip-validate-target="toggleBtn" data-action="click->trip-validate#changeForm" type="button" class="w-1/2 mx-6 py-2  btn-submit shadow-primary">次へ</button>
 
-      <button data-form-step-target="toggleBtn" data-action="click->form-step#changeForm" type="button" class="hidden w-1/2 mx-6 py-2 btn-cancel shadow-primary">戻る</button>
+      <button data-trip-validate-target="toggleBtn" data-action="click->trip-validate#changeForm" type="button" class="hidden w-1/2 mx-6 py-2 btn-cancel shadow-primary">戻る</button>
 
-      <div data-form-step-target="toggleBtn" class="hidden w-1/2 mx-6 py-2  btn-submit shadow-primary" >
+      <div data-trip-validate-target="toggleBtn" class="hidden w-1/2 mx-6 py-2  btn-submit shadow-primary" >
         <button class="h-full w-full" data-participant-validate-target="submitBtn" data-action="click->participant-validate#submit">保存</button>
       </div>
       

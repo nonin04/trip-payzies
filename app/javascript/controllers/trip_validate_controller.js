@@ -1,6 +1,15 @@
 import { Controller } from "@hotwired/stimulus"
+//---------------------------------------------------------------------------------------
+// このコントローラーはtrip#new,editアクションでの旅行情報入力フォームを制御する
+  //trip#new => 旅行情報のバリデーション
+  //trip#new => フラッシュメッセージの設定
+  //trip#new => ステップフォーム(STEP2 participants)への遷移
+  //trip#edit => 旅行情報のバリデーション
+  //trip#edit => フラッシュメッセージの設定
 
-// Connects to data-controller="form-step"
+//trip#newではnested_attributesのparticpiantsも保存するがparticipants側のバリデーションは含まない
+//---------------------------------------------------------------------------------------
+// Connects to data-controller="trip-validate"
 export default class extends Controller {
   static targets = [
     "stepGauge", 
@@ -14,16 +23,24 @@ export default class extends Controller {
     "dateErrorMessage",
     "deleteBtn",
     "eachParticipantForm",
-    "flashError"
-  ];
+    "flashError",
+    "submitBtn",
+    "form"
+  ]
+  static values = {
+    mode: String
+  }
+
 //actions
   connect() {
-    requestAnimationFrame(() => {
-      this.stepGaugeTarget.style.width = "50%";
-    })
-    this.isStep2 = false
-  };
+    if (this.modeValue === "new") {
+      requestAnimationFrame(() => {
+        this.stepGaugeTarget.style.width = "50%";
+      })
+      this.isStep2 = false
+    }
 
+  }
 
   checkInput() {
     this.validate()
@@ -45,6 +62,24 @@ export default class extends Controller {
     this.tripFormTarget.classList.toggle("hidden")
     this.participantFormTarget.classList.toggle("hidden")
   }
+
+  // 更新時のバリデーションチェックとsubmit防止
+  submitPrevent(event) {
+    if (event.key === "Enter") {
+      event.preventDefault()
+    }
+  }
+  submit(event) {
+    event.preventDefault()
+    const hasError = this.validate()
+    if (hasError) {
+      this.setFlashEl("※保存に失敗しました")
+    }
+    else {
+      this.formTarget.submit()
+    }
+  }
+
 
   // references
   addErrorStyle(formEl) {

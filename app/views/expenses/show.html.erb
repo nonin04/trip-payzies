@@ -1,5 +1,5 @@
   <div class="flex items-center relative">
-    <%= link_to trips_path(@trip), class:"absolute flex items-center border-2 border-black rounded-md h-6 w-10 py-0.5 px-0.5 ml-4" do %>
+    <%= link_to trip_path(@trip), class:"absolute flex items-center border-2 border-black rounded-md shadow-secondary h-6 w-10 py-0.5 px-0.5 ml-4" do %>
       <%= inline_svg("svg/navigation-arrow.svg", class:"w-full h-full rotate-180 text-panel-navy")%>
     <% end %>
     <h1 class="mt-2 my-2 text-xl font-bold w-full text-center">立替詳細</h1>
@@ -12,10 +12,10 @@
           <p class="font-bold text-2xl"><%= @expense.title %></p>
           <div class="flex flex-shrink-0 pl-5">
             <%= link_to edit_trip_expense_path(@trip, @expense) do %>
-              <%= inline_svg("svg/edit.svg", class: "w-8 h-8 text-gray-400", draggable:"false") %>
+              <%= inline_svg("svg/edit2.svg", class: "w-[28px] h-[28px] px-0.5 py-0.5 rounded-md border-2 text-black bg-white shadow-secondary mx-1", draggable:"false") %>
             <% end %>
             <%= link_to trip_expense_path(@trip, @expense), data: {turbo_method: :delete, turbo_confirm: "立替記録を削除しますか？"} do %>
-              <%= inline_svg("svg/trash.svg", class: "w-8 h-8 text-gray-400", draggable:"false") %>
+              <%= inline_svg("svg/delete2.svg", class: "w-[28px] h-[28px] px-0.5 py-0.5 rounded-md border-2 text-black bg-white shadow-secondary mx-1", draggable:"false") %>
             <% end %>
           </div>
         </div>
@@ -36,17 +36,17 @@
     </div>
     <div class="flex py-2 w-full">
       <p class="font-bold"> メモ： </p>
-      <p class="flex-1 text-sm text-gray-700 font-thin"><%= @expense.memo %></p>
+      <p class="flex-1 text-sm font-thin"><%= @expense.memo %></p>
     </div>
   </div>
 
-  <h2 class="mx-8 my-2 text-lg font-bold">対象者 | 負担額</h2>
-  <div class="card-style py-2 pl-6 overflow-y-auto">
+  <h2 class="mx-6 my-2 text-lg font-bold">対象者 | 負担額</h2>
+  <div class="card-style py-2 mb-4 pl-6 overflow-y-auto">
 
 
     <% @owed_participants.each do |owed_participant| %>
       <div class="flex text-lg">
-        <li class="#{owed_participant.name.length > 7 ? w-2/3 : w-2/3}"><%= owed_participant.name %></li>
+        <li class="w-2/3"><%= owed_participant.name %></li>
 
 
         <div class="flex">

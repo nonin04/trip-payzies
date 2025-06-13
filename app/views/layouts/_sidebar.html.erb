@@ -17,7 +17,7 @@
       <%# 各リンク %>
       <div class="flex flex-col px-2 my-4"> 
         <%= link_to "TOP", authenticated_root_path, class:"text-white text-xl" %>
-        <span class="text-white text-xl pt-4">グループ</span> 
+        <span class="hidden text-white text-xl pt-4">グループ</span>
       </div>
       <%# ログアウト %>
       <%= link_to destroy_user_session_path, class:"flex items-center justify-center cursor-pointer", data: {turbo_method: :delete, turbo_confirm: "ログアウトしますか？"} do %>
