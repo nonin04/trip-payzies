@@ -1,12 +1,12 @@
   <%# logo&text %>
-  <%= link_to unauthenticated_root_path, class:"flex h-full items-center ml-6" do %>
-    <%= inline_svg("svg/map-icon.svg", class:"w-7") %>
-    <div class="font-for-icon font-bold text-xl ml-2 leading-none">
-      <span class="text-theme-brown tracking-widest">TRIP</span>
-      <br><span class="text-white tracking-widest">PAYZIES</span>
+  <%= link_to unauthenticated_root_path, class:"flex items-center" do %>
+    <%= inline_svg("svg/app-icon/header-icon.svg", class:"w-6 ml-2 pb-1") %>
+    <div class="font-for-icon ml-2 leading-none tracking-widest">
+      <span class="text-theme-brown">TRIP</span>
+      <br><span class="text-white">PAYZIES</span>
     </div>
   <% end %>
   <%# humburger-menu %>
   <% unless devise_controller? %>
-    <%= inline_svg("svg/menu.svg", id:"menu-btn", class:"w-8 text-white mr-4 cursor-pointer hover:text-gray-400") %>
+    <%= inline_svg("svg/menu.svg", id:"menu-btn", class:"w-8 text-panel-navy mr-4 cursor-pointer hover:text-gray-400") %>
   <% end %>
