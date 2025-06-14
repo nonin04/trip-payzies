@@ -7,7 +7,7 @@ class TripsController < ApplicationController
 
   def show
     @participants = @trip.participants
-    @expenses = @trip.expenses.includes(:payer)
+    @expenses = @trip.expenses.includes(:payer).order(payment_date: :desc)
   end
 
   def new
