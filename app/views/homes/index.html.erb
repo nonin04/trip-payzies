@@ -4,7 +4,7 @@
 
   <header class="h-6/80 relative flex items-center no-interact" draggable="false">
     <%= inline_svg("svg/lp/header-bg.svg", class:"w-full") %>
-    <div class="absolute top-0 left-0.5 h-15 flex items-center">
+    <div class="absolute top-0 h-15 flex items-center">
       <%= inline_svg("svg/app-icon/header-icon.svg", class:"w-6 ml-2 pb-1") %>
       <div class="font-for-icon ml-2 leading-none tracking-widest">
         <span class="text-theme-brown">TRIP</span>
@@ -14,9 +14,9 @@
   </header>
 
   <%# ロゴ大 %>
-  <section class="flex-1 flex justify-center items-center">
+  <section class="flex-1 flex justify-center items-center no-interact" draggable="false">
     <%= inline_svg("svg/app-icon/lp-icon.svg", class: "h-22") %>
-    <h1 class="text-white">
+    <h1 class="text-white pt-2">
       <span class="text-theme-brown font-for-icon text-5xl">TRIP</span>
       <br><span class="text-panel-navy font-for-icon text-5xl">PAYZIES</span>
     </h1>
@@ -32,7 +32,7 @@
 
   <%# gyazo? %>
   <section class="h-18/80 flex flex-col justify-center">
-    <div class="h-4/5 mx-4 border-2 rounded-md border-gray-300 bg-gray-200 flex items-center justify-center">
+    <div class="h-4/5 mx-4 rounded-md bg-gray-200 flex items-center justify-center">
       <span class="font-mono text-gray-600">///// 準備中 /////</span>
     </div>
   </section>
@@ -48,7 +48,7 @@
   </section>
 
   <%# Startボタン %>
-  <section class="h-7/80 flex justify-center items-center">
+  <section class="h-7/80 flex justify-center items-center no-interact" draggable="false">
       <%= link_to new_user_session_path, class: "h-fit px-10 py-1 text-3xl text-white bg-theme-brown tracking-widest cursor-pointer flex items-center rounded shadow-primary" do %>
         Start!<%= inline_svg("svg/plane.svg", alt:"飛行機アイコン", class:"w-8 ml-4 align-middle inline")%>
       <% end %>

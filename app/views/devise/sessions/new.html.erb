@@ -1,7 +1,7 @@
 <% content_for(:title, "ログイン") %>
 
 
-<h2 class="text-center text-2xl my-4">ログイン</h2>
+<h2 class="text-center text-xl my-4 font-bold">ログイン</h2>
 <div class=" card-style px-10 pt-5">
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -22,13 +22,15 @@
       </div>
     <% end %>
 
-    <div class="actions mt-3">
-      <%= f.submit "ログイン", class: "btn block mx-auto"%>
+    <div class="actions my-3">
+      <%= f.submit "ログイン", class: "btn block mx-auto shadow-secondary"%>
     </div>
   <% end %>
-  <div class="text-center pb-6 pt-4">
-    <%= link_to "パスワードをお忘れですか？", new_password_path(resource_name), class: "underline text-gray-700" %>
-  </div>
+
+  <%# <div class="text-center pb-6 pt-4"> %>
+  <%#  <%= link_to "パスワードをお忘れですか？", new_password_path(resource_name), class: "underline text-gray-700" %>
+  <%# </div> %>
+
 </div>
 
 <div class="text-center pt-5">
