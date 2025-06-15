@@ -1,6 +1,6 @@
 <div class="flex items-center relative">
-  <%= link_to trips_path(@trips), class:"absolute flex items-center border-2 border-black rounded-md shadow-secondary h-6 w-10 py-0.5 px-0.5 ml-4" do %>
-    <%= inline_svg("svg/navigation-arrow.svg", class:"w-full h-full rotate-180 text-panel-navy")%>
+  <%= link_to trips_path(@trips), class:"absolute flex items-center rounded-md bg-panel-navy shadow-secondary h-6 w-10 py-0.5 px-0.5 ml-4" do %>
+    <%= inline_svg("svg/navigation-arrow.svg", class:"w-full h-full rotate-180 text-white")%>
   <% end %>
   <h1 class="mt-2 my-2 text-xl font-bold w-full text-center">旅行詳細</h1>
 </div>
@@ -40,14 +40,14 @@
 
     <section class="w-full flex">
       <%= link_to new_trip_expense_path(@trip) , class:"flex-1" do %>
-        <div class="mt-2 rounded-md bg-action-yellow py-2 shadow-primary border-2 border-black">
+        <div class="mt-2 rounded-md bg-action-yellow py-2 shadow-primary">
           <p class="text-gray-700 text-2xl text-center font-bold">立替記録を作成</p>
         </div>
       <% end %>
 
       <% if @expenses.present?%>
         <%= link_to result_trip_path(@trip), class:"w-3/10 ml-4" do %>
-          <div class=" mt-2 rounded-md bg-primary-red py-2 shadow-primary border-2 border-black">
+          <div class=" mt-2 rounded-md bg-primary-red py-2 shadow-primary">
             <p class="text-white text-2xl text-center font-bold">精算結果</p>
           </div>
         <% end %>    
