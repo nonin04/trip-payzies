@@ -13,5 +13,3 @@ end
 
 #呼び出し方
 # @settlement_date = SettlementCalculator.new(@trip).call
-
-end
