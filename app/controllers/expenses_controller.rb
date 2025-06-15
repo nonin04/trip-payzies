@@ -13,6 +13,7 @@ class ExpensesController < ApplicationController
     @expense = @trip.expenses.build(expense_params)
 
     if @expense.save
+      ExpenseAmountDistributor.new(@expense).call
       redirect_to trip_path(@trip), notice: "立替記録を保存しました"
     else
       flash.now[:alert] = "保存に失敗しました: #{@expense.errors.full_messages.join(', ')}"
@@ -24,12 +25,16 @@ class ExpensesController < ApplicationController
   end
 
   def update
+    # advance_paymentsは新しく送られてきたパラメータで再作成する
     @expense.advance_payments.destroy_all
+
     if @expense.update(expense_params)
+      ExpenseAmountDistributor.new(@expense).call
+
       flash[:notice] = "更新しました。"
       redirect_to trip_path(@trip)
     else
-      flash.now[:alert] = "保存に失敗しました"
+      flash.now[:alert] = @expense.errors.full_messages
       render :edit, status: :unprocessable_entity
     end
   end
@@ -43,8 +48,8 @@ class ExpensesController < ApplicationController
   def set_expense
     @trip = current_user.trips.find(params[:trip_id])
     @expense = @trip.expenses.includes(:payer).find(params[:id])
-    @participants = @trip.participants
     @owed_participants = @expense.owed_participants
+    @advance_payments = @expense.advance_payments.includes(:participant)
   end
 
   def expense_params

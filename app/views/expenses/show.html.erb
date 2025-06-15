@@ -44,14 +44,14 @@
   <div class="card-style py-2 mb-4 pl-6 overflow-y-auto">
 
 
-    <% @owed_participants.each do |owed_participant| %>
+    <% @advance_payments.each do |owed_participant| %>
       <div class="flex text-lg">
-        <li class="w-2/3"><%= owed_participant.name %></li>
+        <li class="w-2/3"><%= owed_participant.participant.name %></li>
 
 
         <div class="flex">
           <div class="w-0.5 mr-5 bg-black"></div>
-          <p class=""><%= number_with_delimiter(@expense.amount / @owed_participants.count) %>円</p>
+          <p class=""><%= owed_participant.amount %>円</p>
         </div>
       </div>
 
