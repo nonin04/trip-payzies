@@ -64,7 +64,7 @@
 }
 
 .humberger-menu {@apply
-  text-black border-2 rounded border-black bg-white
+  text-black rounded bg-white
   transition duration-300 
   cursor-pointer
 }
