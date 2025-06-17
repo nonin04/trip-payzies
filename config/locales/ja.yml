@@ -1,0 +1,35 @@
+ja:
+  activerecord:
+    models:
+      user: "ユーザー"
+      trip: "旅行"
+      participant: "旅行メンバー"
+      expense: "立替記録"
+      advance_payment: "対象者"
+      group: "グループ"
+      member: "グループメンバー"
+    attributes:
+      user: 
+        name: "ユーザーネーム"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード(確認)"
+      trip:
+        title: "旅行名"
+        departure_date: "出発日"
+        settlement_status:
+          settled: "精算済み"
+          unsettled: "未精算"
+      participant:
+        name: "名前"
+      expense: 
+        payer: "決済者"
+        title: "項目"
+        amount: "金額"
+        payment_date: "決済日"
+    errors:
+      messages:
+        blank: "必須項目です。"
+        not_saved: "%{resource}を保存できませんでした。"
+        confirmation: "確認用の内容と一致していません。"
+        too_short: "%{count}文字以上で入力してください。"

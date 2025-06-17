@@ -1,0 +1,17 @@
+<div data-controller="trip-validate" class="flex flex-col h-full">
+  <%# stimulus用フラッシュエラーメッセージ %>
+  <div data-trip-validate-target="flashError" class="-translate-y-full transition-transform transform duration-700">
+    <p class="z-10 bg-primary-red text-white text-sm border-b-2 border-b-black"></p>
+  </div>
+  <h1 class="mt-2 my-2 text-xl font-bold text-center">旅行編集</h1>
+  <%= form_with model: @trip, html:{class:"flex flex-col flex-1 min-h-0", data: {"trip-validate-target": "form"}} do |f| %>
+    <%= render 'trips/form_card', f: f %>
+    <div class="flex px-4 py-4">
+      <%= link_to "キャンセル", trip_path(@trip), class:"w-1/2 mx-6 py-2 btn-cancel shadow-primary" %>
+
+      <div class="w-1/2 mx-6 py-2  btn-submit shadow-primary" >
+        <button class="h-full w-full" data-trip-validate-target="submitBtn" data-action="click->trip-validate#submit">更新</button>
+      </div>
+
+    </div>
+  <% end %>

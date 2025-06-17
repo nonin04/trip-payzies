@@ -2,6 +2,7 @@
 
 # Ignore git directory.
 /.git/
+/.gitignore
 
 # Ignore bundler config.
 /.bundle
@@ -32,22 +33,16 @@
 
 # Ignore assets.
 /node_modules/
+/app/assets/builds/*
 !/app/assets/builds/.keep
 /public/assets
 
-# macOS特有の不要ファイル
-.DS_Store
+# Ignore CI service files.
+/.github
 
-# テスト関連
-/test
-/spec
-/coverage
+# Ignore development files
+/.devcontainer
 
-# IDE・エディタファイル
-*.swp
-*.swo
-*.bak
-*.tmp
-.idea/
-.vscode/
-
+# Ignore Docker-related files
+/.dockerignore
+/Dockerfile*

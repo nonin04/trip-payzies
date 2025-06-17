@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Kanit&family=Rubik+Mono+One&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-secondary: "Dela Gothic One", "sans-serif";
+  --font-for-icon: "Rubik Mono One", monospace;
+
+  /* ------- 背景色 ------- */
+  --color-panel-sky: #b4d5de;
+  --color-panel-brown: #C3A47B;
+  --color-panel-navy: #102E4A;
+  --color-panel-gray: #484848;
+
+  /* ------- ボタン系 ------- */
+  --color-action-yellow: #F9FF40;
+  --color-theme-brown: #C3A47B;
+  --color-primary-blue-100: #0A9EFB;
+  --color-primary-blue-200: #0C81CA;
+  --color-primary-red: #f24822;
+
+  /* ------- フォーム系 ------- */
+  --color-form-gray: #F3F3F3;
+}
+
+.btn {@apply
+  bg-primary-blue-100 text-white font-bold py-1 px-14 rounded text-center cursor-pointer 
+}
+
+.btn-cancel {@apply
+  bg-gray-400 text-white font-bold rounded text-center cursor-pointer  
+}
+
+.btn-submit {@apply
+  bg-primary-blue-100 text-white font-bold rounded text-center cursor-pointer 
+}
+
+
+.page-width{@apply
+    bg-form-gray sm:w-full md:w-1/2 xl:w-1/3 mx-auto
+}
+
+.form-style {@apply 
+  bg-gray-100 px-3 py-2 font-normal text-sm rounded-md border border-gray-100 w-full
+  placeholder:text-gray-300 placeholder:font-normal
+  focus:bg-gray-50 focus:border-gray-300 focus:outline-none
+  transition duration-300 
+}
+
+.form-style-2 {@apply 
+  bg-gray-100 px-3 py-1 font-normal rounded-md border border-gray-100 w-full
+  placeholder:text-gray-300 placeholder:font-normal
+  focus:bg-gray-50 focus:border-gray-300 focus:outline-none
+  transition duration-300 
+}
+
+.select-style {@apply 
+  bg-white px-3 py-2 font-normal text-sm rounded-md border border-gray-100 w-full
+  placeholder:font-normal
+  focus:bg-gray-50 focus:border-gray-300 focus:outline-none
+  transition duration-300 
+}
+
+.humberger-menu {@apply
+  text-black rounded bg-white
+  transition duration-300 
+  cursor-pointer
+}
+
+.devise-form-label {@apply
+  block text-gray-500 py-1
+}
+
+.card-style {@apply
+  mx-4 rounded-md bg-white 
+}
+
+.shadow-primary{@apply
+  shadow-[4px_4px_rgba(0,0,0,0.5)]
+  transition duration-300 ease-in-out transform hover:translate-y-[4px] hover:translate-x-[3px]
+  hover:shadow-none
+}
+
+.shadow-secondary{@apply
+  shadow-[3px_3px_rgba(0,0,0,0.5)]
+  transition duration-300 ease-in-out transform hover:translate-y-[3px] hover:translate-x-[2px]
+  hover:shadow-none
+}
+
+.shadow-for-lp{@apply
+  shadow-[4px_4px_rgba(255,255,255,0.2)]
+  transition duration-200 ease-in-out transform hover:translate-y-[3px] hover:translate-x-[3px]
+  hover:shadow-none
+}
+
+.-no-interact{@apply
+  pointer-events-none
+  select-none
+
+}

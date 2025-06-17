@@ -1,0 +1,42 @@
+<div class="relative mb-4 py-2 card-style  <%= mode == :index ? 'shadow-primary' : '' %>">
+  <div class="absolute left-0 top-0 h-full w-2 rounded-l bg-theme-brown"></div>
+
+  <div class="flex items-start justify-between pl-5 pr-3 py-1">
+    <h2 class="font-semibold text-xl"><%=trip.title %></h2>
+    
+    <%# modeで編集、削除やカードのボタンレイアウトの切り替え %>
+    <% if mode == :index %>
+      <div class="px-3 pt-0.5">
+        <%= inline_svg("svg/navigation-arrow.svg", class: "w-4", draggable:"false") %>
+      </div>
+    <% elsif mode == :show %>
+      <div class="flex  pl-5">
+        <%= link_to edit_trip_path(trip) do %>
+          <%= inline_svg("svg/edit2.svg", class: "w-[28px] h-[28px] px-0.5 py-0.5 rounded-md text-white bg-gray-500 shadow-secondary mx-1", draggable:"false") %>
+        <% end %>
+        <%= link_to trip_path(trip), data: {turbo_method: :delete, turbo_confirm: "旅行を削除しますか？"} do %>
+          <%= inline_svg("svg/delete2.svg", class: "w-[28px] h-[28px] px-0.5 py-0.5 rounded-md text-white bg-gray-500 shadow-secondary mx-1", draggable:"false") %>
+        <% end %>
+      </div>
+    <% elsif mode == :result %>
+    <% end %>
+  </div>
+
+  <section class="flex items-center">
+    <% if trip.group.present? %>
+      <img class="h-7 pl-5 pr-2" src="/group-icon.jpg" alt="">
+      <p class="pr-10"><%= trip.group.name %></p>
+    <% else %>
+      <img class="h-7 pl-5 pr-2" src="/group-icon.jpg" alt="">
+      <p class="pr-10">一時グループ</p>
+    <% end %>
+  </section>
+
+  <div class="pl-6 pr-4 pt-6 flex items-center justify-between">
+    <p class="text-gray-400 font-mono"><%= trip.departure_date.strftime("%Y/%m/%d") + "~" %></p>
+    <% status_color = trip.settled? ? 'bg-gray-400' : 'bg-primary-red' %>
+    <p class="px-6 py-0.5 text-xs text-white rounded-sm <%= status_color %>">
+      <%= t("activerecord.attributes.trip.settlement_status.#{trip.settlement_status}")%>
+    </p>
+  </div>
+</div>

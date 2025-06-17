@@ -1,17 +1,62 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TripPayzies</title>
+    <meta charset="UTF-8">
+    <title><%= content_for?(:title) ? yield(:title) + " | Trip-payzies(トリップペイジーズ)" : "Trip-payzies(トリップペイジーズ)" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application.tailwind", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= yield :head %>
 
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/images/svg/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+
+    <%# iconfy[アイコンパック]を導入 %> 
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <%= javascript_include_tag "first", type: "module" %>
+    <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
-  </body>
-</html>
+  
+  <body class="bg-[url('/images/background2.png')] bg-cover h-full">
+    <% unless controller.controller_name == "homes" %>
+      <div class="@container relative h-screen flex flex-col page-width">
+        <% unless devise_controller? %>
+          <%= render 'layouts/sidebar' %>
+        <%end%>
+        <header class="z-30 h-15 flex justify-between bg-panel-navy">
+              <%= render 'layouts/header'%>
+        </header>
 
+        <main class=" bg-form-gray flex-1 min-h-0 flex flex-col border-y-form-gray">
+          <%# flashメッセージの分岐%>
+          <div data-controller="flash" 
+               data-flash-target="message" 
+               class="-translate-y-full transition-transform transform duration-700">
+            <% if notice.present? %>
+              <p class="notice z-10 bg-primary-blue-100 text-white text-sm"><%= notice %></p>
+            <% elsif alert.present? %>
+              <p class="alert z-10 bg-primary-red text-white text-sm"><%= alert %></p>
+            <% end %>
+          </div>
+
+          <%= yield %>
+
+        </main>
+
+        <footer class="z-30 h-10 flex items-center bg-panel-gray justify-center">
+              <%= render 'layouts/footer'%>
+        </footer>
+
+      </div>
+    <% else %><%# home#indexのみ %>
+      <%= yield %> 
+    <% end %>
+  </body>
+
+
+</html>
