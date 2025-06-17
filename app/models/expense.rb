@@ -20,4 +20,5 @@ class Expense < ApplicationRecord
       errors.add(:base, "対象者を一人以上設定してください")
     end
   end
+
 end

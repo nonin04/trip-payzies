@@ -15,6 +15,11 @@ class Trip < ApplicationRecord
   validate :must_have_participant_at_least_one
 
   before_validation :set_default_status
+  
+  
+  def reset_settlement_status
+    trip.unsettled! if trip.settled?
+  end
 
   private
 
