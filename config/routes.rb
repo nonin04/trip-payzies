@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     member do
       get :result
       patch :settle
+      patch :unsettle
     end
     # 立替(複数,個別管理)
     resources :expenses, only: [ :show, :new, :create, :edit, :update, :destroy ]
