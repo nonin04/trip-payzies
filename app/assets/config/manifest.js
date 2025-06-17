@@ -5,4 +5,4 @@
 
 //= link_tree ../../../vendor/javascript .js
 
-//= link favicon/site.webmanifest
+//= link images/favicon/site.webmanifest
