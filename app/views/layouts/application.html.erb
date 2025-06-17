@@ -11,8 +11,14 @@
     <%= yield :head %>
 
     <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/images/svg/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
+
+    <link rel="icon" type="image/png" href="/images/app-icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/images/app-icons/favicon.svg" />
+    <link rel="shortcut icon" href="/images/app-icons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/app-icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Trip-Payzies" />
+    <link rel="manifest" href="/images/app-icons/site.webmanifest" />
+    
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
 
     <%# iconfy[アイコンパック]を導入 %> 
