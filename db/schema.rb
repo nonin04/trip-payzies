@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_06_07_015320) do
+ActiveRecord::Schema[7.2].define(version: 2025_06_15_033146) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,6 +46,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_06_07_015320) do
     t.bigint "participant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "amount", default: 0, null: false
     t.index ["expense_id", "participant_id"], name: "index_advance_payments_on_expense_id_and_participant_id", unique: true
     t.index ["expense_id"], name: "index_advance_payments_on_expense_id"
     t.index ["participant_id"], name: "index_advance_payments_on_participant_id"

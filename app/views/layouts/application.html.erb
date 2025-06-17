@@ -28,19 +28,19 @@
         <% unless devise_controller? %>
           <%= render 'layouts/sidebar' %>
         <%end%>
-        <header class="z-30 h-15 bg-panel-navy flex items-center justify-between border-2 border-black">
+        <header class="z-30 h-15 flex justify-between bg-panel-navy">
               <%= render 'layouts/header'%>
         </header>
 
-        <main class=" bg-form-gray flex-1 min-h-0 flex flex-col border-x-2  border-x-black border-y-form-gray">
+        <main class=" bg-form-gray flex-1 min-h-0 flex flex-col border-y-form-gray">
           <%# flashメッセージの分岐%>
           <div data-controller="flash" 
                data-flash-target="message" 
                class="-translate-y-full transition-transform transform duration-700">
             <% if notice.present? %>
-              <p class="notice z-10 bg-primary-blue-100 text-white text-sm border-b-2 border-b-black"><%= notice %></p>
+              <p class="notice z-10 bg-primary-blue-100 text-white text-sm"><%= notice %></p>
             <% elsif alert.present? %>
-              <p class="alert z-10 bg-primary-red text-white text-sm border-b-2 border-b-black"><%= alert %></p>
+              <p class="alert z-10 bg-primary-red text-white text-sm"><%= alert %></p>
             <% end %>
           </div>
 
@@ -48,7 +48,7 @@
 
         </main>
 
-        <footer class="z-30 h-10 flex items-center justify-center bg-panel-navy border-2 border-black">
+        <footer class="z-30 h-10 flex items-center bg-panel-gray justify-center">
               <%= render 'layouts/footer'%>
         </footer>
 

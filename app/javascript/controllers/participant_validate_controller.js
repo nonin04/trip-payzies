@@ -26,6 +26,7 @@ export default class extends Controller {
       this.setFlashEl("※保存に失敗しました")
     }
     else {
+      this.submitBtnTarget.disabled = true
       this.formTarget.submit()
     }
   }

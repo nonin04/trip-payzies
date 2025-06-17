@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-  before_action :set_trip, only: [ :show, :edit, :update, :destroy, :result, :settle ]
+  before_action :set_trip, only: [ :show, :edit, :update, :destroy, :result, :settle, :unsettle ]
 
   def index
     @trips = current_user.trips.order(departure_date: :desc)
@@ -7,7 +7,7 @@ class TripsController < ApplicationController
 
   def show
     @participants = @trip.participants
-    @expenses = @trip.expenses.includes(:payer)
+    @expenses = @trip.expenses.includes(:payer).order(payment_date: :desc)
   end
 
   def new
@@ -45,11 +45,21 @@ class TripsController < ApplicationController
   end
 
   def result
+    @settlements = SettlementMatcher.new(@trip).grouped_settlements
   end
 
   def settle
     if @trip.update(settlement_status: :settled)
-       redirect_to trip_path(@trip), notice: "精算が完了しました"
+       redirect_to trip_path(@trip), notice: "精算状況：精算済みに変更しました"
+    else
+      flash.now[:alert] = "ステータスを更新できませんでした。"
+      render :result, status: :unprocessable_entity
+    end
+  end
+
+  def unsettle
+    if @trip.update(settlement_status: :unsettled)
+       redirect_to trip_path(@trip), notice: "精算状況：未精算に変更しました"
     else
       flash.now[:alert] = "ステータスを更新できませんでした。"
       render :result, status: :unprocessable_entity
