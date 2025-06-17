@@ -18,7 +18,7 @@ class Trip < ApplicationRecord
   
   
   def reset_settlement_status
-    trip.unsettled! if trip.settled?
+    self.unsettled! if self.settled?
   end
 
   private
