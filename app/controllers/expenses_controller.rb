@@ -14,6 +14,8 @@ class ExpensesController < ApplicationController
 
     if @expense.save
       ExpenseAmountDistributor.new(@expense).call
+      @trip.reset_settlement_status
+      
       redirect_to trip_path(@trip), notice: "立替記録を保存しました"
     else
       flash.now[:alert] = "保存に失敗しました: #{@expense.errors.full_messages.join(', ')}"
@@ -30,6 +32,7 @@ class ExpensesController < ApplicationController
 
     if @expense.update(expense_params)
       ExpenseAmountDistributor.new(@expense).call
+      @trip.reset_settlement_status
 
       flash[:notice] = "更新しました。"
       redirect_to trip_path(@trip)
