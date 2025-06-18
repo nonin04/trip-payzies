@@ -10,6 +10,8 @@
 
     <%= yield :head %>
 
+    <%= render 'layouts/og_image' %>
+
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="/images/svg/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
@@ -22,7 +24,7 @@
   </head>
 
   
-  <body class="bg-[url('/images/background2.png')] bg-cover h-full">
+  <body class="bg-[url('/images/background2.png')] bg-cover h-full" data-controller="sidebar">
     <% unless controller.controller_name == "homes" %>
       <div class="@container relative h-screen flex flex-col page-width">
         <% unless devise_controller? %>
@@ -32,7 +34,7 @@
               <%= render 'layouts/header'%>
         </header>
 
-        <main class=" bg-form-gray flex-1 min-h-0 flex flex-col border-y-form-gray">
+        <main class=" bg-form-gray flex-1 min-h-0 flex flex-col border-y-form-gray" data-sidebar-target="mainEl">
           <%# flashメッセージの分岐%>
           <div data-controller="flash" 
                data-flash-target="message" 

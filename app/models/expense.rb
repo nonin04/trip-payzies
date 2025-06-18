@@ -11,9 +11,18 @@ class Expense < ApplicationRecord
   validates :amount, presence: true, numericality: { only_integer: true, greater_than: 0, less_than: 1_000_000 }
   validates :payer, presence: true
 
+  validate :owed_particpants_must_belongs_to_expense
   validate :must_have_owed_participants_at_least_one
 
   private
+
+  def owed_particpants_must_belongs_to_expense
+    advance_payments.each do |ap|
+      if !trip.participant_ids.include?(ap.participant_id)
+        errors.add(:base, "この旅行の参加者以外は選択できません")
+      end
+    end
+  end
 
   def must_have_owed_participants_at_least_one
     if advance_payments.empty?
