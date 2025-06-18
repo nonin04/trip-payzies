@@ -28,7 +28,7 @@ class Trip < ApplicationRecord
   end
 
   def must_have_participant_at_least_one
-    if participants.empty?
+    if participants.reject(&:marked_for_destruction?).empty?
       errors.add(:participants, "参加者を一人以上設定していください")
     end
   end
