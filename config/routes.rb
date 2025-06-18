@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :expenses, only: [ :show, :new, :create, :edit, :update, :destroy ]
 
     # 参加者(単数,一括管理)
-    resource :participants, only: [ :new, :create, :update, :destroy ]
+    resource :participants, only: [ :new, :create, :destroy ]
   end
 
 
