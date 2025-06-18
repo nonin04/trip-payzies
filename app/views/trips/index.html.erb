@@ -1,23 +1,30 @@
+<% content_for(:title, "TOP") %>
+
+<%# ページ案内 ------------------ %>
 <h1 class="mt-2 my-2 text-xl font-bold w-full text-center">TOP / 旅行一覧</h1>
+
+<%# 旅行カード ------------------ %>
 <% if @trips.present? %>
+<%# 旅行あれば表示 %>
   <div class="flex-1 min-h-0 overflow-y-auto flex flex-col">
       <% @trips.each do |trip|%>
-        <%= link_to trip_path(trip) do %>
+        <%= link_to trip_path(trip), class:"mx-4 mb-4" do %>
           <%= render 'trips/trip_card', trip: trip, mode: :index %>
         <% end %>
       <% end %>
   </div>
+
 <% else %>
+<%# なければ画像表示 %>
   <div class="flex-1 min-h-0 pt-40">
     <img class="h-4/5 object-contain mx-auto items-center" src="welcome.png" alt="" draggable="false">
   </div>
 <% end %>
 
+<%# 仕切り線とボタン ------------------ %>
 <div class="mx-4 my-3">
-  <div class="h-1 bg-panel-navy"></div>
-  <%= link_to new_trip_path do %>
-    <div class="mt-2 rounded-md bg-action-yellow py-2 shadow-primary">
-      <p class="text-gray-700 text-2xl text-center font-bold">旅行記録を作成</p>
-    </div>
+  <div class="h-1 bg-gray-400 rounded-full"></div>
+  <%= link_to new_trip_path, class:"block mt-2 rounded-md bg-action-yellow py-2 shadow-primary" do %>
+      <span class="text-gray-700 text-2xl flex justify-center font-bold w-full h-full">旅行記録を作成</span>
   <% end %>
 </div>
