@@ -9,7 +9,7 @@
 </section>
 
 <%# 旅行カード ------------------ %>
-<section class="mx-4">
+<section>
   <%= render 'trips/trip_card', trip: @trip, mode: :show %>
 </section>
 
@@ -34,7 +34,7 @@
   <% if @expenses.present? %>
   <%# 立替あれば表示 %>
     <% @expenses.each do |expense|%>
-      <%= link_to trip_expense_path(@trip, expense), class:"mx-4 mb-4" do %>
+      <%= link_to trip_expense_path(@trip, expense), class:"mb-4" do %>
         <%= render 'expenses/expense_card', expense: expense %>
       <% end %>
     <% end %>
