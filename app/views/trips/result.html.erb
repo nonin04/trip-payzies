@@ -66,7 +66,7 @@
       <%= form_with url: unsettle_trip_path(@trip), method: :patch, data:{confirm: "旅行を未精算に変更しますか？"}, class:"w-full ml-4" do %>
         <button type="submit" class="mt-2 rounded-md bg-primary-red py-2 shadow-primary w-full text-2xl flex items-center justify-center">
           <span class="text-white text-center font-bold">未精算にする</span>
-          <%= inline_svg("svg/reset.svg", class:"w-[34px] ml-2 text-white") %>
+          <%= inline_svg("svg/reset.svg", class:"w-[32px] ml-2 text-white") %>
           </button>
       <% end %>
     <% end %>
