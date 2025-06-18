@@ -1,9 +1,16 @@
+<% content_for(:title, "立替記録作成") %>
+
 <div data-controller="expense-validate" class="flex flex-col h-full">
-  <%# stimulus用フラッシュエラーメッセージ %>
+
+  <%# stimulus用フラッシュエラーメッセージ ------------------ %>
   <div data-expense-validate-target="flashError" class="-translate-y-full transition-transform transform duration-700">
     <p class="z-10 bg-primary-red text-white text-sm"></p>
   </div>
+
+  <%# ページ案内 ------------------ %>
   <h1 class="mt-2 my-2 text-xl font-bold w-full text-center">立替記録作成</h1>
+
+  <%# フォーム & ボタン ------------------ %>
   <%= render 'expenses/expense_form'%>
 </div>
 

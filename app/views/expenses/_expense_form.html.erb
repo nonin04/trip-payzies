@@ -1,9 +1,10 @@
 <%= form_with model: [@trip, @expense], local: true, html: {class:"flex flex-col flex-1 min-h-0", data:{"expense-validate-target": "form"}} do |e| %>
-  <%# カード1 %>
-  <div class="relative mb-4 card-style">
+  <%# カード1 ------------- %>
+  <div class="relative mb-4 card-style mx-4">
     <div class="absolute top-0 left-0 h-full w-2 bg-panel-navy rounded-l"></div>
 
     <div class="flex flex-col w-full py-3 px-4">
+
         <%# 決済者 %>
         <section class="mt-2 flex flex-col w-full pr-4">
           <div class="flex items-center">
@@ -12,6 +13,7 @@
           </div>
           <p class="text-red-500 text-xs pb-0.5 ml-[60px] pl-2 h-2" data-expense-validate-target="payerErrorMessage"></p>
         </section>
+
         <%# 項目 %>
         <section class="mt-2 flex flex-col w-full pr-4">
           <div class="flex items-center">
@@ -20,6 +22,7 @@
           </div>
           <p class="text-red-500 text-xs pb-0.5 ml-[60px] pl-2 h-2" data-expense-validate-target="titleErrorMessage"></p>
         </section>
+
         <%# 金額 %>
         <section class="mt-2 flex flex-col w-full pr-4">
           <div class="flex items-center">
@@ -33,9 +36,10 @@
   </div>
 
 
-  <%# カード2 %>
-  <div class="relative mb-4 card-style">
+  <%# カード2 ------------- %>
+  <div class="relative mb-4 card-style mx-4">
     <div class="flex flex-col w-full py-3 px-4">
+
       <%# 日付 %>
       <section class="mt-3 flex flex-col w-full pr-4">
         <div class="flex items-center">
@@ -44,6 +48,7 @@
         </div>
         <p class="text-primary-red text-xs pb-0.5 ml-[60px] pl-2 h-2" data-expense-validate-target="dateErrorMessage"></p>
       </section>
+
       <%# 場所 %>
       <section class="my-3 flex flex-col w-full pr-4">
         <div class="flex items-center">
@@ -51,6 +56,7 @@
           <%= e.text_field :place, placeholder: "例: 京都,清水寺", class:"flex-1 form-style" %>
         </div>
       </section> 
+
       <%# メモ %>
       <section class="my-3 flex flex-col w-full pr-4">
         <div class="flex">
@@ -61,9 +67,10 @@
     </div>
   </div>
 
-  <%# カード3 %>
-  <div class="mb-4 card-style flex flex-col flex-1 overflow-y-auto" data-expense-validate-target="owedEl">
+  <%# カード3 ------------- %>
+  <div class="mb-4 card-style mx-4 flex flex-col flex-1 overflow-y-auto" data-expense-validate-target="owedEl">
     <div class="flex flex-col w-full py-3 px-4">
+
       <%#  対象者%>
       <div class="mt-2 flex flex-col w-full pr-4">
         <p class="font-bold w-[60px] text-right">対象者:</p>
@@ -88,12 +95,9 @@
     </div>
   </div>
 
+  <%# ボタン類 ------------- %>
   <section class="flex px-4 py-4">
-    <div class="w-1/2 mx-6 py-2 btn-cancel shadow-primary">
-      <%= link_to "キャンセル", trip_path(@trip), class:"h-full w-full" %>
-    </div>
-    <div class="w-1/2 mx-6 py-2  btn-submit shadow-primary" >
-      <button class="h-full w-full" data-expense-validate-target="submitBtn" data-action="click->expense-validate#submit"><%= action_name == "new" ? "保存" : "更新" %></button>
-    </div>
+      <%= link_to "キャンセル", trip_path(@trip), class:"w-1/2 mx-6 py-2 btn-cancel shadow-primary" %>
+      <button data-expense-validate-target="submitBtn" data-action="click->expense-validate#submit" class="w-1/2 mx-6 py-2 btn-submit shadow-primary"><%= action_name == "new" ? "保存" : "更新" %></button>
   </section>
 <% end %>
