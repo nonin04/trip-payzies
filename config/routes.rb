@@ -17,11 +17,12 @@ Rails.application.routes.draw do
       patch :settle
       patch :unsettle
     end
+
     # 立替(複数,個別管理)
     resources :expenses, only: [ :show, :new, :create, :edit, :update, :destroy ]
 
     # 参加者(単数,一括管理)
-    resource :participants, only: [ :new, :create, :edit, :update, :destroy ]
+    resource :participants, only: [ :new, :create, :update, :destroy ]
   end
 
 

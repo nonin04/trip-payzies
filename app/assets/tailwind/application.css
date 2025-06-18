@@ -74,7 +74,7 @@
 }
 
 .card-style {@apply
-  mx-4 rounded-md bg-white 
+ rounded-md bg-white 
 }
 
 .shadow-primary{@apply
