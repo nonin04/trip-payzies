@@ -8,7 +8,7 @@
 <%# 旅行あれば表示 %>
   <div class="flex-1 min-h-0 overflow-y-auto flex flex-col">
       <% @trips.each do |trip|%>
-        <%= link_to trip_path(trip), class:"mx-4 mb-4" do %>
+        <%= link_to trip_path(trip), class:"mb-4" do %>
           <%= render 'trips/trip_card', trip: trip, mode: :index %>
         <% end %>
       <% end %>
