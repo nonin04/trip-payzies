@@ -1,11 +1,16 @@
 class TripsController < ApplicationController
-  before_action :set_trip, only: [ :show, :edit, :update, :destroy, :result, :settle, :unsettle ]
+  before_action :set_trip, only: [ :show, :test, :edit, :update, :destroy, :result, :settle, :unsettle ]
 
   def index
     @trips = current_user.trips.order(departure_date: :desc)
   end
 
   def show
+    @participants = @trip.participants
+    @expenses = @trip.expenses.includes(:payer).order(payment_date: :desc)
+  end
+
+  def test
     @participants = @trip.participants
     @expenses = @trip.expenses.includes(:payer).order(payment_date: :desc)
   end
