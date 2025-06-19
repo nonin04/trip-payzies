@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :trips do
     # 精算画面・処理
     member do
+      get :test
       get :result
       patch :settle
       patch :unsettle
