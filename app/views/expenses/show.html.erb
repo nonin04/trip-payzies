@@ -8,55 +8,57 @@
   <h1 class="mt-2 my-2 text-xl font-bold w-full text-center">立替詳細</h1>
 </div>
 
-<%# 立替カード ------------------ %>
-<div class="relative card-style mx-4 py-2">
-  <div class="absolute left-0 top-0 h-full w-2 bg-panel-navy rounded-l"></div>
-    <div class="pl-6">
-      <%# 立替タイトルと削除編集アイコン %>
-      <div class="flex items-center justify-between pr-3 py-1">
-        <p class="font-semibold text-xl"><%= @expense.title %></p>
-        <%# 編集、削除ボタン %>
-        <div class="flex pl-5">
-          <%= link_to edit_trip_expense_path(@trip, @expense), class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-gray-500 shadow-secondary text-white" do %>
-            <%= inline_svg("svg/edit2.svg", draggable:"false") %>
-          <% end %>
-          <%= link_to trip_expense_path(@trip, @expense), data: {turbo_method: :delete, turbo_confirm: "立替記録を削除しますか？"}, class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-gray-500 shadow-secondary text-white" do %>
-            <%= inline_svg("svg/delete2.svg", draggable:"false") %>
-          <% end %>
+
+<div class="overflow-y-auto">
+  <%# 立替カード ------------------ %>
+  <div class="relative card-style mx-4 py-2">
+    <div class="absolute left-0 top-0 h-full w-2 bg-panel-navy rounded-l"></div>
+      <div class="pl-6">
+        <%# 立替タイトルと削除編集アイコン %>
+        <div class="flex items-center justify-between pr-3 py-1">
+          <p class="font-semibold text-xl"><%= @expense.title %></p>
+          <%# 編集、削除ボタン %>
+          <div class="flex pl-5">
+            <%= link_to edit_trip_expense_path(@trip, @expense), class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-gray-500 shadow-secondary text-white" do %>
+              <%= inline_svg("svg/edit2.svg", draggable:"false") %>
+            <% end %>
+            <%= link_to trip_expense_path(@trip, @expense), data: {turbo_method: :delete, turbo_confirm: "立替記録を削除しますか？"}, class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-gray-500 shadow-secondary text-white" do %>
+              <%= inline_svg("svg/delete2.svg", draggable:"false") %>
+            <% end %>
+          </div>
         </div>
-      </div>
-      <%# 金額 & 決済者情報 %>
-      <p class="font-semibold text-2xl">¥<%= number_with_delimiter(@expense.amount) %></p>
-      <p class="pt-8 text-lg">by <%= @expense.payer.name %></p>
+        <%# 金額 & 決済者情報 %>
+        <p class="font-semibold text-2xl">¥<%= number_with_delimiter(@expense.amount) %></p>
+        <p class="pt-8 text-lg">by <%= @expense.payer.name %></p>
+    </div>
   </div>
-</div>
 
-<%# 決済日カード ------------------ %>
-<div class="card-style mx-4 my-4 py-3 px-4 flex items-center">
-  <p class="text-lg font-bold">決済日: <%= @expense.payment_date.strftime( '%Y / %m / %d') %></p>
-</div>
-
-<%# サブ情報カード ------------------ %>
-<div class="card-style mx-4 py-3 pl-4 pr-8">
-  <div class="flex py-2 w-full">
-    <p class="font-bold"> 場所： </p>
-    <p class=""><%= @expense.place %></p>
+  <%# 決済日カード ------------------ %>
+  <div class="card-style mx-4 my-4 py-3 px-4 flex items-center">
+    <p class="text-lg font-bold">決済日: <%= @expense.payment_date.strftime( '%Y / %m / %d') %></p>
   </div>
-  <div class="flex py-2 w-full">
-    <p class="font-bold"> メモ： </p>
-    <p class="flex-1 text-sm font-thin"><%= @expense.memo %></p>
-  </div>
-</div>
 
-<%# サブ案内 ------------------ %>
-<h2 class="mx-6 my-1.5 font-bold">対象者 | 負担額</h2>
+  <%# サブ情報カード ------------------ %>
+  <div class="card-style mx-4 py-3 pl-4 pr-8">
+    <div class="flex py-2 w-full">
+      <p class="font-bold"> 場所： </p>
+      <p class=""><%= @expense.place %></p>
+    </div>
+    <div class="flex py-2 w-full">
+      <p class="font-bold"> メモ： </p>
+      <p class="flex-1 text-sm font-thin"><%= @expense.memo %></p>
+    </div>
+  </div>
+
+  <%# サブ案内 ------------------ %>
+  <h2 class="mx-6 mt-2 font-bold">対象者 | 負担額</h2>
 
 <%# 負担額カード ------------------ %>
-<div class="card-style mx-4 py-2 mb-4 pl-6 overflow-y-auto">
+<div class="card-style mx-4 py-2 mb-4 pl-6">
   <% @advance_payments.each do |owed_participant| %>
-    <div class="flex text-lg">
+    <div class="flex">
       <%# 名前 %>
-      <li class="w-2/3"><%= owed_participant.participant.name %></li>
+      <li class="w-2/3 my-1"><%= owed_participant.participant.name %></li>
       <%# 区切り線 & 金額 %>
       <div class="flex">
         <div class="w-0.5 mr-5 bg-black"></div>

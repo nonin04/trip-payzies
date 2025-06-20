@@ -5,7 +5,7 @@ begin
 
 
 userA = User.create!(
-    name: "test_user",
+    name: "私はバリデーションの大魔王様だ",
     email: "example@email.com",
     password: "password"
   )
