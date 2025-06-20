@@ -27,20 +27,28 @@ class ExpensesController < ApplicationController
   end
 
   def update
-    # advance_paymentsは新しく送られてきたパラメータで再作成する
-    @expense.advance_payments.destroy_all
+    success = false
+    ActiveRecord::Base.transaction do
+      # advance_paymentsは新しく送られてきたパラメータで再作成する
+      @expense.advance_payments.destroy_all
+      if @expense.update(expense_params)
+        ExpenseAmountDistributor.new(@expense).call
+        @trip.reset_settlement_status
+        success = true
+      else
+        raise ActiveRecord::Rollback
+      end
+    end
 
-    if @expense.update(expense_params)
-      ExpenseAmountDistributor.new(@expense).call
-      @trip.reset_settlement_status
-
+    if success
       flash[:notice] = "更新しました。"
       redirect_to trip_path(@trip)
     else
-      flash.now[:alert] = @expense.errors.full_messages
+      flash.now[:alert] = "更新に失敗しました。"
       render :edit, status: :unprocessable_entity
     end
   end
+
 
   def destroy
     @expense.destroy

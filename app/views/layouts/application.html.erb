@@ -33,7 +33,7 @@
               <%= render 'layouts/header'%>
         </header>
 
-        <main class=" bg-form-gray flex-1 min-h-0 flex flex-col border-y-form-gray" data-sidebar-target="mainEl">
+        <main class=" bg-form-gray flex-1 min-h-0 flex flex-col border-y-form-gray" data-sidebar-target="mainEl" data-action="click->sidebar#hideSidebar">
           <%# flashメッセージの分岐%>
           <div data-controller="flash" 
                data-flash-target="message" 

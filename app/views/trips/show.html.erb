@@ -8,43 +8,51 @@
   <h1 class="mt-2 my-2 text-xl font-bold w-full text-center">旅行詳細</h1>
 </section>
 
-<%# 旅行カード ------------------ %>
-<section>
-  <%= render 'trips/trip_card', trip: @trip, mode: :show %>
-</section>
+<div class=" flex-1 overflow-y-auto">
+  <%# 旅行カード ------------------ %>
+  <section class="mb-4 mx-4">
+    <%= render 'trips/trip_card', trip: @trip, mode: :show %>
+  </section>
 
-<%# サブ案内 ------------------ %>
-<span class="mx-8 my-1.5 font-bold">参加者</span>
+  <%# サブ案内 ------------------ %>
+  
 
-<%# 参加者カード ------------------ %>
-<section class="py-2 overflow-y-auto flex flex-col card-style mx-4 px-4 max-h-6/20">
-  <ul class="list-disc px-8 text-sm">
-    <% @participants.each do |participant|%>
-    <li><%= participant.name %></li>
-    <% end %>
-  </ul>
-</section>
+  <%# 参加者カード ------------------ %>
+  <section class="mt-4 flex flex-col card-style mx-4" data-controller="accordion">
+    <div class="flex justify-between py-2 cursor-pointer" data-accordion-target="bar" data-action="click->accordion#toggle">
+      <p class="mx-4 font-bold">参加者</p>
+      <%= inline_svg("svg/accordion.svg", class:"w-6 mx-6 transition-transform transform duration-200 text-gray-500", data:{"accordion-target": "icon"}) %>
+    </div>
+    
 
-<%# サブ案内 ------------------ %>
-<span class="mx-8 my-1.5 font-bold">立替一覧</span>
-
-<%# 立替カード一覧 ------------------ %>
-<section class="flex-1 overflow-y-auto flex flex-col">
-
-  <% if @expenses.present? %>
-  <%# 立替あれば表示 %>
-    <% @expenses.each do |expense|%>
-      <%= link_to trip_expense_path(@trip, expense), class:"mb-4" do %>
-        <%= render 'expenses/expense_card', expense: expense %>
+    <ul class="list-disc text-sm px-8 cursor-pointer h-0 transition-all duration-150 overflow-hidden" data-accordion-target="participantsEl" data-action="click->accordion#toggle">
+      <% @participants.each do |participant|%>
+      <li class="pb-2"><%= participant.name %></li>
       <% end %>
+    </ul>
+  </section>
+
+  <%# サブ案内 ------------------ %>
+  <p class="mx-8 mt-2 font-bold">立替一覧</p>
+
+  <%# 立替カード一覧 ------------------ %>
+  <section class="flex-1 flex flex-col">
+
+    <% if @expenses.present? %>
+    <%# 立替あれば表示 %>
+      <% @expenses.each do |expense|%>
+        <%= link_to trip_expense_path(@trip, expense), class:"mb-4" do %>
+          <%= render 'expenses/expense_card', expense: expense %>
+        <% end %>
+      <% end %>
+
+    <% else %> 
+    <%# なければ画像表示 %>
+      <%= inline_svg("svg/no-payment.svg", class:"w-3/5 my-auto mx-auto", draggable:"false") %>
     <% end %>
 
-  <% else %> 
-  <%# なければ画像表示 %>
-    <%= inline_svg("svg/no-payment.svg", class:"w-3/5 my-auto mx-auto", draggable:"false") %>
-  <% end %>
-
-</section>
+  </section>
+</div>
 
 <%# 仕切り線とボタン ------------------ %>
 <div class="px-4 py-3">
@@ -54,7 +62,7 @@
       <p class="text-gray-700 text-2xl text-center font-bold">立替記録を作成</p>
     <% end %>
     <% if @expenses.present?%>
-      <%= link_to result_trip_path(@trip), class:"w-3/10 ml-4 mt-2 rounded-md bg-primary-red py-2 shadow-primary" do %>
+      <%= link_to result_trip_path(@trip), class:"w-1/3 ml-4 mt-2 rounded-md bg-primary-red py-2 shadow-primary" do %>
         <p class="text-white text-2xl text-center font-bold">精算結果</p>
       <% end %>    
     <% end %>
