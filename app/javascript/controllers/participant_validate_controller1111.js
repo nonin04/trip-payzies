@@ -35,47 +35,26 @@ export default class extends Controller {
     this.validate()
   }
 
-
   validate() {
-    return this.countCheck() || this.lengthCheck() || this.duplicateCheck()
-  }
-
-  countCheck() {
     let hasError = false
+    
+    //一人以上かチェック
     const firstNameInput = this.nameTargets.at(0)
     const firstNameErrorMessage = this.nameErrorMessageTargets.at(0)
-
-    const othertemplates = this.eachTemplateTargets.slice(1)
-
-
     const filledCounts = this.nameTargets.filter(el => el.value.trim())
     if (filledCounts.length === 0) {
       this.addErrorStyle(firstNameInput)
       this.addErrorMessage(firstNameErrorMessage, "※1人以上の参加者を追加してください")
 
-      othertemplates.forEach(f => {
-        const nameInput = f.querySelector('input')
-        const nameErrorMessage = f.querySelector('[data-participant-validate-target="nameErrorMessage"]')
-        this.removeError(nameInput, nameErrorMessage)
-      })
-
       hasError = true
       console.log("0人エラー")
+      return hasError;
     }
 
-    else {
-      this.removeError(firstNameInput, firstNameErrorMessage)
-    }
-
-    return hasError;
-  }
-
-  lengthCheck() {
-    let hasError = false
+    //15字以内かチェック
     this.eachTemplateTargets.forEach(f => {
       const nameInput = f.querySelector('input')
       const nameErrorMessage = f.querySelector('[data-participant-validate-target="nameErrorMessage"]')
-
       if(nameInput.value.trim().length > 15) {
         this.addErrorStyle(nameInput)
         this.addErrorMessage(nameErrorMessage, "※15字以内で入力してください")
@@ -86,11 +65,8 @@ export default class extends Controller {
         this.removeError(nameInput, nameErrorMessage)
       }
     })
-    return hasError;
-  }
 
-  duplicateCheck() {
-    let hasError = false
+    //名前重複チェック
     function isDuplicated(nameInputs) {
       const trimmed = nameInputs.map(name  => name.value.trim()).filter(name => name !== "");
       const setElements = new Set(trimmed);
@@ -105,7 +81,8 @@ export default class extends Controller {
       this.participantCardTarget.classList.remove("!border-red-400")
       this.duplicatedErrorMessageTarget.textContent = ""
     }
-    return hasError
+
+    return hasError;
   }
 
 
