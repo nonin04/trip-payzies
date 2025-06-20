@@ -25,7 +25,7 @@ export default class extends Controller {
 
   openMenu() {
     const mainElChilds = Array.from(this.mainElTarget.children)
-    this.sidebarTarget.style.width = "200px"
+    this.sidebarTarget.style.width = "260px"
     this.sidebarTarget.classList.remove("pointer-events-none")
     mainElChilds.forEach(el => el.classList.add("pointer-events-none"))
   }
