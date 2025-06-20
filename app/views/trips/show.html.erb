@@ -10,24 +10,30 @@
 
 <div class=" flex-1 overflow-y-auto">
   <%# 旅行カード ------------------ %>
-  <section>
+  <section class="mb-4 mx-4">
     <%= render 'trips/trip_card', trip: @trip, mode: :show %>
   </section>
 
   <%# サブ案内 ------------------ %>
-  <p class="mx-6 mt-2 font-bold">参加者</p>
+  
 
   <%# 参加者カード ------------------ %>
-  <section class="py-2 flex flex-col card-style mx-4 px-4">
-    <ul class="list-disc px-8 text-sm">
+  <section class="mt-4 flex flex-col card-style mx-4" data-controller="accordion">
+    <div class="flex justify-between py-2 cursor-pointer" data-accordion-target="bar" data-action="click->accordion#toggle">
+      <p class="mx-4 font-bold">参加者</p>
+      <%= inline_svg("svg/accordion.svg", class:"w-6 mx-6 transition-transform transform duration-200 text-gray-500", data:{"accordion-target": "icon"}) %>
+    </div>
+    
+
+    <ul class="list-disc text-sm px-8 cursor-pointer h-0 transition-all duration-150 overflow-hidden" data-accordion-target="participantsEl" data-action="click->accordion#toggle">
       <% @participants.each do |participant|%>
-      <li><%= participant.name %></li>
+      <li class="pb-2"><%= participant.name %></li>
       <% end %>
     </ul>
   </section>
 
   <%# サブ案内 ------------------ %>
-  <p class="mx-6 mt-2 font-bold">立替一覧</p>
+  <p class="mx-8 mt-2 font-bold">立替一覧</p>
 
   <%# 立替カード一覧 ------------------ %>
   <section class="flex-1 flex flex-col">

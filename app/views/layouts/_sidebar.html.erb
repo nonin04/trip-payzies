@@ -1,12 +1,12 @@
-<aside class="flex flex-col z-20 absolute top-0 right-0 bg-panel-navy h-screen w-[210px] opacity-0 transition-opacity pointer-events-none duration-300 ease-in-out" data-sidebar-target="sidebar">
+<aside class="flex flex-col z-20 absolute top-0 right-0 bg-panel-navy h-screen transition-all w-0 transform pointer-events-none duration-300 ease-in-out overflow-hidden" data-sidebar-target="sidebar">
   <%# header分の余白%>
   <div class="h-15"></div>
 
-  <div class="flex-1 flex flex-col justify-between px-5 py-2">
+  <div class="flex-1 flex flex-col justify-between px-5 py-2 whitespace-nowrap">
 
     <%# ユーザーネームとアイコン %>
     <div class="flex items-center"> 
-      <%= inline_svg("svg/user.svg", class:"h-10 text-white")%>
+      <%= inline_svg("svg/user.svg", class:"h-10 text-white flex-shrink-0")%>
       <span class="text-white mx-2 text-xl"><%= current_user.name %></span>
     </div>
 
@@ -22,7 +22,7 @@
       <%# ログアウト %>
       <%= link_to destroy_user_session_path, class:"flex items-center justify-center cursor-pointer", data: {turbo_method: :delete, turbo_confirm: "ログアウトしますか？"} do %>
         <p class="text-white text-lg mx-1">ログアウト</p>
-        <%= inline_svg("svg/logout.svg", class:"h-7 text-white")%>
+        <%= inline_svg("svg/logout.svg", class:"h-7 text-white flex-shrink-0")%>
       <% end %>
     </div>
 
