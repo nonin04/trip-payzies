@@ -25,7 +25,7 @@
       <button data-trip-validate-target="toggleBtn" data-action="click->trip-validate#changeForm" type="button" class="w-1/2 mx-6 py-2  btn-submit shadow-primary">次へ</button>
       <%# step2時のボタン %>
       <button data-trip-validate-target="toggleBtn" data-action="click->trip-validate#changeForm" type="button" class="hidden w-1/2 mx-6 py-2 btn-cancel shadow-primary">戻る</button>
-      <button data-trip-validate-target="toggleBtn" data-participant-validate-target="submitBtn" data-action="click->participant-validate#submit" class="hidden w-1/2 mx-6 py-2 btn-submit shadow-primary">保存</button>
+      <%= f.submit "保存",data: {"trip-validate-target" => "toggleBtn", "participant-validate-target" => "submitBtn", action: "click->participant-validate#submit"}, class: "hidden w-1/2 mx-6 py-2 btn-submit shadow-primary" %>
     </section>
   <% end %>
 </div>
