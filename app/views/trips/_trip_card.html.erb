@@ -45,7 +45,7 @@
   <div class="pl-6 pr-4 pt-6 flex items-center justify-between">
     <p class="text-gray-400 font-mono"><%= trip.departure_date.strftime("%Y/%m/%d") + "~" %></p>
     <% status_color = trip.settled? ? 'bg-gray-400' : 'bg-primary-red' %>
-    <p class="px-6 py-0.5 text-xs text-white rounded-sm <%= status_color %>">
+    <p class="w-20 py-0.5 text-xs text-center text-white rounded-sm <%= status_color %>">
       <%= t("activerecord.attributes.trip.settlement_status.#{trip.settlement_status}")%>
     </p>
   </div>
