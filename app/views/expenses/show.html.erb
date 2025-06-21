@@ -12,11 +12,11 @@
 <div class="overflow-y-auto">
   <%# 立替カード ------------------ %>
   <div class="relative card-style mx-4 py-2">
-    <div class="absolute left-0 top-0 h-full w-2 bg-panel-navy rounded-l"></div>
+    <div class="absolute left-0 top-0 h-full w-2 accent-navy rounded-l"></div>
       <div class="pl-6">
         <%# 立替タイトルと削除編集アイコン %>
         <div class="flex items-center justify-between pr-3 py-1">
-          <p class="font-semibold text-xl"><%= @expense.title %></p>
+          <p class="font-semibold text-lg"><%= @expense.title %></p>
           <%# 編集、削除ボタン %>
           <div class="flex pl-5">
             <%= link_to edit_trip_expense_path(@trip, @expense), class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-gray-500 shadow-secondary text-white" do %>
@@ -29,13 +29,13 @@
         </div>
         <%# 金額 & 決済者情報 %>
         <p class="font-semibold text-2xl">¥<%= number_with_delimiter(@expense.amount) %></p>
-        <p class="pt-8 text-lg">by <%= @expense.payer.name %></p>
+        <p class="pt-4 text-lg">by <%= @expense.payer.name %></p>
     </div>
   </div>
 
   <%# 決済日カード ------------------ %>
   <div class="card-style mx-4 my-4 py-3 px-4 flex items-center">
-    <p class="text-lg font-bold">決済日: <%= @expense.payment_date.strftime( '%Y / %m / %d') %></p>
+    <p class="font-bold">決済日: <%= @expense.payment_date.strftime( '%Y/%m/%d') %></p>
   </div>
 
   <%# サブ情報カード ------------------ %>

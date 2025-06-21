@@ -23,8 +23,6 @@
 
 <%# 仕切り線とボタン ------------------ %>
 <div class="mx-4 my-3">
-  <div class="h-1 bg-gray-400 rounded-full"></div>
-  <%= link_to new_trip_path, class:"block mt-2 rounded-md bg-action-yellow py-2 shadow-primary" do %>
-      <span class="text-gray-700 text-2xl flex justify-center font-bold w-full h-full">旅行記録を作成</span>
-  <% end %>
+  <div class="separator"></div>
+  <%= link_to "旅行記録を作成", new_trip_path, class:"w-full main_action_btn text-gray-700 bg-action-yellow" %>
 </div>
