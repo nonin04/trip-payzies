@@ -101,9 +101,9 @@ export default class extends Controller {
       this.addErrorMessage(titleErrorMessage, "※入力必須です")
       hasError = true;
     } 
-    else if (titleInput.value.length > 20) {
+    else if (titleInput.value.length > 25) {
       this.addErrorStyle(titleInput)
-      this.addErrorMessage(titleErrorMessage, "※20字以内で入力してください")
+      this.addErrorMessage(titleErrorMessage, "※25字以内で入力してください")
       hasError = true;
     } 
     else {

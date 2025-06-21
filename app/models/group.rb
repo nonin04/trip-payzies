@@ -5,5 +5,5 @@ class Group < ApplicationRecord
   has_many :members, dependent: :destroy
 
   validates :user_id, presence: true
-  validates :name, presence: true, length: { maximum: 20, message: "は20字以内" }
+  validates :name, presence: true, length: { maximum: 25, message: "は25字以内" }
 end

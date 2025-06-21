@@ -15,10 +15,11 @@
     <%= render 'trips/form_card', f: f %>
 
     <%# ボタン類 %>
-    <div class="flex px-4 py-4">
-      <%= link_to "キャンセル", trip_path(@trip), class:"w-1/2 mx-6 py-2 btn-cancel shadow-primary" %>
-      <div class="w-1/2 mx-6 py-2  btn-submit shadow-primary" >
-        <button class="h-full w-full" data-trip-validate-target="submitBtn" data-action="click->trip-validate#submit">更新</button>
+    <div class="px-4 py-3">
+      <div class="separator"></div>
+      <div class="w-full flex">
+        <%= link_to "キャンセル", trip_path(@trip), class:"flex-1 main_action_btn bg-gray-400 text-white" %>
+        <button class="flex-1 ml-4 main_action_btn bg-primary-blue-100 text-white" data-trip-validate-target="submitBtn" data-action="click->trip-validate#submit">更新</button>
       </div>
     </div>
     
