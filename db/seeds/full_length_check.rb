@@ -1,8 +1,8 @@
-user = User.find_by!(email: "test@example.com")
+user = User.find_by!(email: "example@email.com")
 
-# group.name20字
+# group.name25字
 group_max = user.groups.create!(
-  name: "無計画トラベル隊日本高校四百六十期卒業生"
+  name: "無計画トラベル隊日本高校四百六十期卒業生同窓会"
 )
 
 # member15字以内
@@ -20,39 +20,61 @@ member_maxJ = group_max.members.create!(name: "きく")
 
 
 # tripデータ =============================================
-# trip.title20字
+# trip.title25字
 trip_max = user.trips.create!(
   group: group_max,
-  title: "十一回目の北海道旅行と初めての青森県旅行",
-  departure_date: Date.new(2025, 2, 4)
+  title: "十四回目の北海道旅行と初めての青森県りんご狩り旅行",
+  departure_date: Date.new(2025, 2, 4),
+  participants_attributes: [
+    { name: "宇宙航空研究開発機構のメンバー" },
+    { name: "はやぶさ" },
+    { name: "こうのとり" },
+    { name: "かぐや" },
+    { name: "さきがけ" },
+    { name: "ひてん" },
+    { name: "すいせい" },
+    { name: "のぞみ" },
+    { name: "はごろも" },
+    { name: "きく" }
+  ]
 )
-# participant.name15文字 最大参加者数10
-person_maxA = trip_max.participants.create!(name: "宇宙航空研究開発機構のメンバー")
-person_maxB = trip_max.participants.create!(name: "はやぶさ")
-person_maxC = trip_max.participants.create!(name: "こうのとり")
-person_maxD = trip_max.participants.create!(name: "かぐや")
-person_maxE = trip_max.participants.create!(name: "さきがけ")
-person_maxF = trip_max.participants.create!(name: "ひてん")
-person_maxG = trip_max.participants.create!(name: "すいせい")
-person_maxH = trip_max.participants.create!(name: "のぞみ")
-person_maxI = trip_max.participants.create!(name: "はごろも")
-person_maxJ = trip_max.participants.create!(name: "きく")
 
+p_maxA, p_maxB, p_maxC, p_maxD, p_maxE, p_maxF, p_maxG, p_maxH, p_maxI, p_maxJ = trip_max.participants.order(:id)
 
 # --------------expenseデータ
-# expense.title20字
+# expense.title25字
 # expense.amount1000000以下
-expense_max = trip_max.expenses.create!(
-  payer: person_maxA,
-  title: "ライブイベント費用として会場費と飲食代金",
-  amount: 999999,
-  payment_date: Date.today
-)
 
-expense_max.advance_payments.create!(participant: person_maxA)
-expense_max.advance_payments.create!(participant: person_maxB)
-expense_max.advance_payments.create!(participant: person_maxE)
-expense_max.advance_payments.create!(participant: person_maxG)
-expense_max.advance_payments.create!(participant: person_maxH)
-expense_max.advance_payments.create!(participant: person_maxJ)
+# --------------max_expenseデータNo.1
+get_expense_by_p_maxA = trip_max.expenses.create!(
+  payer: p_maxA,
+  amount: 999999,
+  title: "ライブイベント費用として会場費と飲食代金を立替する",
+  payment_date: Date.today,
+  place: "東京都, 東京市",
+  advance_payments_attributes: [
+    { participant_id: p_maxB.id },
+    { participant_id: p_maxC.id },
+    { participant_id: p_maxD.id },
+    { participant_id: p_maxE.id },
+    { participant_id: p_maxF.id },
+    { participant_id: p_maxG.id },
+    { participant_id: p_maxH.id },
+    { participant_id: p_maxI.id },
+    { participant_id: p_maxJ.id }
+  ]
+)
+ExpenseAmountDistributor.new(get_expense_by_p_maxA).call
+# --------------max_expenseデータNo.2
+get_expense_by_p_maxB = trip_max.expenses.create!(
+  payer: p_maxB,
+  amount: 110000,
+  title: "立替結果のための調整",
+  payment_date: Date.today,
+  place: "東京都, 東京市",
+  advance_payments_attributes: [
+    { participant_id: p_maxA.id }
+  ]
+)
+ExpenseAmountDistributor.new(get_expense_by_p_maxB).call
 # //////////////////////////////////////////////////////////////////////////////

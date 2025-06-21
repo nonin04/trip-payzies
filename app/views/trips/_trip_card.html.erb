@@ -1,16 +1,16 @@
 <%# カードスタイルの切り替え %>
 <div class="relative py-2 card-style <%= mode == :index ? 'shadow-primary' : '' %>">
   <%# 装飾ラベル ------------------ %>
-  <div class="absolute left-0 top-0 h-full w-2 rounded-l bg-theme-brown"></div>
+  <div class="absolute left-0 top-0 h-full w-2 rounded-l accent-brown"></div>
   
   <%# タイトル & その他アイコン ------------------ %>
   <div class="flex items-start justify-between pl-5 pr-3 py-1">
-    <h2 class="font-semibold text-xl"><%=trip.title %></h2>
+    <h2 class="font-semibold text-lg"><%=trip.title %></h2>
 
     <% if mode == :index %>
     <%# 旅行一覧 → 矢印アイコン %>
       <div class="px-3 pt-0.5">
-        <%= inline_svg("svg/navigation-arrow.svg", class: "w-4", draggable:"false") %>
+        <%= inline_svg("svg/navigation-arrow.svg", class: "w-3", draggable:"false") %>
       </div>
 
     <% elsif mode == :show %>
@@ -42,7 +42,7 @@
   </div>
 
   <%# 決済日 & 精算状況 ------------------ %>
-  <div class="pl-6 pr-4 pt-6 flex items-center justify-between">
+  <div class="pl-6 pr-4 pt-3 flex items-center justify-between">
     <p class="text-gray-400 font-mono"><%= trip.departure_date.strftime("%Y/%m/%d") + "~" %></p>
     <% status_color = trip.settled? ? 'bg-gray-400' : 'bg-primary-red' %>
     <p class="w-20 py-0.5 text-xs text-center text-white rounded-sm <%= status_color %>">

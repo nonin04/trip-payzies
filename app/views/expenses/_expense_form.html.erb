@@ -99,8 +99,10 @@
   </div>
 
   <%# ボタン類 ------------- %>
-  <section class="flex px-4 py-4">
-      <%= link_to "キャンセル", trip_path(@trip), class:"w-1/2 mx-6 py-2 btn-cancel shadow-primary" %>
-      <button data-expense-validate-target="submitBtn" data-action="click->expense-validate#submit" class="w-1/2 mx-6 py-2 btn-submit shadow-primary"><%= action_name == "new" ? "保存" : "更新" %></button>
+  <section class="px-4 py-4">
+    <div class="separator"></div>
+      <div class="w-full flex gap-4">
+      <%= link_to "キャンセル", trip_path(@trip), class:"flex-1 main_action_btn bg-gray-400 text-white" %>
+      <button data-expense-validate-target="submitBtn" data-action="click->expense-validate#submit" class="flex-1 main_action_btn bg-primary-blue-100 text-white"><%= action_name == "new" ? "保存" : "更新" %></button>
   </section>
 <% end %>

@@ -13,6 +13,7 @@
     <%= render 'layouts/og_image' %>
 
     <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#102E4A">
     <link rel="icon" href="/images/svg/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
@@ -29,7 +30,7 @@
         <% unless devise_controller? %>
           <%= render 'layouts/sidebar' %>
         <%end%>
-        <header class="z-30 h-15 flex justify-between bg-panel-navy">
+        <header class="z-30 h-12 flex justify-between bg-panel-navy">
               <%= render 'layouts/header'%>
         </header>
 
@@ -49,7 +50,7 @@
 
         </main>
 
-        <footer class="z-30 h-10 flex items-center bg-panel-gray justify-center">
+        <footer class="z-30 h-8 flex items-center bg-panel-gray justify-center">
               <%= render 'layouts/footer'%>
         </footer>
 

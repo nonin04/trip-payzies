@@ -58,7 +58,7 @@ export default class extends Controller {
     this.isStep2 = !this.isStep2
     this.stepGaugeTarget.style.width = this.isStep2 ? "100%" : "50%";
     this.stepTitleTarget.textContent = this.isStep2 ? "STEP2" : "STEP1";
-    this.toggleBtnTargets.forEach(btn => btn.classList.toggle("hidden"))
+    this.toggleBtnTargets.forEach(btn => btn.classList.toggle("!hidden"))
     this.tripFormTarget.classList.toggle("hidden")
     this.participantFormTarget.classList.toggle("hidden")
   }
@@ -125,9 +125,9 @@ export default class extends Controller {
       this.addErrorMessage(titleErrorMessage, "※入力必須項目です")
       hasError = true;
     }
-    else if (titleInput.value.length > 20) {
+    else if (titleInput.value.length > 25) {
       this.addErrorStyle(titleInput)
-      this.addErrorMessage(titleErrorMessage, "※20字以内で入力してください")
+      this.addErrorMessage(titleErrorMessage, "※25字以内で入力してください")
       hasError = true;
     }
     else {
