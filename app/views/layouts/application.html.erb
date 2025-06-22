@@ -24,7 +24,9 @@
   </head>
 
   
-  <body class="bg-[url('/images/background2.png')] bg-cover h-full" data-controller="sidebar">
+  <body class="w-full h-full flex" data-controller="sidebar">
+    <%# 左側背景 %>
+    <div id="leftEl" class="z-50 flex-1 bg-[url('/images/background2.png')] bg-cover min-w-0"></div>
     <% unless controller.controller_name == "homes" %>
       <div class="@container relative h-screen flex flex-col page-width">
         <% unless devise_controller? %>
@@ -58,6 +60,8 @@
     <% else %><%# home#indexのみ %>
       <%= yield %> 
     <% end %>
+    <%# 右側背景 %>
+    <div id="rightEl" class="z-50 flex-1 bg-[url('/images/background2.png')] bg-cover min-w-0"></div>
   </body>
 
 
