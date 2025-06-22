@@ -19,21 +19,25 @@ export default class extends Controller {
   }
 
   isClosed() {
-    const isClosed = this.sidebarTarget.style.width === "" || this.sidebarTarget.style.width === "0px"
+    const isClosed = this.sidebarTarget.classList.contains('translate-x-full')
     return isClosed
   }
 
   openMenu() {
     const mainElChilds = Array.from(this.mainElTarget.children)
-    this.sidebarTarget.style.width = "260px"
-    this.sidebarTarget.classList.remove("pointer-events-none")
+    this.sidebarTarget.classList.remove("translate-x-full")
+    this.sidebarTarget.classList.add("translate-x-0")
+    this.mainElTarget.classList.remove("translate-x-0")
+    this.mainElTarget.classList.add("-translate-x-16")
     mainElChilds.forEach(el => el.classList.add("pointer-events-none"))
   }
 
   closeMenu() {
     const mainElChilds = Array.from(this.mainElTarget.children)
-    this.sidebarTarget.style.width = "0px"
-    this.sidebarTarget.classList.add("pointer-events-none")
+    this.sidebarTarget.classList.add("translate-x-full")
+    this.sidebarTarget.classList.remove("translate-x-0")
+    this.mainElTarget.classList.add("translate-x-0")
+    this.mainElTarget.classList.remove("-translate-x-16")
     mainElChilds.forEach(el => el.classList.remove("pointer-events-none"))
 
   }
