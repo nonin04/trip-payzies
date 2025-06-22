@@ -33,7 +33,7 @@
     <% end %>
 
     <div class=" h-[2px] bg-gray-300 my-6 mx-4"></div>
-    <%= link_to destroy_user_session_path data: {turbo_method: :delete, turbo_confirm: "ログアウトしますか？"} do %>
+    <%= link_to destroy_user_session_path, data:{turbo_method: :delete, turbo_confirm: "ログアウトしますか？"} do %>
       <%= inline_svg("svg/sidebar/logout.svg", class:"flex cursor-pointer mx-auto mb-4 h-7 pl-1 text-white flex-shrink-0")%>
     <% end %>
 
