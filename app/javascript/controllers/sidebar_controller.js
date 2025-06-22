@@ -9,32 +9,22 @@ export default class extends Controller {
     "mainEl"
   ]
 
-  toggleSidebar() {
-    this.isClosed() ? this.openMenu() : this.closeMenu()
-  }
-
   hideSidebar() {
-    if (!this.isClosed()) {this.closeMenu()
+    if (this.isOpened()) {this.toggleSidebar()
     }
   }
 
-  isClosed() {
-    const isClosed = this.sidebarTarget.style.width === "" || this.sidebarTarget.style.width === "0px"
+  isOpened() {
+    const isClosed = this.sidebarTarget.classList.contains('translate-x-0')
     return isClosed
   }
 
-  openMenu() {
+  toggleSidebar() {
     const mainElChilds = Array.from(this.mainElTarget.children)
-    this.sidebarTarget.style.width = "260px"
-    this.sidebarTarget.classList.remove("pointer-events-none")
-    mainElChilds.forEach(el => el.classList.add("pointer-events-none"))
-  }
-
-  closeMenu() {
-    const mainElChilds = Array.from(this.mainElTarget.children)
-    this.sidebarTarget.style.width = "0px"
-    this.sidebarTarget.classList.add("pointer-events-none")
-    mainElChilds.forEach(el => el.classList.remove("pointer-events-none"))
-
+    this.sidebarTarget.classList.toggle("translate-x-full")
+    this.sidebarTarget.classList.toggle("translate-x-0")
+    this.mainElTarget.classList.toggle("translate-x-0")
+    this.mainElTarget.classList.toggle("-translate-x-16")
+    mainElChilds.forEach(el => el.classList.toggle("pointer-events-none"))
   }
 }

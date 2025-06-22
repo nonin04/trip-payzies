@@ -16,7 +16,7 @@
   "start_url": "/",
   "display": "standalone",
   "scope": "/",
-  "description": "Myapp.",
-  "theme_color": "red",
-  "background_color": "red"
+  "description": "Trip-Payzies lets you split travel expenses easily with friends.",
+  "theme_color": "#102E4A",
+  "background_color": "#102E4A"
 }

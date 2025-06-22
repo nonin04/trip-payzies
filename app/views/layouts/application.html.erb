@@ -24,9 +24,11 @@
   </head>
 
   
-  <body class="bg-[url('/images/background2.png')] bg-cover h-full" data-controller="sidebar">
+  <body class="w-screen h-screen flex overflow-hidden" data-controller="sidebar">
+    <%# 左側背景 %>
+    <div id="leftEl" class="z-50 flex-1 bg-[url('/images/background2.png')] bg-cover min-w-0"></div>
     <% unless controller.controller_name == "homes" %>
-      <div class="@container relative h-screen flex flex-col page-width">
+      <div class="sm:relative flex flex-col page-width">
         <% unless devise_controller? %>
           <%= render 'layouts/sidebar' %>
         <%end%>
@@ -34,7 +36,7 @@
               <%= render 'layouts/header'%>
         </header>
 
-        <main class=" bg-form-gray flex-1 min-h-0 flex flex-col border-y-form-gray" data-sidebar-target="mainEl" data-action="click->sidebar#hideSidebar">
+        <main class="bg-form-gray flex-1 min-h-0 flex flex-col translate-x-0 transition-transform transform duration-300 ease-in-out" data-sidebar-target="mainEl" data-action="click->sidebar#hideSidebar">
           <%# flashメッセージの分岐%>
           <div data-controller="flash" 
                data-flash-target="message" 
@@ -58,6 +60,8 @@
     <% else %><%# home#indexのみ %>
       <%= yield %> 
     <% end %>
+    <%# 右側背景 %>
+    <div id="rightEl" class="z-50 flex-1 bg-[url('/images/background2.png')] bg-cover min-w-0"></div>
   </body>
 
 
