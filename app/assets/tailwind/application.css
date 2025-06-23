@@ -117,7 +117,7 @@
 }
 
 .shadow-for-lp{@apply
-  shadow-[0px_4px_0px_rgba(255,255,255,0.36)]
+  shadow-[0px_4px_0px_rgba(0,0,0,0.20)]
   transition duration-200 ease-in-out transform
   hover:translate-y-[3px] hover:shadow-none
   active:translate-y-[3px] active:shadow-none
