@@ -19,11 +19,11 @@
           <p class="font-semibold text-lg"><%= @expense.title %></p>
           <%# 編集、削除ボタン %>
           <div class="flex pl-5">
-            <%= link_to edit_trip_expense_path(@trip, @expense), class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-gray-500 shadow-secondary text-white" do %>
-              <%= inline_svg("svg/edit2.svg", draggable:"false") %>
+            <%= link_to edit_trip_expense_path(@trip, @expense), class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-white shadow-secondary text-black" do %>
+              <%= inline_svg("svg/edit.svg", draggable:"false") %>
             <% end %>
-            <%= link_to trip_expense_path(@trip, @expense), data: {turbo_method: :delete, turbo_confirm: "立替記録を削除しますか？"}, class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-gray-500 shadow-secondary text-white" do %>
-              <%= inline_svg("svg/delete2.svg", draggable:"false") %>
+            <%= link_to trip_expense_path(@trip, @expense), data: {turbo_method: :delete, turbo_confirm: "立替記録を削除しますか？"}, class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-white shadow-secondary text-black" do %>
+              <%= inline_svg("svg/delete.svg", draggable:"false") %>
             <% end %>
           </div>
         </div>

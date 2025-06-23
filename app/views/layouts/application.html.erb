@@ -24,7 +24,7 @@
   </head>
 
   
-  <body class="w-screen h-screen overflow-x-hidden flex" data-controller="sidebar">
+  <body class="w-screen h-screen overflow-x-hidden flex" <%= 'data-controller="sidebar"' unless devise_controller? %> >
     <%# 左側背景 %>
     <div id="leftEl" class="z-50 flex-1 bg-[url('/images/background2.png')] bg-cover min-w-0"></div>
     <% unless controller.controller_name == "homes" %>
@@ -39,12 +39,18 @@
         <main class="bg-form-gray flex-1 min-h-0 flex flex-col translate-x-0 transition-transform transform duration-300 ease-in-out" data-sidebar-target="mainEl" data-action="click->sidebar#hideSidebar">
           <%# flashメッセージの分岐%>
           <div data-controller="flash" 
-               data-flash-target="message" 
-               class="-translate-y-full transition-transform transform duration-700">
+               data-flash-target="moveArea" 
+               class="relative z-20 overflow-visible -translate-y-20 transition-transform transform duration-700 flex justify-center">
             <% if notice.present? %>
-              <p class="notice z-10 bg-primary-blue-100 text-white text-sm"><%= notice %></p>
+              <p data-action="click->flash#touchClose"
+                 class="absolute bg-primary-blue-100 flash-element"><%= notice %>
+                <%= inline_svg("svg/cross.svg", class:"w-8 pl-4") %>
+              </p>
             <% elsif alert.present? %>
-              <p class="alert z-10 bg-primary-red text-white text-sm"><%= alert %></p>
+              <p data-action="click->flash#touchClose"
+                 class="absolute bg-primary-red flash-element"><%= alert %>
+                <%= inline_svg("svg/cross.svg", class:"w-8 pl-4") %>
+              </p>
             <% end %>
           </div>
 
