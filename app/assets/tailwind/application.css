@@ -11,18 +11,18 @@
   /* ------- 背景色 ------- */
   --color-panel-sky: #b4d5de;
   --color-panel-brown: #C3A47B;
-  --color-panel-navy: #102E4A;
+  --color-panel-navy: #183153;  /* RGB 24, 49, 83 */
   --color-panel-gray: #484848;
 
   /* ------- ボタン系 ------- */
-  --color-action-yellow: #F9FF40;
+  --color-action-yellow: #fff440;
   --color-theme-brown: #C3A47B;
   --color-primary-blue-100: #0A9EFB;
   --color-primary-blue-200: #0C81CA;
-  --color-primary-red: #f24822;
+  --color-primary-red: #fb2222;
 
   /* ------- フォーム系 ------- */
-  --color-form-gray: #F3F3F3;
+  --color-form-gray: #f0f1f3;
 
   /* ------- その他 ------- */
   --color-gradation-brown: #AA8F6B;
@@ -34,7 +34,7 @@
 }
 
 .btn-cancel {@apply
-  bg-gray-400 text-white font-bold rounded text-center cursor-pointer  
+  bg-gray-400 text-white font-bold rounded text-center cursor-pointer border-2
 }
 
 .btn-submit {@apply
@@ -101,14 +101,16 @@
 
 /* 影 ------------------------------------------------------------------------------------ */
 .shadow-primary{@apply
-  shadow-[0px_4px_0px_rgba(0,0,0,0.36)]
+  border-2 border-panel-navy
+  shadow-[0px_4px_0px_rgba(24,49,83,0.50)]
   transition duration-300 ease-in-out transform
   hover:translate-y-[4px] hover:shadow-none
   active:translate-y-[4px] active:shadow-none
 }
 
 .shadow-secondary{@apply
-  shadow-[0px_3px_0px_rgba(0,0,0,0.36)]
+  border-2 border-panel-navy
+  shadow-[0px_4px_0px_rgba(24,49,83,1)]
   transition duration-300 ease-in-out transform
   hover:translate-y-[3px] hover:shadow-none
   active:translate-y-[3px] active:shadow-none
@@ -122,10 +124,14 @@
 }
 
 .main_action_btn{@apply
-  flex
+  flex border-2 border-panel-navy
   mt-2 rounded-md py-2 text-[22px] text-center justify-center font-bold
-  shadow-[0px_4px_0px_rgba(0,0,0,0.36)]
+  shadow-[0px_4px_0px_rgba(24,49,83,1)]
   transition duration-300 ease-in-out transform 
   hover:translate-y-[4px] hover:shadow-none
   active:translate-y-[4px] active:shadow-none
+}
+
+.flash-element{@apply
+text-white text-sm mt-2 px-6 py-3 rounded-md flex cursor-pointer shadow-[0px_2px_10px_rgba(10,10,10,0.6)]
 }

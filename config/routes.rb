@@ -10,6 +10,12 @@ Rails.application.routes.draw do
     root to: "homes#index", as: :unauthenticated_root
   end
 
+  # 立替(個別管理, 複数データ)
+  resources :groups do
+    resource :members, only: [:create, :edit, :destroy ]
+    resources :members, only: [:index], defaults: { format: :json }
+  end
+
   resources :trips do
     # 精算画面・処理
     member do
@@ -19,11 +25,11 @@ Rails.application.routes.draw do
       patch :unsettle
     end
 
-    # 立替(複数,個別管理)
+    # 立替(個別管理, 複数データ)
     resources :expenses, only: [ :show, :new, :create, :edit, :update, :destroy ]
 
-    # 参加者(単数,一括管理)
-    resource :participants, only: [ :new, :create, :destroy ]
+    # 参加者(一括管理, 複数データ)
+    resource :participants, only: [ :create, :destroy ]
   end
 
 

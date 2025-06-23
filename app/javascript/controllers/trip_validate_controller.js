@@ -12,8 +12,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="trip-validate"
 export default class extends Controller {
   static targets = [
-    "stepGauge", 
-    "stepTitle", 
+    "stepGauge",
     "tripForm", 
     "participantForm", 
     "toggleBtn", 
@@ -57,7 +56,6 @@ export default class extends Controller {
     this.removeFlashEl()
     this.isStep2 = !this.isStep2
     this.stepGaugeTarget.style.width = this.isStep2 ? "100%" : "50%";
-    this.stepTitleTarget.textContent = this.isStep2 ? "STEP2" : "STEP1";
     this.toggleBtnTargets.forEach(btn => btn.classList.toggle("!hidden"))
     this.tripFormTarget.classList.toggle("hidden")
     this.participantFormTarget.classList.toggle("hidden")
@@ -81,6 +79,14 @@ export default class extends Controller {
   }
 
 
+
+
+  touchClose() {
+    const flashErrorEl = this.flashErrorTarget
+    this.slideUp(flashErrorEl)
+  }
+
+
   // references
   addErrorStyle(formEl) {
     formEl.classList.add("!border-red-400", "!bg-red-50")
@@ -92,18 +98,36 @@ export default class extends Controller {
     formEl.classList.remove("!border-red-400", "!bg-red-50")
     messageEl.textContent = ""
   }
+  
   setFlashEl(message) {
     const flashErrorEl = this.flashErrorTarget
     const errorMessageEl = flashErrorEl.querySelector('p')
     errorMessageEl.textContent = message
-    flashErrorEl.classList.remove("-translate-y-full")
-    flashErrorEl.classList.add("translate-y-0")
-    setTimeout(() => this.removeFlashEl(), 5000)
+    this.slideDown(flashErrorEl)
   }
+
   removeFlashEl() {
     const flashErrorEl = this.flashErrorTarget
-    flashErrorEl.classList.remove("translate-y-0")
-    flashErrorEl.classList.add("-translate-y-full")
+    const errorMessageEl = flashErrorEl.querySelector('p')
+    errorMessageEl.textContent = ""
+    this.slideUp(flashErrorEl)
+  }
+
+
+  slideUp(el) {
+    el.classList.add('-translate-y-20')
+    el.classList.remove('translate-y-0')
+  }
+
+  slideDown(el) {
+    el.classList.remove('-translate-y-20')
+    el.classList.add('translate-y-0')
+    if (el.classList.contains("translate-y-0")) {
+      setTimeout(() => {
+        this.slideUp(el)}, 
+        3000
+      )
+    }
   }
 
 
@@ -114,8 +138,8 @@ export default class extends Controller {
     return hasTitleError || hasDateError
   }
 
-
 //旅行名バリデーションチェック------------------------------------------
+//-----------------------------------------------------------------
   titleValidate() {
     let hasError = false;
     const titleInput = this.tripTitleTarget
