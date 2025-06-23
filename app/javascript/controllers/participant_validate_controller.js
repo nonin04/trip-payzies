@@ -108,22 +108,13 @@ export default class extends Controller {
     return hasError
   }
 
+  touchClose() {
+    const flashErrorEl = this.flashErrorTarget
+    this.slideUp(flashErrorEl)
+  }
+
 
     //references
-  setFlashEl(message) {
-    const flashErrorEl = this.flashErrorTarget
-    const errorMessageEl = flashErrorEl.querySelector('p')
-    errorMessageEl.textContent = message
-    flashErrorEl.classList.remove("-translate-y-full")
-    flashErrorEl.classList.add("translate-y-0")
-    setTimeout(() => this.removeFlashEl(), 5000)
-  }
-  removeFlashEl() {
-    const flashErrorEl = this.flashErrorTarget
-    flashErrorEl.classList.remove("translate-y-0")
-    flashErrorEl.classList.add("-translate-y-full")
-  }
-
   addErrorStyle(formEl) {
     formEl.classList.add("!border-red-400", "!bg-red-50")
   }
@@ -133,5 +124,36 @@ export default class extends Controller {
   removeError(formEl, messageEl) {
     formEl.classList.remove("!border-red-400", "!bg-red-50")
     messageEl.textContent = ""
+  }
+
+  setFlashEl(message) {
+  const flashErrorEl = this.flashErrorTarget
+  const errorMessageEl = flashErrorEl.querySelector('p')
+  errorMessageEl.textContent = message
+  errorMessageEl.textContent = message
+  this.slideDown(flashErrorEl)
+}
+removeFlashEl() {
+  const flashErrorEl = this.flashErrorTarget
+  const errorMessageEl = flashErrorEl.querySelector('p')
+  errorMessageEl.textContent = ""
+  this.slideUp(flashErrorEl)
+}
+
+
+  slideUp(el) {
+    el.classList.add('-translate-y-20')
+    el.classList.remove('translate-y-0')
+  }
+  
+  slideDown(el) {
+    el.classList.remove('-translate-y-20')
+    el.classList.add('translate-y-0')
+    if (el.classList.contains("translate-y-0")) {
+      setTimeout(() => {
+        this.slideUp(el)}, 
+        3000
+      )
+    }
   }
 }

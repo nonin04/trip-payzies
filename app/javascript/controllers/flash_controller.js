@@ -1,14 +1,41 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["message"]
+  static targets = [
+    "moveArea",
+    "message"
+  ]
 
   connect() {
-    this.messageTargets.forEach((el) => {
+    this.moveAreaTargets.forEach((el) => {
       setTimeout(() => {
-        el.classList.remove('-translate-y-full')
-        el.classList.add('translate-y-0')
-      }
-    )}
-  )}
-};
+        this.slideDown(el)
+      })
+    })
+  }
+
+  touchClose() {
+    this.moveAreaTargets.forEach((el) => {
+      this.slideUp(el)
+    })
+  }
+
+
+  // reference
+  slideUp(el) {
+    el.classList.add('-translate-y-20')
+    el.classList.remove('translate-y-0')
+  }
+
+  slideDown(el) {
+    el.classList.remove('-translate-y-20')
+    el.classList.add('translate-y-0')
+    if (el.classList.contains("translate-y-0")) {
+      setTimeout(() => {
+        this.slideUp(el)}, 
+        3000
+      )
+    }
+  }
+
+}
