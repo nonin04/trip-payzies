@@ -23,8 +23,12 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  
-  <body class="w-screen h-screen overflow-x-hidden flex" <%= 'data-controller="sidebar"' unless devise_controller? %> >
+  <% if devise_controller? %>
+    <body class="w-screen h-screen overflow-x-hidden flex">
+  <% else %>
+    <body class="w-screen h-screen overflow-x-hidden flex" data-controller="sidebar" >
+  <% end %>
+
     <%# 左側背景 %>
     <div id="leftEl" class="z-50 flex-1 bg-[url('/images/background2.png')] bg-cover min-w-0"></div>
     <% unless controller.controller_name == "homes" %>
@@ -40,7 +44,7 @@
           <%# flashメッセージの分岐%>
           <div data-controller="flash" 
                data-flash-target="moveArea" 
-               class="relative z-20 overflow-visible -translate-y-20 transition-transform transform duration-700 flex justify-center">
+               class="relative z-20 overflow-visible -translate-y-20 transition-transform transform duration-700 flex justify-end mr-4">
             <% if notice.present? %>
               <p data-action="click->flash#touchClose"
                  class="absolute bg-primary-blue-100 flash-element"><%= notice %>

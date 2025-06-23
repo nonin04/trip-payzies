@@ -108,8 +108,6 @@ export default class extends Controller {
 
   removeFlashEl() {
     const flashErrorEl = this.flashErrorTarget
-    const errorMessageEl = flashErrorEl.querySelector('p')
-    errorMessageEl.textContent = ""
     this.slideUp(flashErrorEl)
   }
 
