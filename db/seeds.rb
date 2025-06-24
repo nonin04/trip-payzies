@@ -3,7 +3,6 @@ begin
   Trip.destroy_all
   User.destroy_all
 
-
 userA = User.create!(
     name: "私はバリデーションの大魔王様だ",
     email: "example@email.com",
@@ -62,7 +61,7 @@ userA = User.create!(
 
 
     trip2 = userA.trips.create!(
-    title: "Kyoto Heritage Trip",
+    title: "Kyoto Trip (sample)",
     departure_date: Date.new(2025, 7, 1),
     participants_attributes: [
       { name: "Alice" },
