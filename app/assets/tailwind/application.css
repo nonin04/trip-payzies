@@ -67,12 +67,6 @@
   transition duration-300 
 }
 
-.humberger-menu {@apply
-  text-black rounded bg-white
-  transition duration-300 
-  cursor-pointer
-}
-
 .devise-form-label {@apply
   block text-gray-500 py-1
 }
@@ -96,21 +90,18 @@
 
 .accent-brown {@apply
  bg-gradient-to-b from-panel-brown to-gradation-brown
-
 }
 
 /* 影 ------------------------------------------------------------------------------------ */
 .shadow-primary{@apply
-  border-2 border-panel-navy
-  shadow-[0px_4px_0px_rgba(24,49,83,0.50)]
+  shadow-[0px_4px_0px_rgba(24,49,83,0.5)]
   transition duration-300 ease-in-out transform
   hover:translate-y-[4px] hover:shadow-none
   active:translate-y-[4px] active:shadow-none
 }
 
 .shadow-secondary{@apply
-  border-2 border-panel-navy
-  shadow-[0px_4px_0px_rgba(24,49,83,1)]
+  shadow-[0px_4px_0px_rgba(24,49,83,0.5)]
   transition duration-300 ease-in-out transform
   hover:translate-y-[3px] hover:shadow-none
   active:translate-y-[3px] active:shadow-none
@@ -124,9 +115,9 @@
 }
 
 .main_action_btn{@apply
-  flex border-2 border-panel-navy
+  flex 
   mt-2 rounded-md py-2 text-[22px] text-center justify-center font-bold
-  shadow-[0px_4px_0px_rgba(24,49,83,1)]
+  shadow-[0px_4px_0px_rgba(24,49,83,0.5)]
   transition duration-300 ease-in-out transform 
   hover:translate-y-[4px] hover:shadow-none
   active:translate-y-[4px] active:shadow-none
