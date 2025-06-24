@@ -6,15 +6,18 @@ export default class extends Controller {
     "message"
   ]
 
+  flashTimeoutId = null
+
   connect() {
     this.moveAreaTargets.forEach((el) => {
-      setTimeout(() => {
+      this.flashTimeoutId = setTimeout(() => {
         this.slideDown(el)
       })
     })
   }
 
   touchClose() {
+    this.clearFlashTimeout()
     this.moveAreaTargets.forEach((el) => {
       this.slideUp(el)
     })
@@ -35,6 +38,13 @@ export default class extends Controller {
         this.slideUp(el)}, 
         3000
       )
+    }
+  }
+
+  clearFlashTimeout() {
+    if (this.flashTimeoutId) {
+      clearTimeout(this.flashTimeoutId)
+      this.flashTimeoutId = null
     }
   }
 

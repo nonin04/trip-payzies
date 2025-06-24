@@ -13,6 +13,8 @@ export default class extends Controller {
     "duplicatedErrorMessage"
   ]
 
+  flashTimeoutId = null
+
   submitPrevent(event) {
     if (event.key === "Enter") {
       event.preventDefault()
@@ -109,6 +111,7 @@ export default class extends Controller {
   }
 
   touchClose() {
+    this.clearFlashTimeout()
     const flashErrorEl = this.flashErrorTarget
     this.slideUp(flashErrorEl)
   }
@@ -127,16 +130,20 @@ export default class extends Controller {
   }
 
   setFlashEl(message) {
-  const flashErrorEl = this.flashErrorTarget
-  const errorMessageEl = flashErrorEl.querySelector('p')
-  errorMessageEl.textContent = message
-  errorMessageEl.textContent = message
-  this.slideDown(flashErrorEl)
-}
-removeFlashEl() {
-  const flashErrorEl = this.flashErrorTarget
-  this.slideUp(flashErrorEl)
-}
+    const flashErrorEl = this.flashErrorTarget
+    const errorMessageEl = flashErrorEl.querySelector('p')
+    errorMessageEl.textContent = message
+    this.slideDown(flashErrorEl)
+    this.clearFlashTimeout()
+    this.flashTimeoutId = setTimeout(() => {
+      this.slideUp(flashErrorEl)}, 
+      3000
+    )
+  }
+  removeFlashEl() {
+    const flashErrorEl = this.flashErrorTarget
+    this.slideUp(flashErrorEl)
+  }
 
 
   slideUp(el) {
@@ -147,11 +154,12 @@ removeFlashEl() {
   slideDown(el) {
     el.classList.remove('-translate-y-20')
     el.classList.add('translate-y-0')
-    if (el.classList.contains("translate-y-0")) {
-      setTimeout(() => {
-        this.slideUp(el)}, 
-        3000
-      )
+  }
+
+  clearFlashTimeout() {
+    if (this.flashTimeoutId) {
+      clearTimeout(this.flashTimeoutId)
+      this.flashTimeoutId = null
     }
   }
 }
