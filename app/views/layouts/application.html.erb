@@ -44,7 +44,7 @@
           <%# flashメッセージの分岐%>
           <div data-controller="flash" 
                data-flash-target="moveArea" 
-               class="relative z-20 overflow-visible -translate-y-20 transition-transform transform duration-700 flex justify-center mr-4">
+               class="relative z-20 overflow-visible -translate-y-20 transition-transform transform duration-700 flex justify-end mr-4">
             <% if notice.present? %>
               <p data-action="click->flash#touchClose"
                  class="absolute bg-primary-blue-100 flash-element"><%= notice %>

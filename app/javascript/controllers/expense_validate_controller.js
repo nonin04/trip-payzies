@@ -67,7 +67,7 @@ export default class extends Controller {
     this.clearFlashTimeout()
     this.flashTimeoutId = setTimeout(() => {
       this.slideUp(flashErrorEl)}, 
-      3000
+      4000
     )
   }
 
