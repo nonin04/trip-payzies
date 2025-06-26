@@ -2,8 +2,8 @@
 
 <%# ページ案内 ------------------ %>
 <div class="flex items-center relative">
-  <%= link_to trip_path(@trip), class:"absolute flex items-center rounded-md bg-panel-navy shadow-secondary h-6 w-10 py-0.5 px-0.5 ml-4" do %>
-    <%= inline_svg("svg/navigation-arrow.svg", class:"w-full h-full rotate-180 text-white")%>
+  <%= link_to trip_path(@trip), class:"absolute flex items-center rounded-md h-6 w-10 py-0.5 px-0.5 ml-4 shadow-primary text-white bg-panel-navy dark:text-neutral-700 dark:bg-white" do %>
+    <%= inline_svg("svg/navigation-arrow.svg", class:"w-full h-full rotate-180")%>
   <% end %>
   <h1 class="mt-2 my-2 text-xl font-bold w-full text-center">立替詳細</h1>
 </div>
@@ -11,25 +11,24 @@
 
 <div class="overflow-y-auto">
   <%# 立替カード ------------------ %>
-  <div class="relative card-style mx-4 py-2">
-    <div class="absolute left-0 top-0 h-full w-2 accent-navy rounded-l"></div>
+  <div class="relative card-style dark:!bg-white mx-4 py-2">
       <div class="pl-6">
         <%# 立替タイトルと削除編集アイコン %>
         <div class="flex items-center justify-between pr-3 py-1">
-          <p class="font-semibold text-lg"><%= @expense.title %></p>
+          <p class="font-semibold text-lg dark:text-black"><%= @expense.title %></p>
           <%# 編集、削除ボタン %>
           <div class="flex pl-5">
-            <%= link_to edit_trip_expense_path(@trip, @expense), class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-panel-navy shadow-secondary text-white" do %>
+            <%= link_to edit_trip_expense_path(@trip, @expense), class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-panel-navy text-white shadow-secondary dark:bg-zinc-600 dark:text-white" do %>
               <%= inline_svg("svg/edit.svg", draggable:"false") %>
             <% end %>
-            <%= link_to trip_expense_path(@trip, @expense), data: {turbo_method: :delete, turbo_confirm: "立替記録を削除しますか？"}, class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-panel-navy shadow-secondary text-white" do %>
+            <%= link_to trip_expense_path(@trip, @expense), data: {turbo_method: :delete, turbo_confirm: "立替記録を削除しますか？"}, class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-panel-navy text-white shadow-secondary dark:bg-zinc-600 dark:text-white" do %>
               <%= inline_svg("svg/delete.svg", draggable:"false") %>
             <% end %>
           </div>
         </div>
         <%# 金額 & 決済者情報 %>
-        <p class="font-semibold text-2xl">¥<%= number_with_delimiter(@expense.amount) %></p>
-        <p class="pt-4 text-lg">by <%= @expense.payer.name %></p>
+        <p class="font-semibold text-2xl dark:text-black">¥<%= number_with_delimiter(@expense.amount) %></p>
+        <p class="pt-4 text-lg dark:text-black">by <%= @expense.payer.name %></p>
     </div>
   </div>
 
