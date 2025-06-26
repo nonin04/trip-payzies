@@ -14,7 +14,7 @@
   --color-panel-sky: #b4d5de;
   --color-panel-brown: #C3A47B;
   --color-panel-navy: #183153;  /* RGB 24, 49, 83 */
-  --color-panel-gray: #484848;
+  --color-panel-neutral: #484848;
 
   /* ------- ボタン系 ------- */
   --color-action-yellow: #fff440;
@@ -24,7 +24,7 @@
   --color-primary-red: #fb2222;
 
   /* ------- フォーム系 ------- */
-  --color-form-gray: #f0f1f3;
+  --color-form-neutral: #f0f1f3;
 
   /* ------- その他 ------- */
   --color-gradation-brown: #AA8F6B;
@@ -40,7 +40,7 @@
 }
 
 .btn-cancel {@apply
-  bg-gray-400
+  bg-neutral-400
    text-white font-bold rounded text-center cursor-pointer border-2
 }
 
@@ -51,7 +51,7 @@
 }
 
 .page-width{@apply
-    bg-form-gray w-full sm:w-full md:w-1/2 xl:w-1/3 mx-auto
+    bg-form-neutral w-full sm:w-full md:w-1/2 xl:w-1/3 mx-auto
 }
 
 .card-style {@apply
@@ -60,9 +60,9 @@ dark:bg-neutral-800
 }
 
 .form-style {@apply 
-  bg-gray-100 border-gray-100
-  focus:bg-gray-50 focus:border-gray-300 
-  placeholder:text-gray-300
+  bg-neutral-100 border-neutral-100
+  focus:bg-neutral-50 focus:border-neutral-300 
+  placeholder:text-neutral-300
 
   dark:text-white
   dark:bg-neutral-800 dark:border-neutral-600
@@ -75,9 +75,9 @@ dark:bg-neutral-800
 }
 
 .select-style {@apply 
-  text-gray-600
-  bg-transparent border-gray-100
-  focus:bg-gray-50 focus:border-gray-300
+  text-neutral-600
+  bg-transparent border-neutral-100
+  focus:bg-neutral-50 focus:border-neutral-300
 
   dark:text-white
   dark:bg-transparent dark:border-neutral-600
@@ -89,7 +89,7 @@ dark:bg-neutral-800
 
 
 .devise-form-label {@apply
-  block text-gray-500 py-1
+  block dark:text-white py-1
 }
 
 
@@ -100,20 +100,20 @@ dark:bg-neutral-800
 
 .separator{@apply
   h-1 rounded-full blur-[0.5px]
-  bg-gray-300
+  bg-neutral-300
   dark:bg-zinc-800
 }
 /* カスタムカラー ------------------------------------------------------------------------- */
 .expense-accent-color {@apply
   bg-gradient-to-b 
  from-slate-600 to-slate-900
- dark:from-neutral-200 dark:to-neutral-200
+ dark:from-neutral-500 dark:to-neutral-500
 }
 
 .trip-accent-color {@apply
   bg-gradient-to-b
  from-panel-brown to-gradation-brown
- dark:from-neutral-200 dark:to-neutral-200
+ dark:from-neutral-500 dark:to-neutral-500
 }
 
 /* 影 ------------------------------------------------------------------------------------ */

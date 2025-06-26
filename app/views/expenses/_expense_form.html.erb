@@ -103,6 +103,6 @@
     <div class="separator"></div>
       <div class="w-full flex gap-4">
       <%= link_to "戻る", trip_path(@trip), class:"w-1/4 main-action-btn bg-gray-400 text-white dark:bg-neutral-600" %>
-      <button data-expense-validate-target="submitBtn" data-action="click->expense-validate#submit" class="flex-1 main-action-btn bg-primary-blue-100 text-white dark:bg-theme-brown dark:text-black"><%= action_name == "new" ? "保存" : "更新" %></button>
+      <button data-expense-validate-target="submitBtn" data-action="click->expense-validate#submit" class="flex-1 main-action-btn bg-primary-blue-100 text-white"><%= action_name == "new" ? "保存" : "更新" %></button>
   </section>
 <% end %>
