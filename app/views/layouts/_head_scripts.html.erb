@@ -1,0 +1,27 @@
+<meta charset="UTF-8">
+<title><%= content_for?(:title) ? yield(:title) + " | Trip-payzies(トリップペイジーズ)" : "Trip-payzies(トリップペイジーズ)" %></title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#102E4A">
+
+<%= csrf_meta_tags %>
+<%= csp_meta_tag %>
+
+<%= yield :head %>
+
+<%= render 'layouts/og_image' %>
+
+<link rel="manifest" href="/manifest.json">
+
+<link rel="icon" href="/images/svg/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icon.png">
+
+<%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+<script> 
+  if (localStorage.getItem('theme') === 'dark') {document.documentElement.classList.add('dark');} 
+</script>
+
+<%# iconfy[アイコンパック]を導入 %> 
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+<%= javascript_importmap_tags %>

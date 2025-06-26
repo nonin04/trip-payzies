@@ -1,25 +1,25 @@
 <%# カードスタイルの切り替え %>
-<div class="relative py-2 card-style <%= mode == :index ? 'shadow-primary' : '' %>">
+<div class="relative py-2 card-style <%= mode == :index ? 'shadow-primary' : 'dark:!bg-white' %>">
   <%# 装飾ラベル ------------------ %>
-  <div class="absolute left-0 top-0 h-full w-2 rounded-l accent-brown"></div>
+  <div class="absolute left-0 top-0 h-full w-2 rounded-l <%= mode == :index ? 'trip-accent-color' : 'hidden' %>"></div>
   
   <%# タイトル & その他アイコン ------------------ %>
   <div class="flex items-start justify-between pl-5 pr-3 py-1">
-    <h2 class="font-bold text-lg"><%=trip.title %></h2>
+    <h2 class="font-bold text-lg dark:text-white <%= mode == :index ? '' : 'dark:!text-black' %>"><%=trip.title %></h2>
 
     <% if mode == :index %>
     <%# 旅行一覧 → 矢印アイコン %>
       <div class="px-3 pt-0.5">
-        <%= inline_svg("svg/navigation-arrow.svg", class: "w-3", draggable:"false") %>
+        <%= inline_svg("svg/navigation-arrow.svg", class: "w-3 dark:text-neutral-500", draggable:"false") %>
       </div>
 
     <% elsif mode == :show %>
     <%# 旅行詳細 → 編集、削除ボタン %>
       <div class="flex pl-5">
-        <%= link_to edit_trip_path(trip), class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-panel-navy shadow-secondary text-white" do %>
+        <%= link_to edit_trip_path(trip), class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-panel-navy text-white shadow-secondary dark:bg-zinc-600 dark:text-white" do %>
           <%= inline_svg("svg/edit.svg", draggable:"false") %>
         <% end %>
-        <%= link_to trip_path(trip), data: {turbo_method: :delete, turbo_confirm: "旅行を削除しますか？"}, class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-panel-navy shadow-secondary text-white" do %>
+        <%= link_to trip_path(trip), data: {turbo_method: :delete, turbo_confirm: "旅行を削除しますか？"}, class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-panel-navy shadow-secondary text-white dark:bg-zinc-600 dark:text-white" do %>
           <%= inline_svg("svg/delete.svg", draggable:"false") %>
         <% end %>
       </div>
@@ -34,18 +34,19 @@
   <div class="flex items-center">
     <% if trip.group.present? %>
       <img class="h-7 pl-5 pr-2" src="/group-icon.jpg" alt="">
-      <p class="pr-10"><%= trip.group.name %></p>
+      <p class="pr-10 dark:text-neutral-400 text-sm <%= mode == :index ? '' : 'dark:!text-neutral-600' %>"><%= trip.group.name %></p>
     <% else %>
-      <img class="h-7 pl-5 pr-2" src="/group-icon.jpg" alt="">
-      <p class="pr-10">一時グループ</p>
+      <%= inline_svg("svg/group.svg", draggable:"false", class:"h-7 ml-5 mr-2 text-zinc-800") %>
+      <p class="pr-10 dark:text-neutral-400 text-sm <%= mode == :index ? '' : 'dark:!text-neutral-600' %>">一時グループ</p>
     <% end %>
   </div>
 
   <%# 決済日 & 精算状況 ------------------ %>
   <div class="pl-6 pr-4 pt-3 flex items-center justify-between">
-    <p class="text-gray-400 font-mono"><%= trip.departure_date.strftime("%Y/%m/%d") + "~" %></p>
-    <% status_color = trip.settled? ? 'bg-gray-400' : 'bg-primary-red' %>
-    <p class="w-20 py-0.5 text-xs text-center text-white rounded-sm <%= status_color %>">
+    <p class="text-gray-400 font-mono dark:text-neutral-500"><%= trip.departure_date.strftime("%Y/%m/%d") + "~" %></p>
+
+    <% status_color = trip.settled? ? 'bg-neutral-500 dark:bg-transparent dark:border text-white dark:text-neutral-500' : 'bg-primary-red text-white dark:bg-neutral-200 dark:text-black' %>
+    <p class="w-20 py-0.5 text-xs text-center rounded-sm <%= status_color %>">
       <%= t("activerecord.attributes.trip.settlement_status.#{trip.settlement_status}")%>
     </p>
   </div>

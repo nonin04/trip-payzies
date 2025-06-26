@@ -23,11 +23,11 @@
       <div class="separator"></div>
       <div class="w-full flex gap-4">
         <%# step1時のボタン %>
-        <%= link_to "キャンセル", trips_path, data:{"trip-validate-target": "toggleBtn"}, class:"flex-1 main_action_btn bg-gray-400 text-white" %>
-        <button data-trip-validate-target="toggleBtn" data-action="click->trip-validate#changeForm" type="button" class="flex-1 main_action_btn bg-primary-blue-100 text-white">次へ</button>
+        <%= link_to "戻る", trips_path, data:{"trip-validate-target": "toggleBtn"}, class:"w-1/4 main-action-btn bg-gray-400 text-white dark:bg-neutral-600" %>
+        <button data-trip-validate-target="toggleBtn" data-action="click->trip-validate#changeForm" type="button" class="flex-1 main-action-btn bg-primary-blue-100 text-white dark:bg-theme-brown dark:text-black">次へ</button>
         <%# step2時のボタン %>
-        <button data-trip-validate-target="toggleBtn" data-action="click->trip-validate#changeForm" type="button" class="!hidden flex-1 main_action_btn bg-gray-400 text-white">戻る</button>
-        <%= f.submit "保存",data: {"trip-validate-target" => "toggleBtn", "participant-validate-target" => "submitBtn", action: "click->participant-validate#submit"}, class: "!hidden flex-1 main_action_btn bg-primary-blue-100 text-white" %>
+        <button data-trip-validate-target="toggleBtn" data-action="click->trip-validate#changeForm" type="button" class="!hidden w-1/4 main-action-btn bg-gray-400 text-white dark:bg-neutral-600">戻る</button>
+        <%= f.submit "保存",data: {"trip-validate-target" => "toggleBtn", "participant-validate-target" => "submitBtn", action: "click->participant-validate#submit"}, class: "!hidden flex-1 main-action-btn bg-primary-blue-100 text-white dark:bg-theme-brown dark:text-black" %>
       </div>
     </section>
   <% end %>

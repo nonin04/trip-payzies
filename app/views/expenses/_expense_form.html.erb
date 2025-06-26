@@ -1,9 +1,9 @@
 <%= form_with model: [@trip, @expense], local: true, html: {class:"flex flex-col flex-1 min-h-0", data:{"expense-validate-target": "form"}} do |e| %>
   
-  <div class="overflow-y-auto">
+  <div class="h-full overflow-y-auto flex flex-col">
     <%# カード1 ------------- %>
     <div class="relative mb-4 card-style mx-4">
-      <div class="absolute top-0 left-0 h-full w-2 bg-panel-navy rounded-l"></div>
+      <div class="absolute top-0 left-0 h-full w-2 bg-panel-navy dark:bg-transparent rounded-l"></div>
 
       <div class="flex flex-col w-full py-3 px-4">
 
@@ -11,7 +11,7 @@
           <section class="mt-2 flex flex-col w-full pr-4">
             <div class="flex items-center">
               <p class="font-bold w-[60px] mr-2 text-right">決済者:</p>
-              <%= e.collection_select :payer_id, @trip.participants, :id, :name, { prompt: "参加者から選択してください"}, {class: "flex-1 select-style text-gray-600", data:{"expense-validate-target": "payer", action: "keydown->expense-validate#submitPrevent input->expense-validate#payerValidate"} } %>
+              <%= e.collection_select :payer_id, @trip.participants, :id, :name, { prompt: "参加者から選択してください"}, {class: "flex-1 select-style", data:{"expense-validate-target": "payer", action: "keydown->expense-validate#submitPrevent input->expense-validate#payerValidate"} } %>
             </div>
             <p class="text-red-500 text-xs pb-0.5 ml-[60px] pl-2 h-2" data-expense-validate-target="payerErrorMessage"></p>
           </section>
@@ -86,8 +86,8 @@
             <% end %>
             <div>
               <%= check_box_tag "expense[advance_payments_attributes][#{i}][participant_id]", participant.id, is_checked, id:"participant_#{participant.id}", class:"hidden peer" %>
-              <label for="participant_<%= participant.id %>" data-expense-validate-target="checkBox" data-expense-checkbox-target="checkBox" data-action="click->expense-checkbox#checkBtn click->expense-validate#owedValidate" class="flex items-center my-1 hover:bg-gray-100 rounded-md py-1">
-                <%= inline_svg("svg/unchecked-box.svg", data:{"expense-checkbox-target": "unChecked"}, class:"#{is_checked ? 'hidden' : ''} h-6 text-gray-500") %>
+              <label for="participant_<%= participant.id %>" data-expense-validate-target="checkBox" data-expense-checkbox-target="checkBox" data-action="click->expense-checkbox#checkBtn click->expense-validate#owedValidate" class="flex items-center my-1 hover:bg-gray-100 dark:hover:bg-neutral-700 rounded-md py-1">
+                <%= inline_svg("svg/unchecked-box.svg", data:{"expense-checkbox-target": "unChecked"}, class:"#{is_checked ? 'hidden' : ''} h-6 text-gray-500 dark:text-neutral-600") %>
                 <%= inline_svg("svg/checked-box.svg", data:{"expense-checkbox-target": "checked", "expense-validate-target": "checked"}, class:"#{is_checked ? '' : 'hidden'} h-6 text-primary-blue-100") %>
                 <span class="text-md pl-2 mr-auto"><%= participant.name %></span>
               </label>
@@ -102,7 +102,7 @@
   <section class="px-4 my-3">
     <div class="separator"></div>
       <div class="w-full flex gap-4">
-      <%= link_to "キャンセル", trip_path(@trip), class:"flex-1 main_action_btn bg-gray-400 text-white" %>
-      <button data-expense-validate-target="submitBtn" data-action="click->expense-validate#submit" class="flex-1 main_action_btn bg-primary-blue-100 text-white"><%= action_name == "new" ? "保存" : "更新" %></button>
+      <%= link_to "戻る", trip_path(@trip), class:"w-1/4 main-action-btn bg-gray-400 text-white dark:bg-neutral-600" %>
+      <button data-expense-validate-target="submitBtn" data-action="click->expense-validate#submit" class="flex-1 main-action-btn bg-primary-blue-100 text-white dark:bg-theme-brown dark:text-black"><%= action_name == "new" ? "保存" : "更新" %></button>
   </section>
 <% end %>

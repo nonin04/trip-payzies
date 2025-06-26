@@ -38,9 +38,14 @@ export default class extends Controller {
   }
 
 
+
+
+
+
   validate() {
     return this.countCheck() || this.lengthCheck() || this.duplicateCheck()
   }
+
 
   countCheck() {
     let hasError = false
@@ -91,6 +96,8 @@ export default class extends Controller {
     return hasError;
   }
 
+  duplicateErrorClasses = ["!border-red-400", "dark:!border-transparent", "dark:!bg-neutral-800"]
+
   duplicateCheck() {
     let hasError = false
     function isDuplicated(nameInputs) {
@@ -99,12 +106,12 @@ export default class extends Controller {
       return setElements.size !== trimmed.length;
     }
     if (isDuplicated(this.nameTargets)) {
-      this.participantCardTarget.classList.add("border", "!border-red-400")
+      this.participantCardTarget.classList.add(...this.duplicateErrorClasses)
       this.duplicatedErrorMessageTarget.textContent = "※名前が重複しています"
       console.log("重複エラー")
       hasError = true
     } else {
-      this.participantCardTarget.classList.remove("!border-red-400")
+      this.participantCardTarget.classList.remove(...this.duplicateErrorClasses)
       this.duplicatedErrorMessageTarget.textContent = ""
     }
     return hasError
@@ -116,16 +123,16 @@ export default class extends Controller {
     this.slideUp(flashErrorEl)
   }
 
-
+  formErrorClasses = ["!border-red-400", "!bg-red-50", "dark:!border-neutral-600", "dark:!bg-neutral-800"]
     //references
   addErrorStyle(formEl) {
-    formEl.classList.add("!border-red-400", "!bg-red-50")
+    formEl.classList.add(...this.formErrorClasses)
   }
   addErrorMessage(formEl, errorMessage) {
     formEl.textContent = errorMessage
   }
   removeError(formEl, messageEl) {
-    formEl.classList.remove("!border-red-400", "!bg-red-50")
+    formEl.classList.remove(...this.formErrorClasses)
     messageEl.textContent = ""
   }
 

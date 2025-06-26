@@ -2,8 +2,8 @@
 
 <%# ページ案内 ------------------ %>
 <section class="flex items-center relative">
-  <%= link_to trip_path(@trip), class:"absolute flex items-center bg-panel-navy rounded-md shadow-secondary h-6 w-10 py-0.5 px-0.5 ml-4" do %>
-    <%= inline_svg("svg/navigation-arrow.svg", class:"w-full h-full rotate-180 text-white")%>
+  <%= link_to trip_path(@trip), class:"absolute flex items-center rounded-md shadow-secondary h-6 w-10 py-0.5 px-0.5 ml-4 bg-panel-navy dark:bg-neutral-800" do %>
+    <%= inline_svg("svg/navigation-arrow.svg", class:"w-full h-full rotate-180 text-white dark:text-neutral-300")%>
   <% end %>
   <h1 class="mt-2 my-2 text-xl font-bold w-full text-center">精算結果</h1>
 </section>
@@ -28,7 +28,7 @@
           <div class="flex items-center justify-between">
             <%# 矢印と宛先 %>
             <div class="flex items-center">
-              <%= inline_svg("svg/long-arrow.svg", class:"w-6 text-black rotate-180 mx-2") %>
+              <%= inline_svg("svg/long-arrow.svg", class:"w-6 rotate-180 mx-2 text-black dark:text-neutral-300") %>
               <div class="text-lg font-bold"><%= p[:to].name %></div>
             </div>
             <%# 金額 %>
@@ -48,12 +48,12 @@
 <div class="px-4 my-3">
   <div class="separator"></div>
   <div class="w-full flex gap-4">
-    <%= link_to "戻る", trip_path(@trip), class:"w-3/10 main_action_btn bg-gray-400 text-white" %>
+    <%= link_to "戻る", trip_path(@trip), class:"w-3/10 main-action-btn bg-gray-400 text-white dark:bg-neutral-600" %>
     
     <% if @trip.unsettled? %>
     <%# 未精算→精算済みに %>
       <%= form_with url: settle_trip_path(@trip), method: :patch, data:{turbo_confirm: "旅行を精算済みにしますか？"}, class:"w-full" do %>
-        <button type="submit" class="w-full main_action_btn bg-primary-blue-100 text-white">
+        <button type="submit" class="w-full main-action-btn bg-primary-blue-100 text-white">
           <span>精算済みにする</span>
           <%= inline_svg("svg/settle.svg", class:"w-[28px] ml-2") %>
         </button>
@@ -62,7 +62,7 @@
     <% elsif @trip.settled? %>
     <%# 精算済み→未精算に %>
       <%= form_with url: unsettle_trip_path(@trip), method: :patch, data:{turbo_confirm: "旅行を未精算に変更しますか？"}, class:"w-full" do %>
-        <button type="submit" class="w-full main_action_btn bg-primary-red text-white">
+        <button type="submit" class="w-full main-action-btn bg-primary-red text-white">
           <span>未精算にする</span>
           <%= inline_svg("svg/reset.svg", class:"w-[28px] ml-2") %>
         </button>

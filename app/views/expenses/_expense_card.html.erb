@@ -1,10 +1,10 @@
 <div class="relative py-2 card-style w-full shadow-primary">
-  <div class="absolute top-0 left-0 h-full w-2 accent-navy rounded-l"></div>
+  <div class="absolute top-0 left-0 h-full w-2 expense-accent-color rounded-l"></div>
 
   <div class="flex items-center justify-between ">
     <div>
       <p class="px-4 font-bold"><%= expense.title %></p>
-      <p class="px-4 text-sm">by <%= expense.payer.name %></p>
+      <p class="px-4 text-sm dark:text-neutral-400">by <%= expense.payer.name %></p>
     </div>
     <p class="font-bold text-xl px-4">¥<%= number_with_delimiter(expense.amount) %></p>
   </div>

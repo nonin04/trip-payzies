@@ -6,7 +6,8 @@ export default class extends Controller {
   static targets = [
     "sidebar",
     "hamburgerMenu",
-    "mainEl"
+    "mainEl",
+    "htmlTag"
   ]
 
   hideSidebar() {
@@ -26,5 +27,18 @@ export default class extends Controller {
     this.mainElTarget.classList.toggle("translate-x-0")
     this.mainElTarget.classList.toggle("-translate-x-16")
     mainElChilds.forEach(el => el.classList.toggle("pointer-events-none"))
+  }
+
+
+
+  darkModeToggle() {
+    if (this.htmlTagTarget.classList.contains("dark")){
+      this.htmlTagTarget.classList.remove("dark")
+      localStorage.setItem("theme", "light")
+    }
+    else {
+      this.htmlTagTarget.classList.add("dark")
+      localStorage.setItem("theme", "dark")
+    }
   }
 }
