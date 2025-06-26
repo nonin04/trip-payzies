@@ -2,12 +2,12 @@ user = User.find_by!(email: "example@email.com")
 
 # group.name25字
 group_max = user.groups.create!(
-  name: "無計画トラベル隊日本高校四百六十期卒業生同窓会"
+  name: "これはグループ名の表示確認用のテストケースです"
 )
 
 # member15字以内
 # memberデータ =============================================
-member_maxA = group_max.members.create!(name: "宇宙航空研究開発機構のメンバー")
+member_maxA = group_max.members.create!(name: "＃これは表示確認用テストケース")
 member_maxB = group_max.members.create!(name: "はやぶさ")
 member_maxC = group_max.members.create!(name: "こうのとり")
 member_maxD = group_max.members.create!(name: "かぐや")
@@ -23,10 +23,10 @@ member_maxJ = group_max.members.create!(name: "きく")
 # trip.title25字
 trip_max = user.trips.create!(
   group: group_max,
-  title: "十四回目の北海道旅行と初めての青森県りんご狩り旅行",
+  title: "＃これは旅行タイトルの表示確認用のテストケースです", 
   departure_date: Date.new(2025, 2, 4),
   participants_attributes: [
-    { name: "宇宙航空研究開発機構のメンバー" },
+    { name: "＃これは表示確認用テストケース" },
     { name: "はやぶさ" },
     { name: "こうのとり" },
     { name: "かぐや" },
@@ -49,7 +49,7 @@ p_maxA, p_maxB, p_maxC, p_maxD, p_maxE, p_maxF, p_maxG, p_maxH, p_maxI, p_maxJ =
 get_expense_by_p_maxA = trip_max.expenses.create!(
   payer: p_maxA,
   amount: 999999,
-  title: "ライブイベント費用として会場費と飲食代金を立替する",
+  title: "＃これは立替タイトルの表示確認用のテストケースです",
   payment_date: Date.today,
   place: "東京都, 東京市",
   advance_payments_attributes: [
