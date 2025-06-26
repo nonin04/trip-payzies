@@ -89,14 +89,16 @@ export default class extends Controller {
 
 
   // references
+  formErrorClasses = ["!border-red-400", "!bg-red-50", "dark:!border-neutral-600", "dark:!bg-neutral-800"]
+
   addErrorStyle(formEl) {
-    formEl.classList.add("!border-red-400", "!bg-red-50")
+    formEl.classList.add(...this.formErrorClasses)
   }l
   addErrorMessage(formEl, errorMessage) {
     formEl.textContent = errorMessage
   }
   removeError(formEl, messageEl) {
-    formEl.classList.remove("!border-red-400", "!bg-red-50")
+    formEl.classList.remove(...this.formErrorClasses)
     messageEl.textContent = ""
   }
   
@@ -108,7 +110,7 @@ export default class extends Controller {
     this.clearFlashTimeout()
     this.flashTimeoutId = setTimeout(() => {
       this.slideUp(flashErrorEl)}, 
-      3000
+      4000
     )
   }
 

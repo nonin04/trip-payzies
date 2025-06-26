@@ -36,7 +36,7 @@ export default class extends Controller {
     if (el.classList.contains("translate-y-0")) {
       setTimeout(() => {
         this.slideUp(el)}, 
-        3000
+        4000
       )
     }
   }

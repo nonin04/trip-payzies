@@ -19,7 +19,6 @@ export default class extends Controller {
     "owedErrorMessage",
     "form"
   ]
-
   flashTimeoutId = null
 
   submitPrevent(event) {
@@ -47,15 +46,18 @@ export default class extends Controller {
     this.slideUp(flashErrorEl)
   }
 
-// references
+  // references
+
+  formErrorClasses = ["!border-red-400", "!bg-red-50", "dark:!border-neutral-600", "dark:!bg-neutral-800"]
+
   addErrorStyle(formEl) {
-    formEl.classList.add("!border-red-400", "!bg-red-50")
+    formEl.classList.add(...this.formErrorClasses)
   }
   addErrorMessage(formEl, errorMessage) {
     formEl.textContent = errorMessage
   }
   removeError(formEl, messageEl) {
-    formEl.classList.remove("!border-red-400", "!bg-red-50")
+    formEl.classList.remove(...this.formErrorClasses)
     messageEl.textContent = ""
   }
 
@@ -67,7 +69,7 @@ export default class extends Controller {
     this.clearFlashTimeout()
     this.flashTimeoutId = setTimeout(() => {
       this.slideUp(flashErrorEl)}, 
-      3000
+      4000
     )
   }
 
@@ -194,15 +196,16 @@ export default class extends Controller {
     const checkedImage = this.checkedTargets.filter(el => !el.classList.contains("hidden"))
     const owedErrorMessage = this.owedErrorMessageTarget
     const owedEl = this.owedElTarget
+    const owedErrorClasses = ["!bg-red-50", "dark:!bg-neutral-800"]
 
     if (checkedImage.length === 0) {
     owedErrorMessage.textContent = "※選択必須です"
-    owedEl.classList.add("!bg-red-50")
+    owedEl.classList.add(...owedErrorClasses)
     hasError = true;
     }
     else {
       owedErrorMessage.textContent = ""
-      owedEl.classList.remove("!bg-red-50")
+      owedEl.classList.remove(...owedErrorClasses)
       hasError = false;
     }
     return hasError;

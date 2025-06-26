@@ -2,7 +2,7 @@
   <%# header分の余白%>
   <div class="h-12"></div>
 
-  <div class="flex-1 flex flex-col justify-center pt-6 bg-panel-navy">
+  <div class="flex-1 flex flex-col justify-center pt-6 bg-panel-navy dark:bg-neutral-900">
 
     <%# ユーザーネームとアイコン %>
     <%#= link_to authenticated_root_path do %>
@@ -27,6 +27,10 @@
     </div>
 
     <%# ログアウト %>
+    <div data-action="click->sidebar#darkModeToggle">
+      <%= inline_svg("svg/sidebar/light.svg", class:"block dark:hidden mx-auto h-6 text-white flex-shrink-0 cursor-pointer")%>
+      <%= inline_svg("svg/sidebar/dark.svg", class:"hidden dark:block mx-auto h-6 text-white flex-shrink-0 cursor-pointer")%>
+    </div>
 
     <%= link_to authenticated_root_path do %>
       <%= inline_svg("svg/sidebar/info.svg", class:"hidden mx-auto h-6 text-white flex-shrink-0")%>
