@@ -7,8 +7,8 @@
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
     <div class="field w-full mb-4">
-      <%= f.label :email, "メールアドレス", class: "deviseform-label"%>
-      <%= f.email_field :email, placeholder: "メールアドレスを入力してください", autocomplete: "email", class: "form-style" %>
+      <%= f.label :email, "メールアドレス", class: "devise-form-label"%>
+      <%= f.email_field :email, placeholder: "メールアドレスを入力してください", autocomplete: "email", class: "form-style text-sm" %>
     </div>
     <div class="field w-full mb-4">
       <%= f.label :password, "パスワード", class: "devise-form-label"%>

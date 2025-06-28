@@ -23,6 +23,8 @@ class BalanceCalculator
   end
 
 
+
+
   def net_balances
     net_balances = []
     balances.each do |b|
