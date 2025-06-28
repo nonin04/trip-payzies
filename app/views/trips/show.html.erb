@@ -8,17 +8,28 @@
   <h1 class="mt-2 my-2 text-xl font-bold w-full text-center">旅行詳細</h1>
 </section>
 
-<div class=" flex-1 overflow-y-auto">
+<div class=" flex-1 overflow-y-auto mx-4">
   <%# 旅行カード ------------------ %>
-  <section class="mb-4 mx-4">
+  <section class="mb-4">
     <%= render 'trips/trip_card', trip: @trip, mode: :show %>
   </section>
 
-  <%# サブ案内 ------------------ %>
-  
+
+  <section class="w-full mb-4 flex gap-4">
+    <div class="flex flex-1 card-style h-10 items-center justify-between gap-2 px-2">
+      <%= inline_svg("svg/share.svg", class:"w-6")%>
+      <input class="flex-1 text-neutral-600 bg-neutral-100 rounded-md px-2 dark:text-white dark:bg-neutral-700" type="" id="share_link" value="開発中..." readonly>
+      <%= inline_svg("svg/info.svg", class:"h-6") %>
+    </div>
+    <div class="gap-2 w-1/5 card-style h-10">
+      <%= link_to test_trip_path(@trip),  class:"flex h-full w-full items-center justify-center" do %>
+        <%= inline_svg("svg/graph.svg", class:"h-6") %>
+      <% end %>
+    </div>
+  </section>
 
   <%# 参加者カード ------------------ %>
-  <section class="mt-4 flex flex-col card-style mx-4" data-controller="accordion">
+  <section class="mt-2 flex flex-col card-style" data-controller="accordion">
     <div class="flex justify-between py-2 cursor-pointer" data-accordion-target="bar" data-action="click->accordion#toggle">
       <p class="mx-4 font-bold">参加者</p>
       <%= inline_svg("svg/accordion.svg", class:"w-6 mx-6 transition-transform transform duration-200 text-gray-500", data:{"accordion-target": "icon"}) %>
@@ -41,7 +52,7 @@
     <% if @expenses.present? %>
     <%# 立替あれば表示 %>
       <% @expenses.each do |expense|%>
-        <%= link_to trip_expense_path(@trip, expense), class:"mb-4 mx-4" do %>
+        <%= link_to trip_expense_path(@trip, expense), class:"mb-4" do %>
           <%= render 'expenses/expense_card', expense: expense %>
         <% end %>
       <% end %>

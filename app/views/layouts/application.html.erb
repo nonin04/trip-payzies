@@ -4,12 +4,7 @@
     <%= render 'layouts/head_scripts' %>
   </head>
 
-  <% if devise_controller? %>
-    <body class="w-screen h-screen overflow-x-hidden flex">
-  <% else %>
-    <body class="w-screen h-screen overflow-x-hidden flex" >
-  <% end %>
-
+  <body class="w-screen h-screen overflow-x-hidden flex">
     <%# 左側背景 %>
     <div id="leftEl" class="z-50 flex-1 bg-[url('/images/background2.png')] dark:bg-none dark:bg-neutral-800 bg-cover min-w-0"></div>
 
@@ -23,7 +18,12 @@
           <%= render 'layouts/header'%>
         </header>
 
-        <main class="bg-form-gray dark:bg-neutral-900 dark:text-white flex-1 min-h-0 flex flex-col translate-x-0 transition-transform transform duration-300 ease-in-out" data-sidebar-target="mainEl" data-action="click->sidebar#hideSidebar">
+        <% if devise_controller? %>
+          <main class="bg-form-gray dark:bg-neutral-900 dark:text-white flex-1 min-h-0 flex flex-col translate-x-0 transition-transform transform duration-300 ease-in-out">
+        <% else %>
+          <main class="bg-form-gray dark:bg-neutral-900 dark:text-white flex-1 min-h-0 flex flex-col translate-x-0 transition-transform transform duration-300 ease-in-out" data-sidebar-target="mainEl" data-action="click->sidebar#hideSidebar">
+        <%end%>
+        
           <%= render 'layouts/flash_message_for_rails' %>
           <%= yield %>
         </main>

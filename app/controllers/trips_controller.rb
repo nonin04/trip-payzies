@@ -8,11 +8,15 @@ class TripsController < ApplicationController
   def show
     @participants = @trip.participants
     @expenses = @trip.expenses.includes(:payer).order(payment_date: :desc)
+    @balances = BalanceCalculator.new(@trip).net_balances
   end
 
   def test
     @participants = @trip.participants
-    @expenses = @trip.expenses.includes(:payer).order(payment_date: :desc)
+    balances = BalanceCalculator.new(@trip)
+    @balances = balances.balances
+    @net_balances = balances.net_balances
+    @amount = @trip.expenses.sum(:amount)
   end
 
   def new

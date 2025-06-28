@@ -1,4 +1,29 @@
-<div class="" data-controller="barchart" data-barchart-participants-value="<%= @participants.to_json %>">
-  <canvas id="bar-chart" data-barchart-target="myChart" class="w-[400px] h-[400px]">
-  </canvas>
+<% content_for(:title, "グラフ分析") %>
+
+<section class="flex items-center relative">
+  <%= link_to trips_path(@trips), class:"absolute flex items-center rounded-md shadow-secondary h-6 w-10 py-0.5 px-0.5 ml-4 text-white bg-panel-navy dark:text-neutral-700 dark:bg-white" do %>
+    <%= inline_svg("svg/navigation-arrow.svg", class:"w-full h-full rotate-180 ")%>
+  <% end %>
+  <h1 class="mt-2 my-2 text-xl font-bold w-full text-center">グラフ分析</h1>
+</section>
+
+<div class="flex-1 overflow-y-auto mx-4">
+
+  <section class="rounded-md bg-white h-1/2 mb-4">
+    <div class="w-full h-full" data-controller="barchart" data-barchart-net-balances-value="<%= @net_balances.to_json %>">
+      <canvas id="bar-chart" data-barchart-target="myChart" class="mx-4">
+      </canvas>
+    </div>
+  </section>
+
+
+  <section class="relative rounded-md bg-white h-1/2 mb-4">
+    <div class="w-full h-full" data-controller="piechart" data-piechart-balances-value="<%= @balances.to_json %>">
+      <canvas id="piechart" data-piechart-target="myChart" class="mx-4">
+      </canvas>
+    </div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-bold text-xl text-black">¥<%= number_with_delimiter(@amount) %></div>
+  </section>
+
 </div>
+

@@ -1,14 +1,14 @@
 import { Controller } from "@hotwired/stimulus"
 import { Chart, registerables } from "chart.js"
-import { isDarkMode } from "utils/theme" 
 
 Chart.register(...registerables)
 
-// Connects to data-controller="barchart"
+// Connects to data-controller="piechart"
 export default class extends Controller {
 
-  static targets =["myChart"]
-  static values ={netBalances: Array}
+  static targets = ["myChart"]
+  static values = { balances: Array}
+
 
   canvasContext() {
     if (!this.hasMyChartTarget) {
@@ -20,20 +20,18 @@ export default class extends Controller {
   
 
   connect() {
-    console.log(this.netBalancesValue)
-    const net_balances = this.netBalancesValue.map(nb => ({
-      name: nb.participant.name,
-      difference: nb.difference,
+    const balances = this.balancesValue.map(b => ({
+      name: b.participant.name,
+      paidTotal: b.paid_total,
     }))
-    console.log(net_balances)
-
 
     new Chart(this.canvasContext(), {
-      type: 'bar',
+
+      type: 'doughnut',
       data: {
-        labels: net_balances.map(nb => nb.name),
+        labels: [...balances.map(b => b.name)],
         datasets: [{
-          data: net_balances.map(nb => nb.difference),
+          data: [...balances.map(b => b.paidTotal)],
           backgroundColor: [
             '#4F6783',
             '#e6bfb1',
@@ -48,34 +46,27 @@ export default class extends Controller {
             '#de9f89'
           ],
           borderWidth: 1,
-          borderColor: 'white',
         }]
       },
       options: {
+
         maintainAspectRatio: false,
         responsive: true,
+        cutout: '70%',
         plugins: {
           title: {
-            color: 'black',
+            color: '',
             display: true,
-            text: '精算差額グラフ',
+            text: '決済額合計',
           },
           legend: {
-            display: false,
+            position: 'bottom',
             labels: {
-            },
-            onClick: () => {}
-          }
-        },
-        scales: {
-          y:{
-            ticks:{
               color: 'black',
-            }
-          },
-          x:{
-            ticks:{
-              color: 'black',
+              boxWidth: 10,
+              font:{
+                size: 12
+              }
             }
           }
         }

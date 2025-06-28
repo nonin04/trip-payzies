@@ -31,6 +31,12 @@
 
   --color-dark-theme: #d6b778;
 
+  /* darkmodecolors */
+  --color-dark-blue: #5B7594;
+  --color-dark-pink: #F5D1C3;
+  --color-dark-white: #F7F3F0;
+  --color-dark-orange: #F58A6A;
+  --color-dark-sky: #B3D9E3;
 }
 
 .btn {@apply
@@ -51,7 +57,7 @@
 }
 
 .page-width{@apply
-    bg-form-neutral w-full sm:w-full md:w-1/2 xl:w-1/3 mx-auto
+    bg-form-neutral w-full sm:w-2/3 md:w-1/2 xl:w-1/3 2xl:w-1/3  mx-auto
 }
 
 .card-style {@apply
@@ -142,7 +148,7 @@ dark:bg-neutral-800
 
 .main-action-btn{@apply
   flex 
-  mt-2 rounded-md py-2 text-[22px] text-center justify-center font-bold
+  mt-2 rounded-lg py-2 text-[22px] text-center justify-center font-bold
   shadow-[0px_4px_0px_rgba(24,49,83,0.5)]
   dark:shadow-[0px_4px_0px_rgba(0,0,0,0)]
   transition duration-300 ease-in-out transform 
