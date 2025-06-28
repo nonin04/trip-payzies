@@ -51,10 +51,13 @@
 
     <% if @expenses.present? %>
     <%# 立替あれば表示 %>
-      <% @expenses.each do |expense|%>
-        <%= link_to trip_expense_path(@trip, expense), class:"mb-4" do %>
-          <%= render 'expenses/expense_card', expense: expense %>
-        <% end %>
+      <% @expenses.group_by{|expense| expense.payment_date}.each do |date, expense|%>
+        <div><%= date %></div>
+          <% expense.each do |e|%>
+            <%= link_to trip_expense_path(@trip, e), class:"mb-4" do %>
+              <%= render 'expenses/expense_card', expense: e %>
+            <% end %>
+          <% end %>
       <% end %>
 
     <% else %> 
