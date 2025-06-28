@@ -24,7 +24,7 @@ member_maxJ = group_max.members.create!(name: "きく")
 trip_max = user.trips.create!(
   group: group_max,
   title: "＃これは旅行タイトルの表示確認用のテストケースです", 
-  departure_date: Date.new(2025, 2, 4),
+  departure_date: Date.new(2021, 2, 4),
   participants_attributes: [
     { name: "＃これは表示確認用テストケース" },
     { name: "はやぶさ" },
@@ -69,7 +69,7 @@ ExpenseAmountDistributor.new(get_expense_by_p_maxA).call
 get_expense_by_p_maxB = trip_max.expenses.create!(
   payer: p_maxB,
   amount: 110000,
-  title: "立替結果のための調整",
+  title: "立替結果調整用",
   payment_date: Date.today,
   place: "東京都, 東京市",
   advance_payments_attributes: [
