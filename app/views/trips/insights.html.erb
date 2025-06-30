@@ -1,13 +1,24 @@
-<% content_for(:title, "グラフ分析") %>
+<% content_for(:title, "分析") %>
 
 <section class="flex items-center relative">
   <%= link_to trip_path(@trip), class:"absolute flex items-center rounded-md shadow-secondary h-6 w-10 py-0.5 px-0.5 ml-4 text-white bg-panel-navy dark:text-neutral-700 dark:bg-white" do %>
     <%= inline_svg("svg/navigation-arrow.svg", class:"w-full h-full rotate-180 ")%>
   <% end %>
-  <h1 class="mt-2 my-2 text-xl font-bold w-full text-center">グラフ分析</h1>
+  <h1 class="mt-2 my-2 text-xl font-bold w-full text-center">分析</h1>
 </section>
 
 <div class="flex-1 overflow-y-auto mx-4">
+
+  <section class="mb-4 py-2 rouded-md bg-white px-8 text-sm">
+    <h2 class="text-center text-sm font-bold">旅行金額</h2>
+    <% @balances.each do |b| %>
+    <div class="h-0.5 w-full bg-neutral-200 mt-2"></div>
+    <div class="flex my-1 justify-between">
+      <p><%= b[:participant].name%></p>
+      <p>¥<%= number_with_delimiter(b[:owed_total])%></p>
+    </div>
+    <% end %>
+  </section>
 
   <section class="rounded-md bg-white h-1/2 mb-4">
     <div class="w-full h-full" data-controller="barchart" data-barchart-net-balances-value="<%= @net_balances.to_json %>">

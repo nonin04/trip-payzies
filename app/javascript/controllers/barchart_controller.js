@@ -58,7 +58,7 @@ export default class extends Controller {
           title: {
             color: 'black',
             display: true,
-            text: '精算差額グラフ',
+            text: '貸し借り差額グラフ',
           },
           legend: {
             display: false,

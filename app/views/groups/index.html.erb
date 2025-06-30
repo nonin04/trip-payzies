@@ -1,6 +1,35 @@
 <% content_for(:title, "グループ一覧") %>
 
-<div class="my-auto">
-  <h1 class="font-bold text-4xl text-center text-gray-500">Groups#index</h1>
-  <h2 class="font-bold text-2xl text-center text-gray-500">開発中.....</h2>
+<%= render 'layouts/modal/group_description' %>
+
+<%# ページ案内 ------------------ %>
+<div class="w-full flex-1 min-h-0 overflow-y-auto" data-modal-target="mainEl">
+  <section class="flex items-center relative">
+    <%= link_to trips_path(@trips), class:"absolute flex items-center rounded-md shadow-secondary h-6 w-10 py-0.5 px-0.5 ml-4 text-white bg-panel-navy dark:text-neutral-700 dark:bg-white" do %>
+      <%= inline_svg("svg/navigation-arrow.svg", class:"w-full h-full rotate-180 ")%>
+    <% end %>
+    <h1 class="mt-2 my-2 text-xl font-bold w-full text-center">グループ一覧</h1>
+      <button type="button" class="absolute right-0 mr-4 h-6 cursor-pointer" data-modal-target="openBtn" data-action="click->modal#openModal">
+        <%= inline_svg("svg/info.svg", class:"h-full") %>
+      </button>
+  </section>
+
+  <%# グループカード ------------------ %>
+  <% @groups.each do |group| %>
+    <div class="card-style mx-4 flex shadow-primary items-center">
+      <img src="group-icon.jpg" alt="" class="rounded-full w-10">
+      <p><%= group.name%></p>
+    </div>
+  <% end %>
+  <p class="mt-50 text-center text-xl font-bold text-neutral-500">現在開発中です....<br>リリースまでしばらくお待ちください</p>
 </div>
+
+<div class="mx-4 my-3">
+  <div class="separator"></div>
+  <%= link_to "グループを作成", new_group_path, class:"w-full main-action-btn text-neutral-700 bg-action-yellow" %>
+</div>
+
+
+
+
+
