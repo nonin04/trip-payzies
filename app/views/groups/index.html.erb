@@ -16,11 +16,19 @@
 
   <%# グループカード ------------------ %>
   <% @groups.each do |group| %>
-    <div class="card-style mx-4 flex shadow-primary items-center">
-      <img src="group-icon.jpg" alt="" class="rounded-full w-10">
-      <p><%= group.name%></p>
-    </div>
+      <div class="card-style mx-4 my-4 shadow-primary">
+        <%= link_to group_path(group), class:"w-full h-full flex gap-4 px-4 py-2 items-center justify-between cursor-pointer" do %>
+          <div class="flex items-center gap-4">
+            <img src="group-icon.jpg" alt="" class="rounded-full w-10">
+            <p class=""><%= group.name%></p>
+          </div>
+          <%= inline_svg("svg/navigation-arrow.svg", class:"h-5 w-5 text-neutral-500 text-right") %>
+        <% end %>
+      </div>
   <% end %>
+
+
+
   <p class="mt-50 text-center text-xl font-bold text-neutral-500">現在開発中です....<br>リリースまでしばらくお待ちください</p>
 </div>
 
