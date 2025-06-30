@@ -5,7 +5,7 @@
 <%# ページ案内 ------------------ %>
 <div class="w-full flex-1 min-h-0 overflow-y-auto" data-modal-target="mainEl">
   <section class="flex items-center relative">
-    <%= link_to trips_path(@trips), class:"absolute flex items-center rounded-md shadow-secondary h-6 w-10 py-0.5 px-0.5 ml-4 text-white bg-panel-navy dark:text-neutral-700 dark:bg-white" do %>
+    <%= link_to trips_path(@trips), class:"absolute flex items-center rounded-md shadow-primary h-6 w-10 py-0.5 px-0.5 ml-4 text-white bg-panel-navy dark:text-neutral-700 dark:bg-white" do %>
       <%= inline_svg("svg/navigation-arrow.svg", class:"w-full h-full rotate-180 ")%>
     <% end %>
     <h1 class="mt-2 my-2 text-xl font-bold w-full text-center">グループ一覧</h1>
@@ -16,11 +16,11 @@
 
   <%# グループカード ------------------ %>
   <% @groups.each do |group| %>
-      <div class="card-style mx-4 my-4 shadow-primary">
+      <div class="card-style mx-4 mb-4 shadow-primary">
         <%= link_to group_path(group), class:"w-full h-full flex gap-4 px-4 py-2 items-center justify-between cursor-pointer" do %>
-          <div class="flex items-center gap-4">
-            <img src="group-icon.jpg" alt="" class="rounded-full w-10">
-            <p class=""><%= group.name%></p>
+          <div class="flex items-center gap-2">
+            <img src="/images/group-icon.jpg" alt="" class="rounded-full w-10">
+            <p class="font-bold"><%= group.name %></p>
           </div>
           <%= inline_svg("svg/navigation-arrow.svg", class:"h-5 w-5 text-neutral-500 text-right") %>
         <% end %>

@@ -5,7 +5,7 @@
 <%# ページ案内 ------------------ %>
 <div class="w-full flex-1 min-h-0 overflow-y-auto" data-modal-target="mainEl">
   <section class="flex items-center relative">
-    <%= link_to trips_path(@trips), class:"absolute flex items-center rounded-md shadow-secondary h-6 w-10 py-0.5 px-0.5 ml-4 text-white bg-panel-navy dark:text-neutral-700 dark:bg-white" do %>
+    <%= link_to trips_path(@trips), class:"absolute flex items-center rounded-md shadow-primary h-6 w-10 py-0.5 px-0.5 ml-4 text-white bg-panel-navy dark:text-neutral-700 dark:bg-white" do %>
       <%= inline_svg("svg/navigation-arrow.svg", class:"w-full h-full rotate-180 ")%>
     <% end %>
     <h1 class="mt-2 my-2 text-xl font-bold w-full text-center">旅行詳細</h1>

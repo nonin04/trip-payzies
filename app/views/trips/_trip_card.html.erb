@@ -16,10 +16,10 @@
     <% elsif mode == :show %>
     <%# 旅行詳細 → 編集、削除ボタン %>
       <div class="flex pl-5">
-        <%= link_to edit_trip_path(trip), class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-panel-navy text-white shadow-secondary dark:bg-zinc-600 dark:text-white" do %>
+        <%= link_to edit_trip_path(trip), class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-panel-navy text-white shadow-primary dark:bg-zinc-600 dark:text-white" do %>
           <%= inline_svg("svg/edit.svg", draggable:"false") %>
         <% end %>
-        <%= link_to trip_path(trip), data: {turbo_method: :delete, turbo_confirm: "旅行を削除しますか？"}, class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-panel-navy shadow-secondary text-white dark:bg-zinc-600 dark:text-white" do %>
+        <%= link_to trip_path(trip), data: {turbo_method: :delete, turbo_confirm: "旅行を削除しますか？"}, class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-panel-navy shadow-primary text-white dark:bg-zinc-600 dark:text-white" do %>
           <%= inline_svg("svg/delete.svg", draggable:"false") %>
         <% end %>
       </div>
