@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html data-controller="sidebar" data-sidebar-target="htmlTag" class="">
+<html data-controller="sidebar modal" data-sidebar-target="htmlTag" >
+
   <head>
     <%= render 'layouts/head_scripts' %>
   </head>
@@ -21,7 +22,8 @@
         <% if devise_controller? %>
           <main class="bg-form-gray dark:bg-neutral-900 dark:text-white flex-1 min-h-0 flex flex-col translate-x-0 transition-transform transform duration-300 ease-in-out">
         <% else %>
-          <main class="bg-form-gray dark:bg-neutral-900 dark:text-white flex-1 min-h-0 flex flex-col translate-x-0 transition-transform transform duration-300 ease-in-out" data-sidebar-target="mainEl" data-action="click->sidebar#hideSidebar">
+          <main class="bg-form-gray dark:bg-neutral-900 dark:text-white flex-1 min-h-0 flex flex-col translate-x-0 transition-transform transform duration-300 ease-in-out" 
+                data-sidebar-target="mainEl" data-action="click->sidebar#hideSidebar">
         <%end%>
         
           <%= render 'layouts/flash_message_for_rails' %>
