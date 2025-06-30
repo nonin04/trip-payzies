@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-  before_action :set_trip, only: [ :show, :test, :edit, :update, :destroy, :result, :settle, :unsettle ]
+  before_action :set_trip, only: [ :show, :edit, :update, :destroy, :insights, :result, :settle, :unsettle ]
 
   def index
     @trips = current_user.trips.order(departure_date: :desc)
@@ -9,14 +9,6 @@ class TripsController < ApplicationController
     @participants = @trip.participants
     @expenses = @trip.expenses.includes(:payer).order(payment_date: :asc, created_at: :asc)
     @balances = BalanceCalculator.new(@trip).net_balances
-  end
-
-  def test
-    @participants = @trip.participants
-    balances = BalanceCalculator.new(@trip)
-    @balances = balances.balances
-    @net_balances = balances.net_balances
-    @amount = @trip.expenses.sum(:amount)
   end
 
   def new
@@ -51,6 +43,15 @@ class TripsController < ApplicationController
     @trip.expenses.destroy_all
     @trip.destroy
     redirect_to trips_path, notice: "旅行を1件削除しました"
+  end
+
+
+  def insights
+    @participants = @trip.participants
+    balances = BalanceCalculator.new(@trip)
+    @balances = balances.balances
+    @net_balances = balances.net_balances
+    @amount = @trip.expenses.sum(:amount)
   end
 
   def result
