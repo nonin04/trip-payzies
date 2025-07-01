@@ -13,9 +13,10 @@ userA = User.create!(
   )
 
  # 旅行記録ファイル
+  load Rails.root.join("db/seeds/groups.rb")
   load Rails.root.join("db/seeds/trips_data.rb")
   load Rails.root.join("db/seeds/full_length_check.rb")
-  load Rails.root.join("db/seeds/groups.rb")
+
 
 
   rescue ActiveRecord::RecordInvalid => e

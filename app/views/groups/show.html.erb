@@ -48,6 +48,14 @@
       </div>
     </div>
 
+  <section class="flex-1 min-h-0 overflow-y-auto flex flex-col my-4">
+    <% @group.trips.each do |trip| %>
+      <%= link_to trip_path(trip), class:"mb-4" do %>
+        <%= render 'trips/trip_card', trip: trip, mode: :group %>
+      <% end %>
+    <% end %>   
+  </section>
+
     
 
   </div>

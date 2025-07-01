@@ -1,13 +1,13 @@
 <%# カードスタイルの切り替え %>
-<div class="relative py-2 card-style <%= mode == :index ? 'shadow-primary' : 'dark:!bg-white' %>">
+<div class="relative py-2 card-style <%= mode == :index || mode == :group ? 'shadow-primary' : 'dark:!bg-white' %>">
   <%# 装飾ラベル ------------------ %>
   <div class="absolute left-0 top-0 h-full w-2 rounded-l <%= mode == :index ? 'trip-accent-color' : 'hidden' %>"></div>
   
   <%# タイトル & その他アイコン ------------------ %>
   <div class="flex items-start justify-between pl-5 pr-3 py-1">
-    <h2 class="font-bold text-lg dark:text-white <%= mode == :index ? '' : 'dark:!text-black' %>"><%=trip.title %></h2>
+    <h2 class="font-bold text-lg dark:text-white <%= mode == :index || mode == :group ? '' : 'dark:!text-black' %>"><%=trip.title %></h2>
 
-    <% if mode == :index %>
+    <% if mode == :index || mode == :group %>
     <%# 旅行一覧 → 矢印アイコン %>
       <div class="px-3 pt-0.5">
         <%= inline_svg("svg/navigation-arrow.svg", class: "w-3 dark:text-neutral-500", draggable:"false") %>
@@ -31,15 +31,17 @@
   </div>
 
   <%# グループ情報 ------------------ %>
-  <div class="flex items-center">
-    <% if trip.group.present? %>
-      <img class="h-7 pl-5 pr-2" src="/group-icon.jpg" alt="">
-      <p class="pr-10 dark:text-neutral-400 text-sm <%= mode == :index ? '' : 'dark:!text-neutral-600' %>"><%= trip.group.name %></p>
-    <% else %>
-      <%= inline_svg("svg/group.svg", draggable:"false", class:"h-7 ml-5 mr-2 text-zinc-800") %>
-      <p class="pr-10 dark:text-neutral-400 text-sm <%= mode == :index ? '' : 'dark:!text-neutral-600' %>">一時グループ</p>
-    <% end %>
-  </div>
+  <% unless mode == :group %>
+    <div class="flex items-center">
+      <% if trip.group.present? %>
+        <img class="h-7 pl-5 pr-2" src="/group-icon.jpg" alt="">
+        <p class="pr-10 dark:text-neutral-400 text-sm <%= mode == :index ? '' : 'dark:!text-neutral-600' %>"><%= trip.group.name %></p>
+      <% else %>
+        <%= inline_svg("svg/group.svg", draggable:"false", class:"h-7 ml-5 mr-2 text-zinc-800") %>
+        <p class="pr-10 dark:text-neutral-400 text-sm <%= mode == :index ? '' : 'dark:!text-neutral-600' %>">一時グループ</p>
+      <% end %>
+    </div>
+  <% end %>
 
   <%# 決済日 & 精算状況 ------------------ %>
   <div class="pl-6 pr-4 pt-3 flex items-center justify-between">
