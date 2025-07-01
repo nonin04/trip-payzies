@@ -1,11 +1,12 @@
 class ExpensesController < ApplicationController
   before_action :set_expense, only: [ :show, :edit, :update, :destroy ]
+  
   def show
   end
 
   def new
     @trip = current_user.trips.find(params[:trip_id])
-    @expense = @trip.expenses.includes(:payer).build
+    @expense = @trip.expenses.build
   end
 
   def create

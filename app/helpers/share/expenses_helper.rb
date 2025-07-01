@@ -1,0 +1,2 @@
+module Share::ExpensesHelper
+end
