@@ -1,24 +1,26 @@
-<meta charset="UTF-8">
-<title><%= content_for?(:title) ? yield(:title) + " | Trip-payzies(トリップペイジーズ)" : "Trip-payzies(トリップペイジーズ)" %></title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#102E4A">
+<head>
+  <meta charset="UTF-8">
+  <title><%= content_for?(:title) ? yield(:title) + " | Trip-payzies(トリップペイジーズ)" : "Trip-payzies(トリップペイジーズ)" %></title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#102E4A">
 
-<%= csrf_meta_tags %>
-<%= csp_meta_tag %>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-<%= yield :head %>
+  <%= yield :head %>
+  <%= render 'layouts/og_image' %>
 
-<%= render 'layouts/og_image' %>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/images/svg/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icon.png">
 
-<link rel="manifest" href="/manifest.json">
 
-<link rel="icon" href="/images/svg/icon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/icon.png">
+  <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+  <%# ダークモードの判定(stimulusでは遅延ありのためheadに記載)%>
+  <script> 
+    if (localStorage.getItem('theme') === 'dark') {document.documentElement.classList.add('dark');} 
+  </script>
 
-<%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
-<script> 
-  if (localStorage.getItem('theme') === 'dark') {document.documentElement.classList.add('dark');} 
-</script>
-
-<%= javascript_importmap_tags %>
+  <%= javascript_importmap_tags %>
+</head>

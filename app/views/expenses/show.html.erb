@@ -2,14 +2,14 @@
 
 <%# ページ案内 ------------------ %>
 <div class="flex items-center relative">
-  <%= link_to trip_path(@trip), class:"absolute flex items-center rounded-md h-6 w-10 py-0.5 px-0.5 ml-4 shadow-primary text-white bg-panel-navy dark:text-neutral-700 dark:bg-white" do %>
+  <button class="absolute flex items-center rounded-md shadow-primary h-6 w-10 py-0.5 px-0.5 ml-4 text-white bg-panel-navy dark:text-neutral-700 dark:bg-white" data-controller="back" data-action="click->back#goBack">
     <%= inline_svg("svg/navigation-arrow.svg", class:"w-full h-full rotate-180")%>
-  <% end %>
+  </button>
   <h1 class="mt-2 my-2 text-xl font-bold w-full text-center">立替詳細</h1>
 </div>
 
 
-<div class="overflow-y-auto">
+<div class="flex-1 overflow-y-auto min-h-0">
   <%# 立替カード ------------------ %>
   <div class="relative card-style dark:!bg-white mx-4 py-2">
       <div class="pl-6">
@@ -18,10 +18,10 @@
           <p class="font-semibold text-lg dark:text-black"><%= @expense.title %></p>
           <%# 編集、削除ボタン %>
           <div class="flex pl-5">
-            <%= link_to edit_trip_expense_path(@trip, @expense), class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-panel-navy text-white shadow-secondary dark:bg-zinc-600 dark:text-white" do %>
+            <%= link_to edit_trip_expense_path(@trip, @expense), class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-panel-navy text-white shadow-primary dark:bg-zinc-600 dark:text-white" do %>
               <%= inline_svg("svg/edit.svg", draggable:"false") %>
             <% end %>
-            <%= link_to trip_expense_path(@trip, @expense), data: {turbo_method: :delete, turbo_confirm: "立替記録を削除しますか？"}, class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-panel-navy text-white shadow-secondary dark:bg-zinc-600 dark:text-white" do %>
+            <%= link_to trip_expense_path(@trip, @expense), data: {turbo_method: :delete, turbo_confirm: "立替記録を削除しますか？"}, class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-panel-navy text-white shadow-primary dark:bg-zinc-600 dark:text-white" do %>
               <%= inline_svg("svg/delete.svg", draggable:"false") %>
             <% end %>
           </div>
@@ -52,17 +52,26 @@
   <%# サブ案内 ------------------ %>
   <h2 class="mx-6 mt-2 font-bold">対象者 | 負担額</h2>
 
-<%# 負担額カード ------------------ %>
-<div class="card-style mx-4 py-2 mb-4 pl-6">
-  <% @advance_payments.each do |owed_participant| %>
-    <div class="flex">
-      <%# 名前 %>
-      <li class="w-2/3 my-1"><%= owed_participant.participant.name %></li>
-      <%# 区切り線 & 金額 %>
+  <%# 負担額カード ------------------ %>
+  <div class="card-style mx-4 py-2 mb-4 pl-6">
+    <% @advance_payments.each do |owed_participant| %>
       <div class="flex">
-        <div class="w-0.5 mr-5 bg-black"></div>
-        <p class=""><%= owed_participant.amount %>円</p>
+        <%# 名前 %>
+        <li class="w-2/3 my-1"><%= owed_participant.participant.name %></li>
+        <%# 区切り線 & 金額 %>
+        <div class="flex">
+          <div class="w-0.5 mr-5 bg-black"></div>
+          <p class=""><%= owed_participant.amount %>円</p>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+</div>
+
+<%# 仕切り線とボタン ------------------ %>
+<div class="mx-4 my-3">
+  <div class="separator"></div>
+  <div class="w-full flex gap-4">
+    <%= link_to "戻る", trip_path(@trip) , class:"flex-1 main-action-btn bg-neutral-400 text-white" %>
+  </div>
 </div>

@@ -1,46 +1,34 @@
 <!DOCTYPE html>
-<html data-controller="sidebar modal" data-sidebar-target="htmlTag" >
+<html data-controller="sidebar modal" data-sidebar-target="htmlTag">
 
-  <head>
-    <%= render 'layouts/head_scripts' %>
-  </head>
+  <%= render 'layouts/head_scripts' %>
 
   <body class="w-screen h-screen overflow-x-hidden flex">
-    <%# 左側背景 %>
+
+    <%# 左背景 %>
     <div id="leftEl" class="z-50 flex-1 bg-[url('/images/background2.png')] dark:bg-none dark:bg-neutral-800 bg-cover min-w-0"></div>
 
     <% unless controller.controller_name == "homes" %>
+
       <div class="sm:relative flex flex-col page-width">
         <% unless devise_controller? %>
           <%= render 'layouts/sidebar' %>
         <%end%>
 
-        <header class="z-30 h-12 flex justify-between bg-panel-navy dark:bg-neutral-900">
-          <%= render 'layouts/header'%>
-        </header>
-
-        <% if devise_controller? %>
-          <main class="bg-form-gray dark:bg-neutral-900 dark:text-white flex-1 min-h-0 flex flex-col translate-x-0 transition-transform transform duration-300 ease-in-out">
-        <% else %>
-          <main class="bg-form-gray dark:bg-neutral-900 dark:text-white flex-1 min-h-0 flex flex-col translate-x-0 transition-transform transform duration-300 ease-in-out" 
-                data-sidebar-target="mainEl" data-action="click->sidebar#hideSidebar">
-        <%end%>
-        
-          <%= render 'layouts/flash_message_for_rails' %>
-          <%= yield %>
-        </main>
-
-        <footer class="z-30 h-8 flex items-center bg-neutral-700 dark:bg-neutral-950 justify-center">
-              <%= render 'layouts/footer'%>
-        </footer>
-
+        <%= render 'layouts/header'%>
+        <%= render 'layouts/main'%>
+        <%= render 'layouts/footer'%>
       </div>
-    <% else %><%# home#indexのみ %>
+
+    <% else %>
+
+      <%# LP画面のみ %>
       <%= yield %> 
+
     <% end %>
-    <%# 右側背景 %>
+
+    <%# 右背景 %>
     <div id="rightEl" class="z-50 flex-1 bg-[url('/images/background2.png')] dark:bg-none dark:bg-neutral-800 bg-cover min-w-0"></div>
   </body>
-
 
 </html>

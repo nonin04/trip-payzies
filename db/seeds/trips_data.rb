@@ -1,8 +1,13 @@
 userA = User.find_by(email: "example@email.com")
 
+gA = Group.find_by(name:"大学ゼミ友達")
+gB = Group.find_by(name:"高校仲良し3人組")
+gC = Group.find_by(name:"日本高校100期生")
+gD = Group.find_by(name:"会社同期")
 #-----------------------------------------------------------------------------------------------------
 
 trip1 = userA.trips.create!(
+  group: gA,
   title: "Kyoto Trip",
   departure_date: Date.new(2024, 11, 2),
   participants_attributes: [
@@ -41,6 +46,7 @@ end
 #-----------------------------------------------------------------------------------------------------
 
 trip2 = userA.trips.create!(
+  group: gC,
   title: "北海道ニセコスキー",
   departure_date: Date.new(2024, 1, 5),
   participants_attributes: [
@@ -116,6 +122,7 @@ end
 #--------------------------------------------------------------------------------------------------------
 
 trip4 = userA.trips.create!(
+  group: gD,
   title: "ヨーロッパ卒業旅行",
   departure_date: Date.new(2024, 3, 1),
   participants_attributes: [

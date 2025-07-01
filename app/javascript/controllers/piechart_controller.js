@@ -57,7 +57,7 @@ export default class extends Controller {
           title: {
             color: '',
             display: true,
-            text: '決済額合計',
+            text: '立替額合計',
           },
           legend: {
             position: 'bottom',

@@ -52,6 +52,7 @@ class TripsController < ApplicationController
     @balances = balances.balances
     @net_balances = balances.net_balances
     @amount = @trip.expenses.sum(:amount)
+    
   end
 
   def result

@@ -17,9 +17,9 @@
         <%= inline_svg("svg/sidebar/home.svg", class:"mx-auto cursor-pointer h-6 text-white flex-shrink-0")%>
       <% end %>
 
-      <%#= link_to authenticated_root_path do %>
-        <%= inline_svg("svg/sidebar/group.svg", class:"mx auto h-7 text-white flex-shrink-0")%>
-      <%# end %>
+      <%= link_to groups_path do %>
+        <%= inline_svg("svg/sidebar/group.svg", class:"mx-auto h-7 text-white flex-shrink-0")%>
+      <% end %>
 
       <%= link_to authenticated_root_path do %>
         <%= inline_svg("svg/sidebar/map.svg", class:"hidden mx-auto h-6 text-white flex-shrink-0")%>
