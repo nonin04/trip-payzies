@@ -2,27 +2,26 @@
 
 <%= render 'layouts/modal/destroy_warning' %>
 
-<%# ページ案内 ------------------ %>
-<div class="w-full flex flex-col flex-1 min-h-0 overflow-y-auto" data-modal-target="mainEl">
-  <section class="flex items-center relative">
-    <%= link_to groups_path, class:"absolute flex items-center rounded-md shadow-primary h-6 w-10 py-0.5 px-0.5 ml-4 text-white bg-panel-navy dark:text-neutral-700 dark:bg-white" do %>
-      <%= inline_svg("svg/navigation-arrow.svg", class:"w-full h-full rotate-180 ")%>
-    <% end %>
-    <h1 class="mt-2 my-2 text-xl font-bold w-full text-center">グループ詳細</h1>
-  </section>
+<%# ページ案内 ------------------------------------ %>
+<section class="flex items-center relative">
+  <%= link_to groups_path, class:"absolute flex items-center rounded-md shadow-primary h-6 w-10 py-0.5 px-0.5 ml-4 text-white bg-panel-navy dark:text-neutral-700 dark:bg-white" do %>
+    <%= inline_svg("svg/navigation-arrow.svg", class:"w-full h-full rotate-180 ")%>
+  <% end %>
+  <h1 class="mt-2 my-2 text-xl font-bold w-full text-center">グループ詳細</h1>
+</section>
 
-
+<%# メインコンテンツ ------------------------------------ %>
+<section class="w-full flex flex-col flex-1 min-h-0 overflow-y-auto">
   <div class="flex-1 mx-4">
 
-    <%# グループ名 & 編集削除ボタン ------------------ %>
-    <section class="flex w-full py-2 px-4 card-style mb-4 justify-between">
+    <%# グループ名&編集削除ボタン ------------------ %>
+    <div class="flex w-full py-2 px-4 card-style mb-4 justify-between">
       <p class="font-bold text-xl"><%= @group.name %></p>
-
       <div class="flex pl-5">
         <%= link_to edit_group_path(@group), class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-panel-navy text-white shadow-primary dark:bg-zinc-600 dark:text-white" do %>
           <%= inline_svg("svg/edit.svg", draggable:"false") %>
         <% end %>
-
+        <%# 削除時モーダル分岐 %>
         <% if @group.trips.present? %>        
           <button type="button" class="w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-panel-navy shadow-primary text-white dark:bg-zinc-600 dark:text-white" data-modal-target="openBtn" data-action="click->modal#openModal">
             <%= inline_svg("svg/delete.svg", draggable:"false") %>
@@ -32,14 +31,13 @@
             <%= inline_svg("svg/delete.svg", draggable:"false") %>
           <% end %>
         <% end %>
-
       </div>
-    </section>
+    </div>
 
-
+    <%# グループアイコン&グループ情報 --------------- %>
     <div class="flex w-full h-30 gap-4 items-center justify-between">
       <div class="h-full shrink-0 card-style p-2">
-        <img src="/images/group-icon.jpg" alt="" class="h-full aspect-square rounded-md">
+        <%= image_tag "group-icon.jpg", class: "h-full aspect-square rounded-md" %>
       </div>
       <div class="h-full card-style flex-1">
         <p>メンバー <%= @group.members.count %>人</p>
@@ -48,31 +46,23 @@
       </div>
     </div>
 
-  <section class="flex-1 min-h-0 overflow-y-auto flex flex-col my-4">
-    <% @group.trips.each do |trip| %>
-      <%= link_to trip_path(trip), class:"mb-4" do %>
-        <%= render 'trips/trip_card', trip: trip, mode: :group %>
-      <% end %>
-    <% end %>   
-  </section>
-
-    
+    <%# 旅行カード ------------------ %>
+    <div class="flex-1 min-h-0 overflow-y-auto flex flex-col my-4">
+      <% @group.trips.each do |trip| %>
+        <%= link_to trip_path(trip), class:"mb-4", data:{controller:"back", action:"click->back#storeFromPage", "back-return-to-value": "group-show", "back-return-group-id-value": @group.id} do %>
+          <%= render 'trips/trip_card', trip: trip, mode: :group %>
+        <% end %>
+      <% end %>   
+    </div>
 
   </div>
+</section>
 
 
-
-
-
-
-
-
-  <%# 仕切り線とボタン ------------------ %>
-  <section class="mx-4 my-3">
-    <div class="separator"></div>
-    <div class="w-full flex gap-4">
-      <%= link_to "戻る", groups_path, class:"flex-1 main-action-btn bg-neutral-400 text-white" %> 
-    </div>
-  </section>
-
-</div>
+<%# 仕切り線とボタン ------------------ %>
+<section class="mx-4 my-3">
+  <div class="separator"></div>
+  <div class="w-full flex gap-4">
+    <%= link_to "戻る", groups_path, class:"flex-1 main-action-btn bg-neutral-400 text-white" %> 
+  </div>
+</section>
