@@ -119,7 +119,6 @@ export default class extends Controller {
     this.slideUp(flashErrorEl)
   }
 
-
   slideUp(el) {
     el.classList.add('-translate-y-20')
     el.classList.remove('translate-y-0')

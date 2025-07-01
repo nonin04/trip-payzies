@@ -33,7 +33,7 @@
       <canvas id="piechart" data-piechart-target="myChart" class="mx-4">
       </canvas>
     </div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-bold text-xl text-black">¥<%= number_with_delimiter(@amount) %></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-bold text-xl text-black">¥<%= number_with_delimiter(@trip.expenses.sum(:amount)) %></div>
   </section>
 
 </div>

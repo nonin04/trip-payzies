@@ -16,7 +16,14 @@ userA = User.create!(
   load Rails.root.join("db/seeds/groups.rb")
   load Rails.root.join("db/seeds/trips_data.rb")
   load Rails.root.join("db/seeds/full_length_check.rb")
+  load Rails.root.join("db/seeds/trips_share_token_seeds.rb")
 
+  puts "📊 現在のデータ状況"
+  puts "-----------------------"
+  puts "👤 ユーザー数: #{User.count}"
+  puts "🧳 旅行数: #{Trip.count}"
+  puts "💸 立替記録数: #{Expense.count}"
+  puts "-----------------------"
 
 
   rescue ActiveRecord::RecordInvalid => e
