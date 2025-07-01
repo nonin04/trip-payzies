@@ -15,6 +15,7 @@ class Trip < ApplicationRecord
   validate :must_have_participant_at_least_one
 
   before_validation :set_default_status
+  before_create :generate_share_token
   
   
   def reset_settlement_status
@@ -32,4 +33,9 @@ class Trip < ApplicationRecord
       errors.add(:participants, "参加者を一人以上設定していください")
     end
   end
+
+  def generate_share_token
+    self.share_token ||= SecureRandom.urlsafe_base64(10)
+  end
+  
 end

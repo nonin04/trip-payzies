@@ -32,12 +32,15 @@ Rails.application.routes.draw do
     resource :participants, only: [ :create, :destroy ]
   end
 
+  namespace :share do
+    resources :trips, only: [ :show, :insights, :result ], param: :share_token do
+      resources :expenses, only: [ :show ]
+    end
+  end
 
   match "/404", to: "errors#not_found", via: :all
   match "/422", to: "errors#unprocessable_entity", via: :all
   match "/500", to: "errors#internal_server_error", via: :all
-
-
 
   # -------------------------------------------------------------------------------------------------
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

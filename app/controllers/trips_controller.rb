@@ -6,7 +6,6 @@ class TripsController < ApplicationController
   end
 
   def show
-    @participants = @trip.participants
     @expenses = @trip.expenses.includes(:payer).order(payment_date: :asc, created_at: :asc)
     @balances = BalanceCalculator.new(@trip).net_balances
   end
@@ -47,12 +46,9 @@ class TripsController < ApplicationController
 
 
   def insights
-    @participants = @trip.participants
     balances = BalanceCalculator.new(@trip)
     @balances = balances.balances
     @net_balances = balances.net_balances
-    @amount = @trip.expenses.sum(:amount)
-    
   end
 
   def result
