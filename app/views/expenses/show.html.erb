@@ -1,77 +1,79 @@
 <% content_for(:title, "立替記録詳細") %>
 
 <%# ページ案内 ------------------ %>
-<div class="flex items-center relative">
+<section class="flex items-center relative">
   <button class="absolute flex items-center rounded-md shadow-primary h-6 w-10 py-0.5 px-0.5 ml-4 text-white bg-panel-navy dark:text-neutral-700 dark:bg-white" data-controller="back" data-action="click->back#goBack">
     <%= inline_svg("svg/navigation-arrow.svg", class:"w-full h-full rotate-180")%>
   </button>
   <h1 class="mt-2 my-2 text-xl font-bold w-full text-center">立替詳細</h1>
-</div>
+</section>
 
+<%# メインコンテンツ ------------------------------------ %>
+<section class="flex-1 overflow-y-auto min-h-0">
+  <div class="flex-1 mx-4">
 
-<div class="flex-1 overflow-y-auto min-h-0">
-  <%# 立替カード ------------------ %>
-  <div class="relative card-style dark:!bg-white mx-4 py-2">
-      <div class="pl-6">
-        <%# 立替タイトルと削除編集アイコン %>
-        <div class="flex items-center justify-between pr-3 py-1">
-          <p class="font-semibold text-lg dark:text-black"><%= @expense.title %></p>
-          <%# 編集、削除ボタン %>
-          <div class="flex pl-5">
-            <%= link_to edit_trip_expense_path(@trip, @expense), class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-panel-navy text-white shadow-primary dark:bg-zinc-600 dark:text-white" do %>
-              <%= inline_svg("svg/edit.svg", draggable:"false") %>
-            <% end %>
-            <%= link_to trip_expense_path(@trip, @expense), data: {turbo_method: :delete, turbo_confirm: "立替記録を削除しますか？"}, class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-panel-navy text-white shadow-primary dark:bg-zinc-600 dark:text-white" do %>
-              <%= inline_svg("svg/delete.svg", draggable:"false") %>
-            <% end %>
-          </div>
-        </div>
-        <%# 金額 & 決済者情報 %>
-        <p class="font-semibold text-2xl dark:text-black">¥<%= number_with_delimiter(@expense.amount) %></p>
-        <p class="pt-4 text-lg dark:text-black">by <%= @expense.payer.name %></p>
-    </div>
-  </div>
-
-  <%# 決済日カード ------------------ %>
-  <div class="card-style mx-4 my-4 py-3 px-4 flex items-center">
-    <p class="font-bold">決済日: <%= @expense.payment_date.strftime( '%Y/%m/%d') %></p>
-  </div>
-
-  <%# サブ情報カード ------------------ %>
-  <div class="card-style mx-4 py-3 pl-4 pr-8">
-    <div class="flex py-2 w-full">
-      <p class="font-bold"> 場所： </p>
-      <p class=""><%= @expense.place %></p>
-    </div>
-    <div class="flex py-2 w-full">
-      <p class="font-bold"> メモ： </p>
-      <p class="flex-1 text-sm font-thin"><%= @expense.memo %></p>
-    </div>
-  </div>
-
-  <%# サブ案内 ------------------ %>
-  <h2 class="mx-6 mt-2 font-bold">対象者 | 負担額</h2>
-
-  <%# 負担額カード ------------------ %>
-  <div class="card-style mx-4 py-2 mb-4 pl-6">
-    <% @advance_payments.each do |owed_participant| %>
-      <div class="flex">
-        <%# 名前 %>
-        <li class="w-2/3 my-1"><%= owed_participant.participant.name %></li>
-        <%# 区切り線 & 金額 %>
-        <div class="flex">
-          <div class="w-0.5 mr-5 bg-black"></div>
-          <p class=""><%= owed_participant.amount %>円</p>
+    <%# 立替カード ------------------ %>
+    <div class="relative card-style dark:!bg-white py-2 pl-6">
+      <%# 立替タイトルと削除編集ボタン %>
+      <div class="flex items-center justify-between pr-3 py-1">
+        <p class="font-semibold text-lg dark:text-black"><%= @expense.title %></p>
+        <%# 編集、削除ボタン %>
+        <div class="flex pl-5">
+          <%= link_to edit_trip_expense_path(@trip, @expense), class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-panel-navy text-white shadow-primary dark:bg-zinc-600 dark:text-white" do %>
+            <%= inline_svg("svg/edit.svg", draggable:"false") %>
+          <% end %>
+          <%= link_to trip_expense_path(@trip, @expense), data: {turbo_method: :delete, turbo_confirm: "立替記録を削除しますか？"}, class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-panel-navy text-white shadow-primary dark:bg-zinc-600 dark:text-white" do %>
+            <%= inline_svg("svg/delete.svg", draggable:"false") %>
+          <% end %>
         </div>
       </div>
-    <% end %>
+      <%# 金額 & 決済者情報 %>
+      <p class="font-semibold text-2xl dark:text-black">¥<%= number_with_delimiter(@expense.amount) %></p>
+      <p class="pt-4 text-lg dark:text-black">by <%= @expense.payer.name %></p>
+    </div>
+
+    <%# 決済日カード ------------------ %>
+    <div class="card-style my-4 py-3 px-4 flex items-center">
+      <p class="font-bold">決済日: <%= @expense.payment_date.strftime( '%Y/%m/%d') %></p>
+    </div>
+
+    <%# サブ情報カード ------------------ %>
+    <div class="card-style py-3 pl-4 pr-8">
+      <div class="flex py-2 w-full">
+        <p class="font-bold"> 場所： </p>
+        <p class=""><%= @expense.place %></p>
+      </div>
+      <div class="flex py-2 w-full">
+        <p class="font-bold"> メモ： </p>
+        <p class="flex-1 text-sm font-thin"><%= @expense.memo %></p>
+      </div>
+    </div>
+
+    <%# サブ案内 ------------------ %>
+    <h2 class="mx-2 mt-2 font-bold">対象者 | 負担額</h2>
+
+    <%# 負担額カード ------------------ %>
+    <div class="card-style py-2 mb-2 pl-6">
+      <% @advance_payments.each do |owed_participant| %>
+        <div class="flex">
+          <%# 名前 %>
+          <li class="w-2/3 my-1"><%= owed_participant.participant.name %></li>
+          <%# 区切り線 & 金額 %>
+          <div class="flex">
+            <div class="w-0.5 mr-5 bg-black"></div>
+            <p class=""><%= owed_participant.amount %>円</p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
   </div>
-</div>
+</section>
 
 <%# 仕切り線とボタン ------------------ %>
-<div class="mx-4 my-3">
+<section class="mx-4 my-3">
   <div class="separator"></div>
   <div class="w-full flex gap-4">
     <%= link_to "戻る", trip_path(@trip) , class:"flex-1 main-action-btn bg-neutral-400 text-white" %>
   </div>
-</div>
+</section>
