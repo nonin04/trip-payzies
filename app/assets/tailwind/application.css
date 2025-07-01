@@ -98,7 +98,6 @@ dark:bg-neutral-800
   block dark:text-white py-1
 }
 
-
 .-no-interact{@apply
   pointer-events-none
   select-none
@@ -129,14 +128,6 @@ dark:bg-neutral-800
   transition duration-300 ease-in-out transform
   hover:translate-y-[4px] hover:shadow-none
   active:translate-y-[4px] active:shadow-none
-}
-
-.shadow-secondary{@apply
-  shadow-[0px_4px_0px_rgba(24,49,83,0.5)]
-  dark:shadow-[0px_4px_0px_rgba(0,0,0,0)]
-  transition duration-300 ease-in-out transform
-  hover:translate-y-[3px] hover:shadow-none
-  active:translate-y-[3px] active:shadow-none
 }
 
 .shadow-for-lp{@apply
