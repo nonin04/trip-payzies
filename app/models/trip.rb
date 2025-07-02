@@ -22,6 +22,10 @@ class Trip < ApplicationRecord
     self.unsettled! if self.settled?
   end
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "departure_date", "group_id", "id", "settlement_status", "title", "updated_at" ]
+  end
+
   private
 
   def set_default_status
@@ -35,7 +39,6 @@ class Trip < ApplicationRecord
   end
 
   def generate_share_token
-    self.share_token ||= SecureRandom.urlsafe_base64(10)
+    self.share_token ||= SecureRandom.urlsafe_base64(15)
   end
-  
 end
