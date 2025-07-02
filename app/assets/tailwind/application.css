@@ -37,7 +37,18 @@
   --color-dark-white: #F7F3F0;
   --color-dark-orange: #F58A6A;
   --color-dark-sky: #B3D9E3;
+
 }
+
+@layer utilities {
+  /* Tailwindのutilitiesレイヤーでカスタムユーティリティを追加 */
+  .no-cancel-button::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+    display: none;
+  }
+}
+
 
 .btn {@apply
   bg-primary-blue-100

@@ -22,7 +22,7 @@ module TripsHelper
   end
 
   def display_group_info?(mode)
-    [:group].include?(mode)
+    [:index, :show].include?(mode)
   end
 
   def group_title_color(mode)
@@ -30,6 +30,13 @@ module TripsHelper
       ''
     else
       'dark:!text-neutral-600'
+    end
+  end
+
+
+  def settlement_status_options
+    Trip.settlement_statuses.map do |key, value|
+      [t("activerecord.attributes.trip.settlement_status.#{key}"), value]
     end
   end
 
