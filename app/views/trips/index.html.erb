@@ -8,6 +8,9 @@
 <%# メインコンテンツ ------------------------------------ %>
 <section class="w-full flex flex-col flex-1 min-h-0 overflow-y-auto">
   <div class="flex-1 mx-4">
+
+    <%# 検索フィールド ------------------ %>
+    <%= render 'search_form' %>
         
     <%# 旅行カード ------------------ %>
     <% if @trips.present? %>
@@ -15,7 +18,7 @@
       <div class="flex-1 flex flex-col gap-4 pb-2">
           <% @trips.each do |trip|%>
             <%= link_to trip_path(trip), data:{ controller:"back", action:"click->back#storeFromPage", "back-return-to-value": "trip-index" } do %>
-              <%= render 'trips/trip_card', trip: trip, mode: :index %>
+              <%= render 'trip_card', trip: trip, mode: :index %>
             <% end %>
           <% end %>
       </div>
