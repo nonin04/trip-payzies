@@ -1,14 +1,28 @@
+<%# reference -------------------------------- %>
+<% logo = capture do %>
+  <%= inline_svg("svg/app-icon/header-icon.svg", class:"w-5 ml-2 pb-1 text-theme-brown dark:text-white") %>
+  <div class="font-for-icon ml-2 text-sm leading-none tracking-widest">
+    <span class="text-theme-brown dark:text-white">TRIP</span>
+    <br><span class="text-white dark:text-white">PAYZIES</span>
+  </div>
+<% end %>
+<%# end -------------------------------------- %>
+
+
+
 <header class="z-30 h-12 flex justify-between bg-panel-navy dark:bg-neutral-900">
   <%# logo&text %>
-  <%= link_to unauthenticated_root_path, class:"flex items-center" do %>
-    <%= inline_svg("svg/app-icon/header-icon.svg", class:"w-5 ml-2 pb-1 text-theme-brown dark:text-white") %>
-    <div class="font-for-icon ml-2 text-sm leading-none tracking-widest">
-      <span class="text-theme-brown dark:text-white">TRIP</span>
-      <br><span class="text-white dark:text-white">PAYZIES</span>
+  <% if shared_user? %>
+    <div class="flex items-center">
+      <%= logo %>
     </div>
+  <% else %>
+    <%= link_to unauthenticated_root_path, class:"flex items-center" do %>
+      <%= logo %>
+    <% end %>
   <% end %>
   <%# humburger-menu %>
-  <% unless devise_controller? %>
+  <% if display_menu? %>
     <%= inline_svg("svg/menu.svg", data:{"sidebar-target": "hamburgerMenu", "action": "click->sidebar#toggleSidebar"}, class:"w-8 text-white mr-4 cursor-pointer hover:text-gray-400") %>
   <% end %>
 </header>

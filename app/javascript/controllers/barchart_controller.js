@@ -20,13 +20,10 @@ export default class extends Controller {
   
 
   connect() {
-    console.log(this.netBalancesValue)
     const net_balances = this.netBalancesValue.map(nb => ({
       name: nb.participant.name,
       difference: nb.difference,
     }))
-    console.log(net_balances)
-
 
     new Chart(this.canvasContext(), {
       type: 'bar',
