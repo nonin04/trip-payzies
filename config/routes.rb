@@ -33,7 +33,11 @@ Rails.application.routes.draw do
   end
 
   namespace :share do
-    resources :trips, only: [ :show, :insights, :result ], param: :share_token do
+    resources :trips, only: [ :show ], param: :share_token do
+      member do
+        get :insights
+        get :result
+      end
       resources :expenses, only: [ :show ]
     end
   end

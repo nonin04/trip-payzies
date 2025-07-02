@@ -1,4 +1,76 @@
-<div>
-  <h1 class="font-bold text-4xl">Share::Trips#show</h1>
-  <p>Find me in app/views/share/trips/show.html.erb</p>
-</div>
+<% content_for(:title, "旅行詳細[共有]") %>
+
+<%= render 'layouts/modal/share_description' %>
+
+<%# ページ案内 ------------------------------------ %>
+<section class="flex items-center relative">
+  <h1 class="mt-2 my-2 text-xl font-bold w-full text-center">旅行詳細</h1>
+</section>
+
+<%# メインコンテンツ ------------------------------------ %>
+<section class="w-full overflow-y-auto">
+  <div class="mx-4">
+
+    <%# 旅行カード ------------------ %>
+    <%= render 'trips/trip_card', trip: @trip, mode: :share %>
+
+    <%# 共有&グラフページボタン ------- %>
+    <div class="w-full my-4 flex gap-4" data-controller="copy-trip-token">
+      
+      <div class="flex flex-1 card-style h-10 items-center justify-between px-2">
+        <%# 共有リンク %>
+        <button class="py-0.5 bg-neutral-400 hover:bg-panel-navy active:bg-panel-navy rounded-l-md text-sm text-white px-1"
+                data-action="click->copy-trip-token#copyToken">COPY</button>
+        <input class="py-0.5 text-sm flex-1 bg-neutral-100 rounded-r-md px-2 dark:text-white dark:bg-neutral-700" data-copy-trip-token-target="tokenInput" id="share_link" value= "<%= share_trip_url(@trip.share_token) %>" readonly>
+        <%# 共有機能info %>
+        <button type="button" class="h-6 ml-1 cursor-pointer" data-modal-target="openBtn" data-action="click->modal#openModal">
+          <%= inline_svg("svg/info.svg", class:"h-full") %>
+        </button>
+      </div>
+
+      <%# グラフページボタン %>
+      <div class="gap-2 w-1/5 card-style h-10 cursor-pointer">
+        <%= link_to insights_share_trip_path(share_token: @trip.share_token),  class:"flex h-full w-full items-center justify-center" do %>
+          <%= inline_svg("svg/graph.svg", class:"h-6") %>
+        <% end %>
+      </div>
+
+    </div>
+
+    <%# 参加者カード ----------------- %>
+    <div class="mt-2 flex flex-col card-style" data-controller="accordion">
+      <div class="flex justify-between py-2 cursor-pointer" data-accordion-target="bar" data-action="click->accordion#toggle">
+        <p class="mx-4 font-bold">参加者</p>
+        <%= inline_svg("svg/accordion.svg", class:"w-6 mx-6 transition-transform transform duration-200 text-gray-500", data:{"accordion-target": "icon"}) %>
+      </div>  
+      <ul class="list-disc text-sm px-8 cursor-pointer h-0 transition-all duration-150 overflow-hidden" data-accordion-target="participantsEl" data-action="click->accordion#toggle">
+        <% @trip.participants.each do |participant|%>
+        <li class="pb-2"><%= participant.name %></li>
+        <% end %>
+      </ul>
+    </div>
+
+    <%# 立替カード一覧 ------------------ %>
+    <div class="flex-1 flex flex-col pb-2">
+      <% @expenses.group_by{|expense| expense.payment_date}.each do |date, expense|%>
+        <div class="mt-2 font-bold px-2"><%= date.strftime("%m/%d") %></div>
+          <div class="flex flex-col gap-4">
+            <% expense.each do |e| %>
+                <%= link_to share_trip_expense_path(trip_share_token: @trip.share_token, id: e.id) do %>
+                  <%= render 'expenses/expense_card', expense: e %>
+                <% end %>
+            <% end %>
+          </div>
+      <% end %>
+    </div>
+
+  </div>
+</section>
+
+<%# 仕切り線とボタン ------------------ %>
+<section class="px-4 my-3">
+  <div class="separator"></div>
+  <% if @expenses.present?%>
+    <%= link_to "精算結果", result_share_trip_path(share_token: @trip.share_token), class:"w-full flex main-action-btn bg-primary-red text-white" %>  
+  <% end %>
+</section>

@@ -11,7 +11,7 @@
     <% unless controller.controller_name == "homes" %>
 
       <div class="sm:relative flex flex-col page-width">
-        <% unless devise_controller? %>
+        <% if display_menu? %>
           <%= render 'layouts/sidebar' %>
         <%end%>
 
