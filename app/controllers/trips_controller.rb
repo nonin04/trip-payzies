@@ -2,6 +2,7 @@ class TripsController < ApplicationController
   before_action :set_trip, only: [ :show, :edit, :update, :destroy, :insights, :result, :settle, :unsettle ]
 
   def index
+    
     @trips = current_user.trips.order(departure_date: :desc)
   end
 
