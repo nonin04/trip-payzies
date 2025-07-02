@@ -1,0 +1,35 @@
+<%#= trip#resultのコピー、パーシャルにするか要検討 %>
+
+<% content_for(:title, "精算結果") %>
+
+<%# ページ案内 ------------------ %>
+<section class="flex items-center relative">
+  <%= link_to share_trip_path(share_token: @trip.share_token), class:"absolute flex items-center rounded-md shadow-primary h-6 w-10 py-0.5 px-0.5 ml-4 bg-panel-navy dark:bg-neutral-800" do %>
+    <%= inline_svg("svg/navigation-arrow.svg", class:"w-full h-full rotate-180 text-white dark:text-neutral-300")%>
+  <% end %>
+  <h1 class="mt-2 my-2 text-xl font-bold w-full text-center">精算結果</h1>
+</section>
+
+<section class="flex-1 overflow-y-auto min-h-0">
+  <div class="flex-1 mx-4">
+    <%# 旅行カード ------------------ %>
+    <%= render 'trips/trip_card', trip: @trip, mode: :result %>
+
+    <%# サブタイトル ------------------ %>
+    <h2 class="mx-2 my-1.5 font-bold mt-2">支払・受取リスト</h2>
+
+    <%# 精算カード ------------------ %>
+    <div class="flex flex-col gap-4">
+      <% @settlements.each do |s| %>
+        <%= render 'trips/result_card', settlement: s %>
+      <% end %>
+    </div> 
+
+  </div>
+</section>
+
+<%# 仕切り線とボタン ------------------ %>
+<div class="px-4 my-3">
+  <div class="separator"></div>
+  <%= link_to "戻る", share_trip_path(share_token: @trip.share_token), class:"w-full flex main-action-btn bg-gray-400 text-white dark:bg-neutral-600" %>
+</div>
