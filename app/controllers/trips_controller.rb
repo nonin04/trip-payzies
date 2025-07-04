@@ -2,7 +2,8 @@ class TripsController < ApplicationController
   before_action :set_trip, only: [ :show, :edit, :update, :destroy, :insights, :result, :settle, :unsettle ]
 
   def index
-    @q = current_user.trips.ransack(params[:q])
+    @user_trips = current_user.trips
+    @q = @user_trips.ransack(params[:q])
     @trips = @q.result(distinct: true).includes(:group).order(departure_date: :desc)
   end
 
