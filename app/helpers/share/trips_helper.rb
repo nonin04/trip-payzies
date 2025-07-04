@@ -1,2 +1,3 @@
 module Share::TripsHelper
+
 end

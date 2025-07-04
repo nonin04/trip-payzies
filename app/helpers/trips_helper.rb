@@ -22,7 +22,8 @@ module TripsHelper
   end
 
   def display_group_info?(mode)
-    [:index, :show].include?(mode)
+    Rails.logger.debug "mode = #{mode.inspect}"
+    [:index, :show, :share, :result].include?(mode)
   end
 
   def group_title_color(mode)
