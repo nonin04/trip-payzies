@@ -1,10 +1,10 @@
 <div class="flex flex-col flex-1 h-min-0" data-trip-validate-target="tripForm">
-  <h2 class="mx-8 mt-2 mb-1 text-lg font-bold">基本情報</h2>
+  <h2 class="mx-6 mb-1 font-bold">基本情報</h2>
   <div class="card-style mx-4 flex flex-1 flex-col px-4 py-2">
     <div class="flex flex-col pb-2">
       <span class="text-xs">※旅行名は25字以内でご入力ください</span>
     </div>
-    <div class="pb-2">
+    <div class="">
       <%= f.label :title, class:"font-bold" %>
       <%= f.text_field :title, data: {"trip-validate-target": "tripTitle", "action":"input->trip-validate#titleValidate keydown->trip-validate#submitPrevent"}, class: "form-style" %>
       <p class="text-primary-red text-xs pb-0.5" data-trip-validate-target="titleErrorMessage"></p>
@@ -13,6 +13,12 @@
     <div class="pt-4">
       <%= f.label :departure_date, class:"font-bold"%>
       <%= f.date_field :departure_date, value: @trip.departure_date || Date.current, data: {"trip-validate-target": "tripDate", "action":"input->trip-validate#dateValidate keydown->trip-validate#submitPrevent"}, class: "form-style" %>
+      <p class="text-primary-red text-xs pb-0.5" data-trip-validate-target="dateErrorMessage"></p>
+    </div>
+
+    <div class="pt-4">
+      <%= f.label :group_id, class:"font-bold"%>
+      <%= f.collection_select :group_id, current_user.groups, :id, :name, { prompt: "グループ"}, class: "form-style" %>
       <p class="text-primary-red text-xs pb-0.5" data-trip-validate-target="dateErrorMessage"></p>
     </div>
   </div>

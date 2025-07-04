@@ -17,6 +17,7 @@ ja:
       trip:
         title: "旅行名"
         departure_date: "出発日"
+        group_id: "グループ"
         settlement_status:
           settled: "精算済み"
           unsettled: "未精算"
