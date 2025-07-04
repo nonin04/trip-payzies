@@ -3,48 +3,59 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="modal"
 export default class extends Controller {
   static targets = [
-    "modalEl",
-    "modalBgEl",
     "closeBtn",
-    "modalContentEl"
+
+    "descriptionModal",
+    "descriptionModalBg",
+    "descriptionModalContent",
+
+    "destroyModal",
+    "destroyModalBg",
+    "destroyModalContent",
+
+    "logoutModal",
+    "logoutModalBg",
+    "logoutModalContent"
+
   ]
-
-
 
   connect() {
   }
 
-  openModal() {
-    const modalEl = this.modalElTarget
-    const contentEl = this.modalContentElTarget
-    this.openStyle(modalEl, contentEl)
+
+  openModal(event) {
+    const name = event.params.name
+    const modalEl = this[`${name}ModalTarget`]
+    const pageBg = this[`${name}ModalBgTarget`]
+    const content = this[`${name}ModalContentTarget`]
+    this.openStyle(modalEl, pageBg, content)
+  }
+  closeModal(event) {
+    const name = event.params.name
+    const modalEl = this[`${name}ModalTarget`]
+    const pageBg = this[`${name}ModalBgTarget`]
+    const content = this[`${name}ModalContentTarget`]
+    this.closeStyle(modalEl, pageBg, content) 
   }
 
-  closeModal() {
-    const modalEl = this.modalElTarget
-    const contentEl = this.modalContentElTarget
-    this.closeStyle(modalEl, contentEl) 
-  }
 
-
-  openStyle(modalEl, contentEl) {
-
+  openStyle(modalEl, pageBg, content) {
     modalEl.classList.remove("hidden")
-    this.modalBgElTarget.classList.remove("opacity-0")
-    this.modalBgElTarget.classList.add("opacity-50")
+    pageBg.classList.remove("opacity-0")
+    pageBg.classList.add("opacity-50")
     requestAnimationFrame(() => {
-    contentEl.classList.remove("opacity-0","scale-80")
-    contentEl.classList.add("opacity-100","scale-100")
+    content.classList.remove("opacity-0","scale-80")
+    content.classList.add("opacity-100","scale-100")
     modalEl.classList.remove("opacity-0")
     modalEl.classList.add("opacity-100")
     })
   }
 
-  closeStyle(modalEl, contentEl) {
-    contentEl.classList.remove("opacity-50", "scale-100")
-    contentEl.classList.add("opacity-0", "scale-80")
-    this.modalBgElTarget.classList.remove("opacity-50")
-    this.modalBgElTarget.classList.add("opacity-0")
+  closeStyle(modalEl, pageBg, content) {
+    content.classList.remove("opacity-50", "scale-100")
+    content.classList.add("opacity-0", "scale-80")
+    pageBg.classList.remove("opacity-50")
+    pageBg.classList.add("opacity-0")
 
     setTimeout(() => {
       modalEl.classList.add("hidden")

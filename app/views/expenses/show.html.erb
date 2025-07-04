@@ -1,5 +1,7 @@
 <% content_for(:title, "立替記録詳細") %>
 
+<%= render 'layouts/modal/expenses/destroy' %>
+
 <%# ページ案内 ------------------ %>
 <section class="flex items-center relative">
   <button class="absolute flex items-center rounded-md shadow-primary h-6 w-10 py-0.5 px-0.5 ml-4 text-white bg-panel-navy dark:text-neutral-700 dark:bg-white" data-controller="back" data-action="click->back#goBack">
@@ -22,9 +24,9 @@
           <%= link_to edit_trip_expense_path(@trip, @expense), class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-panel-navy text-white shadow-primary dark:bg-zinc-600 dark:text-white" do %>
             <%= inline_svg("svg/edit.svg", draggable:"false") %>
           <% end %>
-          <%= link_to trip_expense_path(@trip, @expense), data: {turbo_method: :delete, turbo_confirm: "立替記録を削除しますか？"}, class:"w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-panel-navy text-white shadow-primary dark:bg-zinc-600 dark:text-white" do %>
+          <button type="button" class="w-[28px] h-[28px] px-0.5 py-0.5 mx-1 rounded-md bg-panel-navy shadow-primary text-white dark:bg-zinc-600 dark:text-white" data-action="click->modal#openModal" data-modal-name-param="destroy">
             <%= inline_svg("svg/delete.svg", draggable:"false") %>
-          <% end %>
+          </button>
         </div>
       </div>
       <%# 金額 & 決済者情報 %>

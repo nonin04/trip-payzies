@@ -1,0 +1,30 @@
+<div class="absolute hidden w-full h-full" data-modal-target="destroyModal">
+  <div class="absolute w-full h-full z-40 bg-black opacity-0 backdrop-blur-sm transition-opacity duration-200" data-modal-target="destroyModalBg"  data-action="click->modal#closeModal" data-modal-name-param="destroy"></div>
+
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-1/2 z-50 opacity-0 scale-80 transition-all duration-200 ease-out" data-modal-target="destroyModalContent">
+
+    <div class="w-full card-style flex flex-col py-6">
+      <h2 class="w-full text-xl font-bold mb-4 text-gray-900 dark:text-white flex justify-center">削除しますか？</h2>
+
+      <% if @group.trips.present? %>
+        <!-- 説明文 -->
+        <p class="mx-3 text-gray-700 dark:text-gray-200 mb-2 text-center">
+          このグループに関連する旅行記録が存在しています。  
+        </p>
+        <!-- 注意喚起 -->
+        <p class="mx-3 text-yellow-800 dark:text-yellow-300 text-sm bg-yellow-100 dark:bg-yellow-900 p-2 rounded-md mb-4 text-center">
+          関連する旅行記録のグループ情報が解除されます。<br> 
+          （旅行記録自体は削除されません）
+        </p>
+      <% end %>
+
+      <!-- ボタン -->
+      <div class="flex items-center gap-4 justify-center">
+        <button class="w-25 h-10 bg-neutral-400 cursor-pointer font-bold text-white rounded-md shadow-primary" type="button" data-action="click->modal#closeModal" data-modal-name-param="destroy">キャンセル</button>
+        <%= link_to '削除', group_path(@group), data: {turbo_method: :delete}, class:"w-25 h-10 bg-primary-red cursor-pointer font-bold text-white rounded-md shadow-primary flex items-center justify-center" %>
+      </div>
+
+    </div>
+
+  </div>
+</div>

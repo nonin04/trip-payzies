@@ -1,7 +1,7 @@
 <%= search_form_for @q, url: trips_path, method: :get, class:"w-full flex items-center gap-2 mb-3 mt-0.5" do |f| %>
   <%= f.search_field :title_cont, placeholder:"旅行を検索", class:"text-sm no-cancel-button flex-1 min-w-0 px-3 h-8 rounded-md bg-white dark:bg-neutral-800" %>
   <%= f.collection_select :settlement_status_eq, settlement_status_options, :second, :first, {include_blank: "全て"}, class:"text-sm px-1 h-8 w-25 rounded-md bg-white dark:bg-neutral-800" %>
-  <button type="submit" class="h-8 w-12 rounded-md bg-panel-navy dark:bg-neutral-600">
+  <button type="submit" class="h-8 w-12 rounded-md bg-panel-navy dark:bg-neutral-600 shadow-primary">
     <%= inline_svg("svg/search.svg", class:"w-6 mx-auto text-white")%>
   </button>
 <% end %>
