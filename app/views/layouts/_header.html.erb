@@ -17,7 +17,7 @@
       <%= logo %>
     </div>
   <% else %>
-    <%= link_to unauthenticated_root_path, class:"flex items-center" do %>
+    <%= link_to unauthenticated_root_path, class:"flex items-center", data:{"turbo": false}  do %>
       <%= logo %>
     <% end %>
   <% end %>

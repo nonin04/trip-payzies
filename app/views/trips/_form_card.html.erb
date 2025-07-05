@@ -18,8 +18,7 @@
 
     <div class="pt-4">
       <%= f.label :group_id, class:"font-bold"%>
-      <%= f.collection_select :group_id, current_user.groups, :id, :name, { prompt: "グループ"}, class: "form-style" %>
-      <p class="text-primary-red text-xs pb-0.5" data-trip-validate-target="dateErrorMessage"></p>
+      <%= f.collection_select :group_id, current_user.groups, :id, :name, { prompt: "グループ"}, class: "form-style", data:{"group-select-target": "select"} %>
     </div>
   </div>
 </div>
