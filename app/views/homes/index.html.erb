@@ -1,10 +1,10 @@
 <% content_for(:title, "TOP") %>
 
-<div class="xl:w-1/3 md:w-1/2 w-full mx-auto flex flex-col h-screen bg-gray-50 dark:bg-neutral-900">
+<div class="xl:w-1/3 md:w-1/2 w-full mx-auto flex flex-col h-screen bg-gray-50 dark:bg-neutral-900" data-controller="lp-animation">
   
   <header class="h-5/80 relative flex items-center no-interact" draggable="false">
     <%= inline_svg("svg/lp/header-bg.svg", class:"w-full text-panel-navy dark:text-neutral-800") %>
-    <div class="absolute top-0 h-12 flex items-center">
+    <div class="absolute top-0 h-12 flex items-center" data-lp-animation-target="fadeInDown">
       <%= inline_svg("svg/app-icon/header-icon.svg", class:"w-5 ml-2 pb-1 text-theme-brown") %>
       <div class="font-for-icon ml-2 text-sm leading-none tracking-widest">
         <span class="text-theme-brown">TRIP</span>
@@ -14,7 +14,7 @@
   </header>
 
   <%# ロゴどん %>
-  <section class="flex-1 flex justify-center items-center no-interact" draggable="false">
+  <section class="flex-1 flex justify-center items-center no-interact opacity-0" draggable="false" data-lp-animation-target="expand">
     <%= inline_svg("svg/app-icon/lp-icon.svg", class: "h-18 text-panel-navy dark:text-white") %>
     <h1 class="text-white pt-2">
       <span class="text-theme-brown font-for-icon text-4xl">TRIP</span>
@@ -23,32 +23,32 @@
   </section>
 
   <%# キャッチコピー %>
-  <section class="h-11/80 flex justify-center items-center">
+  <section class="h-11/80 flex justify-center items-center opacity-0" data-lp-animation-target="catchCopy">
     <h2 class="flex flex-col text-right dark:text-white text-xl">
-      <div class="my-2">グループ旅行の立替を<span class="text-theme-brown text-2xl font-bold">さくっ</span>と記録</div>
-      <div class="my-2">面倒な精算も<span class="text-theme-brown text-2xl font-bold">さくっ</span>と解決</div>
+      <div class="my-2">グループ旅行の立替を<span class="text-theme-brown text-2xl font-bold inline-block" data-lp-animation-target="shakable">さくっ</span>と記録</div>
+      <div class="my-2">面倒な精算も<span class="text-theme-brown text-2xl font-bold inline-block" data-lp-animation-target="shakable">さくっ</span>と解決</div>
     </h2>
   </section>
 
   <%# gyazo? %>
-  <section class="h-18/80 flex flex-col justify-center">
-    <div class="h-4/5 mx-4 rounded-md bg-gray-200 flex items-center justify-center">
-      <span class="font-mono text-gray-600">///// 準備中 /////</span>
+  <section class="h-18/80 flex flex-col justify-center opacity-0" data-lp-animation-target="expand">
+    <div class="h-4/5 mx-4 rounded-md bg-gray-100 flex items-center justify-center">
+      <span class="font-mono text-gray-400">///// 準備中 /////</span>
     </div>
   </section>
 
   <%# 説明 %>
   <section class="flex-1 pl-4 flex justify-center items-center">
-    <ol class="list-decimal space-y-3 dark:text-white">
-      <li>旅行メンバーを入力してスタート!</li>
-      <li>"誰が・誰の分を・いくら" かんたん入力</li>
-      <%# <li>グラフで立替状況を一目でチェック</li> %>
-      <li>最後に、誰が誰にいくら払うかを自動で計算!</li>
+    <ol class="list-decimal space-y-3 dark:text-white tracking-tighter" data-lp-animation-target="fadeIn">
+      <li class="opacity-0">旅行メンバーを入力してスタート!</li>
+      <li class="opacity-0">"誰が・誰の分を・いくら" かんたん入力</li>
+      <li class="opacity-0">グラフで立替状況を一目でチェック</li>
+      <li class="opacity-0">最後に、誰が誰にいくら払うかを自動で計算!</li>
     </ol>
   </section>
 
   <%# Startボタン %>
-  <section class="h-6/80 flex justify-center items-center no-interact" draggable="false">
+  <section class="h-6/80 flex justify-center items-center no-interact opacity-0 pointer-events-none" draggable="false" data-lp-animation-target="fadeInUpLate">
       <%= link_to new_user_session_path, class: "h-fit px-10 py-1 text-2xl text-white bg-theme-brown tracking-widest cursor-pointer flex items-center rounded shadow-for-lp" do %>
         Start!<%= inline_svg("svg/plane.svg", alt:"飛行機アイコン", class:"w-7 ml-4 align-middle inline")%>
       <% end %>
