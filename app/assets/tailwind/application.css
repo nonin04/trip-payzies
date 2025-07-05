@@ -3,7 +3,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Kanit&family=Rubik+Mono+One&display=swap');
 
 @import "tailwindcss";
-@import "./animation.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -43,7 +42,7 @@
 
 
 
-  
+
 
   
   --animate-fadeInUp: fadeInUp 1.5s ease;
