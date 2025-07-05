@@ -25,12 +25,17 @@ Rails.application.routes.draw do
       patch :unsettle
     end
 
+    collection do
+      post :members_for_group
+    end
+
     # 立替(個別管理, 複数データ)
     resources :expenses, only: [ :show, :new, :create, :edit, :update, :destroy ]
 
     # 参加者(一括管理, 複数データ)
     resource :participants, only: [ :create, :destroy ]
   end
+
 
   namespace :share do
     resources :trips, only: [ :show ], param: :share_token do
