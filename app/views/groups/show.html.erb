@@ -33,13 +33,20 @@
       <div class="h-full shrink-0 card-style p-2">
         <%= image_tag "group-icon.jpg", class: "h-full aspect-square rounded-md" %>
       </div>
-      <div class="h-full card-style flex-1">
-        <p>メンバー <%= @group.members.count %>人</p>
-        <p><%= @group.created_at.year %>年</p>
-        <p>旅行記録 <%= @group.trips.count %>件</p>
+      <div class="h-full card-style flex-1 flex px-4 gap-2 text-neutral-700 items-center">
+        <div class="text-left">
+          <p class="font-bold">メンバー: </p>
+          <p class="font-bold">旅行記録: </p>
+          <p class="font-bold">作成年: </p>
+        </div>
+        <div >
+          <p><%= @group.members.count %>人</p>
+          <p><%= @group.trips.count %>件</p>
+          <p><%= @group.created_at.year %>年</p>
+        </div>
+        
       </div>
     </div>
-
     <%# 旅行カード ------------------ %>
     <div class="flex-1 min-h-0 overflow-y-auto flex flex-col my-4">
       <% @group.trips.each do |trip| %>
