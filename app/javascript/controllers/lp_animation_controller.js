@@ -9,12 +9,14 @@ export default class extends Controller {
     "expand",
     "fadeInUpLate",
     "fadeIn",
+    "catchCopy"
   ]
 
   connect() {
 
 
     this.fadeInUpTargets.forEach((el) => {
+      el.classList.remove("opacity-0");
       el.classList.remove("animate-fadeInUp");
       requestAnimationFrame(() => {
         el.classList.add("animate-fadeInUp");
@@ -31,7 +33,7 @@ export default class extends Controller {
 
 
     this.fadeInDownTargets.forEach((el) => {
-
+      el.classList.remove("opacity-0");
       el.classList.remove("animate-fadeInDown");
       requestAnimationFrame(() => {
         el.classList.add("animate-fadeInDown");
@@ -44,15 +46,24 @@ export default class extends Controller {
       setTimeout(() => {
         el.classList.remove("opacity-0")
         el.classList.add("animate-fadeIn");
-      }, (index + 1) * 300);
+      }, (index + 1) * 200);
     });
+
+    this.catchCopyTargets.forEach((el) => {
+      el.classList.remove("animate-fadeIn");
+      setTimeout(() => {
+      el.classList.remove("opacity-0")
+      el.classList.add("animate-fadeIn");
+      },200)
+    });
+
 
     this.fadeInUpLateTargets.forEach((el) => {
       el.classList.remove("animate-fadeInUp");
       setTimeout(() => {
         el.classList.remove("opacity-0", "pointer-events-none")
         el.classList.add("animate-fadeInUp");
-      }, 300);
+      }, 700);
     });
 
 
@@ -60,7 +71,7 @@ export default class extends Controller {
       el.classList.remove("animate-shake");
       setTimeout(() => {
         el.classList.add("animate-shake");
-      }, 1000);
+      },400);
     });
 
   }
