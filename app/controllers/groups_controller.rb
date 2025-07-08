@@ -26,6 +26,11 @@ class GroupsController < ApplicationController
       redirect_to groups_path, notice: "グループを一件削除しました"
   end
 
+  def members_for_group
+    group_id = params[:group_id]
+    selected_group = current_user.groups.find_by(id: group_id)
+    render json: { names: selected_group.members.pluck(:name) }
+  end
 
 
   private
