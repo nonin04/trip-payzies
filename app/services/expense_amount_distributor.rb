@@ -10,7 +10,10 @@ class ExpenseAmountDistributor
     count = advance_payments.count
     return if count == 0
     
+    
+    # 一人あたりの額(均等分け)
     base_amount = total_amount / count
+    # 残り
     remains_amount = total_amount - base_amount * count
     
     # 均等分けした額を対象者のamountに追加
@@ -23,8 +26,8 @@ class ExpenseAmountDistributor
     selected_participant_index = (0...count).to_a.shuffle.take(remains_amount)
     
       # 選択された負担者のamountに余りを追加
-      selected_participant_index.each do |op|
-        advance_payments[op].amount += 1
+      selected_participant_index.each do |sp|
+        advance_payments[sp].amount += 1
       end
     end
 

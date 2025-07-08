@@ -10,7 +10,6 @@ class SettlementMatcher
     creditor = [] # 債権者のハッシュ
     debtor = [] # 負債者のハッシュ
       # 差額の正負によって各参加者を仕分ける [参加者と差額のハッシュ] ※差額が0の参加者は精算に関係ないため無視
-
       @net_balances.each do |nb|   
         if nb[:difference] > 0
           creditor << {participant: nb[:participant],difference: nb[:difference]}
@@ -24,13 +23,16 @@ class SettlementMatcher
 
   def settlements
     # spliterで作成した各ハッシュをコピー(dup) ※dupメソッドは1段下の階層までしかコピーしない
+    # 債権者リストと負債者リストのハッシュをコピー
     creditors = spliter[:creditor].map{|c| c.dup}
     debtors = spliter[:debtor].map{|c| c.dup}
     results = []
 
+
     creditors.each do |c|
       while c[:difference] > 0 && !debtors.empty?
         debtor = debtors.first
+        # 債権者の差額と負債者の差額の小さい方の額をpaymentとする
         payment = [ c[:difference], -debtor[:difference] ].min
         results << { from: debtor[:participant], to:  c[:participant], amount: payment }
 
