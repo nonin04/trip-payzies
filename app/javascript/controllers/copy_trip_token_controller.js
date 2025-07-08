@@ -16,7 +16,7 @@ export default class extends Controller {
     navigator.clipboard.writeText(share_token)
     console.log("共有リンクをコピーしました")
 
-    this.tokenInputTarget.value = "コピーしました!"
+    this.tokenInputTarget.value = "共有リンクをコピーしました!"
     setTimeout(() => {
       this.tokenInputTarget.value = share_token},
       1500)

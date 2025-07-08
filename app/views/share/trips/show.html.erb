@@ -1,6 +1,6 @@
 <% content_for(:title, "旅行詳細[共有]") %>
 
-<%= render 'layouts/modal/share_description' %>
+<%= render 'layouts/modal/trips/share_description' %>
 
 <%# ページ案内 ------------------------------------ %>
 <section class="flex items-center relative">
@@ -23,7 +23,7 @@
                 data-action="click->copy-trip-token#copyToken">COPY</button>
         <input class="py-0.5 text-sm flex-1 bg-neutral-100 rounded-r-md px-2 dark:text-white dark:bg-neutral-700" data-copy-trip-token-target="tokenInput" id="share_link" value= "<%= share_trip_url(@trip.share_token) %>" readonly>
         <%# 共有機能info %>
-        <button type="button" class="h-6 ml-1 cursor-pointer" data-action="click->modal#openModal">
+        <button type="button" class="h-6 ml-1 cursor-pointer" data-action="click->modal#openModal" data-modal-name-param="description">
           <%= inline_svg("svg/info.svg", class:"h-full") %>
         </button>
       </div>
