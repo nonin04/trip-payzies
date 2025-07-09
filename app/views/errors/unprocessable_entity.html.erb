@@ -5,11 +5,10 @@
   <meta name="viewport">
 </head>
 
-  <div class="h-full flex flex-col items-center justify-center text-neutral-500 font-bold gap-4">
+  <div class="h-full flex flex-col items-center justify-center text-neutral-500 font-bold gap-4 mx-2">
     <%= inline_svg("svg/question.svg", class:"w-1/3")%>
-    <p class="text-4xl text-center ">422<br> Unprocessable Entity</p>
+    <p class="text-4xl text-center ">422:<br>Unprocessable Entity</p>
     <h1 class="text-center text-sm">送信された内容に不備があるため、処理を完了できませんでした。</h1>
-    <p class="text-center text-sm">入力内容をご確認のうえ、再度お試しください。</p>
     <%= link_to "TOPページへ戻る", trips_path, class:" px-4 py-2 hover:text-neutral-700 rounded-md border-2" %>
   </div>
 
