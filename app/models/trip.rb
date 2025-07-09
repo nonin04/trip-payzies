@@ -9,7 +9,7 @@ class Trip < ApplicationRecord
   enum settlement_status: { unsettled: 0, settled: 1 }
 
   validates :user_id, presence: true
-  validates :title, presence: true, length: { maximum: 25, message: "25字以内で入力してください" }
+  validates :title, presence: true, length: { maximum: 25, message: "は25字以内で入力してください" }
   validates :settlement_status, presence: true
 
   validate :must_have_participant_at_least_one
