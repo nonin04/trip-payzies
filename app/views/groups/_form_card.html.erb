@@ -1,15 +1,10 @@
-<div class="flex items-center mx-6 mt-2 mb-1">
-  <h2 class="font-bold">グループ情報</h2>
-</div>
 <div class="mx-4 flex flex-col card-style px-4 py-4">
   <%= label_tag :group, "グループ名", class:"font-bold mb-1" %>
   <%= text_field_tag "group[name]", nil, class:"form-style"%>
 
   <div>
-
     <%= label_tag :icon, "アイコン", class: "font-bold mb-1 block mt-2" %>
-    <div class="text-neutral-600">
-     <div class="flex items-center gap-3">
+    <div class="flex items-center gap-3">
       <button type="button" class="relative py-1 border-neutral-500 bg-neutral-500 border-2 text-white rounded-md hover:bg-transparent hover:text-neutral-500">
         <p class="px-2 text-xs">ファイル選択</p>
 
@@ -17,7 +12,6 @@
       </button>
       <p class="text-neutral-400">開発中...</p>
     </div>
-  
-    </div>
   </div>
+  
 </div>
