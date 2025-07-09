@@ -1,22 +1,22 @@
 <%# 最初はhidden、表示時はflex %>
-<div class="hidden flex flex-col flex-1 min-h-0" data-trip-validate-target="participantForm">
-  <div class="flex items-center mx-8 mt-2 mb-1">
-    <h2 class="text-lg font-bold">参加者</h2>
+<div class="hidden flex flex-col flex-1 min-h-0 overflow-y-auto mt-2" data-trip-validate-target="participantForm">
+  <div class="flex items-center mx-8 mb-1">
+    <h2 class="font-bold">参加者</h2>
   </div>
 
-  <div class="card-style border border-transparent mx-4 flex flex-1 flex-col overflow-y-auto px-4 py-2" data-participant-validate-target="participantCard">
-    <div class="flex flex-col pb-2 text-xs">
+  <div class="card-style border border-transparent mx-4 flex flex-1 flex-col px-4 py-2" data-participant-validate-target="participantCard">
+    <div class="font-bold">名前</div>
+    <div class="flex flex-col pb-2 text-[11px]">
       <span>※作成後の編集はできません</span>
       <span>※人数の上限は10人です</span>
       <span>※名前は15字以内でご入力ください</span>
     </div>
-    <div class="font-bold">名前</div>
     <span data-participant-validate-target="duplicatedErrorMessage" class="text-primary-red text-xs"></span>
     <% @trip.participants.each_with_index do |participant, i| %>
       <%= f.fields_for :participants, participant do |p| %>
         <div data-participant-validate-target="eachTemplate">
           <div class="flex items-center py-2">
-            <span class="font-bold font-mono w-6 flex justify-center mr-1"><%= i + 1 %></span>
+            <span class="font-bold w-6 flex justify-center mr-1"><%= i + 1 %></span>
             <%= p.text_field :name, class:"form-style mr-2", 
             data:{"participant-validate-target": "name", "action": "input->participant-validate#checkInput keydown->participant-validate#submitPrevent",
                   "group-select-target": "result"} %>

@@ -23,6 +23,7 @@ class TripsController < ApplicationController
       redirect_to trip_path(@trip)
     else
       flash.now[:alert] = @trip.errors.full_messages.join(", ")
+      (10 - @trip.participants.size).times { @trip.participants.build }
       render :new, status: :unprocessable_entity
     end
   end
