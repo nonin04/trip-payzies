@@ -18,7 +18,7 @@ export default class extends Controller {
       return
     }
 
-    fetch("/trips/members_for_group", {
+    fetch("/groups/members_for_group", {
       method: "post",
       headers: {
         "Content-Type": "application/json",

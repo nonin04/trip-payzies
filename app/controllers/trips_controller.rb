@@ -23,6 +23,7 @@ class TripsController < ApplicationController
       redirect_to trip_path(@trip)
     else
       flash.now[:alert] = @trip.errors.full_messages.join(", ")
+      (10 - @trip.participants.size).times { @trip.participants.build }
       render :new, status: :unprocessable_entity
     end
   end
@@ -73,13 +74,6 @@ class TripsController < ApplicationController
       flash.now[:alert] = "ステータスを更新できませんでした。"
       render :result, status: :unprocessable_entity
     end
-  end
-
-
-  def members_for_group
-    group_id = params[:group_id]
-    selected_group = current_user.groups.find_by(id: group_id)
-    render json: { names: selected_group.members.pluck(:name) }
   end
 
   private

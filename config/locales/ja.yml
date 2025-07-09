@@ -28,6 +28,11 @@ ja:
         title: "項目"
         amount: "金額"
         payment_date: "決済日"
+      group:
+        name: "グループ名"
+      member: 
+        name: "メンバー名"
+
     errors:
       messages:
         blank: "必須項目です。"
