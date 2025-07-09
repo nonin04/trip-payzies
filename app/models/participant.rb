@@ -5,6 +5,6 @@ class Participant < ApplicationRecord
   has_many :advance_payments, dependent: :restrict_with_error
   has_many :owed_expenses, through: :advance_payments, source: :expense
 
-  validates :name, presence: true, length: { maximum: 15, message: "は15字以内" }
+  validates :name, presence: true, length: { maximum: 15, message: "は15字以内で入力してください" }
   validates :name, uniqueness: { scope: :trip_id, message: "が既に存在します。" }
 end
