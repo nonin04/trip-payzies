@@ -29,3 +29,138 @@
 
 en:
   hello: "Hello world"
+
+  activerecord:
+    models:
+      user: "User"
+      trip: "Trip"
+      participant: "Participant"
+      expense: "Expense Record"
+      advance_payment: "Recipient"
+      group: "Group"
+      member: "Member"
+
+    attributes:
+      user: 
+        name: "User Name"
+        email: "Email Address"
+        password: "Password"
+        password_confirmation: "Password (Confirmation)"
+      trip:
+        title: "Trip Title"
+        departure_date: "Departure Date"
+        group_id: "Group"
+        settlement_status:
+          settled: "Settled"
+          unsettled: "Unsettled"
+      participant:
+        name: "Participant Name"
+      expense: 
+        payer: "Payer"
+        title: "Item"
+        amount: "Amount"
+        payment_date: "Date"
+        place: "Place"
+        memo: "Memo"
+      advance_payment: 
+        participant: "Recipient" 
+      group:
+        name: "Group Name"
+        icon: "Icon"
+      member: 
+        name: "Member Name"
+
+    errors:
+      messages:
+        blank: "This field is required."
+        not_saved: "Could not save %{resource}."
+        confirmation: "Does not match the confirmation."
+        too_short: "Must be at least %{count} characters long."
+
+  currency:
+    jpy: "¥"
+
+  pages:
+    common:
+      back: "Back"
+      next: "Next"
+      cancel: "Cancel"
+      save: "Save"
+      update: "Update"
+      developing: "developing...."
+    trips:
+      card:
+        temporary_group: "Temporary Group"
+      form:
+        select_payer: "Select a payer"
+        base_info: "Basic Information"
+        name_length: "※Trip title must be within 25 characters."
+        select_group: "Select a group"
+      index:
+        title: "TOP/Trip List"
+        create_trip_button: "Create Trip"
+        group_button: "Group"
+        search: "Search Trips"
+        status_default: "All"
+      new:
+        title: "Create Trip"
+      edit:
+        title: "Edit Trip"
+      insight:
+        title: "Insights"
+      result:
+        title: "Settlement Results"
+        payment_receipt_list: "Payment and Receipt List"
+        mark_settled: "Mark as Settled"
+        settled_confirm: "Do you want to mark the trip as settled?"
+        mark_unsettled: "Mark as Unsettled"
+        unsettled_confirm: "Do you want to change the trip status to unsettled?"
+      show:
+        title: "Trip Details"
+        create_expense_button: "Create Expense"
+        result_button: "Results"
+    participants:
+      form_card:
+        no_editable: "Cannot be edited after creation."
+        limit: "Up to 10 participants allowed."
+        name_length: "Participant name must be within 15 characters."
+    expenses:
+      new:
+        title: "Create Expense"
+      edit:
+        title: "Edit Expense"
+      form: 
+        item_eg: "e.g. Car Rental Fee"
+        amount_eg: "e.g. 10000"
+        place_eg: "e.g. Kyoto, Kiyomizu Temple"
+      show:
+        title: "Expense Details"
+        recipient: "Recipiend"
+        owed_amount: "Amount Owed"
+    groups:
+      form_card:
+        select_file: "Upload"
+      new: 
+        title: "Create Group"
+      edit:
+        title: "Edit Group"
+      index:
+        title: "Group List"
+        create_group: "Create Group"
+      show: 
+        title: "Group Details"
+        members_count: "Members:"
+        members_unit: ""
+        trips_count: "Trips:"
+        trips_unit: ""
+        created_at: "Created:"
+        created_unit: ""
+    members:
+      form_card:
+        name: "Name"
+        limit: "Up to 10 participants allowed."
+        name_length: "Participant name must be within 15 characters."
+
+
+
+  

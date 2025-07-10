@@ -39,3 +39,12 @@ ja:
         not_saved: "%{resource}を保存できませんでした。"
         confirmation: "確認用の内容と一致していません。"
         too_short: "%{count}文字以上で入力してください。"
+
+# 各ページの情報用
+  pages:
+    trips: 
+      show:
+        create_expense: "立替記録を作成"
+        result: "精算結果"
+
+  

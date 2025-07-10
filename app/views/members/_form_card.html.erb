@@ -1,17 +1,17 @@
 <div class="flex items-center mx-6 mt-2 mb-1">
-  <h2 class="font-bold">メンバー</h2>
+  <h2 class="font-bold"><%= t('activerecord.models.member')%></h2>
 </div>
 <div class="mx-4 flex flex-col card-style px-4 py-4 gap-2">
-  <%= label_tag :name, "名前", class:"font-bold" %>
-  <div class="flex flex-col pb-2 text-[11px]">
-    <span>※人数の上限は10人です</span>
-    <span>※名前は15字以内でご入力ください</span>
+  <%= label_tag "member_name_0", t('pages.members.form_card.name'), class:"font-bold" %>
+  <div class="flex flex-col pb-2 text-[12px]">
+    <span>※<%= t('pages.members.form_card.limit')%></span>
+    <span>※<%= t('pages.members.form_card.name_length')%></span>
   </div>
   <div class="flex flex-col flex-1 gap-4">
     <% members.each_with_index do |m, i| %>
       <div class="flex gap-1 items-center">
         <span class="font-bold w-6 flex justify-center mr-1"><%= i + 1 %></span>
-        <%= text_field_tag "members[][name]",nil , class:"form-style" %>
+        <%= text_field_tag "members[][name]", m.present? ? m.name : nil, id:"member_name_#{i}", class:"form-style" %>
       </div>
     <% end %>
   </div>

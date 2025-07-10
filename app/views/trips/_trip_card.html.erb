@@ -40,7 +40,7 @@
         <p class="pr-10 dark:text-neutral-400 text-sm <%= group_title_color(mode) %>"><%= trip.group.name %></p>
       <% else %>
         <%= inline_svg("svg/group.svg", draggable:"false", class:"h-7 ml-5 mr-2 text-zinc-800") %>
-        <p class="pr-10 dark:text-neutral-400 text-sm <%= group_title_color(mode) %>">一時グループ</p>
+        <p class="pr-10 dark:text-neutral-400 text-sm <%= group_title_color(mode) %>"><%= t('pages.trips.card.temporary_group')%></p>
       <% end %>
     </div>
   <% end %>

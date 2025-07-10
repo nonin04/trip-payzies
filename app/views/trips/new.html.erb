@@ -1,4 +1,4 @@
-<% content_for(:title, "旅行作成") %>
+<% content_for(:title, t('pages.trips.new.title')) %>
 
 <div data-controller="trip-validate participant-validate group-select" data-trip-validate-mode-value="new" class="flex flex-col h-full">
 
@@ -6,7 +6,7 @@
   <%= render 'layouts/flash_message/error_for_stimulus' %>
   
   <%# ページ案内 ------------------ %>
-  <h1 class="mt-2 my-2 text-xl font-bold text-center">旅行作成</h1>
+  <h1 class="mt-2 my-2 text-xl font-bold text-center"><%= t('pages.trips.new.title') %></h1>
 
   <%# stepバー ------------------ %>
   <%= render 'trips/step_bar' %>
@@ -23,11 +23,11 @@
       <div class="separator"></div>
       <div class="w-full flex gap-4">
         <%# step1時のボタン %>
-        <%= link_to "戻る", trips_path, data:{"trip-validate-target": "toggleBtn"}, class:"w-1/4 main-action-btn bg-gray-400 text-white dark:bg-neutral-600" %>
-        <button data-trip-validate-target="toggleBtn" data-action="click->trip-validate#changeForm click->group-select#selectGroup" type="button" class="flex-1 main-action-btn bg-primary-blue-100 text-white">次へ</button>
+        <%= link_to t('pages.common.back'), trips_path, data:{"trip-validate-target": "toggleBtn"}, class:"w-1/4 main-action-btn bg-gray-400 text-white dark:bg-neutral-600" %>
+        <button data-trip-validate-target="toggleBtn" data-action="click->trip-validate#changeForm click->group-select#selectGroup" type="button" class="flex-1 main-action-btn bg-primary-blue-100 text-white"><%= t('pages.common.next') %></button>
         <%# step2時のボタン %>
-        <button data-trip-validate-target="toggleBtn" data-action="click->trip-validate#changeForm" type="button" class="!hidden w-1/4 main-action-btn bg-gray-400 text-white dark:bg-neutral-600">戻る</button>
-        <%= f.submit "保存",data: {"trip-validate-target" => "toggleBtn", "participant-validate-target" => "submitBtn", action: "click->participant-validate#submit"}, class: "!hidden flex-1 main-action-btn bg-primary-blue-100 text-white" %>
+        <button data-trip-validate-target="toggleBtn" data-action="click->trip-validate#changeForm" type="button" class="!hidden w-1/4 main-action-btn bg-gray-400 text-white dark:bg-neutral-600"><%= t('pages.common.back') %></button>
+        <%= f.submit t('pages.common.save'),data: {"trip-validate-target" => "toggleBtn", "participant-validate-target" => "submitBtn", action: "click->participant-validate#submit"}, class: "!hidden flex-1 main-action-btn bg-primary-blue-100 text-white" %>
       </div>
     </section>
   <% end %>
