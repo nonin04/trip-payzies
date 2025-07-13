@@ -12,13 +12,10 @@ Rails.application.routes.draw do
 
   # 立替(個別管理, 複数データ)
   resources :groups do
-    resource :members, only: [:create, :edit, :destroy ]
-
     collection do
       # 旅行作成時の補助API(選択されたグループidを送信)
       post :members_for_group
     end
-
   end
 
   resources :trips do
@@ -32,11 +29,7 @@ Rails.application.routes.draw do
 
     # 立替(個別管理, 複数データ)
     resources :expenses, only: [ :show, :new, :create, :edit, :update, :destroy ]
-
-    # 参加者(一括管理, 複数データ)
-    # resource :participants, only: [ :destroy ]
   end
-
 
   namespace :share do
     resources :trips, only: [ :show ], param: :share_token do

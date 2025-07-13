@@ -24,24 +24,24 @@ export default class extends Controller {
     "eachParticipantForm",
     "flashError",
     "submitBtn",
-    "form"
+    "form",
   ]
+  static values = {
+    errorMessages: Object,
+  }
 
   flashTimeoutId = null
 
-  static values = {
-    mode: String
-  }
 
 //actions
   connect() {
+    console.log(this.errorMessagesValue.failed)
     if (this.modeValue === "new") {
       requestAnimationFrame(() => {
         this.stepGaugeTarget.style.width = "50%";
       })
       this.isStep2 = false
     }
-
   }
 
   checkInput() {
@@ -52,7 +52,7 @@ export default class extends Controller {
     const hasError = this.validate()
 
     if (hasError) {
-      this.setFlashEl("※保存に失敗しました")
+      this.setFlashEl(this.errorMessagesValue.failed)
       return;
     }
 
@@ -74,7 +74,7 @@ export default class extends Controller {
     event.preventDefault()
     const hasError = this.validate()
     if (hasError) {
-      this.setFlashEl("※保存に失敗しました")
+      this.setFlashEl(this.errorMessagesValue.failed)
     }
     else {
       this.formTarget.submit()
@@ -154,12 +154,12 @@ export default class extends Controller {
     const titleErrorMessage = this.titleErrorMessageTarget
     if (!titleInput.value) {
       this.addErrorStyle(titleInput)
-      this.addErrorMessage(titleErrorMessage, "※入力必須項目です")
+      this.addErrorMessage(titleErrorMessage, this.errorMessagesValue.required)
       hasError = true;
     }
     else if (titleInput.value.length > 25) {
       this.addErrorStyle(titleInput)
-      this.addErrorMessage(titleErrorMessage, "※25字以内で入力してください")
+      this.addErrorMessage(titleErrorMessage, this.errorMessagesValue.maxLength25)
       hasError = true;
     }
     else {
@@ -176,7 +176,7 @@ export default class extends Controller {
     const dateErrorMessage = this.dateErrorMessageTarget
     if (!dateInput.value) {
       this.addErrorStyle(dateInput)
-      this.addErrorMessage(dateErrorMessage, "※入力必須項目です")
+      this.addErrorMessage(dateErrorMessage, this.errorMessagesValue.required)
       hasError = true;
     }
     else {

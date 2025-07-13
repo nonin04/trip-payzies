@@ -7,6 +7,9 @@ export default class extends Controller {
     "flashNotice",
     "tokenInput"
   ]
+  static values = {
+    notice: String,
+  }
 
   connect() {
   }
@@ -14,9 +17,9 @@ export default class extends Controller {
   copyToken() {
     const share_token = this.tokenInputTarget.value
     navigator.clipboard.writeText(share_token)
-    console.log("共有リンクをコピーしました")
+    console.log(this.noticeValue);
 
-    this.tokenInputTarget.value = "共有リンクをコピーしました!"
+    this.tokenInputTarget.value = this.noticeValue
     setTimeout(() => {
       this.tokenInputTarget.value = share_token},
       1500)

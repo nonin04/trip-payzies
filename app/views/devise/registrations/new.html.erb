@@ -1,38 +1,68 @@
-<% content_for(:title, "新規登録") %>
+<% content_for(:title, t('pages.devise.registrations.new.title')) %>
 
+<div class="h-full overflow-y-auto">
+  <div class="mx-6 py-5 devise-card-style my-4">
+    <p class="text-center text-xl font-bold"><%= t('pages.devise.registrations.new.welcome') %></p>
+    <p class="text-center text-sm text-neutral-500"><%= t('pages.devise.registrations.new.sub_title') %></p>
+    
+    <div class="px-4">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+          
 
-<h2 class="text-center text-xl my-4 font-bold">新規登録</h2>
-<div class="card-style mx-4 px-10 pt-5 pb-5">
+        <div class="field w-full my-2">
+            <div class="flex gap-0.5">
+              <%= inline_svg('svg/user2.svg', class:"w-5")%>
+              <%= f.label :email, t('activerecord.attributes.user.name'), class:"block text-sm dark:text-white my-1"%>
+            </div>
+          <%= f.text_field :name, placeholder:"trip_user123", autofocus: true, autocomplete: "name", class:"devise-form-style" %>
+        </div>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="field w-full my-2">
+            <div class="flex gap-0.5">
+              <%= inline_svg('svg/mail.svg', class:"w-5")%>
+              <%= f.label :email, t('pages.devise.session.new.email'), class:"block text-sm dark:text-white my-1"%>
+            </div>
+          <%= f.email_field :email, placeholder: "example@email.com", autofocus: true, autocomplete: "email", class:"devise-form-style" %>
+        </div>
 
-    <div class="field w-full pb-4">
-      <%= f.label :name, "ユーザーネーム", class:"devise-form-label" %>
-      <%= f.text_field :name, placeholder:"例: trip_user123", autofocus: true, autocomplete: "name", class: "form-style" %>
+        <div class="field w-full my-2">
+            <div class="flex gap-0.5">
+              <%= inline_svg('svg/key.svg', class:"w-5")%>
+              <%= f.label :email, t('activerecord.attributes.user.password'), class:"block text-sm dark:text-white my-1"%>
+            </div>
+          <%= f.password_field :password, placeholder: t('pages.devise.registrations.new.password_min'), autocomplete: "new-password", class:"devise-form-style" %>
+        </div>
+
+        <div class="field w-full my-2">
+            <div class="flex gap-0.5">
+              <%#= inline_svg('svg/key.svg', class:"w-5")%>
+              <%= f.label :email, t('activerecord.attributes.user.password_confirmation'), class:"block text-sm dark:text-white my-1"%>
+            </div>
+          <%= f.password_field :password_confirmation, placeholder: t('pages.devise.registrations.new.confirm'), autocomplete: "new-password", class:"devise-form-style" %>
+        </div>
+
+        <div class="my-4">
+          <%= f.submit t('pages.devise.registrations.new.btn'), class: "devise-btn py-1.5 inline-block w-full shadow-lg devise-btn-animation"%>
+        </div>
+      <% end %>
+
     </div>
 
-    <div class="field w-full pb-4">
-      <%= f.label :email, "メールアドレス", class:"devise-form-label" %>
-      <%= f.email_field :email, placeholder: "例: example@email.com", autofocus: true, autocomplete: "email", class: "form-style" %>
+    <div class="w-full px-4 flex my-4 gap-2 items-center justify-between">
+      <div class="h-[1px] flex-1 bg-neutral-200"></div>
+      <p class="text-neutral-400 text-sm">OR</p>
+      <div class="h-[1px] flex-1 bg-neutral-200"></div>
     </div>
 
-    <div class="field w-full pb-4">
-      <%= f.label :password, "パスワード", class:"devise-form-label" %>
-      <%= f.password_field :password, placeholder: "6文字以上で入力してください", autocomplete: "new-password", class: "form-style" %>
+    <div class="mx-4 py-1.5 my-2 flex gap-2 items-center justify-center rounded-lg bg-transparent border border-neutral-300 text-neutral-500 hover:bg-neutral-100 devise-btn-animation shadow-md">
+      <%= inline_svg('svg/google.svg', class:"w-4")%>
+      <p><%= t('pages.devise.registrations.new.google') %> (soon...)</p>
     </div>
 
-    <div class="field w-full pb-4">
-      <%= f.label :password_confirmation, "パスワード(確認用)", class:"devise-form-label"  %>
-      <%= f.password_field :password_confirmation, placeholder:"パスワード再入力", autocomplete: "new-password", class:"form-style" %>
-    </div>
-
-    <div class="actions my-2">
-      <%= f.submit "登録", class: "btn block mx-auto shadow-primary" %>
-    </div>
-  <% end %>
-
-</div>
-<div class="text-center pt-5">
-  <%= link_to "アカウントお持ちの方はこちら", new_session_path(resource_name), class:"text-primary-blue-100 underline hover:text-primary-blue-200"%>
+    <div class="flex items-center gap-1 text-center justify-center pt-3 text-neutral-600 dark:text-white">
+      <p><%= t('pages.devise.registrations.new.sign_in')%></p>
+      <%= link_to t('pages.devise.session.new.title'), new_session_path(resource_name), class: "underline hover:text-neutral-800 dark:text-white dark:hover:text-white"%>
+    </div> 
+  </div>
 </div>

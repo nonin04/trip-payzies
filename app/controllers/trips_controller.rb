@@ -21,8 +21,9 @@ class TripsController < ApplicationController
     @trip = current_user.trips.build(trip_and_participants_params)
     if @trip.save
       redirect_to trip_path(@trip)
+    flash[:notice] = I18n.t('flash.trip.success.create')
     else
-      flash.now[:alert] = @trip.errors.full_messages.join(", ")
+      flash.now[:alert] = I18n.t('flash.trip.failed.create')
       (10 - @trip.participants.size).times { @trip.participants.build }
       render :new, status: :unprocessable_entity
     end
@@ -33,10 +34,10 @@ class TripsController < ApplicationController
 
   def update
     if @trip.update(trip_params)
-      flash[:notice] = "更新しました。"
+      flash[:notice] = I18n.t('flash.trip.success.update')
       redirect_to trip_path(@trip)
     else
-      flash.now[:alert] = "更新に失敗しました。"
+      flash.now[:alert] = I18n.t('flash.trip.failed.update')
       render :edit, status: :unprocessable_entity
     end
   end
@@ -44,7 +45,7 @@ class TripsController < ApplicationController
   def destroy
     @trip.expenses.destroy_all
     @trip.destroy
-    redirect_to trips_path, notice: "旅行を1件削除しました"
+    redirect_to trips_path, notice: I18n.t('flash.trip.success.delete')
   end
 
 
@@ -60,18 +61,18 @@ class TripsController < ApplicationController
 
   def settle
     if @trip.update(settlement_status: :settled)
-       redirect_to trip_path(@trip), notice: "精算状況：精算済みに変更しました"
+       redirect_to trip_path(@trip), notice: I18n.t('flash.settle.settled')
     else
-      flash.now[:alert] = "ステータスを更新できませんでした。"
+      flash.now[:alert] = I18n.t('flash.settle.update_failed')
       render :result, status: :unprocessable_entity
     end
   end
 
   def unsettle
     if @trip.update(settlement_status: :unsettled)
-       redirect_to trip_path(@trip), notice: "精算状況：未精算に変更しました"
+       redirect_to trip_path(@trip), notice: I18n.t('flash.settle.unsettled')
     else
-      flash.now[:alert] = "ステータスを更新できませんでした。"
+      flash.now[:alert] = I18n.t('flash.settle.update_failed')
       render :result, status: :unprocessable_entity
     end
   end

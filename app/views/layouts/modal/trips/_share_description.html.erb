@@ -4,16 +4,16 @@
   <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-2/5 z-50 opacity-0 scale-80 transition-all duration-200 ease-out" data-modal-target="descriptionModalContent">
 
     <div class="w-full card-style flex flex-col py-6">
-      <h2 class="w-full text-xl font-bold mb-4 text-gray-900 dark:text-white flex justify-center">旅行記録の共有リンク</h2>
+      <h2 class="w-full text-xl font-bold mb-4 text-gray-900 dark:text-white flex justify-center"><%= t('modal.trips.share.link_title')%></h2>
 
       <!-- 説明文 -->
       <p class="mx-3 text-gray-700 dark:text-gray-200 mb-2">
-        このURLをLINEなどで参加者に送ると、現在の旅行記録を共有できます。
+        <%= t('modal.trips.share.link_description')%>
       </p>
 
       <!-- 注意喚起 -->
       <div class="mx-3 text-yellow-800 dark:text-yellow-300 text-sm bg-yellow-100 dark:bg-yellow-900 p-3 rounded-md mb-4">
-        ⚠️ 共有されたメンバーは、旅行情報の編集や立替記録の作成・編集はできません。
+        <%= t('modal.trips.share.link_note')%>
       </div>
 
 <!-- ボタン -->

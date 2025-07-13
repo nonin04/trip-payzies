@@ -8,7 +8,10 @@ Chart.register(...registerables)
 export default class extends Controller {
 
   static targets =["myChart"]
-  static values ={netBalances: Array}
+  static values ={
+    netBalances: Array,
+    title: String,
+  }
 
   canvasContext() {
     if (!this.hasMyChartTarget) {
@@ -55,7 +58,7 @@ export default class extends Controller {
           title: {
             color: 'black',
             display: true,
-            text: '貸し借り差額グラフ',
+            text: this.titleValue,
           },
           legend: {
             display: false,

@@ -1,11 +1,11 @@
-<% content_for(:title, "精算結果") %>
+<% content_for(:title, t('pages.trips.result.title')) %>
 
 <%# ページ案内 ------------------ %>
 <section class="flex items-center relative">
   <%= link_to trip_path(@trip), class:"absolute flex items-center rounded-md shadow-primary h-6 w-10 py-0.5 px-0.5 ml-4 bg-panel-navy dark:bg-neutral-800" do %>
     <%= inline_svg("svg/navigation-arrow.svg", class:"w-full h-full rotate-180 text-white dark:text-neutral-300")%>
   <% end %>
-  <h1 class="mt-2 my-2 text-xl font-bold w-full text-center">精算結果</h1>
+  <h1 class="mt-2 my-2 text-xl font-bold w-full text-center"><%= t('pages.trips.result.title') %></h1>
 </section>
 
 <section class="flex-1 overflow-y-auto min-h-0">
@@ -14,7 +14,7 @@
     <%= render 'trip_card', trip: @trip, mode: :result %>
 
     <%# サブタイトル ------------------ %>
-    <h2 class="mx-2 my-1.5 font-bold mt-2">支払・受取リスト</h2>
+    <h2 class="mx-2 my-1.5 font-bold mt-2"><%= t('pages.trips.result.payment_receipt_list')%></h2>
 
     <%# 精算カード ------------------ %>
     <div class="flex flex-col gap-4">
@@ -30,22 +30,22 @@
 <div class="px-4 my-3">
   <div class="separator"></div>
   <div class="w-full flex gap-4">
-    <%= link_to "戻る", trip_path(@trip), class:"w-3/10 main-action-btn bg-gray-400 text-white dark:bg-neutral-600" %>
+    <%= link_to t('common.back'), trip_path(@trip), class:"w-3/10 main-action-btn bg-gray-400 text-white dark:bg-neutral-600" %>
     
     <% if @trip.unsettled? %>
     <%# 未精算→精算済みに %>
-      <%= form_with url: settle_trip_path(@trip), method: :patch, data:{turbo_confirm: "旅行を精算済みにしますか？"}, class:"w-full" do %>
+      <%= form_with url: settle_trip_path(@trip), method: :patch, data:{turbo_confirm: t('pages.trips.result.settled_confirm')}, class:"w-full" do %>
         <button type="submit" class="w-full main-action-btn bg-primary-blue-100 text-white">
-          <span>精算済みにする</span>
+          <span><%= t('pages.trips.result.mark_settled') %></span>
           <%= inline_svg("svg/settle.svg", class:"w-[28px] ml-2") %>
         </button>
       <% end %>
 
     <% elsif @trip.settled? %>
     <%# 精算済み→未精算に %>
-      <%= form_with url: unsettle_trip_path(@trip), method: :patch, data:{turbo_confirm: "旅行を未精算に変更しますか？"}, class:"w-full" do %>
+      <%= form_with url: unsettle_trip_path(@trip), method: :patch, data:{turbo_confirm: t('pages.trips.result.unsettled_confirm')}, class:"w-full" do %>
         <button type="submit" class="w-full main-action-btn bg-primary-red text-white">
-          <span>未精算にする</span>
+          <span><%= t('pages.trips.result.mark_unsettled') %></span>
           <%= inline_svg("svg/reset.svg", class:"w-[28px] ml-2") %>
         </button>
       <% end %>

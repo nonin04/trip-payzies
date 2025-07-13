@@ -3,19 +3,19 @@ ja:
     models:
       user: "ユーザー"
       trip: "旅行"
-      participant: "旅行メンバー"
+      participant: "参加者"
       expense: "立替記録"
       advance_payment: "対象者"
       group: "グループ"
-      member: "グループメンバー"
+      member: "メンバー"
     attributes:
       user: 
         name: "ユーザーネーム"
         email: "メールアドレス"
         password: "パスワード"
-        password_confirmation: "パスワード(確認)"
+        password_confirmation: "パスワード確認"
       trip:
-        title: "旅行名"
+        title: "旅行タイトル"
         departure_date: "出発日"
         group_id: "グループ"
         settlement_status:
@@ -28,14 +28,251 @@ ja:
         title: "項目"
         amount: "金額"
         payment_date: "決済日"
+        place: "場所"
+        memo: "メモ"
+      advance_payment: 
+        participant: "対象者"
       group:
         name: "グループ名"
+        icon: "アイコン"
       member: 
         name: "メンバー名"
-
     errors:
       messages:
-        blank: "必須項目です。"
+        blank: "この項目は必須です。"
         not_saved: "%{resource}を保存できませんでした。"
-        confirmation: "確認用の内容と一致していません。"
+        confirmation: "確認用の内容と一致しません。"
         too_short: "%{count}文字以上で入力してください。"
+  
+  og:
+    description: "グループ旅行の立替を簡単に記録・精算できます。「誰が・誰にいくら」を自動計算!"
+
+  common:
+    back: "戻る"
+    next: "次へ"
+    close: "閉じる"
+    delete: "削除"
+    cancel: "キャンセル"
+    save: "保存"
+    update: "更新"
+    logout: "ログアウト"
+    developing: "開発中..."
+
+  flash:
+    trip:
+      success:
+        create: "旅行を作成しました。"
+        update: "旅行を更新しました。"
+        delete: "旅行を1件削除しました。"
+      failed:
+        create: "作成に失敗しました。"
+        update: "更新に失敗しました。"
+        delete: "削除に失敗しました。"
+    expense:
+      success:
+        create: "立替記録を作成しました。"
+        update: "立替記録を更新しました。"
+        delete: "立替記録を1件削除しました。"
+      failed:
+        create: "作成に失敗しました。"
+        update: "更新に失敗しました。"
+        delete: "削除に失敗しました。"
+    group:
+      success:
+        create: "グループを作成しました。"
+        update: "グループを更新しました。"
+        delete: "グループを1件削除しました。"
+      failed:
+        create: "作成に失敗しました。"
+        update: "更新に失敗しました。"
+        delete: "削除に失敗しました。"
+    settle:
+      settled: "精算状況:精算済みにしました。"
+      unsettled: "精算状況:未精算にしました。"
+      update_failed: "ステータスの更新に失敗しました。"
+
+  modal:
+    common: 
+      delete: "本当に削除しますか？"
+    expenses:
+      destroy:
+        expense_delete: "削除した立替記録は復元できません。"
+    trips:
+      destroy:
+        trip_delete: "削除した旅行は復元できません。"
+      share:
+        link_title: "旅行共有リンク"
+        link_description: "このURLをLINEなどで共有することで、参加者に現在の旅行情報を共有できます。"
+        link_note: "⚠️ 共有されたメンバーは、旅行や立替記録の作成・編集はできません。"
+    groups:
+      destroy:
+        notice: "このグループに関連する旅行記録があります。"
+        action: "関連する旅行からグループ情報が解除されます。"
+        caution: "（旅行記録自体は削除されません。）"
+      help:
+        title: "グループとは？"
+        description_1: "よく一緒に旅行に行くメンバーをまとめる機能です。"
+        description_2: "旅行作成時にグループを選択すると、メンバーが自動で参加者に追加されます。"
+        description_3: "旅行ごとの参加者は自由に設定できます。"
+        description_4: "旅行参加者 ≠ グループメンバー"
+    layout:
+      logout:
+        caution: "ログアウトしますか？"
+
+  pages:
+    home:
+      index:
+        record_expenses: "グループ旅行の立替を"
+        settle_expenses: "面倒な精算も"
+        snap: "さくっ"
+        record: "と記録"
+        solve: "と解決"
+        start_with_members: "旅行メンバーを入力してスタート!"
+        easy_entry: "「誰が、誰の分を、いくら」をかんたん入力"
+        check_graph: "グラフで立替状況を一目でチェック"
+        auto_calculate: "最後に誰が誰にいくら払うかを自動計算!"
+    trips:
+      card:
+        temporary_group: "一時グループ"
+      form:
+        select_payer: "決済者を選択"
+        base_info: "基本情報"
+        name_length: "※タイトルは25字以内で入力してください。"
+        select_group: "グループを選択"
+      index:
+        title: "TOP/旅行一覧"
+        create_trip_button: "旅行を作成"
+        group_button: "グループ"
+        search: "旅行を検索"
+        status_default: "すべて"
+        no_trip: "まだ旅行記録がありません。"
+        lets_create: "新しく作成しましょう！"
+      new:
+        title: "旅行作成"
+      edit:
+        title: "旅行編集"
+      insight:
+        title: "分析"
+        trip_amount: "旅行全体の金額"
+      result:
+        title: "精算結果"
+        payment_receipt_list: "支払・受取リスト"
+        mark_settled: "精算済みにする"
+        settled_confirm: "旅行を精算済みにしますか？"
+        mark_unsettled: "未精算に戻す"
+        unsettled_confirm: "旅行を未精算に戻しますか？"
+      show:
+        title: "旅行詳細"
+        create_expense_button: "立替記録を作成"
+        result_button: "結果を見る"
+        no_expense: "まだ立替記録がありません。"
+        lets_create: "新しく作成しましょう！"
+    participants:
+      form_card:
+        no_editable: "作成後の編集できません。"
+        limit: "参加者は最大10人までです。"
+        name_length: "名前は15字以内で入力してください。"
+    expenses:
+      new:
+        title: "立替作成"
+      edit:
+        title: "立替編集"
+      form: 
+        item_eg: "例：レンタカー代"
+        amount_eg: "例：10000"
+        place_eg: "例：京都・清水寺"
+      show:
+        title: "立替詳細"
+        recipient: "対象者"
+        owed_amount: "負担金額"
+    groups:
+      form_card:
+        select_file: "選択"
+      new: 
+        title: "グループ作成"
+      edit:
+        title: "グループ編集"
+      index:
+        title: "グループ一覧"
+        create_group: "グループを作成"
+        no_group: "まだグループがありません。"
+        lets_create: "新しく作成しましょう！"
+      show: 
+        title: "グループ詳細"
+        members_count: "メンバー："
+        members_unit: "人"
+        trips_count: "旅行数："
+        trips_unit: "件"
+        created_at: "作成年："
+        created_unit: "年"
+        no_trip: "このグループには旅行記録がありません。"
+    members:
+      form_card:
+        name: "名前"
+        limit: "メンバーは最大10人までです。"
+        name_length: "名前は15字以内で入力してください。"
+    devise:
+      session:
+        new:
+          title: "ログイン"
+          welcome: "おかえりなさい"
+          sub_title: "Trip-payziesアカウントにログイン"
+          email: "メールアドレス"
+          sign_up: "はじめての方はこちら"
+          btn: "ログイン"
+          remember_me: "ログイン情報を保存"
+          google: "Googleでログイン"
+      registrations:
+        new:
+          title: "新規登録"
+          welcome: "アカウント作成"
+          password_min: "6文字以上で入力してください"
+          create_password: "パスワード作成"
+          confirm: "もう一度パスワード"
+          sub_title: "グループ旅行の精算をもっと簡単に。"
+          btn: "登録"
+          sign_in: "登録済みの方はこちら"
+          google: "Googleで登録"
+
+  stimulus:
+    errors:
+      falied: "保存に失敗しました。"
+      member_required: "少なくとも1人のメンバーが必要です。"
+      participant_required: "少なくとも1人の参加者が必要です。"
+      required: "必須項目です。"
+      max_length_15: "15字以内で入力してください。"
+      max_length_25: "25字以内で入力してください。"
+      duplicated: "名前が重複しています。"
+      select_required: "選択必須項目です。" 
+      invalid_amount: "有効な金額を入力してください。"
+      max_amount: "100万円以下で入力してください。"
+
+    copy_trip_token:
+      notice: "コピーしました！"
+    barchart:
+      title: "負担グラフ"
+    piechart:
+      title: "立替合計グラフ"
+
+  currency:
+    jpy: "¥"
+    usd: "$"
+    eur: "€"
+    gbp: "£"
+    cad: "C$"
+    aud: "A$"
+    chf: "CHF"
+    cny: "¥"
+    krw: "₩"
+    twd: "NT$"
+    hkd: "HK$"
+    sgd: "S$"
+    sek: "kr"
+    nok: "kr"
+    dkk: "kr"
+    mxn: "$"
+    inr: "₹"
+    brl: "R$"
+    rub: "₽"
+    thb: "฿"
+    zar: "R"

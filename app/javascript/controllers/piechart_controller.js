@@ -7,7 +7,10 @@ Chart.register(...registerables)
 export default class extends Controller {
 
   static targets = ["myChart"]
-  static values = { balances: Array}
+  static values = { 
+    balances: Array,
+    title: String,
+  }
 
 
   canvasContext() {
@@ -57,7 +60,7 @@ export default class extends Controller {
           title: {
             color: '',
             display: true,
-            text: '立替額合計',
+            text: this.titleValue,
           },
           legend: {
             position: 'bottom',

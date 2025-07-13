@@ -10,8 +10,8 @@
           <%# 決済者 %>
           <section class="mt-2 flex flex-col w-full pr-4">
             <div class="flex items-center">
-              <p class="font-bold w-[60px] mr-2 text-right">決済者:</p>
-              <%= e.collection_select :payer_id, @trip.participants, :id, :name, { prompt: "参加者から選択してください"}, {class: "flex-1 select-style", data:{"expense-validate-target": "payer", action: "keydown->expense-validate#submitPrevent input->expense-validate#payerValidate"} } %>
+              <p class="font-bold w-[60px] mr-2 text-right"><%= t('activerecord.attributes.expense.payer')%>:</p>
+              <%= e.collection_select :payer_id, @trip.participants, :id, :name, { prompt: t('pages.trips.form.select_payer')}, {class: "flex-1 select-style", data:{"expense-validate-target": "payer", action: "keydown->expense-validate#submitPrevent input->expense-validate#payerValidate"} } %>
             </div>
             <p class="text-red-500 text-xs pb-0.5 ml-[60px] pl-2 h-2" data-expense-validate-target="payerErrorMessage"></p>
           </section>
@@ -19,8 +19,8 @@
           <%# 項目 %>
           <section class="mt-2 flex flex-col w-full pr-4">
             <div class="flex items-center">
-              <p class="font-bold w-[60px] mr-2 text-right">項目:</p>
-              <%= e.text_field :title, placeholder:"例: レンタカー代", class:"flex-1 form-style", data:{"expense-validate-target": "title", action: "keydown->expense-validate#submitPrevent input->expense-validate#titleValidate"} %>
+              <p class="font-bold w-[60px] mr-2 text-right"><%= t('activerecord.attributes.expense.title')%>:</p>
+              <%= e.text_field :title, placeholder: t('pages.expenses.form.item_eg'), class:"flex-1 form-style", data:{"expense-validate-target": "title", action: "keydown->expense-validate#submitPrevent input->expense-validate#titleValidate"} %>
             </div>
             <p class="text-red-500 text-xs pb-0.5 ml-[60px] pl-2 h-2" data-expense-validate-target="titleErrorMessage"></p>
           </section>
@@ -28,9 +28,9 @@
           <%# 金額 %>
           <section class="mt-2 flex flex-col w-full pr-4">
             <div class="flex items-center">
-              <p class="font-bold w-[60px] mr-2 text-right">金額:</p>
-              <%= e.text_field :amount, placeholder:"例: 10000", class:"flex-1 form-style", data:{"expense-validate-target": "amount", action: "keydown->expense-validate#submitPrevent input->expense-validate#amountValidate"}, inputmode:"numeric" %>
-              <p class="font-bold px-2">円</p>
+              <p class="font-bold w-[60px] mr-2 text-right"><%= t('activerecord.attributes.expense.amount')%>:</p>
+              <p class="font-bold px-2"><%= t('currency.jpy')%></p>
+              <%= e.text_field :amount, placeholder: t('pages.expenses.form.amount_eg'), class:"flex-1 form-style", data:{"expense-validate-target": "amount", action: "keydown->expense-validate#submitPrevent input->expense-validate#amountValidate"}, inputmode:"numeric" %>
             </div>
             <p class="text-red-500 text-xs pb-0.5 ml-[60px] pl-2 h-2" data-expense-validate-target="amountErrorMessage"></p>
           </section>
@@ -45,7 +45,7 @@
         <%# 日付 %>
         <section class="mt-3 flex flex-col w-full pr-4">
           <div class="flex items-center">
-            <p class="font-bold w-[60px] mr-2 text-right">日付:</p>
+            <p class="font-bold w-[60px] mr-2 text-right"><%= t('activerecord.attributes.expense.payment_date')%>:</p>
             <%= e.date_field :payment_date, value: Date.current, class:"flex-1 form-style", value: @expense.payment_date || Date.current,  data:{"expense-validate-target": "date", action: "keydown->expense-validate#submitPrevent input->expense-validate#dateValidate"} %>
           </div>
           <p class="text-primary-red text-xs pb-0.5 ml-[60px] pl-2 h-2" data-expense-validate-target="dateErrorMessage"></p>
@@ -54,15 +54,15 @@
         <%# 場所 %>
         <section class="my-3 flex flex-col w-full pr-4">
           <div class="flex items-center">
-            <p class="font-bold w-[60px] mr-2 text-right">場所:</p>
-            <%= e.text_field :place, placeholder: "例: 京都,清水寺", class:"flex-1 form-style" %>
+            <p class="font-bold w-[60px] mr-2 text-right"><%= t('activerecord.attributes.expense.place')%>:</p>
+            <%= e.text_field :place, placeholder: t('pages.expenses.form.place_eg'), class:"flex-1 form-style" %>
           </div>
         </section> 
 
         <%# メモ %>
         <section class="my-3 flex flex-col w-full pr-4">
           <div class="flex">
-            <p class="font-bold w-[60px] mr-2 text-right">メモ:</p>
+            <p class="font-bold w-[60px] mr-2 text-right"><%= t('activerecord.attributes.expense.memo')%>:</p>
             <%= e.text_area :memo, class:"flex-1 form-style resize-none" %>
           </div>
         </section> 
@@ -75,7 +75,7 @@
 
         <%#  対象者%>
         <div class="mt-2 flex flex-col w-full pr-4">
-          <p class="font-bold w-[60px] text-right">対象者:</p>
+          <p class="font-bold w-[60px] text-right"><%= t('activerecord.attributes.advance_payment.participant')%>:</p>
           <p class="text-primary-red text-xs pb-2 pl-2 h-2" data-expense-validate-target="owedErrorMessage"></p>
         </div>
 
@@ -102,7 +102,7 @@
   <section class="px-4 my-3">
     <div class="separator"></div>
       <div class="w-full flex gap-4">
-      <button class="w-1/4 main-action-btn bg-gray-400 text-white dark:bg-neutral-600" data-controller="back" data-action="click->back#goBack">戻る</button>
-      <button data-expense-validate-target="submitBtn" data-action="click->expense-validate#submit" class="flex-1 main-action-btn bg-primary-blue-100 text-white"><%= action_name == "new" ? "保存" : "更新" %></button>
+      <button class="w-1/4 main-action-btn bg-gray-400 text-white dark:bg-neutral-600" data-controller="back" data-action="click->back#goBack"><%= t('common.back')%></button>
+      <button data-expense-validate-target="submitBtn" data-action="click->expense-validate#submit" class="flex-1 main-action-btn bg-primary-blue-100 text-white"><%= action_name == "new" ? t('common.save') : t('common.update') %></button>
   </section>
 <% end %>

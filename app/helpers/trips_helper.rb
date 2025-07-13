@@ -1,8 +1,5 @@
 module TripsHelper
 
-  
-  
-  
   # for_trip_card
 
   def trip_card_style(mode)
