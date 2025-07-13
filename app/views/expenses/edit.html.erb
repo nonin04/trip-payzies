@@ -1,12 +1,14 @@
-<% content_for(:title, "立替記録編集") %>
+<% content_for(:title, t('pages.expenses.edit.title')) %>
 
-<div data-controller="expense-validate" class="flex flex-col h-full">
+<div class="flex flex-col h-full"
+     data-controller="expense-validate" 
+     data-expense-validate-error-messages-value='<%= stimulus_error_messages_json %>' >
 
   <%# stimulus用フラッシュエラーメッセージ ------------------ %>
   <%= render 'layouts/flash_message/error_for_stimulus' %>
 
   <%# ページ案内 ------------------ %>
-  <h1 class="mt-2 my-2 text-xl font-bold w-full text-center">立替記録編集</h1>
+  <h1 class="mt-2 my-2 text-xl font-bold w-full text-center"><%= t('pages.expenses.edit.title') %></h1>
 
   <%# フォーム & ボタン ------------------ %>
   <%= render 'expenses/expense_form'%>

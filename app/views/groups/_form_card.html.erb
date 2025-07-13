@@ -1,16 +1,22 @@
 <div class="mx-4 flex flex-col card-style px-4 py-4">
-  <%= label_tag :group, "グループ名", class:"font-bold mb-1" %>
-  <%= text_field_tag "group[name]", nil, class:"form-style"%>
+  <%= label_tag "group_name", t('activerecord.attributes.group.name'), class:"font-bold mb-1" %>
+  <%= text_field_tag "group[name]", @group.name.present? ? @group.name : nil, id: "group_name", class:"form-style", data:{ "group-validate-target": "groupTitle", "action":"input->group-validate#titleValidate"} %>
+  <p class="text-primary-red text-xs pb-0.5" data-group-validate-target="titleErrorMessage"></p>
 
-  <div>
-    <%= label_tag :icon, "アイコン", class: "font-bold mb-1 block mt-2" %>
+  <div data-controller="group-icon">
+    <p class="font-bold mb-1 mt-2"><%= t('actieverecord.attributes.group.icon') %></p>
     <div class="flex items-center gap-3">
-      <button type="button" class="relative py-1 border-neutral-500 bg-neutral-500 border-2 text-white rounded-md hover:bg-transparent hover:text-neutral-500">
-        <p class="px-2 text-xs">ファイル選択</p>
-
-        <%= file_field_tag "group[icon]",accept:"image/*", class:"absolute inset-0 opacity-0" %>
+      <button type="button" class="relative shadow-primary py-1 px-2 border-neutral-500 bg-neutral-500 border-2 text-white text-sm rounded-md cursor-pointer">
+        <%= t('pages.groups.form_card.select_file') %>
+        <%= file_field_tag "group[icon]",accept:"image/*", class:"absolute inset-0 w-full h-full opacity-0", data:{"group-icon-target": "input", action:"change->group-icon#showFileName"} %>
       </button>
-      <p class="text-neutral-400">開発中...</p>
+      <p class="text-neutral-400" data-group-icon-target="fileName">
+        <% if @group.icon.attached? %> 
+          <%= @group.icon.filename %>
+        <% else %>
+          開発中...
+        <% end %>
+      </p>
     </div>
   </div>
   

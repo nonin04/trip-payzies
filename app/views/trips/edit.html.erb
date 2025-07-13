@@ -1,12 +1,15 @@
-<% content_for(:title, "旅行編集") %>
+<% content_for(:title, t('pages.trips.edit.title')) %>
 
-<div data-controller="trip-validate" class="flex flex-col h-full">
+<div class="flex flex-col h-full"
+     data-controller="trip-validate" 
+     data-trip-validate-mode-value="edit"
+     data-trip-validate-error-messages-value='<%= stimulus_error_messages_json %>'>
 
   <%# stimulus用フラッシュエラーメッセージ ------------------ %>
   <%= render 'layouts/flash_message/error_for_stimulus' %>
 
   <%# ページ案内 ------------------ %>
-  <h1 class="mt-2 my-2 text-xl font-bold text-center">旅行編集</h1>
+  <h1 class="mt-2 my-2 text-xl font-bold text-center"><%= t('pages.trips.edit.title') %></h1>
 
   <%# フォーム & ボタン ------------------ %>
   <%= form_with model: @trip, html:{class:"flex flex-col flex-1 min-h-0", data: {"trip-validate-target": "form"}} do |f| %>
@@ -18,8 +21,8 @@
     <div class="px-4 py-3">
       <div class="separator"></div>
       <div class="w-full flex">
-        <%= link_to "戻る", trip_path(@trip), class:"w-1/4 main-action-btn bg-gray-400 text-white dark:bg-neutral-600" %>
-        <button class="flex-1 ml-4 main-action-btn bg-primary-blue-100 text-white dark:bg-theme-brown dark:text-black" data-trip-validate-target="submitBtn" data-action="click->trip-validate#submit">更新</button>
+        <%= link_to t('common.back'), trip_path(@trip), class:"w-1/4 main-action-btn bg-gray-400 text-white dark:bg-neutral-600" %>
+        <button class="flex-1 ml-4 main-action-btn bg-primary-blue-100 text-white dark:bg-theme-brown dark:text-black" data-trip-validate-target="submitBtn" data-action="click->trip-validate#submit"><%= t('commoon.update') %></button>
       </div>
     </div>
     

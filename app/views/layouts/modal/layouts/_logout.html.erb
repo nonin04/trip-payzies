@@ -2,11 +2,11 @@
   <div class="absolute w-full h-full z-40 bg-black opacity-0 backdrop-blur-sm transition-opacity duration-200" data-modal-target="logoutModalBg" data-action="click->modal#closeModal" data-modal-name-param="logout"></div>
 
   <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 z-50 flex flex-col py-6 card-style opacity-0 scale-80 transition-all duration-200 ease-out" data-modal-target="logoutModalContent">
-    <h2 class="text-xl font-bold mb-8 text-gray-900 dark:text-white flex justify-center">ログアウトしますか？</h2>
+    <h2 class="text-xl font-bold mb-8 text-gray-900 dark:text-white flex justify-center"><%= t('modal.layout.logout.caution')%></h2>
     <!-- ボタン -->
     <div class="flex items-center gap-8 justify-center">
-      <button class="w-25 h-10 bg-neutral-400 cursor-pointer font-bold text-white rounded-md shadow-primary" type="button" data-action="click->modal#closeModal" data-modal-name-param="logout" >キャンセル</button>
-      <%= link_to 'ログアウト', destroy_user_session_path, data: {turbo_method: :delete}, class:"w-25 h-10 bg-primary-red cursor-pointer font-bold text-white rounded-md shadow-primary flex items-center justify-center" %>
+      <button class="w-25 h-10 bg-neutral-400 cursor-pointer font-bold text-white rounded-md shadow-primary" type="button" data-action="click->modal#closeModal" data-modal-name-param="logout"><%= t('common.cancel')%></button>
+      <%= link_to t('common.logout'), destroy_user_session_path, data: {turbo_method: :delete}, class:"w-25 h-10 bg-primary-red cursor-pointer font-bold text-white rounded-md shadow-primary flex items-center justify-center" %>
     </div>
   </div>
 </div>

@@ -1,4 +1,4 @@
-<% content_for(:title, "グループ詳細") %>
+<% content_for(:title, t('pages.groups.show.title')) %>
 
 <%= render 'layouts/modal/groups/destroy' %>
 
@@ -7,7 +7,7 @@
   <%= link_to groups_path, class:"absolute flex items-center rounded-md shadow-primary h-6 w-10 py-0.5 px-0.5 ml-4 text-white bg-panel-navy dark:text-neutral-700 dark:bg-white" do %>
     <%= inline_svg("svg/navigation-arrow.svg", class:"w-full h-full rotate-180 ")%>
   <% end %>
-  <h1 class="mt-2 my-2 text-xl font-bold w-full text-center">グループ詳細</h1>
+  <h1 class="mt-2 my-2 text-xl font-bold w-full text-center"><%= t('pages.groups.show.title') %></h1>
 </section>
 
 <%# メインコンテンツ ------------------------------------ %>
@@ -29,31 +29,56 @@
     </div>
 
     <%# グループアイコン&グループ情報 --------------- %>
-    <div class="flex w-full h-30 gap-4 items-center justify-between">
+    <div class="flex w-full h-30 gap-4 mb-4 items-center justify-between">
       <div class="h-full shrink-0 card-style p-2">
         <%= image_tag "group-icon.jpg", class: "h-full aspect-square rounded-md" %>
       </div>
       <div class="h-full card-style flex-1 flex px-4 gap-2 text-neutral-700 items-center">
         <div class="text-left">
-          <p class="font-bold">メンバー: </p>
-          <p class="font-bold">旅行記録: </p>
-          <p class="font-bold">作成年: </p>
+          <p class="font-bold"><%= t('pages.groups.show.members_count')%></p>
+          <p class="font-bold"><%= t('pages.groups.show.trips_count')%></p>
+          <p class="font-bold"><%= t('pages.groups.show.created_at')%></p>
         </div>
         <div >
-          <p><%= @group.members.count %>人</p>
-          <p><%= @group.trips.count %>件</p>
-          <p><%= @group.created_at.year %>年</p>
+          <%# 数量&単位表示 %>
+          <p><%= @group.members.count %><%= t('pages.groups.show.members_unit')%></p>
+          <p><%= @group.trips.count %><%= t('pages.groups.show.trips_unit')%></p>
+          <p><%= @group.created_at.year %><%= t('pages.groups.show.created_unit')%></p>
         </div>
-        
       </div>
     </div>
+
+    <%# 参加者カード ----------------- %>
+    <div class="flex flex-col card-style" data-controller="accordion">
+      <div class="flex justify-between py-2 cursor-pointer" data-accordion-target="bar" data-action="click->accordion#toggle">
+        <p class="mx-4 font-bold"><%= t('activerecord.models.member')%></p>
+        <%= inline_svg("svg/accordion.svg", class:"w-6 mx-6 transition-transform transform duration-200 text-gray-500", data:{"accordion-target": "icon"}) %>
+      </div>  
+      <ul class="list-disc text-sm px-8 cursor-pointer h-0 transition-all duration-150 overflow-hidden" data-accordion-target="participantsEl" data-action="click->accordion#toggle">
+        <% @group.members.each do |member|%>
+        <li class="pb-2"><%= member.name %></li>
+        <% end %>
+      </ul>
+    </div>
+
+
+
+
     <%# 旅行カード ------------------ %>
     <div class="flex-1 min-h-0 overflow-y-auto flex flex-col my-4">
-      <% @group.trips.each do |trip| %>
-        <%= link_to trip_path(trip), class:"mb-4", data:{controller:"back", action:"click->back#storeFromPage", "back-return-to-value": "group-show", "back-return-group-id-value": @group.id} do %>
-          <%= render 'trips/trip_card', trip: trip, mode: :group %>
-        <% end %>
-      <% end %>   
+      <% if @group.trips.present? %>
+        <% @group.trips.each do |trip| %>
+          <%= link_to trip_path(trip), class:"mb-4", data:{controller:"back", action:"click->back#storeFromPage", "back-return-to-value": "group-show", "back-return-group-id-value": @group.id} do %>
+            <%= render 'trips/trip_card', trip: trip, mode: :group %>
+          <% end %>
+        <% end %> 
+      <% else %> 
+        <%# なければ案内表示 %>
+        <div class="flex-1 flex flex-col items-center text-center text-neutral-400">
+          <%= inline_svg('svg/travel-bag.svg', class:"w-40")%>
+          <p class="text-2xl font-bold"><%= t('pages.groups.show.no_trip') %></p>
+        </div>
+      <% end %> 
     </div>
 
   </div>
@@ -64,6 +89,6 @@
 <section class="mx-4 my-3">
   <div class="separator"></div>
   <div class="w-full flex gap-4">
-    <%= link_to "戻る", groups_path, class:"flex-1 main-action-btn bg-neutral-400 text-white" %> 
+    <%= link_to t('common.back'), groups_path, class:"flex-1 main-action-btn bg-neutral-400 text-white" %> 
   </div>
 </section>

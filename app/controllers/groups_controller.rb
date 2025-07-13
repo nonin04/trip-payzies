@@ -10,8 +10,8 @@ class GroupsController < ApplicationController
   end
 
   def new
-    @group = Group.new
-    10.times { @group.members.build }
+    @group = current_user.groups.new
+    @members_for_form = build_members_for_form([])
   end
 
   def create
@@ -26,27 +26,41 @@ class GroupsController < ApplicationController
         @group.members.create!(mn)
       end
     end
-
-    flash[:notice] = "作成しました。"
+    flash[:notice] = I18n.t('flash.group.success.create')
     redirect_to group_path(@group)
-
   rescue ActiveRecord::RecordInvalid => e
-    flash.now[:alert] = e.record.errors.full_messages.join(", ")
-    filled_members_count = members_name.count { |m| m[:name].present? }
-    (10 - filled_members_count).times { @group.members.build }
+    flash.now[:alert] = I18n.t('flash.group.failed.create')
+    @members_for_form = build_members_for_form(member_params)
     render :new, status: :unprocessable_entity
   end
 
 
   def edit
+    @members_for_form = build_members_for_form(@group.members.map{|gm| {name: gm.name}})
   end
 
   def update
+    Group.transaction do
+      @group.update!(group_params)
+      @group.members.destroy_all
+        member_params.each do |mn|
+          next if mn[:name].blank?
+          @group.members.create!(mn)
+        end
+      end
+    flash[:notice] = I18n.t('flash.group.success.update')
+    redirect_to group_path(@group)
+
+  rescue ActiveRecord::RecordInvalid => e
+    flash.now[:alert] = I18n.t('flash.group.failed.update')
+    @members_for_form = build_members_for_form(member_params)
+    render :edit, status: :unprocessable_entity
   end
+
 
   def destroy
     @group.destroy
-      redirect_to groups_path, notice: "グループを一件削除しました"
+      redirect_to groups_path, notice: I18n.t('flash.group.success.delete')
   end
 
   def members_for_group
@@ -62,9 +76,14 @@ class GroupsController < ApplicationController
     @group = current_user.groups.find(params[:id])
   end
 
+  def build_members_for_form(input_members)
+    members = input_members.map { |m| @group.members.build(m) }
+    (10 - members.size).times { members << @group.members.build }
+    members
+  end
 
   def group_params
-    params.require(:group).permit(:name)
+    params.require(:group).permit(:name, :icon)
   end
 
   def member_params
