@@ -27,6 +27,7 @@ export default class extends Controller {
     "form",
   ]
   static values = {
+    mode: String,
     errorMessages: Object,
   }
 
@@ -35,7 +36,6 @@ export default class extends Controller {
 
 //actions
   connect() {
-    console.log(this.errorMessagesValue.failed)
     if (this.modeValue === "new") {
       requestAnimationFrame(() => {
         this.stepGaugeTarget.style.width = "50%";
