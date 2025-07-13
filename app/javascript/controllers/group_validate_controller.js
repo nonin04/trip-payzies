@@ -1,19 +1,24 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="participant-validate"
+// Connects to data-controller="group-validate"
 export default class extends Controller {
   static targets = [
+    "form",  
+    "groupTitle",
+    "titleErrorMessage",
+    "memberForm",
+    "eachmemberForm",
+    "flashError",
     "name",
     "eachTemplate",
     "nameErrorMessage",
     "submitBtn",
-    "flashError",
-    "form",
-    "participantCard",
+    "memberCard",
     "duplicatedErrorMessage"
   ]
+
   static values = {
-    errorMessages: Object,
+    errorMessages: Object
   }
 
   flashTimeoutId = null
@@ -36,19 +41,36 @@ export default class extends Controller {
     }
   }
 
-  checkInput() {
-    this.validate()
-  }
-
-
-
-
-
-
-  validate() {
+  checkMemberInput() {
     return this.countCheck() || this.lengthCheck() || this.duplicateCheck()
   }
 
+
+  validate() {
+    return this.titleValidate() || this.countCheck() || this.lengthCheck() || this.duplicateCheck()
+  }
+
+  // "gropuNameのバリデーション"
+  titleValidate() {
+    let hasError = false;
+    const titleInput = this.groupTitleTarget
+    const titleErrorMessage = this.titleErrorMessageTarget
+    if (!titleInput.value) {
+      this.addErrorStyle(titleInput)
+      this.addErrorMessage(titleErrorMessage, this.errorMessagesValue.required)
+      hasError = true;
+    }
+    else if (titleInput.value.length > 25) {
+      this.addErrorStyle(titleInput)
+      this.addErrorMessage(titleErrorMessage, this.errorMessagesValue.maxLength25)
+      hasError = true;
+    }
+    else {
+      this.removeError(titleInput, titleErrorMessage)
+      hasError = false;
+    }
+    return hasError;
+  }
 
   countCheck() {
     let hasError = false
@@ -61,11 +83,11 @@ export default class extends Controller {
     const filledCounts = this.nameTargets.filter(el => el.value.trim())
     if (filledCounts.length === 0) {
       this.addErrorStyle(firstNameInput)
-      this.addErrorMessage(firstNameErrorMessage, this.errorMessagesValue.participantRequired)
+      this.addErrorMessage(firstNameErrorMessage, this.errorMessagesValue.required)
 
       othertemplates.forEach(f => {
         const nameInput = f.querySelector('input')
-        const nameErrorMessage = f.querySelector('[data-participant-validate-target="nameErrorMessage"]')
+        const nameErrorMessage = f.querySelector('[data-group-validate-target="nameErrorMessage"]')
         this.removeError(nameInput, nameErrorMessage)
       })
 
@@ -84,7 +106,7 @@ export default class extends Controller {
     let hasError = false
     this.eachTemplateTargets.forEach(f => {
       const nameInput = f.querySelector('input')
-      const nameErrorMessage = f.querySelector('[data-participant-validate-target="nameErrorMessage"]')
+      const nameErrorMessage = f.querySelector('[data-group-validate-target="nameErrorMessage"]')
 
       if(nameInput.value.trim().length > 15) {
         this.addErrorStyle(nameInput)
@@ -109,12 +131,12 @@ export default class extends Controller {
       return setElements.size !== trimmed.length;
     }
     if (isDuplicated(this.nameTargets)) {
-      this.participantCardTarget.classList.add(...this.duplicateErrorClasses)
+      this.memberCardTarget.classList.add(...this.duplicateErrorClasses)
       this.duplicatedErrorMessageTarget.textContent = this.errorMessagesValue.duplicated
       console.log("重複エラー")
       hasError = true
     } else {
-      this.participantCardTarget.classList.remove(...this.duplicateErrorClasses)
+      this.memberCardTarget.classList.remove(...this.duplicateErrorClasses)
       this.duplicatedErrorMessageTarget.textContent = ""
     }
     return hasError

@@ -30,7 +30,7 @@
 <div class="px-4 my-3">
   <div class="separator"></div>
   <div class="w-full flex gap-4">
-    <%= link_to t('pages.common.back'), trip_path(@trip), class:"w-3/10 main-action-btn bg-gray-400 text-white dark:bg-neutral-600" %>
+    <%= link_to t('common.back'), trip_path(@trip), class:"w-3/10 main-action-btn bg-gray-400 text-white dark:bg-neutral-600" %>
     
     <% if @trip.unsettled? %>
     <%# 未精算→精算済みに %>

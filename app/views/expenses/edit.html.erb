@@ -1,6 +1,8 @@
 <% content_for(:title, t('pages.expenses.edit.title')) %>
 
-<div data-controller="expense-validate" class="flex flex-col h-full">
+<div class="flex flex-col h-full"
+     data-controller="expense-validate" 
+     data-expense-validate-error-messages-value='<%= stimulus_error_messages_json %>' >
 
   <%# stimulus用フラッシュエラーメッセージ ------------------ %>
   <%= render 'layouts/flash_message/error_for_stimulus' %>

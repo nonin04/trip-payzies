@@ -1,20 +1,22 @@
-<% content_for(:title, "グループ作成") %>
+<% content_for(:title, t('pages.groups.new.title')) %>
 
-<div class="flex flex-col h-full">
+<div class="flex flex-col h-full"
+     data-controller="group-validate" 
+     data-group-validate-error-messages-value='<%= stimulus_error_messages_json %>' >
 
   <%# stimulus用フラッシュエラーメッセージ ------------------ %>
   <%= render 'layouts/flash_message/error_for_stimulus' %>
   
   <%# ページ案内 ------------------ %>
-  <h1 class="mt-2 my-2 text-xl font-bold text-center">グループ作成</h1>
+  <h1 class="mt-2 my-2 text-xl font-bold text-center"><%= t('pages.groups.new.title') %></h1>
 
   <%# フォーム & ボタン ------------------ %>
-  <%= form_with url: groups_path, html:{class:"flex flex-col flex-1 min-h-0"} do %>
+  <%= form_with url: groups_path, multipart: true, html:{class:"flex flex-col flex-1 min-h-0", data:{"group-validate-target": "form"}} do %>
 
     <%# フォームカード %>
     <div class="overflow-y-auto">
       <%= render 'groups/form_card' %>
-      <%= render 'members/form_card', members: @group.members %>
+      <%= render 'members/form_card', members: @members_for_form %>
     </div>
 
     <%# ボタン類 %>
@@ -22,8 +24,8 @@
       <div class="separator"></div>
       <div class="w-full flex gap-4">
         <%# step1時のボタン %>
-        <%= link_to "戻る", groups_path, class:"w-1/4 main-action-btn bg-gray-400 text-white dark:bg-neutral-600" %>
-        <%= submit_tag "保存", class: "flex-1 main-action-btn bg-primary-blue-100 text-white" %>
+        <%= link_to t('common.back'), groups_path, class:"w-1/4 main-action-btn bg-gray-400 text-white dark:bg-neutral-600" %>
+        <%= submit_tag t('common.save'), class: "flex-1 main-action-btn bg-primary-blue-100 text-white", data:{"group-validate-target": "submitBtn", action: "click->group-validate#submit"}%>
       </div>
     </section>
   <% end %>

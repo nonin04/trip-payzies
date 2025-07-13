@@ -14,10 +14,28 @@ export default class extends Controller {
         this.slideDown(el)
       })
     })
+
+    window.addEventListener("beforeunload",this.removeFlash)
+    document.addEventListener("turbo:before-visit", this.removeFlash)
   }
 
+  disconnect() {
+    window.removeEventListener("beforeunload",this.removeFlash)
+    document.removeEventListener("turbo:before-visit", this.removeFlash)
+  }
+
+  removeFlash = () => {
+    this.moveAreaTargets.forEach((el) =>
+      el.remove()
+    )
+  }
+
+
   touchClose() {
-    this.clearFlashTimeout()
+    if (this.flashTimeoutId) {
+      clearTimeout(this.flashTimeoutId)
+      this.flashTimeoutId = null
+    }
     this.moveAreaTargets.forEach((el) => {
       this.slideUp(el)
     })
@@ -38,13 +56,6 @@ export default class extends Controller {
         this.slideUp(el)}, 
         4000
       )
-    }
-  }
-
-  clearFlashTimeout() {
-    if (this.flashTimeoutId) {
-      clearTimeout(this.flashTimeoutId)
-      this.flashTimeoutId = null
     }
   }
 

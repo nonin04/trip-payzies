@@ -1,6 +1,9 @@
 <% content_for(:title, t('pages.trips.edit.title')) %>
 
-<div data-controller="trip-validate" class="flex flex-col h-full">
+<div class="flex flex-col h-full"
+     data-controller="trip-validate" 
+     data-trip-validate-mode-value="edit"
+     data-trip-validate-error-messages-value='<%= stimulus_error_messages_json %>'>
 
   <%# stimulus用フラッシュエラーメッセージ ------------------ %>
   <%= render 'layouts/flash_message/error_for_stimulus' %>
@@ -18,8 +21,8 @@
     <div class="px-4 py-3">
       <div class="separator"></div>
       <div class="w-full flex">
-        <%= link_to t('pages.common.back'), trip_path(@trip), class:"w-1/4 main-action-btn bg-gray-400 text-white dark:bg-neutral-600" %>
-        <button class="flex-1 ml-4 main-action-btn bg-primary-blue-100 text-white dark:bg-theme-brown dark:text-black" data-trip-validate-target="submitBtn" data-action="click->trip-validate#submit"><%= t('pages.commoon.update') %></button>
+        <%= link_to t('common.back'), trip_path(@trip), class:"w-1/4 main-action-btn bg-gray-400 text-white dark:bg-neutral-600" %>
+        <button class="flex-1 ml-4 main-action-btn bg-primary-blue-100 text-white dark:bg-theme-brown dark:text-black" data-trip-validate-target="submitBtn" data-action="click->trip-validate#submit"><%= t('commoon.update') %></button>
       </div>
     </div>
     

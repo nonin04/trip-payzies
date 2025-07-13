@@ -19,7 +19,7 @@
     <%= render 'trips/trip_card', trip: @trip, mode: :show %>
 
     <%# 共有&グラフページボタン ------- %>
-    <div class="w-full my-4 flex gap-4" data-controller="copy-trip-token">
+    <div class="w-full my-4 flex gap-4" data-controller="copy-trip-token" data-copy-trip-token-notice-value="<%= t('stimulus.copy_trip_token.notice')%>">
       
       <div class="flex flex-1 card-style h-10 items-center justify-between px-2">
         <%# 共有リンク %>
@@ -69,8 +69,14 @@
             </div>
         <% end %>
       <% else %> 
-      <%# なければ画像表示 %>
-        <%= inline_svg("svg/no-payment.svg", class:"w-3/5 my-auto mx-auto", draggable:"false") %>
+      <%# なければ案内表示 %>
+        <div class="flex-1 flex flex-col items-center mt-10 text-center text-neutral-400">
+          <%= inline_svg('svg/payment.svg', class:"w-50 py-4")%>
+          <p class="text-2xl font-bold"><%= t('pages.trips.show.no_expense') %>
+            <br>
+          <%= t('pages.trips.show.lets_create') %></p>
+          <%= inline_svg('svg/navigation-arrow2.svg', class:"w-20 mt-2 animate-bounce")%>
+        </div>
       <% end %>
     </div>
 

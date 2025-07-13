@@ -9,7 +9,7 @@
   <div class="mx-4">
 
     <div class="mb-4 py-2 rounded-md bg-white px-8 text-sm dark:text-black">
-      <h2 class="text-center text-sm font-bold">旅行金額</h2>
+      <h2 class="text-center text-sm font-bold"><%= t('pages.trips.insight.trip_amount')%></h2>
       <% @balances.each do |b| %>
       <div class="h-0.5 w-full bg-neutral-200 mt-2"></div>
       <div class="flex my-1 justify-between">
@@ -20,7 +20,7 @@
     </div>
 
     <div class="relative rounded-md bg-white h-80 mb-4">
-      <div class="w-full h-full" data-controller="piechart" data-piechart-balances-value="<%= @balances.to_json %>">
+      <div class="w-full h-full" data-controller="piechart" data-piechart-balances-value="<%= @balances.to_json %>" data-piechart-title-value="<%= t('stimulus.piechart.title')%>" >
         <canvas id="piechart" data-piechart-target="myChart" class="mx-4">
         </canvas>
       </div>
@@ -28,7 +28,7 @@
     </div>
 
     <div class="mb-4 rounded-md bg-white h-120">
-      <div class="w-full h-full" data-controller="barchart" data-barchart-net-balances-value="<%= @net_balances.to_json %>">
+      <div class="w-full h-full" data-controller="barchart" data-barchart-net-balances-value="<%= @net_balances.to_json %>" data-barchart-title-value="<%= t('stimulus.barchart.title')%>" >
         <canvas id="bar-chart" data-barchart-target="myChart" class="mx-4">
         </canvas>
       </div>

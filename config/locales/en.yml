@@ -28,8 +28,6 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
-
   activerecord:
     models:
       user: "User"
@@ -39,13 +37,12 @@ en:
       advance_payment: "Recipient"
       group: "Group"
       member: "Member"
-
     attributes:
       user: 
         name: "User Name"
         email: "Email Address"
         password: "Password"
-        password_confirmation: "Password (Confirmation)"
+        password_confirmation: "Confirm Password"
       trip:
         title: "Trip Title"
         departure_date: "Departure Date"
@@ -69,25 +66,100 @@ en:
         icon: "Icon"
       member: 
         name: "Member Name"
-
     errors:
       messages:
         blank: "This field is required."
         not_saved: "Could not save %{resource}."
         confirmation: "Does not match the confirmation."
         too_short: "Must be at least %{count} characters long."
+  
+  og:
+    description: "Easily track and settle shared expenses for group trips. The app automatically calculates how much each participant owes or is owed."
 
-  currency:
-    jpy: "¥"
+  common:
+    back: "Back"
+    next: "Next"
+    close: "Close"
+    delete: "Delete"
+    cancel: "Cancel"
+    save: "Save"
+    update: "Update"
+    logout: "Logout"
+    developing: "developing...."
+  
+  flash:
+      trip:
+        success:
+          create: "Trip was successfully created."
+          update: "Trip was successfully updated."
+          delete: "Trip was successfully deleted."
+        failed:
+          create: "Failed to create trip."
+          update: "Failed to update trip."
+          delete: "Failed to delete trip."
+      expense:
+        success:
+          create: "Expense was successfully created."
+          update: "Expense was successfully updated."
+          delete: "Expense was successfully deleted."
+        failed:
+          create: "Failed to create expense."
+          update: "Failed to update expense."
+          delete: "Failed to delete expense."
+      group:
+        success:
+          create: "Group was successfully created."
+          update: "Group was successfully updated."
+          delete: "Group was successfully deleted."
+        failed:
+          create: "Failed to create group."
+          update: "Failed to update group."
+          delete: "Failed to delete gruop."
+      settle:
+        settled: "Marked as settled."
+        unsettled: "Marked as unsettled."
+        update_failed: "Failed to update status."
+
+  modal:
+    common: 
+      delete: "Do you want to delete it?"
+    expenses:
+      destroy:
+        expense_delete: "Deleted expenses cannot be restored."
+    trips:
+      destroy:
+        trip_delete: "Deleted trips cannot be restored."
+      share:
+        link_title: "Trip Sharing Link"
+        link_description: "You can share the current trip record by sending this URL to participants via LINE or other messaging apps."
+        link_note: "⚠️ Shared members cannot edit the trip information or create/edit expense records."
+    groups:
+      destroy:
+        notice: "There are trip records associated with this group."
+        action: "The group association of those records will be removed."
+        caution: "(The trip records themselves will not be deleted.)"
+      help:
+        title: "What is a group?"
+        description_1: "A group is a way to organize members you often travel with."
+        description_2: "When creating a trip, selecting a group will automatically add its members as participants."
+        description_3: "You can freely change the participants for each trip."
+        description_4: "Trip participants ≠ Group members" 
+    layout:
+      logout:
+        caution: "Do you want to log out?"
 
   pages:
-    common:
-      back: "Back"
-      next: "Next"
-      cancel: "Cancel"
-      save: "Save"
-      update: "Update"
-      developing: "developing...."
+    home:
+      index:
+        record_expenses: "Record group trip expenses in a "
+        settle_expenses: "Settle up expenses in a "
+        snap: " snap!"
+        record: ""
+        solve: ""
+        start_with_members: "Enter your travel members to get started!"
+        easy_entry: "Easily input “who paid for whom, and how much"
+        check_graph: "Check expense balances at a glance with graphs"
+        auto_calculate: "Automatically calculate who owes whom at the end!"
     trips:
       card:
         temporary_group: "Temporary Group"
@@ -102,12 +174,15 @@ en:
         group_button: "Group"
         search: "Search Trips"
         status_default: "All"
+        no_trip: "You don't have any trip records yet."
+        lets_create: "Let's create a new one!"
       new:
         title: "Create Trip"
       edit:
         title: "Edit Trip"
       insight:
         title: "Insights"
+        trip_amount: "Trip Cost"
       result:
         title: "Settlement Results"
         payment_receipt_list: "Payment and Receipt List"
@@ -119,6 +194,8 @@ en:
         title: "Trip Details"
         create_expense_button: "Create Expense"
         result_button: "Results"
+        no_expense: "You don't have any expense records yet."
+        lets_create: "Let's create a new one!"
     participants:
       form_card:
         no_editable: "Cannot be edited after creation."
@@ -147,6 +224,8 @@ en:
       index:
         title: "Group List"
         create_group: "Create Group"
+        no_group: "No groups yet."
+        lets_create: "Let's create a new one!"
       show: 
         title: "Group Details"
         members_count: "Members:"
@@ -155,12 +234,73 @@ en:
         trips_unit: ""
         created_at: "Created:"
         created_unit: ""
+        no_trip: "This group doesn't have any trip records yet."
     members:
       form_card:
         name: "Name"
         limit: "Up to 10 participants allowed."
         name_length: "Participant name must be within 15 characters."
+    devise:
+      session:
+        new:
+          title: "Sign In"
+          welcome: "Welcome back"
+          sub_title: "Login to your Trip-payzies account"
+          email: "Email"
+          sign_up: "Don't have an account?"
+          btn: "Login"
+          remember_me: "Remember me"
+          google: "Sign In with Google"
+      registrations:
+        new:
+          title: "Sign Up"
+          welcome: "Create account"
+          password_min: "Must be at least 6 characters"
+          create_password: "create a password"
+          confirm: "Repeat password"
+          sub_title: "Join us to simplify your group trip expenses."
+          btn: "Sign up"
+          sign_in: "Already have an account?"
+          google: "Sign Up with Google"
 
+  stimulus:
+    errors:
+      falied: "Failed to save."
+      required: "This field is required."
+      member_required: "At least one member is required."
+      participant_required: "At least one participant is required."
+      max_length_15: "Please enter no more than 15 characters."
+      max_length_25: "Please enter no more than 25 characters."
+      duplicated: "Duplicate name detected."
+      select_required: "Selection is required." 
+      invalid_amount: "Please enter a valid amount."
+      max_amount: "Please enter an amount of 1,000,000 or less."
 
-
-  
+    copy_trip_token:
+      notice: "Copied the share link!"
+    barchart:
+      title: "Balance Graph"
+    piechart:
+      title: "Total Advance Payments"
+  currency:
+    jpy: "¥"
+    usd: "$"
+    eur: "€"
+    gbp: "£"
+    cad: "C$"
+    aud: "A$"
+    chf: "CHF"
+    cny: "¥"
+    krw: "₩"
+    twd: "NT$"
+    hkd: "HK$"
+    sgd: "S$"
+    sek: "kr"
+    nok: "kr"
+    dkk: "kr"
+    mxn: "$"
+    inr: "₹"
+    brl: "R$"
+    rub: "₽"
+    thb: "฿"
+    zar: "R"

@@ -29,7 +29,7 @@
     </div>
 
     <%# グループアイコン&グループ情報 --------------- %>
-    <div class="flex w-full h-30 gap-4 items-center justify-between">
+    <div class="flex w-full h-30 gap-4 mb-4 items-center justify-between">
       <div class="h-full shrink-0 card-style p-2">
         <%= image_tag "group-icon.jpg", class: "h-full aspect-square rounded-md" %>
       </div>
@@ -49,7 +49,7 @@
     </div>
 
     <%# 参加者カード ----------------- %>
-    <div class="mt-2 flex flex-col card-style" data-controller="accordion">
+    <div class="flex flex-col card-style" data-controller="accordion">
       <div class="flex justify-between py-2 cursor-pointer" data-accordion-target="bar" data-action="click->accordion#toggle">
         <p class="mx-4 font-bold"><%= t('activerecord.models.member')%></p>
         <%= inline_svg("svg/accordion.svg", class:"w-6 mx-6 transition-transform transform duration-200 text-gray-500", data:{"accordion-target": "icon"}) %>
@@ -66,11 +66,19 @@
 
     <%# 旅行カード ------------------ %>
     <div class="flex-1 min-h-0 overflow-y-auto flex flex-col my-4">
-      <% @group.trips.each do |trip| %>
-        <%= link_to trip_path(trip), class:"mb-4", data:{controller:"back", action:"click->back#storeFromPage", "back-return-to-value": "group-show", "back-return-group-id-value": @group.id} do %>
-          <%= render 'trips/trip_card', trip: trip, mode: :group %>
-        <% end %>
-      <% end %>   
+      <% if @group.trips.present? %>
+        <% @group.trips.each do |trip| %>
+          <%= link_to trip_path(trip), class:"mb-4", data:{controller:"back", action:"click->back#storeFromPage", "back-return-to-value": "group-show", "back-return-group-id-value": @group.id} do %>
+            <%= render 'trips/trip_card', trip: trip, mode: :group %>
+          <% end %>
+        <% end %> 
+      <% else %> 
+        <%# なければ案内表示 %>
+        <div class="flex-1 flex flex-col items-center text-center text-neutral-400">
+          <%= inline_svg('svg/travel-bag.svg', class:"w-40")%>
+          <p class="text-2xl font-bold"><%= t('pages.groups.show.no_trip') %></p>
+        </div>
+      <% end %> 
     </div>
 
   </div>
@@ -81,6 +89,6 @@
 <section class="mx-4 my-3">
   <div class="separator"></div>
   <div class="w-full flex gap-4">
-    <%= link_to t('pages.common.back'), groups_path, class:"flex-1 main-action-btn bg-neutral-400 text-white" %> 
+    <%= link_to t('common.back'), groups_path, class:"flex-1 main-action-btn bg-neutral-400 text-white" %> 
   </div>
 </section>

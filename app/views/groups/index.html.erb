@@ -17,16 +17,27 @@
 <section class="w-full flex-1 min-h-0 overflow-y-auto">
   <%# グループカード ------------------ %>
   <div class="flex-1 flex flex-col gap-4 mx-4 mb-4">
-    <% @groups.each do |group| %>
-        <div class="card-style shadow-primary">
-          <%= link_to group_path(group), class:"w-full h-full flex gap-4 px-4 py-2 items-center justify-between cursor-pointer" do %>
-            <div class="flex items-center gap-2">
-              <img src="/images/group-icon.jpg" alt="" class="rounded-full w-10">
-              <p class="font-bold"><%= group.name %></p>
-            </div>
-            <%= inline_svg("svg/navigation-arrow.svg", class:"h-5 w-5 text-black text-right dark:text-neutral-500") %>
-          <% end %>
-        </div>
+    <% if @groups.present? %>
+      <% @groups.each do |group| %>
+          <div class="card-style shadow-primary">
+            <%= link_to group_path(group), class:"w-full h-full flex gap-4 px-4 py-2 items-center justify-between cursor-pointer" do %>
+              <div class="flex items-center gap-2">
+                <img src="/images/group-icon.jpg" alt="" class="rounded-full w-10">
+                <p class="font-bold"><%= group.name %></p>
+              </div>
+              <%= inline_svg("svg/navigation-arrow.svg", class:"h-5 w-5 text-black text-right dark:text-neutral-500") %>
+            <% end %>
+          </div>
+      <% end %>
+    <% else %>
+      <%# なければ案内表示 %>
+      <div class="flex-1 flex flex-col items-center mt-20 text-center text-neutral-400">
+        <%= inline_svg('svg/group2.svg', class:"w-50 py-4")%>
+        <p class="text-2xl font-bold"><%= t('pages.groups.index.no_group') %>
+          <br>
+        <%= t('pages.groups.index.lets_create') %></p>
+        <%= inline_svg('svg/navigation-arrow2.svg', class:"w-20 mt-2 animate-bounce")%>
+      </div>
     <% end %>
   </div>
 </section>

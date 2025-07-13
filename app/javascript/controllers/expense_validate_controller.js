@@ -19,6 +19,11 @@ export default class extends Controller {
     "owedErrorMessage",
     "form"
   ]
+
+  static values = {
+    errorMessages: Object
+  }
+
   flashTimeoutId = null
 
   submitPrevent(event) {
@@ -32,7 +37,7 @@ export default class extends Controller {
     this.clearFlashTimeout()
     const hasError = this.validate()
     if (hasError) {
-      this.setFlashEl("※保存に失敗しました")
+      this.setFlashEl(this.errorMessagesValue.failed)
     }
     else {
       this.submitBtnTarget.disabled = true
@@ -114,7 +119,7 @@ export default class extends Controller {
     const payerErrorMessage = this.payerErrorMessageTarget
     if (!payerInput.value) {
       this.addErrorStyle(payerInput)
-      this.addErrorMessage(payerErrorMessage, "※選択必須です")
+      this.addErrorMessage(payerErrorMessage, this.errorMessagesValue.required)
       hasError = true;
     }
     else {
@@ -131,12 +136,12 @@ export default class extends Controller {
     const titleErrorMessage = this.titleErrorMessageTarget
     if (!titleInput.value) {
       this.addErrorStyle(titleInput)
-      this.addErrorMessage(titleErrorMessage, "※入力必須です")
+      this.addErrorMessage(titleErrorMessage, this.errorMessagesValue.required)
       hasError = true;
     } 
     else if (titleInput.value.length > 25) {
       this.addErrorStyle(titleInput)
-      this.addErrorMessage(titleErrorMessage, "※25字以内で入力してください")
+      this.addErrorMessage(titleErrorMessage, this.errorMessagesValue.maxLenth25)
       hasError = true;
     } 
     else {
@@ -153,17 +158,17 @@ export default class extends Controller {
     const amountErrorMessage = this.amountErrorMessageTarget
     if (!amountInput.value) {
       this.addErrorStyle(amountInput)
-      this.addErrorMessage(amountErrorMessage, "※入力必須です")
+      this.addErrorMessage(amountErrorMessage, this.errorMessagesValue.required)
       hasError = true;
     } 
     else if (isNaN(amount) || amount <= 0) {
       this.addErrorStyle(amountInput)
-      this.addErrorMessage(amountErrorMessage, "※正しい金額を入力してください")
+      this.addErrorMessage(amountErrorMessage, this.errorMessagesValue.invalidAmount)
       hasError = true;
     } 
     else if (amount > 1000000) {
       this.addErrorStyle(amountInput)
-      this.addErrorMessage(amountErrorMessage, "※100万円以内で入力してください")
+      this.addErrorMessage(amountErrorMessage, this.errorMessagesValue.maxAmount)
       hasError = true;
     } 
     else {
@@ -180,7 +185,7 @@ export default class extends Controller {
     const dateErrorMessage = this.dateErrorMessageTarget
     if (!dateInput.value) {
       this.addErrorStyle(dateInput)
-      this.addErrorMessage(dateErrorMessage, "※入力必須です")
+      this.addErrorMessage(dateErrorMessage, this.errorMessagesValue.selectRequired)
       hasError = true;
     }
     else {
@@ -199,7 +204,7 @@ export default class extends Controller {
     const owedErrorClasses = ["!bg-red-50", "dark:!bg-neutral-800"]
 
     if (checkedImage.length === 0) {
-    owedErrorMessage.textContent = "※選択必須です"
+    owedErrorMessage.textContent = this.errorMessagesValue.selectRequired
     owedEl.classList.add(...owedErrorClasses)
     hasError = true;
     }

@@ -17,9 +17,9 @@ class ExpensesController < ApplicationController
       ExpenseAmountDistributor.new(@expense).call
       @trip.reset_settlement_status
       
-      redirect_to trip_path(@trip), notice: "立替記録を保存しました"
+      redirect_to trip_path(@trip), notice: I18n.t('flash.expense.success.create')
     else
-      flash.now[:alert] = "保存に失敗しました: #{@expense.errors.full_messages.join(', ')}"
+      flash.now[:alert] = I18n.t('flash.expense.failed.create')
       render :new, status: :unprocessable_entity
     end
   end
@@ -42,10 +42,10 @@ class ExpensesController < ApplicationController
     end
 
     if success
-      flash[:notice] = "更新しました。"
+      flash[:notice] = I18n.t('flash.expense.success.update')
       redirect_to trip_path(@trip)
     else
-      flash.now[:alert] = "更新に失敗しました。"
+      flash.now[:alert] = I18n.t('flash.expense.failed.update')
       render :edit, status: :unprocessable_entity
     end
   end
@@ -53,7 +53,7 @@ class ExpensesController < ApplicationController
 
   def destroy
     @expense.destroy
-    redirect_to trip_path(@trip), notice: "立替記録を一件削除しました"
+    redirect_to trip_path(@trip), notice: I18n.t('flash.expense.success.delete')
   end
 
   private
