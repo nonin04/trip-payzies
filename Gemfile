@@ -32,6 +32,10 @@ gem "inline_svg"
 
 gem 'ransack'
 
+gem "carrierwave"
+
+gem 'mini_magick'
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
