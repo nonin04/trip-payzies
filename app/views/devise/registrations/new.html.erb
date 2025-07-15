@@ -55,10 +55,10 @@
       <div class="h-[1px] flex-1 bg-neutral-200"></div>
     </div>
 
-    <div class="mx-4 py-1.5 my-2 flex gap-2 items-center justify-center rounded-lg bg-transparent border border-neutral-300 text-neutral-500 hover:bg-neutral-100 devise-btn-animation shadow-md">
+    <%= link_to user_google_oauth2_omniauth_authorize_path, class:"mx-4 py-1.5 my-2 flex gap-2 items-center justify-center rounded-lg bg-transparent border border-neutral-300 text-neutral-500 hover:bg-neutral-100 devise-btn-animation shadow-md" do %>
       <%= inline_svg('svg/google.svg', class:"w-4")%>
-      <p><%= t('pages.devise.registrations.new.google') %> (soon...)</p>
-    </div>
+      <p><%= t('pages.devise.registrations.new.google') %></p>
+    <% end %>
 
     <div class="flex items-center gap-1 text-center justify-center pt-3 text-neutral-600 dark:text-white">
       <p><%= t('pages.devise.registrations.new.sign_in')%></p>

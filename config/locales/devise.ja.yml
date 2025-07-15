@@ -26,8 +26,8 @@ ja:
       password_change:
         subject: "パスワード変更通知"
     omniauth_callbacks:
-      failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
-      success: "Successfully authenticated from %{kind} account."
+      failure: "%{kind}での認証に失敗しました。"
+      success: "%{kind}アカウントでの認証に成功しました。"
     passwords:
       no_token: "パスワード再設定メールからアクセスしてください。URLが正しいか確認してください。"
       send_instructions: "数分以内にパスワード再設定方法を記載したメールが届きます。"
