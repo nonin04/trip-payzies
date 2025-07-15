@@ -44,7 +44,7 @@ export default class extends Controller {
     pageBg.classList.remove("opacity-0")
     pageBg.classList.add("opacity-50")
     requestAnimationFrame(() => {
-    content.classList.remove("opacity-0","scale-80")
+    content.classList.remove("opacity-0","scale-90")
     content.classList.add("opacity-100","scale-100")
     modalEl.classList.remove("opacity-0")
     modalEl.classList.add("opacity-100")
@@ -53,7 +53,7 @@ export default class extends Controller {
 
   closeStyle(modalEl, pageBg, content) {
     content.classList.remove("opacity-50", "scale-100")
-    content.classList.add("opacity-0", "scale-80")
+    content.classList.add("opacity-0", "scale-90")
     pageBg.classList.remove("opacity-50")
     pageBg.classList.add("opacity-0")
 

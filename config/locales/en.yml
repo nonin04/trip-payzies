@@ -88,37 +88,37 @@ en:
     developing: "developing...."
   
   flash:
-      trip:
-        success:
-          create: "Trip was successfully created."
-          update: "Trip was successfully updated."
-          delete: "Trip was successfully deleted."
-        failed:
-          create: "Failed to create trip."
-          update: "Failed to update trip."
-          delete: "Failed to delete trip."
-      expense:
-        success:
-          create: "Expense was successfully created."
-          update: "Expense was successfully updated."
-          delete: "Expense was successfully deleted."
-        failed:
-          create: "Failed to create expense."
-          update: "Failed to update expense."
-          delete: "Failed to delete expense."
-      group:
-        success:
-          create: "Group was successfully created."
-          update: "Group was successfully updated."
-          delete: "Group was successfully deleted."
-        failed:
-          create: "Failed to create group."
-          update: "Failed to update group."
-          delete: "Failed to delete gruop."
-      settle:
-        settled: "Marked as settled."
-        unsettled: "Marked as unsettled."
-        update_failed: "Failed to update status."
+    trip:
+      success:
+        create: "Trip was successfully created."
+        update: "Trip was successfully updated."
+        delete: "Trip was successfully deleted."
+      failed:
+        create: "Failed to create trip."
+        update: "Failed to update trip."
+        delete: "Failed to delete trip."
+    expense:
+      success:
+        create: "Expense was successfully created."
+        update: "Expense was successfully updated."
+        delete: "Expense was successfully deleted."
+      failed:
+        create: "Failed to create expense."
+        update: "Failed to update expense."
+        delete: "Failed to delete expense."
+    group:
+      success:
+        create: "Group was successfully created."
+        update: "Group was successfully updated."
+        delete: "Group was successfully deleted."
+      failed:
+        create: "Failed to create group."
+        update: "Failed to update group."
+        delete: "Failed to delete gruop."
+    settle:
+      settled: "Marked as settled."
+      unsettled: "Marked as unsettled."
+      update_failed: "Failed to update status."
 
   modal:
     common: 

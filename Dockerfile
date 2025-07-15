@@ -15,7 +15,7 @@ WORKDIR /rails
 # libvips は Active Storage で画像処理をする場合に必要
 # postgresql-client はデータベース接続に必要
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl libjemalloc2 libvips postgresql-client && \
+    apt-get install --no-install-recommends -y curl libjemalloc2 libvips postgresql-client imagemagick && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Set production environment
