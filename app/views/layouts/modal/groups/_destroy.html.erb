@@ -1,7 +1,7 @@
 <div class="absolute hidden w-full h-full" data-modal-target="destroyModal">
-  <div class="absolute w-full h-full z-40 bg-black opacity-0 backdrop-blur-sm transition-opacity duration-200" data-modal-target="destroyModalBg"  data-action="click->modal#closeModal" data-modal-name-param="destroy"></div>
+  <div class="absolute w-full h-full z-40 bg-black opacity-0 backdrop-blur-sm transition-opacity duration-300 ease-in-out" data-modal-target="destroyModalBg"  data-action="click->modal#closeModal" data-modal-name-param="destroy"></div>
 
-  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-1/2 z-50 opacity-0 scale-80 transition-all duration-200 ease-out" data-modal-target="destroyModalContent">
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-1/2 z-50 opacity-0 scale-80 transition-all duration-300 ease-in-out" data-modal-target="destroyModalContent">
 
     <div class="w-full card-style flex flex-col py-6">
       <h2 class="w-full text-xl font-bold mb-4 text-gray-900 dark:text-white flex justify-center"><%= t('modal.common.delete')%></h2>
@@ -20,7 +20,7 @@
 
       <!-- ボタン -->
       <div class="flex items-center gap-4 justify-center">
-        <button class="w-25 h-10 bg-neutral-400 cursor-pointer font-bold text-white rounded-md shadow-primary" type="button" data-action="click->modal#closeModal" data-modal-name-param="destroy"><%= t('common.cancel')%></button>
+        <button class="w-25 h-10 bg-neutral-600 cursor-pointer font-bold text-white rounded-md shadow-primary" type="button" data-action="click->modal#closeModal" data-modal-name-param="destroy"><%= t('common.cancel')%></button>
         <%= link_to t('common.delete'), group_path(@group), data: {turbo_method: :delete}, class:"w-25 h-10 bg-primary-red cursor-pointer font-bold text-white rounded-md shadow-primary flex items-center justify-center" %>
       </div>
 

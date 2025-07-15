@@ -16,7 +16,7 @@ module Myapp
     config.autoload_lib(ignore: %w[assets tasks])
 
     # エラー表示
-    config.exceptions_app = self.routes
+    # config.exceptions_app = self.routes
 
     # Configuration for the application, engines, and railties goes here.
     #
