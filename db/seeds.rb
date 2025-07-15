@@ -23,6 +23,9 @@ userA = User.create!(
   puts "👤 ユーザー数: #{User.count}"
   puts "🧳 旅行数: #{Trip.count}"
   puts "💸 立替記録数: #{Expense.count}"
+  User.all.each do |user|
+    puts user.email
+  end
   puts "-----------------------"
 
 
