@@ -8,7 +8,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2]
 
-  validates :name, presence: true, length: { maximum: 15, message: "は15字以内" }
+  validates :name, presence: true, length: { maximum: 30, message: "は30字以内" }
   validates :uid, presence: true, uniqueness: { scope: :provider }, if: -> { uid.present? }
 
   def self.from_omniauth(auth)
