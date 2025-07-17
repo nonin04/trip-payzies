@@ -59,17 +59,18 @@
 - グループ [閲覧・作成・編集・削除]
 - 立替状況のグラフ表示機能
 - 立替記録の追加情報 [アイコン、場所、コメントなど]
+- darkモード
+- 英語対応
+- 為替レート
 
 ---
 
 ## 機能の実装方針予定
 - ransack　(検索機能)
-- CarrierWave (アイコン登録)
+- minimagick (アイコン登録)
 - device (ログイン認証)
+- chart.js
 
-### 本リリース
-- LINE messaging API (メンバーに支払い情報を通知)
-- chart.js (グラフ表示)
 
 ---
 
@@ -84,4 +85,4 @@ Xやソーシャルポートフォリオを利用しRUNTEQ生に利用しても�
 Figma：https://www.figma.com/design/8JN7kY58d5PfqbbzSJ2daH/trip-payzies-MVP-%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=60-120&t=8fvL2ZWYz5JIDJn0-1
 
 ## ER図
-[![Image from Gyazo](https://i.gyazo.com/25d9d9880dc4d72ca7573f9ad1059f97.png)](https://gyazo.com/25d9d9880dc4d72ca7573f9ad1059f97)
+[![Image from Gyazo](https://i.gyazo.com/284a22fc5ed0d7022f81cb8e121b7986.png)](https://gyazo.com/284a22fc5ed0d7022f81cb8e121b7986)
