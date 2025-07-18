@@ -13,16 +13,17 @@ userA = User.create!(
   )
 
  # 旅行記録ファイル
+  load Rails.root.join("db/seeds/currency.rb")
   load Rails.root.join("db/seeds/groups.rb")
   load Rails.root.join("db/seeds/trips_data.rb")
   load Rails.root.join("db/seeds/full_length_check.rb")
   load Rails.root.join("db/seeds/trips_share_token_seeds.rb")
 
-  puts "📊 現在のデータ状況"
+  puts "insights"
   puts "-----------------------"
-  puts "👤 ユーザー数: #{User.count}"
-  puts "🧳 旅行数: #{Trip.count}"
-  puts "💸 立替記録数: #{Expense.count}"
+  puts "users: #{User.count}"
+  puts "trips: #{Trip.count}"
+  puts "expenses: #{Expense.count}"
   User.all.each do |user|
     puts user.email
   end
