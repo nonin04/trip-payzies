@@ -27,6 +27,14 @@ userA = User.create!(
   User.all.each do |user|
     puts user.email
   end
+  exchange_records = ExchangeRate.includes(:currency).all
+  if exchange_records.any?
+    exchange_records.each do |record|
+      puts "#{record.rate_date}の#{record.currency.code}の為替レートは#{record.rate}です。"
+    end
+  else
+    puts "為替レコードがありません。"
+  end
   puts "-----------------------"
 
 

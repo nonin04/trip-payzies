@@ -1,15 +1,24 @@
+require 'net/http'
+
 class Api::ExchangeRatesController < ApplicationController
   skip_before_action :verify_authenticity_token
   skip_before_action :authenticate_user!
 
-  require 'net/http'
+  before_action :authenticated_secret_key!
+
   
   def fetch
-    if params[:secret] == ENV['EXCHANGE_RATE_SECRET']
-      FetchExchangeRate.call
-    end
+    ExchangeRateFetcher.call
+    head :ok
   end
 
-  def Fetch
+  private
+
+  def authenticated_secret_key!
+    unless params[:secret_key] == ENV['RATE_FETCH_SECRET_KEY']
+      head :unauthorized
+      return
+    end
+  end
 
 end
