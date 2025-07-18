@@ -18,6 +18,7 @@ ja:
         title: "旅行タイトル"
         departure_date: "出発日"
         group_id: "グループ"
+        currency_id: "通貨"
         settlement_status:
           settled: "精算済み"
           unsettled: "未精算"

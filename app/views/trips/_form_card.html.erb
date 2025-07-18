@@ -20,5 +20,12 @@
       <%= f.label :group_id, class:"font-bold"%>
       <%= f.collection_select :group_id, current_user.groups, :id, :name, { include_blank: t('pages.trips.form.select_group')}, class: "form-style ", data:{"group-select-target": "select"} %>
     </div>
+
+    <% if mode == "new" %>
+      <div class="pt-4">
+        <%= f.label :currency_id, class:"font-bold"%>
+        <%= f.collection_select :currency_id, Currency.all, :id, :ja_name, { selected: f.object.currency_id || Currency.find_by(code: "JPY").id }, class: "form-style " %>
+      </div>
+    <% end %>
   </div>
 </div>

@@ -30,7 +30,7 @@
         </div>
       </div>
       <%# 金額 & 決済者情報 %>
-      <p class="font-semibold text-2xl dark:text-black">¥<%= number_with_delimiter(@expense.amount) %></p>
+      <p class="font-semibold text-2xl dark:text-black"><%= @trip.currency.symbol %><%= number_with_delimiter(@expense.amount) %></p>
       <p class="pt-4 text-lg dark:text-black">by <%= @expense.payer.name %></p>
     </div>
 
@@ -63,7 +63,7 @@
           <%# 区切り線 & 金額 %>
           <div class="flex">
             <div class="w-0.5 mr-5 bg-black"></div>
-            <p class=""><%= t('currency.jpy') %> <%= owed_participant.amount %></p>
+            <span class="inline-flex items-center"><%= @trip.currency.symbol %><%= owed_participant.amount %></span>
           </div>
         </div>
       <% end %>

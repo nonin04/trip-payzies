@@ -10,11 +10,13 @@ class Trip < ApplicationRecord
   enum settlement_status: { unsettled: 0, settled: 1 }
 
   validates :user_id, presence: true
+  validates :currency_id, presence: true
   validates :title, presence: true, length: { maximum: 25, message: "は25字以内で入力してください" }
   validates :settlement_status, presence: true
 
   validate :must_have_participant_at_least_one
 
+  before_validation :set_default_currency
   before_validation :set_default_status
   before_create :generate_share_token
   
@@ -31,6 +33,10 @@ class Trip < ApplicationRecord
 
   def set_default_status
     self.settlement_status ||= :unsettled
+  end
+
+  def set_default_currency
+    self.currency_id ||= Currency.find_by!(code: "JPY").id
   end
 
   def must_have_participant_at_least_one

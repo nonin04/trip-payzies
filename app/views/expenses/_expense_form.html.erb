@@ -29,7 +29,7 @@
           <section class="mt-2 flex flex-col w-full pr-4">
             <div class="flex items-center">
               <p class="font-bold w-[60px] mr-2 text-right"><%= t('activerecord.attributes.expense.amount')%>:</p>
-              <p class="font-bold px-2"><%= t('currency.jpy')%></p>
+              <p class="font-bold px-2"><%= @trip.currency.symbol %></p>
               <%= e.text_field :amount, placeholder: t('pages.expenses.form.amount_eg'), class:"flex-1 form-style", data:{"expense-validate-target": "amount", action: "keydown->expense-validate#submitPrevent input->expense-validate#amountValidate"}, inputmode:"numeric" %>
             </div>
             <p class="text-red-500 text-xs pb-0.5 ml-[60px] pl-2 h-2" data-expense-validate-target="amountErrorMessage"></p>

@@ -47,6 +47,7 @@ en:
         title: "Trip Title"
         departure_date: "Departure Date"
         group_id: "Group"
+        currency_id: "Currency"
         settlement_status:
           settled: "Settled"
           unsettled: "Unsettled"

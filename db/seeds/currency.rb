@@ -1,7 +1,8 @@
-currencies = [
-  { code: "JPY", ja_name: "日本円", en_name: "Japanese Yen", symbol: "¥" },
-  { code: "EUR", ja_name: "ユーロ", en_name: "Euro", symbol: "€" },
-  { code: "USD", ja_name: "米ドル", en_name: "US Dollar", symbol: "$" },
+# currencies = [
+# 作成済み
+#   { code: "JPY", ja_name: "日本円", en_name: "Japanese Yen", symbol: "¥" },
+#   { code: "EUR", ja_name: "ユーロ", en_name: "Euro", symbol: "€" },
+#   { code: "USD", ja_name: "米ドル", en_name: "US Dollar", symbol: "$" },
 
   # { code: "BGN", ja_name: "ブルガリアレフ", en_name: "Bulgarian Lev", symbol: "лв" },
   # { code: "CZK", ja_name: "チェココルナ", en_name: "Czech Koruna", symbol: "Kč" },
@@ -33,13 +34,13 @@ currencies = [
   # { code: "SGD", ja_name: "シンガポールドル", en_name: "Singapore Dollar", symbol: "S$" },
   # { code: "THB", ja_name: "タイバーツ", en_name: "Thai Baht", symbol: "฿" },
   # { code: "ZAR", ja_name: "南アフリカランド", en_name: "South African Rand", symbol: "R" }
-]
+# ]
 
-currencies.each do |c|
-  Currency.create!(
-    code: c[:code],
-    ja_name: c[:ja_name],
-    en_name: c[:en_name],
-    symbol: c[:symbol]
-  )
-end
+# currencies.each do |c|
+#   Currency.create!(
+#     code: c[:code],
+#     ja_name: c[:ja_name],
+#     en_name: c[:en_name],
+#     symbol: c[:symbol]
+#   )
+# end

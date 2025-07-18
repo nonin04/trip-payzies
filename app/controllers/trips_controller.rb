@@ -2,7 +2,7 @@ class TripsController < ApplicationController
   before_action :set_trip, only: [ :show, :edit, :update, :destroy, :insights, :result, :settle, :unsettle ]
 
   def index
-    @user_trips = current_user.trips
+    @user_trips = current_user.trips.includes(:currency)
     @q = @user_trips.ransack(params[:q])
     @trips = @q.result(distinct: true).includes(:group).order(departure_date: :desc)
   end
@@ -85,12 +85,12 @@ class TripsController < ApplicationController
 
   def trip_params
     params.require(:trip).permit(
-      :title, :group_id, :departure_date)
+      :title, :group_id, :departure_date, :currency_id)
   end
 
   def trip_and_participants_params
     params.require(:trip).permit(
-      :title, :group_id, :departure_date,
+      :title, :group_id, :departure_date, :currency_id,
       participants_attributes: [ :name ]
       )
   end
