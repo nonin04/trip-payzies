@@ -41,7 +41,10 @@ Rails.application.routes.draw do
     end
   end
 
-
+  # 通貨レート更新用APIエンドポイント
+  namespace :api do
+    post 'fetch_exchange_rate', to: 'exchange_rates#fetch'
+  end
 
   match "/404", to: "errors#not_found", via: :all
   match "/422", to: "errors#unprocessable_entity", via: :all

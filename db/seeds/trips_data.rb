@@ -6,10 +6,14 @@ gC = Group.find_by(name:"日本高校100期生")
 gD = Group.find_by(name:"会社同期")
 #-----------------------------------------------------------------------------------------------------
 
+usd = Currency.find_by(code:"USD")
+
+
 trip1 = userA.trips.create!(
   group: gA,
   title: "Kyoto Trip",
   departure_date: Date.new(2024, 11, 2),
+  currency: usd,
   participants_attributes: [
     { name: "Alice" }, { name: "Bob" }, { name: "Charlie" }, { name: "Diana" },
     { name: "Ethan" }, { name: "Fiona" }, { name: "George" }, { name: "Hannah" }

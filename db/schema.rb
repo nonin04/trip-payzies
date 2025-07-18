@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_07_15_002237) do
+ActiveRecord::Schema[7.2].define(version: 2025_07_17_135905) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,24 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_15_002237) do
     t.index ["expense_id", "participant_id"], name: "index_advance_payments_on_expense_id_and_participant_id", unique: true
     t.index ["expense_id"], name: "index_advance_payments_on_expense_id"
     t.index ["participant_id"], name: "index_advance_payments_on_participant_id"
+  end
+
+  create_table "currencies", force: :cascade do |t|
+    t.string "code", null: false
+    t.string "ja_name", null: false
+    t.string "en_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "symbol"
+  end
+
+  create_table "exchange_rates", force: :cascade do |t|
+    t.bigint "currency_id", null: false
+    t.decimal "rate", precision: 15, scale: 8, null: false
+    t.date "rate_date", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["currency_id"], name: "index_exchange_rates_on_currency_id"
   end
 
   create_table "expenses", force: :cascade do |t|
@@ -101,6 +119,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_15_002237) do
     t.datetime "updated_at", null: false
     t.bigint "group_id"
     t.string "share_token"
+    t.bigint "currency_id"
+    t.index ["currency_id"], name: "index_trips_on_currency_id"
     t.index ["group_id"], name: "index_trips_on_group_id"
     t.index ["share_token"], name: "index_trips_on_share_token"
     t.index ["user_id"], name: "index_trips_on_user_id"
@@ -124,11 +144,13 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_15_002237) do
 
   add_foreign_key "advance_payments", "expenses", on_delete: :cascade
   add_foreign_key "advance_payments", "participants", on_delete: :restrict
+  add_foreign_key "exchange_rates", "currencies"
   add_foreign_key "expenses", "participants", column: "payer_id", on_delete: :restrict
   add_foreign_key "expenses", "trips", on_delete: :cascade
   add_foreign_key "groups", "users", on_delete: :cascade
   add_foreign_key "members", "groups", on_delete: :cascade
   add_foreign_key "participants", "trips", on_delete: :cascade
+  add_foreign_key "trips", "currencies"
   add_foreign_key "trips", "groups", on_delete: :nullify
   add_foreign_key "trips", "users", on_delete: :cascade
 end
