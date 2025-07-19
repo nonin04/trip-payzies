@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_07_17_135905) do
+ActiveRecord::Schema[7.2].define(version: 2025_07_19_033430) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -59,6 +59,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_17_135905) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "symbol"
+    t.integer "decimal_position", default: 0, null: false
   end
 
   create_table "exchange_rates", force: :cascade do |t|
@@ -80,6 +81,9 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_17_135905) do
     t.string "memo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "currency_id"
+    t.decimal "amount_local", precision: 15, scale: 2
+    t.index ["currency_id"], name: "index_expenses_on_currency_id"
     t.index ["payer_id"], name: "index_expenses_on_payer_id"
     t.index ["trip_id"], name: "index_expenses_on_trip_id"
   end
@@ -145,6 +149,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_17_135905) do
   add_foreign_key "advance_payments", "expenses", on_delete: :cascade
   add_foreign_key "advance_payments", "participants", on_delete: :restrict
   add_foreign_key "exchange_rates", "currencies"
+  add_foreign_key "expenses", "currencies"
   add_foreign_key "expenses", "participants", column: "payer_id", on_delete: :restrict
   add_foreign_key "expenses", "trips", on_delete: :cascade
   add_foreign_key "groups", "users", on_delete: :cascade
