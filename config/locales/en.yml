@@ -47,14 +47,17 @@ en:
         title: "Trip Title"
         departure_date: "Departure Date"
         group_id: "Group"
+        currency_id: "Currency"
         settlement_status:
           settled: "Settled"
           unsettled: "Unsettled"
       participant:
         name: "Participant Name"
       expense: 
+        currency_id: "Payment Currency"
         payer: "Payer"
         title: "Item"
+        amount_local: "Amount"
         amount: "Amount"
         payment_date: "Date"
         place: "Place"

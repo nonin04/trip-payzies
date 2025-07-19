@@ -48,7 +48,7 @@ p_maxA, p_maxB, p_maxC, p_maxD, p_maxE, p_maxF, p_maxG, p_maxH, p_maxI, p_maxJ =
 # --------------max_expenseデータNo.1
 get_expense_by_p_maxA = trip_max.expenses.create!(
   payer: p_maxA,
-  amount: 999999,
+  amount_local: 999999,
   title: "＃これは立替タイトルの表示確認用のテストケースです",
   payment_date: Date.today,
   place: "東京都, 東京市",
@@ -68,7 +68,7 @@ ExpenseAmountDistributor.new(get_expense_by_p_maxA).call
 # --------------max_expenseデータNo.2
 get_expense_by_p_maxB = trip_max.expenses.create!(
   payer: p_maxB,
-  amount: 110000,
+  amount_local: 110000,
   title: "立替結果調整用",
   payment_date: Date.today,
   place: "東京都, 東京市",
