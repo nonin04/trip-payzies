@@ -1,7 +1,7 @@
 class Trip < ApplicationRecord
   belongs_to :user
   belongs_to :group, optional: true
-  belongs_to :currency, optional: true
+  belongs_to :currency
 
   has_many :expenses, dependent: :destroy
   has_many :participants, dependent: :destroy

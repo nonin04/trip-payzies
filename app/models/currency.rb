@@ -5,4 +5,11 @@ class Currency < ApplicationRecord
   validates :code, presence: true
   validates :ja_name, presence: true
   validates :ja_name, presence: true
+  validates :symbol, presence: true
+  validates :decimal_position, presence: true
+
+
+  def display_name
+    "#{code}: #{ja_name}"
+  end
 end
