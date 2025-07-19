@@ -54,8 +54,10 @@ en:
       participant:
         name: "Participant Name"
       expense: 
+        currency_id: "Payment Currency"
         payer: "Payer"
         title: "Item"
+        amount_local: "Amount"
         amount: "Amount"
         payment_date: "Date"
         place: "Place"

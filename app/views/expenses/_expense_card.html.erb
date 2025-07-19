@@ -6,6 +6,6 @@
       <p class="px-4 font-bold"><%= expense.title %></p>
       <p class="px-4 text-sm dark:text-neutral-400">by <%= expense.payer.name %></p>
     </div>
-    <p class="font-bold text-xl px-4"><%= @trip.currency.symbol %><%= number_with_delimiter(expense.amount) %></p>
+    <p class="font-bold text-xl px-4 <%= expense_amount_color(expense) %>"><%= expense.currency.symbol %><%= formatted_amount_local(expense) %></p>
   </div>
 </div>
