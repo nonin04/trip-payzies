@@ -26,7 +26,7 @@ export default class extends Controller {
   }
 
   isJpy() {
-    return parseInt(this.currencyTypeTarget.value) === 1 
+    return this.currencyTypeTarget.selectedOptions[0]?.textContent === "JPY"
   }
 
   setMinMax() {
