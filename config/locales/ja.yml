@@ -18,14 +18,17 @@ ja:
         title: "旅行タイトル"
         departure_date: "出発日"
         group_id: "グループ"
+        currency_id: "通貨"
         settlement_status:
           settled: "精算済み"
           unsettled: "未精算"
       participant:
         name: "名前"
       expense: 
+        currency_id: "通貨"
         payer: "決済者"
         title: "項目"
+        amount_local: "金額"
         amount: "金額"
         payment_date: "決済日"
         place: "場所"
@@ -164,7 +167,7 @@ ja:
       show:
         title: "旅行詳細"
         create_expense_button: "立替記録を作成"
-        result_button: "結果を見る"
+        result_button: "精算結果"
         no_expense: "まだ立替記録がありません。"
         lets_create: "新しく作成しましょう！"
     participants:

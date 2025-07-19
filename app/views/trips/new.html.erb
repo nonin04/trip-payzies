@@ -19,7 +19,7 @@
   <%= form_with model: @trip, html:{class:"flex flex-col flex-1 min-h-0", data:{"participant-validate-target": "form"}} do |f| %>
 
     <%# フォームカード %>
-    <%= render 'trips/form_card', f: f %>
+    <%= render 'trips/form_card', f: f, mode: "new" %>
     <%= render 'participants/form_card', f: f %>
 
     <%# ボタン類 %>

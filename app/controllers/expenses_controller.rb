@@ -19,6 +19,7 @@ class ExpensesController < ApplicationController
       
       redirect_to trip_path(@trip), notice: I18n.t('flash.expense.success.create')
     else
+      Rails.logger.error("Expense update failed: #{@expense.errors.full_messages.join(', ')}")
       flash.now[:alert] = I18n.t('flash.expense.failed.create')
       render :new, status: :unprocessable_entity
     end
@@ -37,6 +38,7 @@ class ExpensesController < ApplicationController
         @trip.reset_settlement_status
         success = true
       else
+        Rails.logger.error("Expense update failed: #{@expense.errors.full_messages.join(', ')}")
         raise ActiveRecord::Rollback
       end
     end
@@ -66,7 +68,7 @@ class ExpensesController < ApplicationController
 
   def expense_params
     params.require(:expense).permit(
-      :payer_id, :amount, :title, :payment_date, :place, :memo,
+      :payer_id, :amount_local, :title, :payment_date, :place, :memo, :currency_id, 
       advance_payments_attributes: [ :id, :participant_id ]
       )
   end

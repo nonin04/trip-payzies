@@ -1,32 +1,38 @@
 begin
 
+  # テストユーザーとそのレコードを削除
   user = User.find_by(email: "example@email.com")
   if user
     user.trips.destroy_all
     user.destroy
   end
 
-userA = User.create!(
-    name: "test_user",
-    email: "example@email.com",
-    password: "password"
-  )
+
+  #本デプロイ専用処理 (実行次第削除必須)
+  #------------------------------------------------------------
+  trips = Trip.all
+  jpy_id = Currency.find_by(code: "JPY").id
+  Trip.update_all(currency_id: jpy_id)
+  
+  #------------------------------------------------------------
 
  # 旅行記録ファイル
   load Rails.root.join("db/seeds/currency.rb")
+  load Rails.root.join("db/seeds/test_user.rb")
   load Rails.root.join("db/seeds/groups.rb")
   load Rails.root.join("db/seeds/trips_data.rb")
   load Rails.root.join("db/seeds/full_length_check.rb")
-  load Rails.root.join("db/seeds/trips_share_token_seeds.rb")
+  # load Rails.root.join("db/seeds/trips_share_token_seeds.rb")
 
-  puts "insights"
-  puts "-----------------------"
+
+  puts "--------insights--------"
   puts "users: #{User.count}"
   puts "trips: #{Trip.count}"
   puts "expenses: #{Expense.count}"
   User.all.each do |user|
     puts user.email
   end
+
   exchange_records = ExchangeRate.includes(:currency).all
   if exchange_records.any?
     exchange_records.each do |record|

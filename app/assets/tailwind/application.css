@@ -245,6 +245,7 @@ dark:bg-neutral-800
  dark:from-neutral-500 dark:to-neutral-500
 }
 
+
 .trip-accent-color {@apply
   bg-gradient-to-b
  from-panel-brown to-gradation-brown

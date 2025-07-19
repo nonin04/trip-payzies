@@ -166,11 +166,11 @@ export default class extends Controller {
       this.addErrorMessage(amountErrorMessage, this.errorMessagesValue.invalidAmount)
       hasError = true;
     } 
-    else if (amount > 1000000) {
-      this.addErrorStyle(amountInput)
-      this.addErrorMessage(amountErrorMessage, this.errorMessagesValue.maxAmount)
-      hasError = true;
-    } 
+    // else if (amount > 1000000) {
+    //   this.addErrorStyle(amountInput)
+    //   this.addErrorMessage(amountErrorMessage, this.errorMessagesValue.maxAmount)
+    //   hasError = true;
+    // } 
     else {
       this.removeError(amountInput, amountErrorMessage)
       hasError = false;
