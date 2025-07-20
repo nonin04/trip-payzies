@@ -44,7 +44,7 @@ class Expense < ApplicationRecord
   def payment_date_cannot_be_in_the_future
     return if trip.currency == Currency.find_by(code: "JPY")
     return if currency == Currency.find_by(code: "JPY")
-    return if payment_date >= Date.new(2025, 7, 19) && payment_date <= Date.today
+    return if payment_date >= Date.new(2025, 7, 19) && payment_date <= Date.current
     errors.add(:payment_date, "2025/7/19~今日までの日付を選択してください")
   end
 
@@ -53,8 +53,12 @@ class Expense < ApplicationRecord
   end
 
   def convert_amount_to_jpy
-    exchange_rate = ExchangeRate.find_by(rate_date: payment_date - 1.day, currency_id: currency_id)&.rate || 1
-    self.amount = (amount_local.to_d / exchange_rate).round(0)
+    if payment_date == Date.current && Time.current < Time.current.change(hour: 10, min: 0, sec: 0)
+      exchange_rate = ExchangeRate.find_by(rate_date: payment_date - 2.day, currency_id: currency_id)&.rate || 1   
+      self.amount = (amount_local.to_d / exchange_rate).round(0)
+    else
+      exchange_rate = ExchangeRate.find_by(rate_date: payment_date - 1.day, currency_id: currency_id)&.rate || 1
+      self.amount = (amount_local.to_d / exchange_rate).round(0)
+    end
   end
-
 end
