@@ -7,6 +7,9 @@ export default class extends Controller {
     "dateField",
     "attention"
   ]
+  static values = {
+    today: String
+  }
 
   connect() {
     if (!this.isJpy()) {
@@ -32,7 +35,8 @@ export default class extends Controller {
   setMinMax() {
     const dateInput = this.dateFieldTarget
     const minDate = "2025-07-19"
-    const maxDate = new Date().toISOString().slice(0, 10)
+    const maxDate = this.todayValue
+    console.log(this.todayValue)
     dateInput.setAttribute("min", minDate)
     dateInput.setAttribute("max", maxDate)
   }

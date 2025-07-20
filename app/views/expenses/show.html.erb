@@ -44,7 +44,7 @@
     <div class="card-style my-4 py-3 px-4">
       <p class="font-bold"><%= t('activerecord.attributes.expense.payment_date')%>: <%= @expense.payment_date.strftime( '%Y/%m/%d') %></p>
       <% unless @expense.currency == Currency.find_by(code: "JPY") %>
-        <p class="text-xs mt-2">当該日付の為替レートが反映されています。</p>
+        <p class="text-xs mt-2"><%= about_rate_message(@expense) %></p>
       <% end %>
     </div>
 
