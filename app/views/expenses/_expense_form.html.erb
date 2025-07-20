@@ -1,5 +1,10 @@
-<%= form_with model: [@trip, @expense], local: true, html: {class:"flex flex-col flex-1 min-h-0", data:{"controller": "date-restrict", "expense-validate-target": "form"}} do |e| %>
-  
+
+<%= form_with model: [@trip, @expense], local: true, html: {class:"flex flex-col flex-1 min-h-0", data:{"controller": "date-restrict", "date-restrict-today-value": Date.current.to_s, "expense-validate-target": "form"}} do |e| %>
+
+
+
+
+
   <div class="h-full overflow-y-auto flex flex-col">
     <%# カード1 ------------- %>
     <div class="relative mb-4 card-style mx-4">

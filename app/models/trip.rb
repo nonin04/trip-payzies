@@ -18,8 +18,8 @@ class Trip < ApplicationRecord
 
   before_validation :set_default_currency
   before_validation :set_default_status
-  before_create :generate_share_token
   
+  before_create :generate_share_token
   
   def reset_settlement_status
     self.unsettled! if self.settled?
