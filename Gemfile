@@ -44,6 +44,8 @@ gem 'carrierwave', '~> 2.0'
 
 gem 'mini_magick'
 
+gem 'fog-aws'
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
