@@ -35,11 +35,11 @@
   <%# グループ情報 ------------------ %>
   <% if display_group_info?(mode) %>
     <div class="flex items-center">
-      <% if trip.group.present? %>
-        <%= image_tag "group-icon.jpg", class: "h-7 pl-5 pr-2" %>
+      <% if trip.group.present? && trip.group.icon.present? %>
+        <%= image_tag trip.group.icon.url, alt:"", class:"h-7 ml-5 mr-2 rounded-full" %>
         <p class="pr-10 dark:text-neutral-400 text-sm <%= group_title_color(mode) %>"><%= trip.group.name %></p>
       <% else %>
-        <%= inline_svg("svg/group.svg", draggable:"false", class:"h-7 ml-5 mr-2 text-zinc-800") %>
+        <img src="/images/group-icon.jpg" alt="" class="h-7 ml-5 mr-2 rounded-full">
         <p class="pr-10 dark:text-neutral-400 text-sm <%= group_title_color(mode) %>"><%= t('pages.trips.card.temporary_group')%></p>
       <% end %>
     </div>

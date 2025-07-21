@@ -31,7 +31,11 @@
     <%# グループアイコン&グループ情報 --------------- %>
     <div class="flex w-full h-30 gap-4 mb-4 items-center justify-between">
       <div class="h-full shrink-0 card-style p-2">
+        <% if @group.icon.present? %>
+        <%= image_tag @group.icon.url, alt:"", class: "h-full aspect-square rounded-md" %>
+        <% else %>
         <%= image_tag "group-icon.jpg", class: "h-full aspect-square rounded-md" %>
+        <% end %>
       </div>
       <div class="h-full card-style flex-1 flex px-4 gap-2 text-neutral-700 items-center">
         <div class="text-left">
