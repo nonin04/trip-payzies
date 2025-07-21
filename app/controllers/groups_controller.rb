@@ -83,7 +83,7 @@ class GroupsController < ApplicationController
   end
 
   def group_params
-    params.require(:group).permit(:name)
+    params.require(:group).permit(:name, :icon, :remove_icon)
   end
 
   def member_params
