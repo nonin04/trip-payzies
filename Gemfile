@@ -32,8 +32,6 @@ gem "inline_svg"
 
 gem 'ransack'
 
-gem 'mini_magick'
-
 gem 'omniauth'
 
 gem 'omniauth-google-oauth2'
@@ -41,6 +39,12 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 
 gem 'currencyapi', '~> 1.0'
+
+gem 'carrierwave', '~> 2.0'
+
+gem 'mini_magick'
+
+gem 'fog-aws'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"

@@ -3,20 +3,21 @@
   <%= text_field_tag "group[name]", @group.name.present? ? @group.name : nil, id: "group_name", class:"form-style", data:{ "group-validate-target": "groupTitle", "action":"input->group-validate#titleValidate"} %>
   <p class="text-primary-red text-xs pb-0.5" data-group-validate-target="titleErrorMessage"></p>
 
-  <div data-controller="group-icon">
-    <p class="font-bold mb-1 mt-2"><%= t('actieverecord.attributes.group.icon') %></p>
-    <div class="flex items-center gap-3">
-      <button type="button" class="relative shadow-primary py-1 px-2 border-neutral-500 bg-neutral-500 border-2 text-white text-sm rounded-md cursor-pointer">
-        <%= t('pages.groups.form_card.select_file') %>
-        <%= file_field_tag "group[icon]",accept:"image/*", class:"absolute inset-0 w-full h-full opacity-0", data:{"group-icon-target": "input", action:"change->group-icon#showFileName"} %>
+  <div data-controller="group-icon" data-group-icon-icon-present-value="<%= @group.icon.present? %>" data-group-icon-icon-name-value="<%= file_name(@group) %>"  >
+    <p class="font-bold mb-1 mt-2"><%= t('activerecord.attributes.group.icon') %></p>
+    <div class="flex items-center justify-between gap-3">
+      <div class="flex gap-2">
+        <button type="button" class="relative shadow-md hover:bg-neutral-500 py-1 px-2 bg-neutral-600 text-white text-sm rounded-md cursor-pointer">
+          <%= t('pages.groups.form_card.select_file') %>
+          <%= file_field_tag "group[icon]",accept:"image/*", class:"absolute inset-0 w-full h-full opacity-0", data:{"group-icon-target": "input", action:"change->group-icon#updateFileName"} %>
+        </button>
+        <p class="text-neutral-400" data-group-icon-target="fileName"></p>
+      </div>
+      <button type="button" class="hidden w-7 h-7 bg-primary-red shadow-md hover:bg-red-400 rounded-md cursor-pointer px-1" data-group-icon-target="deleteBtn" data-action="click->group-icon#clickDelete">
+        <%= inline_svg("svg/cross.svg", class:"text-white")%>
       </button>
-      <p class="text-neutral-400" data-group-icon-target="fileName">
-        <% if @group.icon.attached? %> 
-          <%= @group.icon.filename %>
-        <% else %>
-          開発中...
-        <% end %>
-      </p>
+      <%= check_box_tag 'group[remove_icon]', '1', false, data: { "group-icon-target": "deleteCheckField" }, class:"hidden"%>
+
     </div>
   </div>
   
