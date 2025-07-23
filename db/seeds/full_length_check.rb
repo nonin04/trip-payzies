@@ -23,7 +23,7 @@ member_maxJ = group_max.members.create!(name: "きく")
 # trip.title25字
 trip_max = user.trips.create!(
   group: group_max,
-  title: "＃これは旅行タイトルの表示確認用のテストケースです", 
+  title: "＃これは旅行タイトルの表示確認用のテストケースです",
   departure_date: Date.new(2021, 2, 4),
   participants_attributes: [
     { name: "＃これは表示確認用テストケース" },

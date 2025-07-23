@@ -1,5 +1,4 @@
 class Expense < ApplicationRecord
-  
   include ActionView::Helpers::NumberHelper
 
   belongs_to :trip
@@ -54,7 +53,7 @@ class Expense < ApplicationRecord
 
   def convert_amount_to_jpy
     if payment_date == Date.current && Time.current < Time.current.change(hour: 10, min: 0, sec: 0)
-      exchange_rate = ExchangeRate.find_by(rate_date: payment_date - 2.day, currency_id: currency_id)&.rate || 1   
+      exchange_rate = ExchangeRate.find_by(rate_date: payment_date - 2.day, currency_id: currency_id)&.rate || 1
       self.amount = (amount_local.to_d / exchange_rate).round(0)
     else
       exchange_rate = ExchangeRate.find_by(rate_date: payment_date - 1.day, currency_id: currency_id)&.rate || 1

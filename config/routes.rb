@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks'}
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   # 認証状態によるトップページ分岐
   authenticated :user do
@@ -43,7 +43,7 @@ Rails.application.routes.draw do
 
   # 通貨レート更新用APIエンドポイント
   namespace :api do
-    post 'fetch_exchange_rate', to: 'exchange_rates#fetch'
+    post "fetch_exchange_rate", to: "exchange_rates#fetch"
   end
 
   match "/404", to: "errors#not_found", via: :all
