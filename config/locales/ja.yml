@@ -253,9 +253,9 @@ ja:
     copy_trip_token:
       notice: "コピーしました！"
     barchart:
-      title: "負担グラフ"
+      title: "貸借差額グラフ"
     piechart:
-      title: "立替合計グラフ"
+      title: "決済額グラフ"
 
   currency:
     jpy: "¥"

@@ -30,21 +30,21 @@ gem "sprockets-rails"
 
 gem "inline_svg"
 
-gem 'ransack'
+gem "ransack"
 
-gem 'omniauth'
+gem "omniauth"
 
-gem 'omniauth-google-oauth2'
+gem "omniauth-google-oauth2"
 
-gem 'omniauth-rails_csrf_protection'
+gem "omniauth-rails_csrf_protection"
 
-gem 'currencyapi', '~> 1.0'
+gem "currencyapi", "~> 1.0"
 
-gem 'carrierwave', '~> 2.0'
+gem "carrierwave", "~> 2.0"
 
-gem 'mini_magick'
+gem "mini_magick"
 
-gem 'fog-aws'
+gem "fog-aws"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -71,7 +71,9 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 
-  gem 'dotenv-rails'
+  gem "dotenv-rails"
+
+  gem "rspec-rails"
 end
 
 group :development do
@@ -83,6 +85,9 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem "factory_bot_rails"
+
   gem "capybara"
+
   gem "selenium-webdriver"
 end

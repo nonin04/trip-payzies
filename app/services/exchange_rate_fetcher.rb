@@ -1,19 +1,19 @@
-require 'json'
+require "json"
 
 class ExchangeRateFetcher
   def self.call
     begin
 
       currencies = Currency.all
-      codes_str = currencies.map {|c| c.code }.join(",")
+      codes_str = currencies.map { |c| c.code }.join(",")
 
 
-      puts ENV['FREECURRENCY_API_KEY']
-      fx = Currencyapi::Endpoints.new(apikey: ENV['FREECURRENCY_API_KEY'])
+      puts ENV["FREECURRENCY_API_KEY"]
+      fx = Currencyapi::Endpoints.new(apikey: ENV["FREECURRENCY_API_KEY"])
       response = fx.latest("JPY", codes_str)
-      #jsonからハッシュに変換
+      # jsonからハッシュに変換
       json = JSON.parse(response.body)
-      data = json['data']
+      data = json["data"]
 
       datetime_str = json["meta"]["last_updated_at"]
       date = Date.parse(datetime_str)

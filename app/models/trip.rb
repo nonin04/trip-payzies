@@ -18,15 +18,15 @@ class Trip < ApplicationRecord
 
   before_validation :set_default_currency
   before_validation :set_default_status
-  
+
   before_create :generate_share_token
-  
+
   def reset_settlement_status
     self.unsettled! if self.settled?
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    ["created_at", "departure_date", "group_id", "id", "settlement_status", "title", "updated_at" ]
+    [ "created_at", "departure_date", "group_id", "id", "settlement_status", "title", "updated_at" ]
   end
 
   private

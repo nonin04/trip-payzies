@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   def display_menu?
     unless devise_controller? || controller_path.start_with?("share/")
       true
@@ -11,5 +10,4 @@ module ApplicationHelper
   def shared_user?
     controller_path.start_with?("share/")
   end
-
 end

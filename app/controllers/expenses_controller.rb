@@ -1,6 +1,6 @@
 class ExpensesController < ApplicationController
   before_action :set_expense, only: [ :show, :edit, :update, :destroy ]
-  
+
   def show
   end
 
@@ -16,11 +16,11 @@ class ExpensesController < ApplicationController
     if @expense.save
       ExpenseAmountDistributor.new(@expense).call
       @trip.reset_settlement_status
-      
-      redirect_to trip_path(@trip), notice: I18n.t('flash.expense.success.create')
+
+      redirect_to trip_path(@trip), notice: I18n.t("flash.expense.success.create")
     else
       Rails.logger.error("Expense update failed: #{@expense.errors.full_messages.join(', ')}")
-      flash.now[:alert] = I18n.t('flash.expense.failed.create')
+      flash.now[:alert] = I18n.t("flash.expense.failed.create")
       render :new, status: :unprocessable_entity
     end
   end
@@ -44,10 +44,10 @@ class ExpensesController < ApplicationController
     end
 
     if success
-      flash[:notice] = I18n.t('flash.expense.success.update')
+      flash[:notice] = I18n.t("flash.expense.success.update")
       redirect_to trip_path(@trip)
     else
-      flash.now[:alert] = I18n.t('flash.expense.failed.update')
+      flash.now[:alert] = I18n.t("flash.expense.failed.update")
       render :edit, status: :unprocessable_entity
     end
   end
@@ -55,7 +55,7 @@ class ExpensesController < ApplicationController
 
   def destroy
     @expense.destroy
-    redirect_to trip_path(@trip), notice: I18n.t('flash.expense.success.delete')
+    redirect_to trip_path(@trip), notice: I18n.t("flash.expense.success.delete")
   end
 
   private
@@ -68,7 +68,7 @@ class ExpensesController < ApplicationController
 
   def expense_params
     params.require(:expense).permit(
-      :payer_id, :amount_local, :title, :payment_date, :place, :memo, :currency_id, 
+      :payer_id, :amount_local, :title, :payment_date, :place, :memo, :currency_id,
       advance_payments_attributes: [ :id, :participant_id ]
       )
   end

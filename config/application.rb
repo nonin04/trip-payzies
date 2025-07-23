@@ -9,7 +9,7 @@ Bundler.require(*Rails.groups)
 module Myapp
   class Application < Rails::Application
     config.load_defaults 7.2
-    config.time_zone = 'Asia/Tokyo'
+    config.time_zone = "Asia/Tokyo"
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
@@ -29,6 +29,6 @@ module Myapp
 
     config.i18n.default_locale = :ja
     I18n.default_locale = :ja
-    I18n.available_locales = [:en, :ja]
+    I18n.available_locales = [ :en, :ja ]
   end
 end
