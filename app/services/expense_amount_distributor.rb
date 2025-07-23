@@ -1,5 +1,4 @@
 class ExpenseAmountDistributor
-
   def initialize(expense)
     @expense = expense
   end
@@ -10,7 +9,7 @@ class ExpenseAmountDistributor
     count = advance_payments.count
     if count == 0
       puts "---------cuontが0です---------"
-      return 
+      return
     end
 
     #------------------------
@@ -19,7 +18,7 @@ class ExpenseAmountDistributor
       return
     end
     #------------------------
-    
+
     # 一人あたりの額(均等分け)
     base_amount = total_amount / count
     # 残り
@@ -28,7 +27,7 @@ class ExpenseAmountDistributor
     #------------------------
     puts "▶ 基本額: #{base_amount}, 余り: #{remains_amount}"
     #------------------------
-    
+
     # 均等分けした額を対象者のamountに追加
     advance_payments.each do |ap|
       ap.amount = base_amount
@@ -43,14 +42,13 @@ class ExpenseAmountDistributor
     if remains_amount > 0
     # 対象者からランダムで余りの負担者を選択[配列]
     selected_participant_index = (0...count).to_a.shuffle.take(remains_amount)
-    
+
       # 選択された負担者のamountに余りを追加
       selected_participant_index.each do |sp|
         advance_payments[sp].amount += 1
         #------------------------
         puts " +1: #{advance_payments[sp].participant.name}"
         #------------------------
-
       end
     end
 
@@ -60,6 +58,5 @@ class ExpenseAmountDistributor
       ap.save!
     end
     puts "---------------------------------------"
-
   end
 end

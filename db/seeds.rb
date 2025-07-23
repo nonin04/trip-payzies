@@ -7,7 +7,7 @@ begin
     user.destroy
   end
 
- # 旅行記録ファイル
+  # 旅行記録ファイル
   # load Rails.root.join("db/seeds/currency.rb")
   load Rails.root.join("db/seeds/test_user.rb")
   load Rails.root.join("db/seeds/groups.rb")

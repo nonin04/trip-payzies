@@ -1,5 +1,4 @@
 module StimulusHelper
-  
   # バリデーションエラー用メッセージのJSON
   def stimulus_error_messages_json
     {

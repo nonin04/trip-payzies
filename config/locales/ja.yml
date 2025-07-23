@@ -128,8 +128,8 @@ ja:
         record_expenses: "グループ旅行の立替を"
         settle_expenses: "面倒な精算も"
         snap: "さくっ"
-        record: "と記録"
-        solve: "と解決"
+        record: "と記録!"
+        solve: "と解決!"
         start_with_members: "旅行メンバーを入力してスタート!"
         easy_entry: "「誰が、誰の分を、いくら」をかんたん入力"
         check_graph: "グラフで立替状況を一目でチェック"
@@ -253,9 +253,9 @@ ja:
     copy_trip_token:
       notice: "コピーしました！"
     barchart:
-      title: "負担グラフ"
+      title: "貸借差額グラフ"
     piechart:
-      title: "立替合計グラフ"
+      title: "決済額グラフ"
 
   currency:
     jpy: "¥"
