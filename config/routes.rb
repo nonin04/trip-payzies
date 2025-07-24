@@ -46,6 +46,10 @@ Rails.application.routes.draw do
     post "fetch_exchange_rate", to: "exchange_rates#fetch"
   end
 
+  get "info", to: "pages#info", as: :info
+  get "terms", to: "pages#terms", as: :terms
+  get "privacy", to: "pages#privacy", as: :privacy
+
   match "/404", to: "errors#not_found", via: :all
   match "/422", to: "errors#unprocessable_entity", via: :all
   match "/500", to: "errors#internal_server_error", via: :all
