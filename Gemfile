@@ -74,8 +74,6 @@ group :development, :test do
   gem "dotenv-rails"
 
   gem "rspec-rails"
-
-  gem "bullet"
 end
 
 group :development do
