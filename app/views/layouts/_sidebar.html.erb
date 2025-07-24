@@ -22,20 +22,22 @@
       <% end %>
     </div>
 
-    <%# ログアウト %>
+
     <div data-action="click->sidebar#darkModeToggle">
-      <%= inline_svg("svg/sidebar/light.svg", class:"block dark:hidden mx-auto h-6 text-white flex-shrink-0 cursor-pointer")%>
-      <%= inline_svg("svg/sidebar/dark.svg", class:"hidden dark:block mx-auto h-6 text-white flex-shrink-0 cursor-pointer")%>
+      <%= inline_svg("svg/sidebar/light.svg", class:"block dark:hidden mx-auto h-6 my-4 text-white flex-shrink-0 cursor-pointer")%>
+      <%= inline_svg("svg/sidebar/dark.svg", class:"hidden dark:block mx-auto h-6 my-4 text-white flex-shrink-0 cursor-pointer")%>
     </div>
 
-    <%= link_to authenticated_root_path do %>
-      <%= inline_svg("svg/sidebar/info.svg", class:"hidden mx-auto h-6 text-white flex-shrink-0")%>
-    <% end %>
+    <div class=" h-[2px] bg-gray-300 my-2 mx-4"></div>
+    <div class="flex flex-col gap-6 mx-auto mt-4 mb-6 items-center">
+      <%= link_to info_path do %>
+        <%= inline_svg("svg/sidebar/info.svg", class:"h-6 text-white flex-shrink-0")%>
+      <% end %>
 
-    <div class=" h-[2px] bg-gray-300 my-6 mx-4"></div>
-    <button type="button" data-action="click->modal#openModal" data-modal-name-param="logout">
-      <%= inline_svg("svg/sidebar/logout.svg", class:"flex cursor-pointer mx-auto mb-4 h-7 pl-1 text-white flex-shrink-0")%>
-    <button>
+      <button type="button" data-action="click->modal#openModal" data-modal-name-param="logout">
+        <%= inline_svg("svg/sidebar/logout.svg", class:"flex cursor-pointer h-7 pl-1 text-white flex-shrink-0")%>
+      </button>
+    </div>
 
 
   </div>

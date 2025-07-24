@@ -1,10 +1,10 @@
 # Trip-Payzies
 <img src="public/images/ogp-image.png">
-リンク: <a href="https://trip-payzies.onrender.com" target="_blank">trip-payzies</a>
+URL: <a href="https://trip-payzies.onrender.com" target="_blank">https://trip-payzies.onrender.com</a>
 
 ## 概要
 グループ旅行における立替や割り勘の記録・精算を効率化するWebアプリです。  
-支払内容と参加メンバーを記録するだけで、**誰が誰にいくら支払うべきか**を自動で算出。  
+支払内容と対象者を記録するだけで、**誰が誰にいくら支払うべきか**を自動で算出。  
 手間のかかる精算を簡単・正確にし、旅行をより快適に楽しめるようサポートします。
 
 
@@ -41,6 +41,23 @@
 このアプリでは、支払いの履歴や立替状況を**グラフで視覚的に示す**ことで、  
 精算のロジックを直感的に理解できるようにします。  
 また、**UIデザインにもこだわり**、簡単に操作できるサービスにします。
+
+
+
+
+
+## サービスの差別化ポイント・推しポイント
+似たサービスはwebアプリ、ネイティブアプリに複数ある。
+UIが分かりにくかったり、
+差別化ポイント
+
+
+
+
+
+
+
+
 
 
 
@@ -116,11 +133,12 @@
 | データベース | PostgreSQL 
 | 認証 | Devise / Omniauth（Google OAuth対応）
 | 環境構築 | Docker / Docker Compose / dotenv-rails 
-| CI/CD | RuboCop / RSpec 
+| CI/CD | GitHub Actions (RuboCop / RSpec / Brakeman)
 | インフラ | Render 
-| 画像処理 | CarrierWave / MiniMagick / Amazon S3 
-| 検索・UX | Ransack（絞り込み検索）/ Chart.js (グラフ表示)
-| 為替API | CurrencyAPI（通貨換算機能）
+| 画像処理 | CarrierWave / MiniMagick / Amazon S3
+| 検索機能 | Ransack（絞り込み検索） 
+| データ可視化 | Chart.js (グラフ表示)
+| 為替API | CurrencyAPI
 | 定期実行 | Google Apps Script
 
 
