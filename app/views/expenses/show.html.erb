@@ -1,6 +1,7 @@
 <% content_for(:title, t('pages.expenses.show.title')) %>
 
 <%= render 'layouts/modal/expenses/destroy' %>
+<%= render 'layouts/modal/expenses/distribute' %>
 
 <%# ページ案内 ------------------ %>
 <section class="flex items-center relative">
@@ -62,7 +63,12 @@
     </div>
 
     <%# サブ案内 ------------------ %>
-    <h2 class="mx-2 mt-2 font-bold"><%= t('pages.expenses.show.recipient')%> | <%= t('pages.expenses.show.owed_amount') %></h2>
+    <div class="flex justify-between items-center mt-2 mb-1">
+      <h2 class="mx-2 font-bold"><%= t('pages.expenses.show.recipient')%> | <%= t('pages.expenses.show.owed_amount') %></h2>
+      <button type="button" class="mr-4 h-6 cursor-pointer" data-modal-target="openBtn" data-action="click->modal#openModal" data-modal-name-param="description">
+        <%= inline_svg("svg/info.svg", class:"h-full") %>
+      </button>
+    </div>
 
     <%# 負担額カード ------------------ %>
     <div class="card-style py-2 mb-2 pl-6">
