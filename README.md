@@ -8,6 +8,7 @@
 - [サービスへの思い](#サービスへの思い)
 - [機能一覧](#機能一覧)
 - [使用技術](#使用技術)
+- [アプリ画面](#アプリ画面)
 - [画面遷移図](#画面遷移図)
 - [ER図](#er図)
 
@@ -141,12 +142,23 @@
 | VCS | GitHub
 
 
+
+## アプリ画面
+| 旅行詳細 | 立替詳細 | 精算結果 | 分析 |
+| :---: | :---: | :---: | :---: |
+| <img src="https://i.gyazo.com/8b2061fd0f6222bd03bb18dd7f756ca9.png" width="180"> | <img src="https://i.gyazo.com/c4ec4a2ec17ebebb5ebf2b5c26172273.png" width="180"> | <img src="https://i.gyazo.com/5e0d2393c66c657cedae317f6dd52a41.png" width="180"> | <img src="https://i.gyazo.com/57bc829347817add2673f05e731e2242.png" width="180"> |
+| <p>見やすい旅行情報</p> | <p>日本円で負担額を表示</p> | <p>最小限の送金回数で精算</p> | <p>バランスをグラフで可視化</p> |
+
 | 旅行作成 | 立替作成 |
 | :---: | :---: |
-| <img src="https://github.com/user-attachments/assets/200fdccc-e30b-4a65-86c5-f1e90adb2cc0" width="300"> | <img src="https://github.com/user-attachments/assets/148406e6-8d52-4b95-a8b6-a5c78da39926" width="300"> |
-| <p align="left">グループを選択すると参加者が自動追加されます。</p> | <p align="left">外貨or日本円で立替を記録できます。<br>決済日の為替レートで日本円に換算されます。</p> |
+| <p align="center"><a href="https://github.com/user-attachments/assets/200fdccc-e30b-4a65-86c5-f1e90adb2cc0" width="250"><img src="https://github.com/user-attachments/assets/200fdccc-e30b-4a65-86c5-f1e90adb2cc0" width="250"></a></p> | <p align="center"><a href="https://github.com/user-attachments/assets/148406e6-8d52-4b95-a8b6-a5c78da39926" width="250"><img src="https://github.com/user-attachments/assets/148406e6-8d52-4b95-a8b6-a5c78da39926" width="250"></a></p> |
+| <p align="center">グループを選択すると参加者が自動で追加<br> 作成時であれば追加の編集も可能</p> | <p align="center">外貨or日本円で立替記録が可能<br>決済日の為替レートをもとに日本円に換算</p> |
 
 
+
+
+## 画面遷移図
+https://www.figma.com/design/8JN7kY58d5PfqbbzSJ2daH/trip-payzies-MVP-%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=60-120&t=4tpTDsk7LH8kXuK9-1
 
 
 ## ER図
