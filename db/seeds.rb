@@ -1,6 +1,5 @@
 begin
 
-  # テストユーザーとそのレコードを削除
   user = User.find_by(email: "example@email.com")
   if user
     user.trips.destroy_all
@@ -8,7 +7,7 @@ begin
   end
 
   # 旅行記録ファイル
-  # load Rails.root.join("db/seeds/currency.rb")
+  load Rails.root.join("db/seeds/admin.rb")
   load Rails.root.join("db/seeds/test_user.rb")
   load Rails.root.join("db/seeds/groups.rb")
   load Rails.root.join("db/seeds/trips_data.rb")
