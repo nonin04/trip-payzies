@@ -23,7 +23,7 @@ class TripsController < ApplicationController
       redirect_to trip_path(@trip)
     flash[:notice] = I18n.t("flash.trip.success.create")
     else
-      flash.now[:alert] = I18n.t("flash.trip.failed.create")
+      flash.now[:alert] = @trip.errors.full_messages.join("、")
       (10 - @trip.participants.size).times { @trip.participants.build }
       render :new, status: :unprocessable_entity
     end
@@ -37,7 +37,7 @@ class TripsController < ApplicationController
       flash[:notice] = I18n.t("flash.trip.success.update")
       redirect_to trip_path(@trip)
     else
-      flash.now[:alert] = I18n.t("flash.trip.failed.update")
+      flash.now[:alert] = @trip.errors.full_messages.join("、")
       render :edit, status: :unprocessable_entity
     end
   end
