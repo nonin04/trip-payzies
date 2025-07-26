@@ -46,6 +46,8 @@ gem "mini_magick"
 
 gem "fog-aws"
 
+gem "administrate", "~> 0.20.1"
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
