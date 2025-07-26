@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   namespace :admin do
+      resources :users
       resources :advance_payments
       resources :currencies
       resources :exchange_rates
@@ -8,9 +9,8 @@ Rails.application.routes.draw do
       resources :members
       resources :participants
       resources :trips
-      resources :users
 
-      root to: "advance_payments#index"
+      root to: "users#index"
     end
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
