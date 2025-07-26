@@ -1,11 +1,5 @@
 begin
 
-  user1 = User.find_by(email: "nonin.vctr04@gmail.com")
-  if user1
-    user1.trips.destroy_all
-    user1.destroy
-  end
-
   user = User.find_by(email: "example@email.com")
   if user
     user.trips.destroy_all
