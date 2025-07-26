@@ -1,6 +1,5 @@
 begin
 
-  # テストユーザーとそのレコードを削除
   user = User.find_by(email: "example@email.com")
   if user
     user.trips.destroy_all
