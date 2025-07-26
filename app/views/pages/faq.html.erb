@@ -1,0 +1,185 @@
+<% content_for(:title, "アプリ情報") %>
+
+<%= render 'layouts/modal/page/qr' %>
+
+<section class="flex items-center relative">
+  <button class="absolute flex items-center rounded-md shadow-primary h-6 w-10 py-0.5 px-0.5 ml-4 text-white bg-panel-navy dark:text-neutral-700 dark:bg-white" data-controller="back" data-action="click->back#goBackFromTrip">
+    <%= inline_svg("svg/navigation-arrow.svg", class:"w-full h-full rotate-180")%>
+  </button>
+  <h1 class="mt-2 my-2 text-xl font-bold w-full text-center">Q&A</h1>
+</section>
+
+<section class="min-h-0 overflow-y-auto">
+  <div class="mx-4 px-2 py-4 card-style shadow-md">
+    <details class="p-2">
+      <summary class="cursor-pointer font-bold text-gray-800 dark:text-white">
+        Q. 会員登録は無料ですか？
+      </summary>
+      <div class="mt-2 text-gray-600 dark:text-neutral-300 text-sm">
+        はい、無料でご利用いただけます。
+      </div>
+    </details>
+
+    <hr class="mx-4 text-neutral-400 my-1">
+
+    <details class="p-2">
+      <summary class="cursor-pointer font-bold text-gray-800 dark:text-white">
+        Q. スマホアプリのように使えますか？
+      </summary>
+      <div class="my-2 text-gray-600 dark:text-neutral-300 text-sm">
+        <p>
+          <p>はい、iphone・androidともにホーム画面に追加することでスマホアプリのようにご利用いただけます。</p>
+          <p class="font-bold mt-1 mb-0.5 text-center">iPhoneでPWAをインストールする方法</p>
+          <div class="border border-0.5 rounded-md px-2 py-2">
+            <ol class="list-decimal list-outside ml-4">
+              <li>Safariで <strong>trippayzies.com</strong> を開く。</li>
+              <li>画面下部中央の「<strong>四角に上矢印</strong>」の共有アイコンをタップ。</li>
+              <li>共有メニューをスクロールして「<strong>ホーム画面に追加</strong>」を選択。</li>
+              <li>表示される名前を確認し、必要があれば編集して「<strong>追加</strong>」をタップ。</li>
+              <li>ホーム画面から利用可。</li>
+            </ol>
+          </div>
+        </p>
+
+        <p class="font-bold mt-1 mb-0.5 text-center">androidでPWAをインストールする方法</p>
+          <div class="border border-0.5 rounded-md px-2 py-2">
+            <ol class="list-decimal list-outside ml-4">
+              <li>Chromeで <strong>trippayzies.com</strong> を開く。</li>
+              <li>画面右上の「<strong>︙</strong>（メニューボタン）」をタップ。</li>
+              <li>表示されるメニューから「<strong>ホーム画面に追加</strong>」を選択。</li>
+              <li>表示される名前を確認し、必要があれば編集して「<strong>追加</strong>」をタップ。</li>
+              <li>ホーム画面から利用可。</li>
+            </ol>
+          </div>
+        </p>
+
+      </div>
+    </details>
+
+    <hr class="mx-4 text-neutral-400 my-1">
+
+    <details class="p-2">
+      <summary class="cursor-pointer font-bold text-gray-800 dark:text-white">
+        Q. 旅行の精算はどのように計算されますか？
+      </summary>
+      <div class="mt-2 text-gray-600 dark:text-neutral-300 text-sm">
+        <p>
+          旅行中の立替情報をもとに、各参加者の最終的な差額（= 立て替えた金額 - 立て替えてもらった金額）を算出します。
+          その差額が全員0になるよう、最小の送金回数で精算できるよう自動で割り出します。
+        </p>
+        <p>※類似アプリと送金の組み合わせが異なる場合もありますが、差額ベースのため不利益は生じませんのでご安心ください。</p>
+      </div>
+    </details>
+    
+    <hr class="mx-4 text-neutral-400 my-1">
+
+    <details class="p-2">
+      <summary class="cursor-pointer font-bold text-gray-800 dark:text-white">
+        Q. 外貨の為替レートはどのように運用されていますか？
+      </summary>
+      <div class="mt-2 text-gray-600 dark:text-neutral-300 text-sm">
+        <p>
+          為替レートは日本時間の毎朝10:00に、前日のレートを取得しています。
+          立替記録に適用されるのは、決済日の前日の為替レートです。
+          ただし、日本時間で0:00〜10:00の間に記録した場合は、2日前の為替レートが使われる点にご注意ください。
+        </p>
+        <p>為替レート取得元：<a href="https://currencyapi.com" target="_blank" class="underline text-primary-blue-100">https://currencyapi.com</a></p>
+      </div>
+    </details>
+
+    <hr class="mx-4 text-neutral-400 my-1">
+
+    <details class="p-2">
+      <summary class="cursor-pointer font-bold text-gray-800 dark:text-white">
+        Q. 2025/7/19以前の外貨立替ができないのはなぜですか？
+      </summary>
+      <div class="mt-2 text-gray-600 dark:text-neutral-300 text-sm">
+        <p>
+          2025年7月19日より外貨立替サービスの提供と為替レートの記録を開始したため、それ以前の為替レートが適用できないためです。
+          ご不便をおかけいたしますが、ご理解のほどよろしくお願いいたします。
+        </p>
+      </div>
+    </details>
+
+    <hr class="mx-4 text-neutral-400 my-1">
+
+    <details class="p-2">
+      <summary class="cursor-pointer font-bold text-gray-800 dark:text-white">
+        Q. 海外旅行で外貨のほか、日本円で立て替えた分も記録したい。
+      </summary>
+      <div class="mt-2 text-gray-600 dark:text-neutral-300 text-sm">
+        <p>旅行作成時に現地通貨を選択し、立替記録作成時に通貨コード「JPY」を選んで記録してください。</p>
+      </div>
+    </details>
+
+    <hr class="mx-4 text-neutral-400 my-1">
+
+    <details class="p-2">
+      <summary class="cursor-pointer font-bold text-gray-800 dark:text-white">
+        Q. グループ機能は何に使うのですか？
+      </summary>
+      <div class="mt-2 text-gray-600 dark:text-neutral-300 text-sm">
+        <p>
+          グループ機能は、よく一緒に旅行に行くメンバーをまとめて登録しておける機能です。
+          旅行作成時にグループを選択すると、そのグループのメンバーが自動で参加者に追加されるので、毎回メンバーを入力する手間を省けます。
+          複数の旅行で同じメンバーと行くことが多い場合に便利です。
+        </p>
+      </div>
+    </details>
+
+    <hr class="mx-4 text-neutral-400 my-1">
+
+    <details class="p-2">
+      <summary class="cursor-pointer font-bold text-gray-800 dark:text-white">
+        Q. 分析ページの内容はどう見ればいいですか？
+      </summary>
+      <div class="mt-2 text-gray-600 dark:text-neutral-300 text-sm">
+        <p class="font-bold">旅行全体の金額</p>
+          <p>各参加者が負担するご自身の旅行代金の合計を指します。</p>
+
+          <p class="font-bold">貸借差額(円グラフ)</p>
+          <p>他のメンバーの分を立て替えた額を含め、各参加者が旅行中に支払った金額を示しています。</p>
+
+          <p class="font-bold">決済額(棒グラフ)</p>
+          <p>参加者ごとに「立て替えた金額」と「立て替えてもらった金額」の差額を表しています。</p>
+          <p class="text-primary-blue-100">＋の場合は返ってくる金額</p>
+          <p class="text-primary-red">-の場合は返さなければいけない金額</p>
+          <p>と考えてください。</p>
+        </p>
+      </div>
+    </details>
+
+    <hr class="mx-4 text-neutral-400 my-1">
+
+    <details class="p-2">
+      <summary class="cursor-pointer font-bold text-gray-800 dark:text-white">
+        Q. 共有機能を使って共同編集はできますか？
+      </summary>
+      <div class="mt-2 text-gray-600 dark:text-neutral-300 text-sm">
+        <p>
+          現在のところ、共同編集機能は実装しておりません。
+          これは、セキュリティやデータの正確性を重視し、誤った金額変更を防ぐためです。
+          そのため、旅行の代表者が立替金額を一括で管理し、参加者は共有機能を通じて内容を確認できる仕組みとなっています。
+          今後のアップデートで、安全に共同編集ができる方法を検討してまいります。
+        </p>
+      </div>
+    </details>
+
+    <hr class="mx-4 text-neutral-400 my-1">
+
+    <details class="p-2">
+      <summary class="cursor-pointer font-bold text-gray-800 dark:text-white">
+        Q. メンバーがTripPayziesを使っていなくても精算できますか？
+      </summary>
+      <div class="mt-2 text-gray-600 dark:text-neutral-300 text-sm">
+        <p>
+          はい、可能です。
+          TripPayziesでは、旅行代表者が立替情報を管理し、共有リンクを使って旅行メンバーに精算結果を共有する仕様です。
+          共有された精算結果はログインせずに閲覧可能です。
+        </p>
+      </div>
+    </details>
+
+  </div>
+</section>
+
