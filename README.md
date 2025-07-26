@@ -126,30 +126,28 @@
 | 旅行詳細 | 立替詳細 | 精算結果 | 分析 |
 | :---: | :---: | :---: | :---: |
 | <img src="https://i.gyazo.com/840e6c7e22258cfd7c8fbae84f9161bf.png" width="180"> | <img src="https://i.gyazo.com/3b697a878d2248cb780140103bd62a75.png" width="180"> | <img src="https://i.gyazo.com/bda527bb317f6c007e4208f7b9c5700a.png" width="180"> | <img src="https://i.gyazo.com/c30ea25b0e7bdd7ecc2db42d5d28bdb9.png" width="180"> |
-| <p>直感的なUI</p> | <p>日本円で負担額を表示</p> | <p>最小限の送金回数で精算</p> | <p>立替バランスを可視化</p> |
 
 | 旅行作成 | 立替作成 |
 | :---: | :---: |
 | <p align="center"><a href="https://github.com/user-attachments/assets/200fdccc-e30b-4a65-86c5-f1e90adb2cc0"><img src="https://github.com/user-attachments/assets/200fdccc-e30b-4a65-86c5-f1e90adb2cc0" width="300"></a></p> | <p align="center"><a href="https://github.com/user-attachments/assets/148406e6-8d52-4b95-a8b6-a5c78da39926"><img src="https://github.com/user-attachments/assets/148406e6-8d52-4b95-a8b6-a5c78da39926" width="300"></a></p> |
-| <p align="left">グループを選択すると参加者が自動で追加されます。作成時であれば追加の編集も可能です。</p> | <p align="left">旅行に設定した外貨or日本円で立替記録が可能です。決済日の為替レートをもとに日本円に換算されます。</p> |
+| <p align="left">グループを選択すると参加者が自動で追加されます。作成時であれば追加の編集も可能です。</p> | <p align="left">旅行に設定した外貨または日本円で立替記録が可能です。決済日前日23:59の為替レートをもとに日本円に換算されます。</p> |
 
 
 ## 使用技術
 | カテゴリ | 技術構成 |
 |-|-|
-| フロントエンド | Stimulus / Turbo / Tailwind CSS / Importmap / Sprockets / inline_svg 
-| バックエンド | Ruby 3.3.6 / Ruby on Rails 7.2.2
-| データベース | PostgreSQL 
-| 認証 | Devise / Omniauth（Google OAuth対応）
-| 環境構築 | Docker / Docker Compose / dotenv-rails 
-| CI/CD | GitHub Actions (RuboCop / RSpec / Brakeman)
-| インフラ | Render 
-| 画像処理 | CarrierWave / MiniMagick / Amazon S3
-| 検索機能 | Ransack（絞り込み検索） 
-| データ可視化 | Chart.js (グラフ表示)
-| 為替API | CurrencyAPI
-| 定期実行 | Google Apps Script
-| VCS | GitHub
+| フロントエンド | Stimulus / Turbo / Tailwind CSS |
+| バックエンド | Ruby 3.3.6 / Ruby on Rails 7.2.2 |
+| データベース | PostgreSQL |
+| 認証 | Devise / Omniauth（Google OAuth対応）|
+| 環境構築 | Docker / Docker Compose / dotenv-rails |
+| CI/CD | GitHub Actions (RuboCop / RSpec / Brakeman) |
+| インフラ | Render |
+| 画像処理 | CarrierWave / MiniMagick / Amazon S3 |
+| UX/検索・可視化 | Ransack / Chart.js |
+| 為替API | CurrencyAPI |
+| 定期実行 | Google Apps Script |
+| バージョン管理 | GitHub |
 
 
 ## 画面遷移図

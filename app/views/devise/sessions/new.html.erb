@@ -58,13 +58,18 @@
       </div>
     </div>
   </div>
-  <div class="flex text-xs gap-2 w-full justify-center underline">
-    <%= link_to terms_path do %>
-      <p>利用規約</p>
-    <% end %>
-    <%= link_to privacy_path do %>
-      <p>プライバシーポリシー</p>
-    <% end %>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdeJXM3fO6AWB47l_JaVgGeycMHXtHLehyRQTtDsU3I47L7Lg/viewform?usp=dialog">お問い合わせ</a>
+  <div class="mx-4">
+    <div class="flex flex-wrap text-sm gap-2 w-full justify-center underline">
+      <%= link_to terms_path do %>
+        <p>利用規約</p>
+      <% end %>
+      <%= link_to privacy_path do %>
+        <p>プライバシーポリシー</p>
+      <% end %>
+      <%= link_to faq_path do %>
+        <p>Q&A</p>
+      <% end %>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdeJXM3fO6AWB47l_JaVgGeycMHXtHLehyRQTtDsU3I47L7Lg/viewform?usp=dialog">お問い合わせ</a>
+    </div>
   </div>
 </div>

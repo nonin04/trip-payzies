@@ -49,6 +49,7 @@ Rails.application.routes.draw do
   get "info", to: "pages#info", as: :info
   get "terms", to: "pages#terms", as: :terms
   get "privacy", to: "pages#privacy", as: :privacy
+  get "faq", to: "pages#faq", as: :faq
 
   match "/404", to: "errors#not_found", via: :all
   match "/422", to: "errors#unprocessable_entity", via: :all
