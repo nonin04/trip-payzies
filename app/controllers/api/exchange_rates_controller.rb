@@ -18,7 +18,7 @@ class Api::ExchangeRatesController < ApplicationController
     key = request.headers["X-Secret-Key"]
     unless key == ENV["RATE_FETCH_SECRET_KEY"]
       head :unauthorized
-      return
+      nil
     end
   end
 end
