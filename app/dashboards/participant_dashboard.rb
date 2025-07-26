@@ -15,7 +15,7 @@ class ParticipantDashboard < Administrate::BaseDashboard
     paid_expenses: Field::HasMany,
     trip: Field::BelongsTo,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES

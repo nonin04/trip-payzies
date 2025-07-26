@@ -13,7 +13,7 @@ class ExchangeRateDashboard < Administrate::BaseDashboard
     rate: Field::String.with_options(searchable: false),
     rate_date: Field::Date,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES

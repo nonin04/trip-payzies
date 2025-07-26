@@ -12,7 +12,7 @@ class MemberDashboard < Administrate::BaseDashboard
     group: Field::BelongsTo,
     name: Field::String,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES

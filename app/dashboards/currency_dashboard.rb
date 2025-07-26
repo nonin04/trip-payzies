@@ -17,7 +17,7 @@ class CurrencyDashboard < Administrate::BaseDashboard
     symbol: Field::String,
     trips: Field::HasMany,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
