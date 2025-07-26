@@ -56,5 +56,4 @@ class Trip < ApplicationRecord
       errors.add(:participants, "は10人までしか追加できません")
     end
   end
-
 end

@@ -15,7 +15,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
       Rails.logger.info @user.errors.full_messages
       session["devise.#{provider}_data"] = request.env["omniauth.auth"].except(:extra)
-      flash[:alert] = 'このメールアドレスでは既に登録されています。'
+      flash[:alert] = "このメールアドレスでは既に登録されています。"
       redirect_to new_user_registration_url
     end
   end
