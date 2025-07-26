@@ -1,23 +1,127 @@
+<% content_for(:title, "アプリ情報") %>
 
+<%= render 'layouts/modal/page/qr' %>
 
-
-
-
-
-
-<%= link_to "Xでシェアする", "https://twitter.com/intent/tweet?text=便利な旅行精算アプリを使ってみよう！&url=https://trippayzies.com", target: "_blank", rel: "noopener", class: "text-blue-500 hover:underline" %>
-
-
-
-
-<div>
-  <%= link_to terms_path do %>
-  <p>利用規約</p>
+<section class="flex items-center relative">
+  <%= link_to trips_path(@trips), class:"absolute flex items-center rounded-md shadow-primary h-6 w-10 py-0.5 px-0.5 ml-4 text-white bg-panel-navy dark:text-neutral-700 dark:bg-white" do %>
+    <%= inline_svg("svg/navigation-arrow.svg", class:"w-full h-full rotate-180 ")%>
   <% end %>
+  <h1 class="mt-2 my-2 text-xl font-bold w-full text-center">アプリ情報</h1>
+</section>
 
-  <%= link_to privacy_path do %>
-  <p>プライバシーポリシー</p>
-  <% end %>
+<section class="w-full flex flex-col flex-1 min-h-0 overflow-y-auto">
 
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdeJXM3fO6AWB47l_JaVgGeycMHXtHLehyRQTtDsU3I47L7Lg/viewform?usp=dialog">お問い合わせ</a>
-</div>
+  <div class="card-style shadow-md mx-4 px-4 py-4">
+    <div class="flex items-center justify-between">
+      <p class="font-bold text-lg">trippayzies.com</p>
+      <button type="button" class="mr-4 h-6 cursor-pointer" data-modal-target="openBtn" data-action="click->modal#openModal" data-modal-name-param="description">
+        <%= inline_svg("svg/page/qr.svg", class:"h-full") %>
+      </button>
+    </div>
+    <div class="mt-4 text-xs text-gray-600">
+      <p>操作も見た目もシンプルに。</p>
+      <p>気軽に使える精算アプリを目指して作りました。</p>
+      <p>ご意見・不具合のご連絡はお問い合わせまたはSNSからどうぞ。</p>
+    </div>
+
+    <p class="text-sm font-bold pt-4">PWAを使えば、スマホアプリのように利用できます。</p>
+    <details class="">
+      <summary class="cursor-pointer text-sm font-bold bg-neutral-500 w-fit hover:bg-neutral-600 rounded-md mt-2 px-2 text-white dark:text-white">
+        PWAインストール方法
+      </summary>
+      <div class="my-2 text-gray-600 dark:text-neutral-300 text-sm">
+        <p>
+          <div class="flex items-center">
+            <%= inline_svg("svg/page/apple.svg", class:"h-4")%>
+            <p class="font-bold mt-1 mb-0.5 text-center">iPhone</p>
+          </div>
+          <div class="border border-0.5 rounded-md px-2 py-2">
+            <ol class="list-decimal list-outside ml-4">
+              <li>Safariで <strong>trippayzies.com</strong> を開く。</li>
+              <li>画面下部中央の「<strong>四角に上矢印</strong>」の共有アイコンをタップ。</li>
+              <li>共有メニューをスクロールして「<strong>ホーム画面に追加</strong>」を選択。</li>
+              <li>表示される名前を確認し、必要があれば編集して「<strong>追加</strong>」をタップ。</li>
+              <li>ホーム画面から利用可。</li>
+            </ol>
+          </div>
+        </p>
+        <p>
+          <div class="flex items-center">
+            <%= inline_svg("svg/page/android.svg", class:"h-3")%>
+            <p class="font-bold mt-1 mb-0.5 text-center">android</p>
+          </div>
+          <div class="border border-0.5 rounded-md px-2 py-2">
+            <ol class="list-decimal list-outside ml-4">
+              <li>Chromeで <strong>trippayzies.com</strong> を開く。</li>
+              <li>画面右上の「<strong>︙</strong>（メニューボタン）」をタップ。</li>
+              <li>表示されるメニューから「<strong>ホーム画面に追加</strong>」を選択。</li>
+              <li>表示される名前を確認し、必要があれば編集して「<strong>追加</strong>」をタップ。</li>
+              <li>ホーム画面から利用可。</li>
+            </ol>
+          </div>
+        </p>
+
+      </div>
+    </details>
+
+  </div>
+
+  <div class="card-style shadow-md mx-4 my-4 px-4 py-2">
+    <p class="mt-2 text-sm">開発者:</p>
+    <div class="flex items-center mb-2">
+      <img src="images/nonin.png" class="w-8">
+      <p class="text-lg font-bold ml-2 my-2">nonin</p>
+    </div>
+    <div class="flex gap-2 pb-2">
+      <a href="https://github.com/nonin04/trip-payzies" target="_blank" class="bg-gray-600 text-white rounded-md hover:underline flex items-center px-2">
+        <%= inline_svg("svg/page/github.svg", class: "w-5 h-5") %>
+        <span class="ml-2">GitHub</span>
+      </a>
+      <a href="https://x.com/nonin_04" target="_blank" class="bg-black text-white rounded-md hover:underline flex items-center px-2">
+        <%= inline_svg("svg/page/x.svg", class: "w-4 h-4") %>
+        <span class="ml-2">(旧Twitter)</span>
+      </a>
+    </div>
+  </div>
+
+
+  <div class="flex flex-col gap-4">
+    <%= link_to faq_path do %>
+      <div class="relative card-style cursor-pointer mx-4 shadow-md text-md py-2 px-4">
+        <div class="absolute left-0 top-0 h-full w-2 rounded-l bg-neutral-500"></div>
+        <p class="font-bold">Q&A</p>
+      </div>
+    <% end %>
+
+    <%= link_to terms_path do %>
+      <div class="relative card-style cursor-pointer mx-4 shadow-md text-md py-2 px-4">
+        <div class="absolute left-0 top-0 h-full w-2 rounded-l bg-neutral-500"></div>
+        <p class="font-bold">利用規約</p>
+      </div>
+    <% end %>
+
+    <%= link_to privacy_path do %>
+      <div class="relative card-style cursor-pointer mx-4 shadow-md text-md py-2 px-4">
+        <div class="absolute left-0 top-0 h-full w-2 rounded-l bg-neutral-500"></div>
+        <p class="font-bold">プライバシーポリシー</p>
+      </div>
+    <% end %>
+
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdeJXM3fO6AWB47l_JaVgGeycMHXtHLehyRQTtDsU3I47L7Lg/viewform?usp=dialog">
+      <div class="relative card-style cursor-pointer mx-4 shadow-md text-md py-2 px-4">
+        <div class="absolute left-0 top-0 h-full w-2 rounded-l bg-neutral-500"></div>
+        <p class="font-bold">お問い合わせ</p>
+      </div>
+    </a>
+  </div>
+
+</section>
+
+<%# 仕切り線とボタン ------------------ %>
+<section class="mx-4 my-3">
+  <div class="separator"></div>
+  <div class="w-full flex gap-4">
+    <%= link_to t('common.back'), trips_path, class:"flex-1 main-action-btn bg-neutral-400 text-white" %>
+  </div>
+</section>
+
