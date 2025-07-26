@@ -2,6 +2,8 @@ class User < ApplicationRecord
   has_many :trips, dependent: :destroy
   has_many :groups, dependent: :destroy
 
+  enum role: { user: 0, admin: 1 }
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
