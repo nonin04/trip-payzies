@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   namespace :api do
     post "fetch_exchange_rate", to: "exchange_rates#fetch"
   end
-  
+
   get "info", to: "pages#info", as: :info
   get "terms", to: "pages#terms", as: :terms
   get "privacy", to: "pages#privacy", as: :privacy

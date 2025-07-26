@@ -10,6 +10,6 @@ class PagesController < ApplicationController
   def info
   end
 
-  def faq 
+  def faq
   end
 end
