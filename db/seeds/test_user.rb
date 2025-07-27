@@ -4,5 +4,3 @@ User.create!(
   password: "password",
   role: :user
 )
-
-
