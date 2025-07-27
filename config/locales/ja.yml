@@ -22,6 +22,7 @@ ja:
         settlement_status:
           settled: "精算済み"
           unsettled: "未精算"
+          one: 精算状況
       participant:
         name: "名前"
       expense: 
