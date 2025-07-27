@@ -1,13 +1,14 @@
 {
-  "name": "Trip-Payzies",
+  "name": "trippayzies.com",
+  "short_name": "trippayzies",
   "icons": [
     {
-      "src": "/images/svg/icon2.svg",
+      "src": "/images/pwa/app-icon.svg",
       "type": "image/svg+xml",
       "sizes": "any"
     },
     {
-      "src": "/images/svg/icon2.svg",
+      "src": "/images/pwa/app-icon.svg",
       "type": "image/svg+xml",
       "sizes": "any",
       "purpose": "maskable"
@@ -16,7 +17,8 @@
   "start_url": "/",
   "display": "standalone",
   "scope": "/",
-  "description": "Trip-Payzies lets you split travel expenses easily with friends.",
-  "theme_color": "#102E4A",
-  "background_color": "#102E4A"
+  "description": "trippayzies.comは、グループ旅行の立替精算を楽にできるアプリです。",
+  "theme_color": "#183153",
+  "background_color": "#183153",
+  "orientation": "portrait-primary"
 }
