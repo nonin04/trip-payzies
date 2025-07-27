@@ -147,6 +147,7 @@
 | UX/検索・可視化 | Ransack / Chart.js |
 | 為替API | CurrencyAPI |
 | 定期実行 | Google Apps Script |
+| 管理画面 | administrate |
 | バージョン管理 | GitHub |
 
 
