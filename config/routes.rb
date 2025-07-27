@@ -42,6 +42,7 @@ Rails.application.routes.draw do
 
     # 立替(個別管理, 複数データ)
     resources :expenses, only: [ :show, :new, :create, :edit, :update, :destroy ]
+    resources :participants, only: [ :show ]
   end
 
   namespace :share do
@@ -51,6 +52,7 @@ Rails.application.routes.draw do
         get :result
       end
       resources :expenses, only: [ :show ]
+      resources :participants, only: [ :show ]
     end
   end
 
