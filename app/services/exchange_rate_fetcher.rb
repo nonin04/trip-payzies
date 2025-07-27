@@ -7,8 +7,6 @@ class ExchangeRateFetcher
       currencies = Currency.all
       codes_str = currencies.map { |c| c.code }.join(",")
 
-
-      puts ENV["FREECURRENCY_API_KEY"]
       fx = Currencyapi::Endpoints.new(apikey: ENV["FREECURRENCY_API_KEY"])
       response = fx.latest("JPY", codes_str)
       # jsonからハッシュに変換
