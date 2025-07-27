@@ -172,7 +172,7 @@ GEM
     fog-xml (0.1.5)
       fog-core
       nokogiri (>= 1.5.11, < 2.0.0)
-    foreman (0.88.1)
+    foreman (0.89.1)
     formatador (1.1.1)
     globalid (1.2.1)
       activesupport (>= 6.1)
