@@ -30,7 +30,7 @@ RSpec.describe User, type: :model do
 
     it 'uidが重複していてもproviderが違えば有効' do
       create(:user, uid: '12345', provider: 'google')
-      other = build(:user, email:'test2@email.com', uid: '12345', provider: 'facebook')
+      other = build(:user, email: 'test2@email.com', uid: '12345', provider: 'facebook')
       expect(other).to be_valid
     end
 
@@ -66,5 +66,4 @@ RSpec.describe User, type: :model do
       expect(user).to eq(existing_user)
     end
   end
-
 end
