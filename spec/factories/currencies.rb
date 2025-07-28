@@ -5,7 +5,7 @@ FactoryBot.define do
     en_name { "Japanese Yen" }
     symbol { "¥" }
     decimal_position { 0 }
-#----------------------------------
+    #----------------------------------
     trait :jpy do
       code { "JPY" }
       ja_name { "日本円" }
