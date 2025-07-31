@@ -3,6 +3,7 @@ FactoryBot.define do
     association :currency, factory: [ :currency, :jpy ]
     rate { 1 }
     rate_date { Date.today }
+    
     #----------------------------------
     trait :jpy_today do
       association :currency, factory: [ :currency, :jpy ]
