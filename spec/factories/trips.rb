@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :trip do
     association :currency
+    
     association :currency, factory: [ :currency, :jpy ]
     title { "" }
     deperture_date { Date.today -1 }

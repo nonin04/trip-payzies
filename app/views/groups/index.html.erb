@@ -22,11 +22,7 @@
           <div class="card-style shadow-primary">
             <%= link_to group_path(group), class:"w-full h-full flex gap-4 px-4 py-2 items-center justify-between cursor-pointer" do %>
               <div class="flex items-center gap-2">
-                <% if group.icon.present? %>
-                  <%= image_tag group.icon.url, alt:"", class:"rounded-full w-10" %>
-                <% else %>
-                  <img src="/group-icon.jpg" alt="" class="rounded-full w-10">
-                <% end %>
+                <%= image_tag icon_url(group), alt:"", class:"rounded-full w-10" %>
                 <p class="font-bold"><%= group.name %></p>
               </div>
               <%= inline_svg("svg/navigation-arrow.svg", class:"h-5 w-5 text-black text-right dark:text-neutral-500") %>

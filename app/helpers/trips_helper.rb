@@ -30,6 +30,18 @@ module TripsHelper
     end
   end
 
+  def group_icon_url(trip)
+     if trip.group&.icon.present?
+       trip.group.icon.url
+     else
+       "group-icon.jpg"
+     end
+  end
+
+  def group_name(trip)
+    trip.group&.name || t('pages.trips.card.temporary_group')
+  end
+
 
   def settlement_status_options
     Trip.settlement_statuses.map do |key, value|
