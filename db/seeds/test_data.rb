@@ -1,15 +1,41 @@
-userA = User.find_by(email: "example@email.com")
+user = User.create!(
+  name: "test_user",
+  email: "example@email.com",
+  password: "password",
+  role: :user
+)
+#-------------------------------------------------------------
 
-gA = Group.find_by(name: "大学ゼミ友達")
-gB = Group.find_by(name: "高校仲良し3人組")
-gC = Group.find_by(name: "日本高校100期生")
-gD = Group.find_by(name: "会社同期")
+
+gA = user.groups.create!(name: "大学ゼミ友達")
+[ "あきら", "みさき", "けんと", "ゆうこ", "はるな", "りく", "まこと", "さえ" ].each do |name|
+  gA.members.create!(name: name)
+end
+
+# グループ：高校仲良し3人組
+gB = user.groups.create!(name: "高校仲良し3人組")
+[ "ゆうき", "ひろと", "たいし" ].each do |name|
+  gB.members.create!(name: name)
+end
+
+# グループ：日本高校100期生
+gC = user.groups.create!(name: "日本高校100期生")
+[ "けいご", "はづき", "れお", "さくら", "たいち", "まゆ", "そら", "えり", "しゅん", "のぞみ" ].each do |name|
+  gC.members.create!(name: name)
+end
+
+# グループ：会社同期
+gD = user.groups.create!(name: "会社同期")
+[ "ゆか", "たくや", "みお", "しんじ", "まな", "だいち", "さや", "けん", "なお", "かな" ].each do |name|
+  gD.members.create!(name: name)
+end
+
 #-----------------------------------------------------------------------------------------------------
 
-usd = Currency.find_by(code: "USD").id
+jpy = Currency.find_by(code: "JPY").id
 
 
-trip1 = userA.trips.create!(
+trip1 = user.trips.create!(
   group: gA,
   title: "Kyoto Trip",
   departure_date: Date.new(2024, 11, 2),
@@ -33,7 +59,7 @@ participants = [ pC, pE, pF, pG, pH ]
 
 #-----------------------------------------------------------------------------------------------------
 
-trip2 = userA.trips.create!(
+trip2 = user.trips.create!(
   group: gC,
   title: "北海道ニセコスキー",
   departure_date: Date.new(2024, 1, 5),
@@ -72,7 +98,7 @@ end
 
 #--------------------------------------------------------------------------------------------------------
 
-trip3 = userA.trips.create!(
+trip3 = user.trips.create!(
   title: "沖縄離島めぐり旅",
   departure_date: Date.new(2024, 9, 10),
   participants_attributes: [
@@ -109,7 +135,7 @@ end
 
 #--------------------------------------------------------------------------------------------------------
 
-trip4 = userA.trips.create!(
+trip4 = user.trips.create!(
   group: gD,
   title: "ヨーロッパ卒業旅行",
   departure_date: Date.new(2024, 3, 1),
@@ -147,7 +173,7 @@ end
 
 #--------------------------------------------------------------------------------------------------------
 
-trip5 = userA.trips.create!(
+trip5 = user.trips.create!(
   title: "九州温泉＆グルメ旅",
   departure_date: Date.new(2024, 11, 15),
   participants_attributes: [
@@ -187,7 +213,7 @@ end
 
 #-----------------------------------------------------------------------------------------------------
 
-trip6 = userA.trips.create!(
+trip6 = user.trips.create!(
   title: "東北自然満喫キャンプ旅",
   departure_date: Date.new(2024, 8, 5),
   participants_attributes: [
@@ -225,7 +251,7 @@ end
 
 #-----------------------------------------------------------------------------------------------------
 
-trip7 = userA.trips.create!(
+trip7 = user.trips.create!(
   title: "NYC Sightseeing Trip",
   departure_date: Date.new(2024, 10, 20),
   participants_attributes: [
@@ -264,7 +290,7 @@ end
 
 #-----------------------------------------------------------------------------------------------------
 
-trip8 = userA.trips.create!(
+trip8 = user.trips.create!(
   title: "南国リゾート家族旅行",
   departure_date: Date.new(2024, 12, 20),
   participants_attributes: [
