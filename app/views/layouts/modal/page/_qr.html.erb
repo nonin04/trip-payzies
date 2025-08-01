@@ -6,7 +6,7 @@
     <div class="w-full card-style flex flex-col py-4 px-2">
       <h2 class="w-full text-xl font-bold text-gray-900 dark:text-white flex justify-center">共有QRコード</h2>
       <!-- 説明文 -->
-      <img src="images/qr.png" alt="QRコード" class="w-5/6 mx-auto">
+      <%= image_tag "qr.png", class:"w-5/6 mx-auto" %>
 
 <!-- ボタン -->
       <button class="w-2/5 h-10 bg-neutral-600 cursor-pointer font-bold text-white rounded-md shadow-primary mx-auto" type="button" data-action="click->modal#closeModal" data-modal-name-param="description"><%=t('common.close')%></button>

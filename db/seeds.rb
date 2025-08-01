@@ -8,10 +8,8 @@ begin
 
   # 旅行記録ファイル
   load Rails.root.join("db/seeds/admin.rb")
-  load Rails.root.join("db/seeds/test_user.rb")
-  load Rails.root.join("db/seeds/groups.rb")
-  load Rails.root.join("db/seeds/trips_data.rb")
-  load Rails.root.join("db/seeds/full_length_check.rb")
+  load Rails.root.join("db/seeds/test_data.rb")
+  load Rails.root.join("db/seeds/demo_data.rb")
 
 
   puts "--------insights--------"
@@ -24,6 +22,7 @@ begin
   puts "▶︎ 2days before: #{ExchangeRate.where(rate_date: Date.current - 2).count} "
   puts "▶︎ 3days before: #{ExchangeRate.where(rate_date: Date.current - 3).count} "
   puts "-----------------------"
+
 
   rescue ActiveRecord::RecordInvalid => e
   puts "バリデーションエラー: #{e.record.errors.full_messages.join(', ')}"

@@ -1,7 +1,7 @@
 <% content_for(:title, t('pages.devise.session.new.title')) %>
 
 <div class="h-full overflow-y-auto">
-  <div class="mx-6 py-6 devise-card-style my-4">
+  <div class="mx-6 py-6 devise-card-style my-4" data-controller="demo">
     <p class="text-center text-xl font-bold"><%= t('pages.devise.session.new.welcome') %></p>
     <p class="text-center text-sm text-neutral-500"><%= t('pages.devise.session.new.sub_title') %></p>
     
@@ -9,12 +9,15 @@
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         
         <div class="field w-full my-5">
-          <div class="flex gap-0.5">
+          <div class="relative flex gap-0.5">
             <%= inline_svg('svg/mail.svg', class:"w-5")%>
             <%= f.label :email, t('pages.devise.session.new.email'), class:"block text-sm dark:text-white my-2"%>
+            <button class="absolute rounded-sm top-1 right-0 shadow-md px-3 py-0.5 my-1 text-neutral-800 bg-yellow-300 cursor-pointer hover:bg-yellow-200" type="button" data-action="click->demo#fill">
+              <p class="text-xs">デモプレイはこちら</p>
+            </button>
           </div>
           
-          <%= f.email_field :email, placeholder: "example@email.com", autocomplete: "email", class: "devise-form-style text-sm" %>
+          <%= f.email_field :email, placeholder: "example@email.com", autocomplete: "email", class: "devise-form-style text-sm", data:{"demo-target":"email"} %>
         </div>
 
         <div class="field w-full my-5">
@@ -22,7 +25,7 @@
             <%= inline_svg('svg/key.svg', class:"w-5")%>
             <%= f.label :password, t('activerecord.attributes.user.password'), class:"block text-sm dark:text-white my-2"%>
           </div>
-          <%= f.password_field :password, autocomplete: "current-password", class: "devise-form-style text-sm" %>
+          <%= f.password_field :password, autocomplete: "current-password", class: "devise-form-style text-sm", data:{"demo-target":"password"} %>
         </div>
 
         <% if devise_mapping.rememberable? %>
