@@ -13,5 +13,8 @@
 <%= tag.main(**main_attrs) do %>
   <%= render 'layouts/safelist' %>
   <%= render 'layouts/flash_message/for_rails' %>
+  <% if current_user&.demo? %>
+    <%= render 'layouts/demo'%>
+  <% end %>
   <%= yield %>
 <% end %>

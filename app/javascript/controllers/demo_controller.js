@@ -8,7 +8,7 @@ export default class extends Controller {
   ]
 
   fill() {
-    this.emailTarget.value = "test@email.com"
+    this.emailTarget.value = "demo@email.com"
     this.passwordTarget.value = "password"
   }
 }
