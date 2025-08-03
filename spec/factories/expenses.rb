@@ -50,7 +50,7 @@ FactoryBot.define do
 
     trait :jpy_in_future_date do
       association :currency, :jpy
-      payment_date { Date.today + 1 }
+      payment_date { Date.today + 2 }
       with_advance_payments
       with_payer
     end
