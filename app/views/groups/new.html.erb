@@ -11,13 +11,13 @@
   <h1 class="mt-2 my-2 text-xl font-bold text-center"><%= t('pages.groups.new.title') %></h1>
 
   <%# フォーム & ボタン ------------------ %>
-  <%= form_with url: groups_path, multipart: true, html:{class:"flex flex-col flex-1 min-h-0", data:{"group-validate-target": "form"}} do %>
+  <%= form_with url: groups_path, multipart: true, html:{class:"flex flex-col flex-1 min-h-0 overflow-y-auto", data:{"group-validate-target": "form"}} do %>
 
     <%# フォームカード %>
-    <div class="overflow-y-auto">
+    <section class="overflow-y-auto">
       <%= render 'groups/form_card' %>
       <%= render 'members/form_card', members: @members_for_form %>
-    </div>
+    </section>
 
     <%# ボタン類 %>
     <section class="px-4 my-3">

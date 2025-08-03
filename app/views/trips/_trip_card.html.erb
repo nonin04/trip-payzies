@@ -1,7 +1,7 @@
 <%# カードスタイルの切り替え %>
 <div class="relative py-2 card-style <%= trip_card_style(mode) %>">
   <%# 装飾ラベル ------------------ %>
-  <div class="absolute left-0 top-0 h-full w-2 rounded-l <%= mode == :index ? 'trip-accent-color' : 'hidden' %>"></div>
+  <div class="absolute left-0 top-0 h-full w-2 rounded-l <%= mode == :index || :group ? 'trip-accent-color' : 'hidden' %>"></div>
   
   <%# タイトル & その他アイコン ------------------ %>
   <div class="flex items-start justify-between pl-5 pr-3 py-1">
@@ -40,8 +40,14 @@
     </div>
   <% end %>
 
+  <% unless trip.currency.code == "JPY" %>
+    <div class="pl-6 pt-2">
+      <p class="text-gray-400 font-mono text-sm dark:text-neutral-500"><%= trip.currency.code %></p>
+    </div>
+  <% end %>
+
   <%# 決済日 & 精算状況 ------------------ %>
-  <div class="pl-6 pr-4 pt-3 flex items-center justify-between">
+  <div class="pl-6 pt-1 pr-4 flex items-center justify-between">
     <p class="text-gray-400 font-mono dark:text-neutral-500"><%= trip.departure_date.strftime("%Y/%m/%d") + "~" %></p>
 
     <% status_color = trip.settled? ? 'bg-neutral-500 dark:bg-transparent dark:border text-white dark:text-neutral-500' : 'bg-primary-red text-white dark:bg-neutral-200 dark:text-black' %>

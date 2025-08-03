@@ -31,10 +31,14 @@ jobs:
           ruby-version: '3.3.6'
           bundler-cache: true
 
-      - name: Install dependencies
-        run: |
-          sudo apt-get -yqq install libpq-dev
-          bundle install
+      - name: Install system dependencies
+        run: sudo apt-get -yqq install libpq-dev
+
+      - name: Install Ruby gems
+        run: bundle install
+
+      - name: Build Tailwind CSS
+        run: bundle exec rails tailwindcss:build
 
       - name: Set up database
         run: |

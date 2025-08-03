@@ -1,6 +1,6 @@
 <%# --reference------------------------------- %>
 <% main_attrs = {} %>
-<% main_attrs[:class] = "bg-form-gray dark:bg-neutral-900 dark:text-white flex-1 min-h-0 flex flex-col translate-x-0 transition-transform transform duration-300 ease-in-out" %>
+<% main_attrs[:class] = "relative bg-form-gray dark:bg-neutral-900 dark:text-white flex-1 min-h-0 flex flex-col translate-x-0 transition-transform transform duration-300 ease-in-out" %>
 
 <% if display_menu? %>
   <% main_attrs[:data] = { sidebar_target: "mainEl", action: "click->sidebar#hideSidebar" } %>
@@ -13,8 +13,5 @@
 <%= tag.main(**main_attrs) do %>
   <%= render 'layouts/safelist' %>
   <%= render 'layouts/flash_message/for_rails' %>
-  <% if current_user&.demo? %>
-    <%= render 'layouts/demo'%>
-  <% end %>
   <%= yield %>
 <% end %>
