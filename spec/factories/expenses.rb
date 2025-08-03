@@ -36,7 +36,7 @@ FactoryBot.define do
 
     trait :usd_in_future_date do
       association :currency, :usd
-      payment_date { Date.today + 1 }
+      payment_date { Date.today + 2 }
       with_advance_payments
       with_payer
     end

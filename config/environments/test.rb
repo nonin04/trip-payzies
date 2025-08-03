@@ -66,4 +66,8 @@ Rails.application.configure do
   config.action_controller.raise_on_missing_callback_actions = true
 
   Rails.application.config.assets.css_compressor = nil
+
+  Faker::Config.locale = :ja
+
+  I18n.locale = :ja
 end

@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
     if %w[en ja].include?(locale)
       I18n.locale = locale
     else
-      I18n.locale = :en
+      I18n.locale = :ja
     end
   end
 
