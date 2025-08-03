@@ -23,15 +23,15 @@ FactoryBot.define do
     end
 
 
-# #--------------------------------------------------------
-#     #7/19以前を選択しても問題ない
-#     trait :jpy_nineteen_before do
-#       rate_date { Date.new(2025, 7, 18)}
-#     end
+    # #--------------------------------------------------------
+    #     #7/19以前を選択しても問題ない
+    #     trait :jpy_nineteen_before do
+    #       rate_date { Date.new(2025, 7, 18)}
+    #     end
 
-#     #7/19以前を選択するとエラー
-#     trait :usd_nineteen_before do
-#       rate_date { Date.new(2025, 7, 18)}
-#     end
+    #     #7/19以前を選択するとエラー
+    #     trait :usd_nineteen_before do
+    #       rate_date { Date.new(2025, 7, 18)}
+    #     end
   end
 end

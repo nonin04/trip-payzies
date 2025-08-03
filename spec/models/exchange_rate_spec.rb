@@ -19,7 +19,5 @@ RSpec.describe ExchangeRate, type: :model do
         expect(exchange_rate2).not_to be_valid
       end
     end
-
-
   end
 end

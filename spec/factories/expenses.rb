@@ -1,10 +1,10 @@
 FactoryBot.define do
-  factory :expense do 
+  factory :expense do
     association :trip
     association :currency
-    title {"立替テスト"}
-    amount_local {1000}
-    payment_date {Date.today -1}
+    title { "立替テスト" }
+    amount_local { 1000 }
+    payment_date { Date.today -1 }
 
     trait :with_advance_payments do
       transient do
@@ -19,43 +19,43 @@ FactoryBot.define do
       end
     end
 
-    #_evaluatorで一時データを使わないことを明示
+    # _evaluatorで一時データを使わないことを明示
     trait :with_payer do
       after(:build) do |expense, _evaluator|
         expense.payer = expense.trip.participants.sample
       end
     end
 
-#通貨の日付検証用----------------------------------------
-    trait :usd_date_too_old do 
+    # 通貨の日付検証用----------------------------------------
+    trait :usd_date_too_old do
       association :currency, :usd
-      payment_date {Date.new(2025, 7, 18)}
+      payment_date { Date.new(2025, 7, 18) }
       with_advance_payments
       with_payer
     end
 
-    trait :usd_in_future_date do 
+    trait :usd_in_future_date do
       association :currency, :usd
-      payment_date {Date.today + 1}
+      payment_date { Date.today + 1 }
       with_advance_payments
       with_payer
     end
 
-    trait :jpy_date_too_old do 
+    trait :jpy_date_too_old do
       association :currency, :jpy
-      payment_date {Date.new(2025, 7, 18)}
+      payment_date { Date.new(2025, 7, 18) }
       with_advance_payments
       with_payer
     end
 
-    trait :jpy_in_future_date do 
+    trait :jpy_in_future_date do
       association :currency, :jpy
-      payment_date {Date.today + 1}
+      payment_date { Date.today + 1 }
       with_advance_payments
       with_payer
     end
 
-#対象者、決済者のバリデーション--------------------------------------------------
+    # 対象者、決済者のバリデーション--------------------------------------------------
     trait :payer_null do
       with_advance_payments
       after(:build) do |expense, _evaluator|
@@ -69,7 +69,5 @@ FactoryBot.define do
       end
       with_payer
     end
-
-
   end
 end

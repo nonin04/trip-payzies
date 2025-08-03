@@ -8,15 +8,15 @@ RSpec.describe Expense, type: :model do
     context '通貨の検証' do
       context 'usd' do
         let!(:trip_usd) { create(:trip, :trip_usd) }
-          
+
           it '米ドル立替で7/19以前の場合エラー' do
-            expense = build(:expense, :usd_date_too_old, trip: trip_usd, currency: usd_currency )
+            expense = build(:expense, :usd_date_too_old, trip: trip_usd, currency: usd_currency)
             expect(expense).not_to be_valid
             expect(expense.errors[:payment_date]).to include("2025/7/19~今日までの日付を選択してください")
           end
 
           it '米ドル立替で未来の日付の場合エラー' do
-            expense = build(:expense, :usd_in_future_date, trip: trip_usd, currency: usd_currency )
+            expense = build(:expense, :usd_in_future_date, trip: trip_usd, currency: usd_currency)
             expect(expense).not_to be_valid
             expect(expense.errors[:payment_date]).to include("2025/7/19~今日までの日付を選択してください")
           end
@@ -40,7 +40,7 @@ RSpec.describe Expense, type: :model do
         end
       end
     end
-#-----------------------------------------------------------------------
+    #-----------------------------------------------------------------------
     context 'その他' do
       let!(:trip_jpy) { create(:trip, :trip_jpy) }
       it '決済者が選択されていないとエラー' do
@@ -53,9 +53,6 @@ RSpec.describe Expense, type: :model do
         expect(expense).not_to be_valid
         expect(expense.errors[:base]).to include("対象者を一人以上設定してください")
       end
-
-
     end
-
   end
 end

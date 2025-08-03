@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :trip do
     association :user
     association :currency
-    title {"旅行テスト"}
+    title { "旅行テスト" }
     departure_date { Date.today -1 }
 
     trait :with_participants do
@@ -13,7 +13,7 @@ FactoryBot.define do
         trip.participants_attributes = build_list(:participant, evaluator.participants_count).map(&:attributes)
       end
     end
-#----------------------------------------
+    #----------------------------------------
     trait :trip_jpy do
       association :currency, factory: [ :currency, :jpy ]
       with_participants
@@ -25,8 +25,8 @@ FactoryBot.define do
     end
 
 
-#バリデーションエラー検証--------------------------------------------------
-    #十人以上はエラー
+    # バリデーションエラー検証--------------------------------------------------
+    # 十人以上はエラー
     trait :participants_within_limit do
       with_participants
       transient do

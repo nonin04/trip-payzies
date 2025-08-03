@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :advance_payment do 
+  factory :advance_payment do
     amount { 1000 }
     association :expense
     association :participant

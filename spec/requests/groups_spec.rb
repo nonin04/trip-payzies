@@ -12,14 +12,11 @@ RSpec.describe "Groups", type: :request do
   end
 
 
-    # it "バリデーションエラーだとエラーになる" do
-    #   post members_for_group_groups_path(trip), params: { group_id: trip.group.id }
-    #   expect(response).to have_http_status(:ok) 
-    #   json = JSON.parse(response.body)
-    #   name = trip.participants.first.name
-    #   expect(json).to include(name) 
-    # end
-
-
-
+  # it "バリデーションエラーだとエラーになる" do
+  #   post members_for_group_groups_path(trip), params: { group_id: trip.group.id }
+  #   expect(response).to have_http_status(:ok)
+  #   json = JSON.parse(response.body)
+  #   name = trip.participants.first.name
+  #   expect(json).to include(name)
+  # end
 end

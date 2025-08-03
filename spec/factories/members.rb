@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :member do
     association :group
-    name {"たかし"}
+    name { "たかし" }
   end
 end

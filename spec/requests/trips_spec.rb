@@ -9,7 +9,7 @@ RSpec.describe "Trips", type: :request do
   before do
     sign_in user
   end
-#-------------------------------------------------
+  #-------------------------------------------------
   describe "GET /index" do
     it "レスポンスが正常か" do
       get trips_path
@@ -17,7 +17,7 @@ RSpec.describe "Trips", type: :request do
       expect(response.body).to include(trip.title)
     end
   end
-#-------------------------------------------------
+  #-------------------------------------------------
   describe "POST /create" do
     it "旅行が作成されること" do
       trip_and_participants_params = attributes_for(:trip).merge(
@@ -36,7 +36,7 @@ RSpec.describe "Trips", type: :request do
       expect(response.body).to include(Trip.last.title)
     end
   end
-#-------------------------------------------------
+  #-------------------------------------------------
   describe "GET /show" do
     it "共有リンクがあるか" do
       get trip_path(trip)
@@ -44,7 +44,7 @@ RSpec.describe "Trips", type: :request do
       expect(response.body).to include(trip.share_token)
     end
   end
-#-------------------------------------------------
+  #-------------------------------------------------
   describe "GET /insight" do
     it "グラフが表示されているか" do
       get insights_trip_path(trip)
@@ -54,9 +54,8 @@ RSpec.describe "Trips", type: :request do
       expect(response.body).to include('<canvas')
     end
   end
-#-------------------------------------------------
+  #-------------------------------------------------
   describe "PATCH /update" do
-
     it "旅行を正しく更新できるか" do
       patch trip_path(trip), params: { trip: { title: "旅行テスト2" } }
       expect(response).to redirect_to(trip_path(trip))
@@ -80,7 +79,7 @@ RSpec.describe "Trips", type: :request do
       expect(response).to have_http_status(:unprocessable_entity)
     end
   end
-#-------------------------------------------------
+  #-------------------------------------------------
   describe "DELETE /destroy" do
     it "削除処理が機能する" do
       expect {
@@ -88,6 +87,5 @@ RSpec.describe "Trips", type: :request do
       }.to change(Trip, :count).by(-1)
       expect(response).to redirect_to(trips_path)
     end
-
   end
 end
