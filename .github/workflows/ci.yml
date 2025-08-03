@@ -37,16 +37,8 @@ jobs:
       - name: Install Ruby gems
         run: bundle install
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Install Node.js packages
-        run: npm install
-
       - name: Build Tailwind CSS
-        run: npm run build:css
+        run: bundle exec rails tailwindcss:build
 
       - name: Set up database
         run: |
