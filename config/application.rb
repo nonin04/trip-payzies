@@ -43,6 +43,5 @@ module Myapp
     I18n.available_locales = [ :en, :ja ]
 
     Faker::Config.locale = :ja
-
   end
 end
