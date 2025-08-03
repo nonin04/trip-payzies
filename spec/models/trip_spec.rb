@@ -25,7 +25,7 @@ RSpec.describe Trip, type: :model do
 
     context '異常系' do
       it '参加者が11人以上の場合はエラー' do
-        trip = build(:trip, :participants_within_10, user: user, currency: jpy_currency)
+        trip = build(:trip, :participants_within_limit, user: user, currency: jpy_currency)
         expect(trip).not_to be_valid
       end
 
