@@ -39,7 +39,7 @@ module TripsHelper
   end
 
   def group_name(trip)
-    trip.group&.name || t('pages.trips.card.temporary_group')
+    trip.group&.name || t("pages.trips.card.temporary_group")
   end
 
 

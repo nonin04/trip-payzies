@@ -1,4 +1,16 @@
 require 'simplecov'
+
+SimpleCov.start do
+  add_filter '/app/channels/'
+  add_filter '/app/mailers/'
+  add_filter '/app/jobs/'
+  add_filter '/app/dashboards/'
+  add_filter '/app/helpers/'
+  add_filter '/app/controllers/admin/'
+  add_filter 'app/uploaders/'
+  add_filter 'app/services/exchange_rate_fetcher.rb'
+end
+
 SimpleCov.start 'rails'
 
 

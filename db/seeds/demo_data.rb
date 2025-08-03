@@ -1,4 +1,4 @@
-#デモアカウント初期化
+# デモアカウント初期化
 user = User.find_by(email: "demo@email.com")
 if user
   user.groups.destroy_all
@@ -163,16 +163,16 @@ trip = user.trips.create!(group: g8, currency: eur, title: "ヨーロッパ卒�
 #-----------------------------------------
 p = trip.participants.order(:id)
 expenses_data = [
-  { payer: p[0], amount_local: 45.80, currency: eur, title: "パリ地下鉄回数券", payment_date: Date.new(2025, 7, 20), participant_ids: [p[0].id, p[1].id, p[2].id, p[3].id] },
-  { payer: p[1], amount_local: 123.50, currency: eur, title: "ルーブル美術館 入場料", payment_date: Date.new(2025, 7, 21), participant_ids: [p[0].id, p[1].id] },
-  { payer: p[2], amount_local: 3200, currency: jpy, title: "市内〜空港バス代", payment_date: Date.new(2025, 7, 20), participant_ids: [p[0].id, p[1].id, p[2].id, p[3].id] },
-  { payer: p[3], amount_local: 58.00, currency: eur, title: "エッフェル塔チケット", payment_date: Date.new(2025, 7, 23), participant_ids: [p[0].id, p[3].id] },
-  { payer: p[0], amount_local: 89.90, currency: eur, title: "イタリア国鉄移動費", payment_date: Date.new(2025, 7, 21), participant_ids: [p[1].id, p[2].id, p[3].id] },
-  { payer: p[1], amount_local: 27000, currency: jpy, title: "Wi-Fiルーター レンタル代", payment_date: Date.new(2025, 7, 20), participant_ids: [p[0].id, p[1].id, p[2].id, p[3].id] },
-  { payer: p[2], amount_local: 76.40, currency: eur, title: "ミラノ大聖堂 入場料金", payment_date: Date.new(2025, 7, 21), participant_ids: [p[2].id, p[3].id] },
-  { payer: p[3], amount_local: 129.99, currency: eur, title: "宿泊費（パリ）", payment_date: Date.new(2025, 7, 23), participant_ids: [p[0].id, p[1].id, p[2].id, p[3].id] },
-  { payer: p[0], amount_local: 18.50, currency: eur, title: "ジェラート代（トレビの泉近く）", payment_date: Date.new(2025, 7, 22), participant_ids: [p[1].id, p[2].id, p[3].id] },
-  { payer: p[1], amount_local: 42.75, currency: eur, title: "空港シャトル（ローマ→フィウミチーノ）", payment_date: Date.new(2025, 7, 24), participant_ids: [p[0].id, p[1].id, p[3].id] }
+  { payer: p[0], amount_local: 45.80, currency: eur, title: "パリ地下鉄回数券", payment_date: Date.new(2025, 7, 20), participant_ids: [ p[0].id, p[1].id, p[2].id, p[3].id ] },
+  { payer: p[1], amount_local: 123.50, currency: eur, title: "ルーブル美術館 入場料", payment_date: Date.new(2025, 7, 21), participant_ids: [ p[0].id, p[1].id ] },
+  { payer: p[2], amount_local: 3200, currency: jpy, title: "市内〜空港バス代", payment_date: Date.new(2025, 7, 20), participant_ids: [ p[0].id, p[1].id, p[2].id, p[3].id ] },
+  { payer: p[3], amount_local: 58.00, currency: eur, title: "エッフェル塔チケット", payment_date: Date.new(2025, 7, 23), participant_ids: [ p[0].id, p[3].id ] },
+  { payer: p[0], amount_local: 89.90, currency: eur, title: "イタリア国鉄移動費", payment_date: Date.new(2025, 7, 21), participant_ids: [ p[1].id, p[2].id, p[3].id ] },
+  { payer: p[1], amount_local: 27000, currency: jpy, title: "Wi-Fiルーター レンタル代", payment_date: Date.new(2025, 7, 20), participant_ids: [ p[0].id, p[1].id, p[2].id, p[3].id ] },
+  { payer: p[2], amount_local: 76.40, currency: eur, title: "ミラノ大聖堂 入場料金", payment_date: Date.new(2025, 7, 21), participant_ids: [ p[2].id, p[3].id ] },
+  { payer: p[3], amount_local: 129.99, currency: eur, title: "宿泊費（パリ）", payment_date: Date.new(2025, 7, 23), participant_ids: [ p[0].id, p[1].id, p[2].id, p[3].id ] },
+  { payer: p[0], amount_local: 18.50, currency: eur, title: "ジェラート代（トレビの泉近く）", payment_date: Date.new(2025, 7, 22), participant_ids: [ p[1].id, p[2].id, p[3].id ] },
+  { payer: p[1], amount_local: 42.75, currency: eur, title: "空港シャトル（ローマ→フィウミチーノ）", payment_date: Date.new(2025, 7, 24), participant_ids: [ p[0].id, p[1].id, p[3].id ] }
 ]
 expenses_data.each do |data|
   expense = trip.expenses.create!(
@@ -199,20 +199,20 @@ trip = user.trips.create!(group: g7, currency: usd, title: "アメリカ遠征",
 #-----------------------------------------
 p = trip.participants.order(:id)
 expenses_data = [
-  { payer: p[0], amount_local: 134.75, currency: usd, title: "JFK空港→マンハッタン タクシー代", payment_date: Date.new(2025, 7, 24), participant_ids: [p[0].id, p[1].id, p[2].id, p[3].id] },
-  { payer: p[1], amount_local: 84.00, currency: usd, title: "地下鉄メトロカード(7日券)", payment_date: Date.new(2025, 7, 25), participant_ids: [p[1].id, p[2].id, p[3].id, p[4].id] },
-  { payer: p[2], amount_local: 28000, currency: jpy, title: "海外用SIMカード購入", payment_date: Date.new(2025, 7, 23), participant_ids: [p[0].id, p[2].id, p[5].id, p[6].id] },
-  { payer: p[3], amount_local: 122.50, currency: usd, title: "自由の女神フェリー＆入場料", payment_date: Date.new(2025, 7, 26), participant_ids: [p[0].id, p[3].id, p[4].id] },
-  { payer: p[4], amount_local: 340.52, currency: usd, title: "ホテル代（3泊分の一部）", payment_date: Date.new(2025, 7, 27), participant_ids: [p[0].id, p[1].id, p[2].id, p[4].id, p[5].id] },
-  { payer: p[5], amount_local: 98.60, currency: usd, title: "ブロードウェイ観劇チケット", payment_date: Date.new(2025, 7, 28), participant_ids: [p[5].id, p[6].id] },
-  { payer: p[6], amount_local: 210.18, currency: usd, title: "セントラルパーク ピクニック食材", payment_date: Date.new(2025, 7, 28), participant_ids: [p[0].id, p[1].id, p[2].id, p[3].id, p[6].id] },
-  { payer: p[0], amount_local: 65.40, currency: usd, title: "タイムズスクエアでの軽食", payment_date: Date.new(2025, 7, 27), participant_ids: [p[0].id, p[1].id, p[5].id] },
-  { payer: p[1], amount_local: 132.00, currency: usd, title: "MOMA（近代美術館）入場料", payment_date: Date.new(2025, 7, 26), participant_ids: [p[1].id, p[2].id, p[3].id, p[4].id] },
-  { payer: p[2], amount_local: 58.25, currency: usd, title: "アイス・コーヒー代", payment_date: Date.new(2025, 7, 29), participant_ids: [p[2].id, p[3].id, p[6].id] },
-  { payer: p[4], amount_local: 275.00, currency: usd, title: "帰国前日のディナー", payment_date: Date.new(2025, 7, 31), participant_ids: [p[0].id, p[1].id, p[2].id, p[3].id, p[4].id, p[5].id] },
-  { payer: p[3], amount_local: 110.00, currency: usd, title: "ホテル→空港シャトルバス代", payment_date: Date.new(2025, 7, 28), participant_ids: [p[3].id, p[4].id, p[5].id, p[6].id] },
-  { payer: p[0], amount_local: 1620, currency: jpy, title: "羽田空港へのリムジンバス", payment_date: Date.new(2025, 7, 24), participant_ids: [p[0].id, p[1].id, p[2].id] },
-  { payer: p[6], amount_local: 2980, currency: jpy, title: "成田空港での昼食（出発前）", payment_date: Date.new(2025, 7, 24), participant_ids: [p[4].id, p[5].id, p[6].id] }
+  { payer: p[0], amount_local: 134.75, currency: usd, title: "JFK空港→マンハッタン タクシー代", payment_date: Date.new(2025, 7, 24), participant_ids: [ p[0].id, p[1].id, p[2].id, p[3].id ] },
+  { payer: p[1], amount_local: 84.00, currency: usd, title: "地下鉄メトロカード(7日券)", payment_date: Date.new(2025, 7, 25), participant_ids: [ p[1].id, p[2].id, p[3].id, p[4].id ] },
+  { payer: p[2], amount_local: 28000, currency: jpy, title: "海外用SIMカード購入", payment_date: Date.new(2025, 7, 23), participant_ids: [ p[0].id, p[2].id, p[5].id, p[6].id ] },
+  { payer: p[3], amount_local: 122.50, currency: usd, title: "自由の女神フェリー＆入場料", payment_date: Date.new(2025, 7, 26), participant_ids: [ p[0].id, p[3].id, p[4].id ] },
+  { payer: p[4], amount_local: 340.52, currency: usd, title: "ホテル代（3泊分の一部）", payment_date: Date.new(2025, 7, 27), participant_ids: [ p[0].id, p[1].id, p[2].id, p[4].id, p[5].id ] },
+  { payer: p[5], amount_local: 98.60, currency: usd, title: "ブロードウェイ観劇チケット", payment_date: Date.new(2025, 7, 28), participant_ids: [ p[5].id, p[6].id ] },
+  { payer: p[6], amount_local: 210.18, currency: usd, title: "セントラルパーク ピクニック食材", payment_date: Date.new(2025, 7, 28), participant_ids: [ p[0].id, p[1].id, p[2].id, p[3].id, p[6].id ] },
+  { payer: p[0], amount_local: 65.40, currency: usd, title: "タイムズスクエアでの軽食", payment_date: Date.new(2025, 7, 27), participant_ids: [ p[0].id, p[1].id, p[5].id ] },
+  { payer: p[1], amount_local: 132.00, currency: usd, title: "MOMA（近代美術館）入場料", payment_date: Date.new(2025, 7, 26), participant_ids: [ p[1].id, p[2].id, p[3].id, p[4].id ] },
+  { payer: p[2], amount_local: 58.25, currency: usd, title: "アイス・コーヒー代", payment_date: Date.new(2025, 7, 29), participant_ids: [ p[2].id, p[3].id, p[6].id ] },
+  { payer: p[4], amount_local: 275.00, currency: usd, title: "帰国前日のディナー", payment_date: Date.new(2025, 7, 31), participant_ids: [ p[0].id, p[1].id, p[2].id, p[3].id, p[4].id, p[5].id ] },
+  { payer: p[3], amount_local: 110.00, currency: usd, title: "ホテル→空港シャトルバス代", payment_date: Date.new(2025, 7, 28), participant_ids: [ p[3].id, p[4].id, p[5].id, p[6].id ] },
+  { payer: p[0], amount_local: 1620, currency: jpy, title: "羽田空港へのリムジンバス", payment_date: Date.new(2025, 7, 24), participant_ids: [ p[0].id, p[1].id, p[2].id ] },
+  { payer: p[6], amount_local: 2980, currency: jpy, title: "成田空港での昼食（出発前）", payment_date: Date.new(2025, 7, 24), participant_ids: [ p[4].id, p[5].id, p[6].id ] }
 ]
 
 expenses_data.each do |data|
@@ -243,18 +243,18 @@ trip = user.trips.create!(group: g10, currency: krw, title: "ソウル2泊3日",
 p = trip.participants.order(:id)
 expenses_data = [
 
-  { payer: p[0], amount_local: 3400, currency: jpy, title: "成田空港までのリムジンバス", payment_date: Date.new(2025, 7, 28), participant_ids: [p[0].id, p[1].id, p[2].id, p[3].id] },
-  { payer: p[3], amount_local: 12800, currency: jpy, title: "Wi-Fiレンタル代（3日分）", payment_date: Date.new(2025, 7, 28), participant_ids: [p[3].id, p[4].id, p[5].id, p[6].id] },
-  { payer: p[5], amount_local: 5600, currency: jpy, title: "仁川空港での昼食", payment_date: Date.new(2025, 7, 28), participant_ids: [p[5].id, p[6].id, p[7].id] },
-  { payer: p[9], amount_local: 2900, currency: jpy, title: "出発前の飲み物代", payment_date: Date.new(2025, 7, 28), participant_ids: [p[8].id, p[9].id] },
-  { payer: p[1], amount_local: 87000, currency: krw, title: "地下鉄T-moneyチャージ", payment_date: Date.new(2025, 7, 28), participant_ids: [p[0].id, p[1].id, p[2].id, p[3].id, p[4].id] },
-  { payer: p[2], amount_local: 132000, currency: krw, title: "ホテル代（2泊分一部）", payment_date: Date.new(2025, 7, 28), participant_ids: [p[0].id, p[2].id, p[4].id, p[6].id, p[8].id] },
-  { payer: p[4], amount_local: 62000, currency: krw, title: "明洞屋台フード食べ歩き", payment_date: Date.new(2025, 7, 29), participant_ids: [p[3].id, p[4].id, p[5].id, p[6].id] },
-  { payer: p[6], amount_local: 28000, currency: krw, title: "ソウルタワー入場料", payment_date: Date.new(2025, 7, 29), participant_ids: [p[6].id, p[7].id] },
-  { payer: p[7], amount_local: 49000, currency: krw, title: "カフェ休憩代（弘大）", payment_date: Date.new(2025, 7, 29), participant_ids: [p[1].id, p[2].id, p[7].id, p[8].id] },
-  { payer: p[8], amount_local: 91000, currency: krw, title: "韓国コスメお土産まとめ買い", payment_date: Date.new(2025, 7, 30), participant_ids: [p[0].id, p[4].id, p[8].id, p[9].id] },
-  { payer: p[9], amount_local: 75000, currency: krw, title: "サムギョプサル夕食代", payment_date: Date.new(2025, 7, 30), participant_ids: [p[0].id, p[1].id, p[2].id, p[3].id, p[9].id] },
-  { payer: p[0], amount_local: 36500, currency: krw, title: "空港までのKTXチケット", payment_date: Date.new(2025, 7, 30), participant_ids: [p[0].id, p[1].id, p[2].id, p[3].id] }
+  { payer: p[0], amount_local: 3400, currency: jpy, title: "成田空港までのリムジンバス", payment_date: Date.new(2025, 7, 28), participant_ids: [ p[0].id, p[1].id, p[2].id, p[3].id ] },
+  { payer: p[3], amount_local: 12800, currency: jpy, title: "Wi-Fiレンタル代（3日分）", payment_date: Date.new(2025, 7, 28), participant_ids: [ p[3].id, p[4].id, p[5].id, p[6].id ] },
+  { payer: p[5], amount_local: 5600, currency: jpy, title: "仁川空港での昼食", payment_date: Date.new(2025, 7, 28), participant_ids: [ p[5].id, p[6].id, p[7].id ] },
+  { payer: p[9], amount_local: 2900, currency: jpy, title: "出発前の飲み物代", payment_date: Date.new(2025, 7, 28), participant_ids: [ p[8].id, p[9].id ] },
+  { payer: p[1], amount_local: 87000, currency: krw, title: "地下鉄T-moneyチャージ", payment_date: Date.new(2025, 7, 28), participant_ids: [ p[0].id, p[1].id, p[2].id, p[3].id, p[4].id ] },
+  { payer: p[2], amount_local: 132000, currency: krw, title: "ホテル代（2泊分一部）", payment_date: Date.new(2025, 7, 28), participant_ids: [ p[0].id, p[2].id, p[4].id, p[6].id, p[8].id ] },
+  { payer: p[4], amount_local: 62000, currency: krw, title: "明洞屋台フード食べ歩き", payment_date: Date.new(2025, 7, 29), participant_ids: [ p[3].id, p[4].id, p[5].id, p[6].id ] },
+  { payer: p[6], amount_local: 28000, currency: krw, title: "ソウルタワー入場料", payment_date: Date.new(2025, 7, 29), participant_ids: [ p[6].id, p[7].id ] },
+  { payer: p[7], amount_local: 49000, currency: krw, title: "カフェ休憩代（弘大）", payment_date: Date.new(2025, 7, 29), participant_ids: [ p[1].id, p[2].id, p[7].id, p[8].id ] },
+  { payer: p[8], amount_local: 91000, currency: krw, title: "韓国コスメお土産まとめ買い", payment_date: Date.new(2025, 7, 30), participant_ids: [ p[0].id, p[4].id, p[8].id, p[9].id ] },
+  { payer: p[9], amount_local: 75000, currency: krw, title: "サムギョプサル夕食代", payment_date: Date.new(2025, 7, 30), participant_ids: [ p[0].id, p[1].id, p[2].id, p[3].id, p[9].id ] },
+  { payer: p[0], amount_local: 36500, currency: krw, title: "空港までのKTXチケット", payment_date: Date.new(2025, 7, 30), participant_ids: [ p[0].id, p[1].id, p[2].id, p[3].id ] }
 ]
 
 expenses_data.each do |data|
@@ -285,15 +285,15 @@ trip = user.trips.create!(group: g6, currency: jpy, title: "春の北アルプ�
 p = trip.participants.order(:id)
 expenses_data = [
   { payer: p[0], amount_local: 4500, currency: jpy, title: "レンタカー代（2日分）", payment_date: Date.new(2025, 4, 15), participant_ids: p.map(&:id) },
-  { payer: p[1], amount_local: 2343, currency: jpy, title: "昼食弁当購入", payment_date: Date.new(2025, 4, 15), participant_ids: [p[0].id, p[1].id, p[2].id, p[3].id] },
+  { payer: p[1], amount_local: 2343, currency: jpy, title: "昼食弁当購入", payment_date: Date.new(2025, 4, 15), participant_ids: [ p[0].id, p[1].id, p[2].id, p[3].id ] },
   { payer: p[2], amount_local: 1500, currency: jpy, title: "入山料", payment_date: Date.new(2025, 4, 16), participant_ids: p.map(&:id) },
-  { payer: p[3], amount_local: 2850, currency: jpy, title: "山小屋宿泊費（一部）", payment_date: Date.new(2025, 4, 16), participant_ids: [p[3].id, p[4].id, p[5].id] },
-  { payer: p[4], amount_local: 1200, currency: jpy, title: "登山靴レンタル代", payment_date: Date.new(2025, 4, 15), participant_ids: [p[4].id, p[5].id, p[6].id] },
+  { payer: p[3], amount_local: 2850, currency: jpy, title: "山小屋宿泊費（一部）", payment_date: Date.new(2025, 4, 16), participant_ids: [ p[3].id, p[4].id, p[5].id ] },
+  { payer: p[4], amount_local: 1200, currency: jpy, title: "登山靴レンタル代", payment_date: Date.new(2025, 4, 15), participant_ids: [ p[4].id, p[5].id, p[6].id ] },
   { payer: p[5], amount_local: 3500, currency: jpy, title: "温泉入浴料", payment_date: Date.new(2025, 4, 17), participant_ids: p.map(&:id) },
-  { payer: p[6], amount_local: 1828, currency: jpy, title: "飲料・補給食", payment_date: Date.new(2025, 4, 15), participant_ids: [p[6].id, p[7].id] },
-  { payer: p[7], amount_local: 2100, currency: jpy, title: "地元食材の夕食代", payment_date: Date.new(2025, 4, 16), participant_ids: [p[0].id, p[1].id, p[7].id] },
+  { payer: p[6], amount_local: 1828, currency: jpy, title: "飲料・補給食", payment_date: Date.new(2025, 4, 15), participant_ids: [ p[6].id, p[7].id ] },
+  { payer: p[7], amount_local: 2100, currency: jpy, title: "地元食材の夕食代", payment_date: Date.new(2025, 4, 16), participant_ids: [ p[0].id, p[1].id, p[7].id ] },
   { payer: p[0], amount_local: 900, currency: jpy, title: "マップ購入", payment_date: Date.new(2025, 4, 15), participant_ids: p.map(&:id) },
-  { payer: p[1], amount_local: 1100, currency: jpy, title: "公共交通機関利用（バス代）", payment_date: Date.new(2025, 4, 17), participant_ids: [p[2].id, p[3].id, p[4].id, p[5].id] }
+  { payer: p[1], amount_local: 1100, currency: jpy, title: "公共交通機関利用（バス代）", payment_date: Date.new(2025, 4, 17), participant_ids: [ p[2].id, p[3].id, p[4].id, p[5].id ] }
 ]
 
 expenses_data.each do |data|
@@ -323,20 +323,20 @@ trip = user.trips.create!(group: g4, currency: jpy, title: "九州絶景と温�
 p = trip.participants.order(:id)
 expenses_data = [
   { payer: p[0], amount_local: 4230, currency: jpy, title: "熊本空港〜市内バス代", payment_date: Date.new(2024, 5, 28), participant_ids: p.map(&:id) },
-  { payer: p[1], amount_local: 9800, currency: jpy, title: "熊本城入場料", payment_date: Date.new(2024, 5, 29), participant_ids: [p[0].id, p[1].id, p[2].id] },
+  { payer: p[1], amount_local: 9800, currency: jpy, title: "熊本城入場料", payment_date: Date.new(2024, 5, 29), participant_ids: [ p[0].id, p[1].id, p[2].id ] },
   { payer: p[2], amount_local: 5420, currency: jpy, title: "熊本ラーメン昼食代", payment_date: Date.new(2024, 5, 29), participant_ids: p.map(&:id) },
   { payer: p[3], amount_local: 25000, currency: jpy, title: "レンタカー代（3日分）", payment_date: Date.new(2024, 5, 28), participant_ids: p.map(&:id) },
-  { payer: p[4], amount_local: 13500, currency: jpy, title: "霧島温泉宿泊費", payment_date: Date.new(2024, 5, 30), participant_ids: [p[2].id, p[3].id, p[4].id, p[5].id] },
+  { payer: p[4], amount_local: 13500, currency: jpy, title: "霧島温泉宿泊費", payment_date: Date.new(2024, 5, 30), participant_ids: [ p[2].id, p[3].id, p[4].id, p[5].id ] },
   { payer: p[5], amount_local: 5300, currency: jpy, title: "指宿砂蒸し温泉入場料", payment_date: Date.new(2024, 5, 31), participant_ids: p.map(&:id) },
-  { payer: p[0], amount_local: 8000, currency: jpy, title: "鹿児島黒豚料理夕食代", payment_date: Date.new(2024, 5, 30), participant_ids: [p[0].id, p[1].id, p[4].id] },
-  { payer: p[1], amount_local: 4500, currency: jpy, title: "桜島フェリー代", payment_date: Date.new(2024, 5, 30), participant_ids: [p[1].id, p[2].id, p[3].id] },
-  { payer: p[2], amount_local: 6000, currency: jpy, title: "別府地獄めぐり入場料", payment_date: Date.new(2024, 5, 31), participant_ids: [p[0].id, p[2].id, p[5].id] },
+  { payer: p[0], amount_local: 8000, currency: jpy, title: "鹿児島黒豚料理夕食代", payment_date: Date.new(2024, 5, 30), participant_ids: [ p[0].id, p[1].id, p[4].id ] },
+  { payer: p[1], amount_local: 4500, currency: jpy, title: "桜島フェリー代", payment_date: Date.new(2024, 5, 30), participant_ids: [ p[1].id, p[2].id, p[3].id ] },
+  { payer: p[2], amount_local: 6000, currency: jpy, title: "別府地獄めぐり入場料", payment_date: Date.new(2024, 5, 31), participant_ids: [ p[0].id, p[2].id, p[5].id ] },
   { payer: p[3], amount_local: 12000, currency: jpy, title: "別府温泉宿泊費", payment_date: Date.new(2024, 5, 31), participant_ids: p.map(&:id) },
-  { payer: p[4], amount_local: 3700, currency: jpy, title: "大分郷土料理夕食代", payment_date: Date.new(2024, 6, 1), participant_ids: [p[3].id, p[4].id, p[5].id] },
+  { payer: p[4], amount_local: 3700, currency: jpy, title: "大分郷土料理夕食代", payment_date: Date.new(2024, 6, 1), participant_ids: [ p[3].id, p[4].id, p[5].id ] },
   { payer: p[5], amount_local: 5200, currency: jpy, title: "お土産代（熊本・鹿児島・大分）", payment_date: Date.new(2024, 6, 1), participant_ids: p.map(&:id) },
   { payer: p[0], amount_local: 3589, currency: jpy, title: "ガソリン代", payment_date: Date.new(2024, 5, 29), participant_ids: p.map(&:id) },
   { payer: p[1], amount_local: 2800, currency: jpy, title: "高速道路料金", payment_date: Date.new(2024, 5, 30), participant_ids: p.map(&:id) },
-  { payer: p[2], amount_local: 4000, currency: jpy, title: "観光地入場料", payment_date: Date.new(2024, 5, 31), participant_ids: [p[0].id, p[1].id, p[2].id, p[3].id] },
+  { payer: p[2], amount_local: 4000, currency: jpy, title: "観光地入場料", payment_date: Date.new(2024, 5, 31), participant_ids: [ p[0].id, p[1].id, p[2].id, p[3].id ] },
   { payer: p[3], amount_local: 9559, currency: jpy, title: "旅の記念ディナー", payment_date: Date.new(2024, 6, 1), participant_ids: p.map(&:id) }
 ]
 expenses_data.each do |data|
@@ -367,19 +367,19 @@ p = trip.participants.order(:id)
 expenses_data = [
   { payer: p[0], amount_local: 9200, currency: jpy, title: "仙台〜蔵王バス代", payment_date: Date.new(2025, 3, 14), participant_ids: p.map(&:id) },
   { payer: p[1], amount_local: 48000, currency: jpy, title: "スキー場リフト券まとめ買い", payment_date: Date.new(2025, 3, 15), participant_ids: p.map(&:id) },
-  { payer: p[2], amount_local: 20000, currency: jpy, title: "スノボレンタル代", payment_date: Date.new(2025, 3, 15), participant_ids: [p[0].id, p[2].id, p[3].id, p[4].id] },
+  { payer: p[2], amount_local: 20000, currency: jpy, title: "スノボレンタル代", payment_date: Date.new(2025, 3, 15), participant_ids: [ p[0].id, p[2].id, p[3].id, p[4].id ] },
   { payer: p[3], amount_local: 3250, currency: jpy, title: "ゲレンデランチ", payment_date: Date.new(2025, 3, 15), participant_ids: p.map(&:id) },
-  { payer: p[4], amount_local: 6400, currency: jpy, title: "温泉施設入浴料", payment_date: Date.new(2025, 3, 16), participant_ids: [p[1].id, p[2].id, p[3].id, p[4].id, p[5].id] },
+  { payer: p[4], amount_local: 6400, currency: jpy, title: "温泉施設入浴料", payment_date: Date.new(2025, 3, 16), participant_ids: [ p[1].id, p[2].id, p[3].id, p[4].id, p[5].id ] },
   { payer: p[5], amount_local: 36000, currency: jpy, title: "旅館宿泊費（蔵王）", payment_date: Date.new(2025, 3, 14), participant_ids: p.map(&:id) },
   { payer: p[6], amount_local: 7200, currency: jpy, title: "地元居酒屋ディナー", payment_date: Date.new(2025, 3, 15), participant_ids: p.map(&:id) },
-  { payer: p[7], amount_local: 8900, currency: jpy, title: "山形名物芋煮昼食代", payment_date: Date.new(2025, 3, 16), participant_ids: [p[0].id, p[2].id, p[5].id, p[7].id] },
+  { payer: p[7], amount_local: 8900, currency: jpy, title: "山形名物芋煮昼食代", payment_date: Date.new(2025, 3, 16), participant_ids: [ p[0].id, p[2].id, p[5].id, p[7].id ] },
   { payer: p[0], amount_local: 5000, currency: jpy, title: "蔵王の樹氷観光チケット", payment_date: Date.new(2025, 3, 16), participant_ids: p.map(&:id) },
-  { payer: p[1], amount_local: 2000, currency: jpy, title: "カフェ代", payment_date: Date.new(2025, 3, 17), participant_ids: [p[1].id, p[3].id, p[6].id] },
+  { payer: p[1], amount_local: 2000, currency: jpy, title: "カフェ代", payment_date: Date.new(2025, 3, 17), participant_ids: [ p[1].id, p[3].id, p[6].id ] },
   { payer: p[2], amount_local: 4443, currency: jpy, title: "ガソリン代", payment_date: Date.new(2025, 3, 15), participant_ids: p.map(&:id) },
   { payer: p[3], amount_local: 2800, currency: jpy, title: "高速道路料金", payment_date: Date.new(2025, 3, 14), participant_ids: p.map(&:id) },
-  { payer: p[4], amount_local: 5600, currency: jpy, title: "酒蔵見学費", payment_date: Date.new(2025, 3, 17), participant_ids: [p[0].id, p[4].id, p[5].id] },
+  { payer: p[4], amount_local: 5600, currency: jpy, title: "酒蔵見学費", payment_date: Date.new(2025, 3, 17), participant_ids: [ p[0].id, p[4].id, p[5].id ] },
   { payer: p[5], amount_local: 3169, currency: jpy, title: "お土産代（地酒・お菓子）", payment_date: Date.new(2025, 3, 18), participant_ids: p.map(&:id) },
-  { payer: p[6], amount_local: 8730, currency: jpy, title: "昼食（米沢牛ステーキ）", payment_date: Date.new(2025, 3, 18), participant_ids: [p[2].id, p[6].id, p[7].id] },
+  { payer: p[6], amount_local: 8730, currency: jpy, title: "昼食（米沢牛ステーキ）", payment_date: Date.new(2025, 3, 18), participant_ids: [ p[2].id, p[6].id, p[7].id ] },
   { payer: p[7], amount_local: 9532, currency: jpy, title: "旅の打ち上げディナー", payment_date: Date.new(2025, 3, 18), participant_ids: p.map(&:id) }
 ]
 
@@ -412,7 +412,7 @@ expenses_data = [
   { payer: p[1], amount_local: 5495, currency: jpy, title: "ガソリン代", payment_date: Date.new(2025, 4, 13), participant_ids: p.map(&:id) },
   { payer: p[2], amount_local: 3600, currency: jpy, title: "とれとれ市場の昼食代", payment_date: Date.new(2025, 4, 13), participant_ids: p.map(&:id) },
   { payer: p[0], amount_local: 2700, currency: jpy, title: "白浜温泉入浴料", payment_date: Date.new(2025, 4, 13), participant_ids: p.map(&:id) },
-  { payer: p[1], amount_local: 1530, currency: jpy, title: "カフェ・スイーツ代", payment_date: Date.new(2025, 4, 13), participant_ids: [p[1].id, p[2].id] },
+  { payer: p[1], amount_local: 1530, currency: jpy, title: "カフェ・スイーツ代", payment_date: Date.new(2025, 4, 13), participant_ids: [ p[1].id, p[2].id ] },
   { payer: p[2], amount_local: 2103, currency: jpy, title: "お土産（梅干し・みかんジュース）", payment_date: Date.new(2025, 4, 13), participant_ids: p.map(&:id) }
 ]
 expenses_data.each do |data|
@@ -446,12 +446,12 @@ expenses_data = [
   { payer: p[2], amount_local: 13800, currency: jpy, title: "宿泊費（古民家宿）", payment_date: Date.new(2025, 8, 13), participant_ids: p.map(&:id) },
   { payer: p[3], amount_local: 3600, currency: jpy, title: "川サウナ利用料", payment_date: Date.new(2025, 8, 14), participant_ids: p.map(&:id) },
   { payer: p[4], amount_local: 4231, currency: jpy, title: "BBQ食材代", payment_date: Date.new(2025, 8, 14), participant_ids: p.map(&:id) },
-  { payer: p[0], amount_local: 5200, currency: jpy, title: "昼食代（鰹のたたき定食）", payment_date: Date.new(2025, 8, 13), participant_ids: [p[0].id, p[1].id, p[2].id] },
+  { payer: p[0], amount_local: 5200, currency: jpy, title: "昼食代（鰹のたたき定食）", payment_date: Date.new(2025, 8, 13), participant_ids: [ p[0].id, p[1].id, p[2].id ] },
   { payer: p[1], amount_local: 1800, currency: jpy, title: "花火代", payment_date: Date.new(2025, 8, 14), participant_ids: p.map(&:id) },
-  { payer: p[2], amount_local: 3000, currency: jpy, title: "道の駅スイーツ・飲み物", payment_date: Date.new(2025, 8, 13), participant_ids: [p[2].id, p[3].id, p[4].id] },
+  { payer: p[2], amount_local: 3000, currency: jpy, title: "道の駅スイーツ・飲み物", payment_date: Date.new(2025, 8, 13), participant_ids: [ p[2].id, p[3].id, p[4].id ] },
   { payer: p[3], amount_local: 7200, currency: jpy, title: "夕食（地元居酒屋）", payment_date: Date.new(2025, 8, 14), participant_ids: p.map(&:id) },
-  { payer: p[4], amount_local: 2740, currency: jpy, title: "川遊び道具レンタル", payment_date: Date.new(2025, 8, 13), participant_ids: [p[0].id, p[4].id] },
-  { payer: p[0], amount_local: 1500, currency: jpy, title: "温泉施設入浴料", payment_date: Date.new(2025, 8, 15), participant_ids: [p[1].id, p[2].id, p[0].id] },
+  { payer: p[4], amount_local: 2740, currency: jpy, title: "川遊び道具レンタル", payment_date: Date.new(2025, 8, 13), participant_ids: [ p[0].id, p[4].id ] },
+  { payer: p[0], amount_local: 1500, currency: jpy, title: "温泉施設入浴料", payment_date: Date.new(2025, 8, 15), participant_ids: [ p[1].id, p[2].id, p[0].id ] },
   { payer: p[1], amount_local: 3859, currency: jpy, title: "お土産代（芋けんぴ・地酒など）", payment_date: Date.new(2025, 8, 15), participant_ids: p.map(&:id) }
 ]
 expenses_data.each do |data|
@@ -466,4 +466,3 @@ expenses_data.each do |data|
   ExpenseAmountDistributor.new(expense).call
 end
 #-----------------------------------------
-

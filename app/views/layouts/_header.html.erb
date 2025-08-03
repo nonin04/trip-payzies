@@ -11,6 +11,10 @@
 
 
 <header class="z-30 h-12 flex justify-between bg-panel-navy dark:bg-neutral-900">
+  <% if current_user&.demo? %>
+    <%= render 'layouts/demo'%>
+  <% end %>
+  
   <%# logo&text %>
   <% if shared_user? %>
     <div class="flex items-center">
