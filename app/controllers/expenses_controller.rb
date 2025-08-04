@@ -14,7 +14,7 @@ class ExpensesController < ApplicationController
     @expense = @trip.expenses.build(expense_params)
 
     if @expense.save
-      ExpenseAmountDistributor.new(@expense).call
+      ExpenseAmountApplier.new(@expense).call
       @trip.reset_settlement_status
 
       redirect_to trip_path(@trip), notice: I18n.t("flash.expense.success.create")
@@ -34,7 +34,7 @@ class ExpensesController < ApplicationController
       # advance_paymentsは新しく送られてきたパラメータで再作成する
       @expense.advance_payments.destroy_all
       if @expense.update(expense_params)
-        ExpenseAmountDistributor.new(@expense).call
+        ExpenseAmountApplier.new(@expense).call
         @trip.reset_settlement_status
         success = true
       else

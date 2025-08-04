@@ -12,7 +12,10 @@ Rails.application.routes.draw do
 
       root to: "users#index"
     end
-  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
+  devise_for :users, controllers: {
+  registrations: "users/registrations",
+  omniauth_callbacks: "users/omniauth_callbacks"
+}
 
   # 認証状態によるトップページ分岐
   authenticated :user do
