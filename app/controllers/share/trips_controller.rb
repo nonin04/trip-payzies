@@ -9,6 +9,9 @@ class Share::TripsController < ApplicationController
   end
 
   def insights
+    if @trip.expenses.empty?
+       flash.now[:alert] = "精算記録がありません。"
+    end
     @participants = @trip.participants
     balances = BalanceCalculator.new(@trip)
     @balances = balances.balances
@@ -17,7 +20,11 @@ class Share::TripsController < ApplicationController
   end
 
   def result
-    @settlements = SettlementMatcher.new(@trip).grouped_settlements
+    if @trip.expenses.empty?
+      redirect_to share_trip_path(@trip), alert: "精算記録がありません。"
+    else
+      @settlements = SettlementMatcher.new(@trip).grouped_settlements
+    end
   end
 
   private

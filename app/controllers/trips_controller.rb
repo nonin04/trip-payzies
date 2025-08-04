@@ -50,31 +50,30 @@ class TripsController < ApplicationController
 
 
   def insights
+    if @trip.expenses.empty?
+       flash.now[:alert] = "精算記録がありません。"
+    end
     balances = BalanceCalculator.new(@trip)
     @balances = balances.balances
     @net_balances = balances.net_balances
   end
 
   def result
-    @settlements = SettlementMatcher.new(@trip).grouped_settlements
+    if @trip.expenses.empty?
+    redirect_to trip_path(@trip), alert: "精算記録がありません。"
+    else
+      @settlements = SettlementMatcher.new(@trip).grouped_settlements
+    end
   end
 
   def settle
-    if @trip.update(settlement_status: :settled)
-       redirect_to trip_path(@trip), notice: I18n.t("flash.settle.settled")
-    else
-      flash.now[:alert] = I18n.t("flash.settle.update_failed")
-      render :result, status: :unprocessable_entity
-    end
+    @trip.update(settlement_status: :settled)
+    redirect_to trip_path(@trip), notice: I18n.t("flash.settle.settled")
   end
 
   def unsettle
-    if @trip.update(settlement_status: :unsettled)
-       redirect_to trip_path(@trip), notice: I18n.t("flash.settle.unsettled")
-    else
-      flash.now[:alert] = I18n.t("flash.settle.update_failed")
-      render :result, status: :unprocessable_entity
-    end
+    @trip.update(settlement_status: :unsettled)
+    redirect_to trip_path(@trip), notice: I18n.t("flash.settle.unsettled")
   end
 
   private
