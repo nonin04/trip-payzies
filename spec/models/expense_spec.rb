@@ -5,6 +5,15 @@ RSpec.describe Expense, type: :model do
   let!(:usd_currency) { create(:currency, :usd) }
 
   describe 'バリデーション' do
+    #-----------------------------------------------------------------------
+    context '金額の検証' do
+      let!(:trip_jpy) { create(:trip, :trip_jpy) }
+      it '数値でない場合エラー' do
+        expense = build(:expense, :with_advance_payments, amount_local: "文字列", trip: trip_jpy)
+        expect(expense).not_to be_valid
+      end
+    end
+    #-----------------------------------------------------------------------
     context '通貨の検証' do
       context 'usd' do
         let!(:trip_usd) { create(:trip, :trip_usd) }
@@ -21,7 +30,7 @@ RSpec.describe Expense, type: :model do
             expect(expense.errors[:payment_date]).to include("2025/7/19~今日までの日付を選択してください")
           end
         end
-
+      #-----------------------------------------------------------------------
       context 'jpy' do
         let!(:trip_jpy) { create(:trip, :trip_jpy) }
         it '日本円で立替を正常に作成できる' do
@@ -40,6 +49,7 @@ RSpec.describe Expense, type: :model do
         end
       end
     end
+
     #-----------------------------------------------------------------------
     context 'その他' do
       let!(:trip_jpy) { create(:trip, :trip_jpy) }

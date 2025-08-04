@@ -149,7 +149,7 @@ expenses_data.each do |data|
     payment_date: data[:payment_date],
     advance_payments_attributes: data[:participant_ids].map { |id| { participant_id: id } }
   )
-  ExpenseAmountDistributor.new(expense).call
+  ExpenseAmountApplier.new(expense).call
 end
 #-----------------------------------------
 
@@ -183,7 +183,7 @@ expenses_data.each do |data|
     payment_date: data[:payment_date],
     advance_payments_attributes: data[:participant_ids].map { |id| { participant_id: id } }
   )
-  ExpenseAmountDistributor.new(expense).call
+  ExpenseAmountApplier.new(expense).call
 end
 #-----------------------------------------
 
@@ -224,7 +224,7 @@ expenses_data.each do |data|
     payment_date: data[:payment_date],
     advance_payments_attributes: data[:participant_ids].map { |id| { participant_id: id } }
   )
-  ExpenseAmountDistributor.new(expense).call
+  ExpenseAmountApplier.new(expense).call
 end
 #---------------------------
 
@@ -266,7 +266,7 @@ expenses_data.each do |data|
     payment_date: data[:payment_date],
     advance_payments_attributes: data[:participant_ids].map { |id| { participant_id: id } }
   )
-  ExpenseAmountDistributor.new(expense).call
+  ExpenseAmountApplier.new(expense).call
 end
 #-----------------------------------------
 
@@ -305,7 +305,7 @@ expenses_data.each do |data|
     payment_date: data[:payment_date],
     advance_payments_attributes: data[:participant_ids].map { |id| { participant_id: id } }
   )
-  ExpenseAmountDistributor.new(expense).call
+  ExpenseAmountApplier.new(expense).call
 end
 #-----------------------------------------
 
@@ -348,7 +348,7 @@ expenses_data.each do |data|
     payment_date: data[:payment_date],
     advance_payments_attributes: data[:participant_ids].map { |id| { participant_id: id } }
   )
-  ExpenseAmountDistributor.new(expense).call
+  ExpenseAmountApplier.new(expense).call
 end
 #-----------------------------------------
 
@@ -392,7 +392,7 @@ expenses_data.each do |data|
     payment_date: data[:payment_date],
     advance_payments_attributes: data[:participant_ids].map { |id| { participant_id: id } }
   )
-  ExpenseAmountDistributor.new(expense).call
+  ExpenseAmountApplier.new(expense).call
 end
 #-----------------------------------------
 
@@ -424,7 +424,7 @@ expenses_data.each do |data|
     payment_date: data[:payment_date],
     advance_payments_attributes: data[:participant_ids].map { |id| { participant_id: id } }
   )
-  ExpenseAmountDistributor.new(expense).call
+  ExpenseAmountApplier.new(expense).call
 end
 #--------------------------------------
 
@@ -463,6 +463,6 @@ expenses_data.each do |data|
     payment_date: data[:payment_date],
     advance_payments_attributes: data[:participant_ids].map { |id| { participant_id: id } }
   )
-  ExpenseAmountDistributor.new(expense).call
+  ExpenseAmountApplier.new(expense).call
 end
 #-----------------------------------------
