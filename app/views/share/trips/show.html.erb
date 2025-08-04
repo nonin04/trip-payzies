@@ -68,9 +68,9 @@
 </section>
 
 <%# 仕切り線とボタン ------------------ %>
-<section class="px-4 my-3">
-  <div class="separator"></div>
-  <% if @expenses.present?%>
+<% if @expenses.present?%>
+  <section class="px-4 my-3">
+    <div class="separator"></div>
     <%= link_to "精算結果", result_share_trip_path(share_token: @trip.share_token), class:"w-full flex main-action-btn bg-primary-red text-white" %>  
-  <% end %>
-</section>
+  </section>
+<% end %>
