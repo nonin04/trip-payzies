@@ -248,14 +248,14 @@ dark:bg-neutral-800
 
 .trip-accent-color {@apply
   bg-gradient-to-b
- from-panel-brown to-gradation-brown
+ from-slate-600 to-slate-900
  dark:from-neutral-500 dark:to-neutral-500
 }
 
 /* 影 ------------------------------------------------------------------------------------ */
 .shadow-primary{@apply
-  shadow-md
-  /* shadow-[0px_4px_0px_rgba(0,0,0,0.3)] */
+  shadow-md 
+  /* shadow-[0px_4px_0px_rgba(24,48,82,0.5)] */
   transition duration-300 ease-in-out transform
   hover:translate-y-[4px] hover:shadow-none
   active:translate-y-[4px] active:shadow-none
@@ -272,8 +272,8 @@ dark:bg-neutral-800
 .main-action-btn{@apply
   flex 
   mt-2 rounded-lg py-2 text-[22px] text-center justify-center font-bold
-  shadow-md
-  /* shadow-[0px_4px_0px_rgba(0,0,0,0.2)] */
+  shadow-md 
+  /* shadow-[0px_4px_0px_rgba(24,48,82,0.5)] */
   transition duration-300 ease-in-out transform 
   hover:translate-y-[4px] hover:shadow-none
   active:translate-y-[4px] active:shadow-none

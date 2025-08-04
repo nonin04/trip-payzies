@@ -1,7 +1,7 @@
 <%# カードスタイルの切り替え %>
 <div class="relative py-2 card-style <%= trip_card_style(mode) %>">
   <%# 装飾ラベル ------------------ %>
-  <div class="absolute left-0 top-0 h-full w-2 rounded-l <%= mode == :index || :group ? 'trip-accent-color' : 'hidden' %>"></div>
+  <div class="absolute left-0 top-0 h-full w-2 rounded-l <%= [:index, :group].include?(mode) ? 'trip-accent-color' : 'hidden' %>"></div>
   
   <%# タイトル & その他アイコン ------------------ %>
   <div class="flex items-start justify-between pl-5 pr-3 py-1">
