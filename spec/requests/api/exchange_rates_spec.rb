@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-#APIのリクエストを消費するため
-#為替レート取得検証時のみskipをitに変更して実行
+# APIのリクエストを消費するため
+# 為替レート取得検証時のみskipをitに変更して実行
 
 RSpec.describe "Api::ExchangeRates", type: :request do
   describe "GET /api/exchange_rates" do
