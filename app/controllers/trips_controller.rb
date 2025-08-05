@@ -68,7 +68,7 @@ class TripsController < ApplicationController
 
   def settle
     @trip.update(settlement_status: :settled)
-    redirect_to trip_path(@trip), notice: I18n.t("flash.settle.settled")
+    redirect_to trip_path(@trip, settled: true), notice: I18n.t("flash.settle.settled")
   end
 
   def unsettle

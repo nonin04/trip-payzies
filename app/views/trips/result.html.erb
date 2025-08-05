@@ -34,7 +34,7 @@
     
     <% if @trip.unsettled? %>
     <%# 未精算→精算済みに %>
-      <%= form_with url: settle_trip_path(@trip), method: :patch, data:{turbo_confirm: t('pages.trips.result.settled_confirm')}, class:"w-full" do %>
+      <%= form_with url: settle_trip_path(@trip), method: :patch, class:"w-full" do %>
         <button type="submit" class="w-full main-action-btn bg-primary-blue-100 text-white">
           <span><%= t('pages.trips.result.mark_settled') %></span>
           <%= inline_svg("svg/settle.svg", class:"w-[28px] ml-2") %>
@@ -43,7 +43,7 @@
 
     <% elsif @trip.settled? %>
     <%# 精算済み→未精算に %>
-      <%= form_with url: unsettle_trip_path(@trip), method: :patch, data:{turbo_confirm: t('pages.trips.result.unsettled_confirm')}, class:"w-full" do %>
+      <%= form_with url: unsettle_trip_path(@trip), method: :patch, class:"w-full" do %>
         <button type="submit" class="w-full main-action-btn bg-primary-red text-white">
           <span><%= t('pages.trips.result.mark_unsettled') %></span>
           <%= inline_svg("svg/reset.svg", class:"w-[28px] ml-2") %>
