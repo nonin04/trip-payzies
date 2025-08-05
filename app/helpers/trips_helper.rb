@@ -5,7 +5,7 @@ module TripsHelper
     if [ :index, :group ].include?(mode)
       "shadow-primary"
     else
-      "dark:!bg-white"
+      "dark:!bg-white shadow-md"
     end
   end
 

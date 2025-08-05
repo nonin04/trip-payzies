@@ -134,7 +134,7 @@
 | データベース | PostgreSQL |
 | 認証 | Devise / Omniauth（Google OAuth対応）|
 | 環境構築 | Docker / Docker Compose / dotenv-rails |
-| CI/CD | GitHub Actions (RuboCop / RSpec / Brakeman) |
+| CI/CD | GitHub Actions (RuboCop / RSpec(Coverage75%) / Brakeman) |
 | インフラ | Render |
 | 画像処理 | CarrierWave / MiniMagick / Amazon S3 |
 | UX/検索・可視化 | Ransack / Chart.js |
