@@ -17,8 +17,8 @@ class ExchangeRateFetcher
       date = Date.parse(datetime_str)
 
       data.each do |code, rate|
-        puts code
-        puts rate["value"]
+        Rails.logger.info(code)
+        Rails.logger.info(rate["value"])
         currency = Currency.find_by(code: code)
         next unless currency
 

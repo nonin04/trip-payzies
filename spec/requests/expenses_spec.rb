@@ -4,7 +4,7 @@ RSpec.describe "Expenses", type: :request do
   let(:user) { create(:user) }
   let(:jpy_currency) { create(:currency, :jpy) }
   let(:trip) { create(:trip, :with_participants, user: user, currency: jpy_currency, participants_count: 3) }
-  let(:expense) { create(:expense, :with_advance_payments, :with_payer, trip: trip, currency: jpy_currency) }
+  let!(:expense) { create(:expense, :with_advance_payments, :with_payer, trip: trip, currency: jpy_currency) }
 
   before do
     sign_in user
@@ -42,7 +42,7 @@ RSpec.describe "Expenses", type: :request do
       expect(response).to redirect_to(trip_path(trip))
     end
 
-    it "無効なパラメータで立替作成が失敗しエラーステータスが返ること" do
+    it "対象者0で立替作成が失敗しエラーステータスが返ること" do
       participant_ids = trip.participants.pluck(:id)
       expense_and_advance_payments_params = attributes_for(:expense).merge(
         trip_id: trip.id,
@@ -63,7 +63,7 @@ RSpec.describe "Expenses", type: :request do
     end
   end
   #--------------------------------------------------
-  describe "PAtch /update" do
+  describe "PATCH /update" do
     it "有効なパラメータで立替の項目名が更新されること" do
       participant_ids = trip.participants.pluck(:id)
       expense_and_advance_payments_update_params = attributes_for(:expense).merge(
@@ -80,6 +80,26 @@ RSpec.describe "Expenses", type: :request do
       expect(expense.title).to eq("立替テスト2")
       follow_redirect!
       expect(response.body).to include("立替テスト2")
+    end
+  end
+
+  describe "PATCH /update" do
+    it "対象者を0人で更新に失敗しエラーステータスが返ること" do
+      participant_ids = trip.participants.pluck(:id)
+      expense_and_advance_payments_update_params = attributes_for(:expense).merge(
+        title: "立替テスト2",
+        advance_payments_attributes: []
+      )
+      patch trip_expense_path(trip, expense), params: { expense: expense_and_advance_payments_update_params }
+      expect(response).to have_http_status(422)
+    end
+  end
+  #--------------------------------------------------
+  describe "DELETE /destroy" do
+    it "立替記録が正常に削除され旅行詳細にリダイレクトすること" do
+      expect { delete trip_expense_path(trip, expense) }.to change(Expense, :count).by(-1)
+      expect(response).to redirect_to(trip_path(trip))
+      expect(flash[:notice]).to eq("立替記録を1件削除しました。")
     end
   end
 end
