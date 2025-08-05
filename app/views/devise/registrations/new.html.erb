@@ -43,7 +43,7 @@
         </div>
 
         <div class="my-4">
-          <%= f.submit t('pages.devise.registrations.new.btn'), class: "devise-btn py-1.5 inline-block w-full shadow-lg devise-btn-animation"%>
+          <%= f.submit t('pages.devise.registrations.new.btn'), class: "devise-btn py-1.5 inline-block w-full shadow-lg devise-btn-animation" data:{action:"click->loading#show"}%>
         </div>
       <% end %>
 
