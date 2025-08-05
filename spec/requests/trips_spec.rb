@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "Trips", type: :request do
   let(:user) { create(:user) }
-  let!(:jpy_currency) { create(:currency, :jpy) }
-  let!(:usd_currency) { create(:currency, :usd) }
+  let(:jpy_currency) { create(:currency, :jpy) }
+  let(:usd_currency) { create(:currency, :usd) }
   let!(:trip) { create(:trip, :with_participants, user: user, currency: jpy_currency, participants_count: 3) }
   before do
     sign_in user

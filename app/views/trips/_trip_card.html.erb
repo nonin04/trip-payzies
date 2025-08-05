@@ -1,7 +1,7 @@
 <%# カードスタイルの切り替え %>
 <div class="relative py-2 card-style <%= trip_card_style(mode) %>">
   <%# 装飾ラベル ------------------ %>
-  <div class="absolute left-0 top-0 h-full w-2 rounded-l <%= mode == :index || :group ? 'trip-accent-color' : 'hidden' %>"></div>
+  <div class="absolute left-0 top-0 h-full w-2 rounded-l <%= [:index, :group].include?(mode) ? 'trip-accent-color' : 'hidden' %>"></div>
   
   <%# タイトル & その他アイコン ------------------ %>
   <div class="flex items-start justify-between pl-5 pr-3 py-1">
@@ -40,18 +40,18 @@
     </div>
   <% end %>
 
-  <% unless trip.currency.code == "JPY" %>
-    <div class="pl-6 pt-2">
-      <p class="text-gray-400 font-mono text-sm dark:text-neutral-500"><%= trip.currency.code %></p>
-    </div>
-  <% end %>
-
   <%# 決済日 & 精算状況 ------------------ %>
-  <div class="pl-6 pt-1 pr-4 flex items-center justify-between">
-    <p class="text-gray-400 font-mono dark:text-neutral-500"><%= trip.departure_date.strftime("%Y/%m/%d") + "~" %></p>
+  <div class="pl-4 pt-1 pr-4 flex items-center justify-between">
+    <div class="flex items-center">
+      <% unless trip.currency.code == "JPY" %>
+        <p class="px-1 rounded-sm border-[1px] text-xs bg-transparent dark:text-neutral-500"><%= trip.currency.code %></p>
+      <% end %>
+      <p class="ml-2 text-gray-400 text-sm dark:text-neutral-500"><%= trip.departure_date.strftime("%Y/%m/%d") + " ~" %></p>
+    </div>
+    
 
     <% status_color = trip.settled? ? 'bg-neutral-500 dark:bg-transparent dark:border text-white dark:text-neutral-500' : 'bg-primary-red text-white dark:bg-neutral-200 dark:text-black' %>
-    <p class="w-20 py-0.5 text-xs text-center rounded-sm <%= status_color %>">
+    <p class="w-20 py-[1px] text-xs text-center rounded-sm <%= status_color %>">
       <%= t("activerecord.attributes.trip.settlement_status.#{trip.settlement_status}")%>
     </p>
   </div>
