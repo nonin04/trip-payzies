@@ -22,7 +22,7 @@
       <div class="separator"></div>
       <div class="w-full flex">
         <%= link_to t('common.back'), trip_path(@trip), class:"w-1/4 main-action-btn bg-gray-400 text-white dark:bg-neutral-600" %>
-        <button class="flex-1 ml-4 main-action-btn bg-primary-blue-100 text-white dark:bg-theme-brown dark:text-black" data-trip-validate-target="submitBtn" data-action="click->trip-validate#submit"><%= t('commoon.update') %></button>
+        <button class="flex-1 ml-4 main-action-btn bg-primary-blue-100 text-white dark:bg-theme-brown dark:text-black" data-trip-validate-target="submitBtn" data-action="click->trip-validate#submit click->loading#show"><%= t('commoon.update') %></button>
       </div>
     </div>
     

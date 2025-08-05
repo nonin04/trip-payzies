@@ -123,6 +123,6 @@
     <div class="separator"></div>
       <div class="w-full flex gap-4">
       <button class="w-1/4 main-action-btn bg-gray-400 text-white dark:bg-neutral-600" data-controller="back" data-action="click->back#goBack"><%= t('common.back')%></button>
-      <button data-expense-validate-target="submitBtn" data-action="click->expense-validate#submit" class="flex-1 main-action-btn bg-primary-blue-100 text-white"><%= action_name == "new" ? t('common.save') : t('common.update') %></button>
+      <button data-expense-validate-target="submitBtn" data-action="click->expense-validate#submit click->loading#show" class="flex-1 main-action-btn bg-primary-blue-100 text-white"><%= action_name == "new" ? t('common.save') : t('common.update') %></button>
   </section>
 <% end %>

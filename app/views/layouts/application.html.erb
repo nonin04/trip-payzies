@@ -3,7 +3,7 @@
 
   <%= render 'layouts/head_scripts' %>
 
-  <body class="w-screen h-[100dvh] overflow-x-hidden flex">
+  <body class="w-screen h-[100dvh] overflow-x-hidden flex" data-controller="loading">
     <%# 左背景 %>
     <div id="leftEl" class="z-50 flex-1 bg-[url('/images/background.png')] dark:bg-none dark:bg-neutral-800 bg-cover min-w-0"></div>
 
@@ -13,6 +13,7 @@
           <%= render 'layouts/sidebar' %>
         <%end%>
         <%= render 'layouts/header'%>
+        <%= render 'layouts/loading'%>
         <%= render 'layouts/modal/layouts/logout' %>
         <%= render 'layouts/main'%>
         <%= render 'layouts/footer'%>
