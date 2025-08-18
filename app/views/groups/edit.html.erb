@@ -20,7 +20,7 @@
       <div class="separator"></div>
       <div class="w-full flex gap-4">
         <%= link_to t('common.back'), group_path(group: @group), class:"w-1/4 main-action-btn bg-gray-400 text-white dark:bg-neutral-600" %>
-        <%= submit_tag t('common.save'), class: "flex-1 main-action-btn bg-primary-blue-100 text-white", data:{"group-validate-target": "submitBtn", action: "click->group-validate#submit click->loading#show"} %>
+        <%= submit_tag t('common.save'), class: "flex-1 main-action-btn bg-primary-blue-100 text-white", data:{"group-validate-target": "submitBtn", action: "click->group-validate#submit click->submit#show"} %>
       </div>
     </section>
   <% end %>
