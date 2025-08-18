@@ -31,7 +31,7 @@
         <button data-trip-validate-target="toggleBtn" data-action="click->trip-validate#changeForm click->group-select#selectGroup" type="button" class="flex-1 main-action-btn bg-primary-blue-100 text-white"><%= t('common.next') %></button>
         <%# step2時のボタン %>
         <button data-trip-validate-target="toggleBtn" data-action="click->trip-validate#changeForm" type="button" class="!hidden w-1/4 main-action-btn bg-gray-400 text-white dark:bg-neutral-600"><%= t('common.back') %></button>
-        <%= f.submit t('common.save'),data: {"trip-validate-target" => "toggleBtn", "participant-validate-target" => "submitBtn", action: "click->participant-validate#submit click->loading#show"}, class: "!hidden flex-1 main-action-btn bg-primary-blue-100 text-white" %>
+        <%= f.submit t('common.save'),data: {"trip-validate-target" => "toggleBtn", "participant-validate-target" => "submitBtn", action: "click->participant-validate#submit turbo:submit-start->loading#show"}, class: "!hidden flex-1 main-action-btn bg-primary-blue-100 text-white" %>
       </div>
     </section>
   <% end %>
