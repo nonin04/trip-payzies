@@ -149,4 +149,4 @@ https://www.figma.com/design/8JN7kY58d5PfqbbzSJ2daH/trip-payzies-MVP-%E7%94%BB%E
 
 
 ## ER図
-[![Image from Gyazo](https://i.gyazo.com/c488b98655397051b340bbb7fe9d7e67.png)](https://gyazo.com/c488b98655397051b340bbb7fe9d7e67)
+[![Image from Gyazo](https://i.gyazo.com/3422c399139978380dfc140a280c9bc4.png)](https://gyazo.com/3422c399139978380dfc140a280c9bc4)
