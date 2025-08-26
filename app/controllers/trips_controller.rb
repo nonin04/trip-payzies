@@ -62,7 +62,7 @@ class TripsController < ApplicationController
     if @trip.expenses.empty?
     redirect_to trip_path(@trip), alert: "精算記録がありません。"
     else
-      @settlements = SettlementMatcher.new(@trip).grouped_settlements
+      @settlements = TripDecorator.new(@trip).grouped_settlements
     end
   end
 

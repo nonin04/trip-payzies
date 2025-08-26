@@ -1,7 +1,6 @@
 module ExpensesHelper
-
   def jpy_currency
-     @jpy_currency ||= Currency.find_by(code: "JPY") 
+     @jpy_currency ||= Currency.find_by(code: "JPY")
   end
 
   def selectable_currency(trip)

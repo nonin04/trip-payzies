@@ -1,3 +1,4 @@
+# 精算処理のクラス
 class SettlementMatcher
   def initialize(trip)
     @trip = trip
@@ -45,17 +46,6 @@ class SettlementMatcher
           debtors.shift
         end
       end
-    end
-    results
-  end
-
-
-  def grouped_settlements
-    # from:誰々でまとめた新しいハッシュを作成
-    results = []
-    @trip.participants.each do |p|
-      payments = settlements.select { |s| s[:from] == p }.map { |s| { to: s[:to], amount: s[:amount] } }
-      results << { from: p, payments: payments } unless payments.empty?
     end
     results
   end
