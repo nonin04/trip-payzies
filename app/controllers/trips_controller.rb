@@ -8,7 +8,7 @@ class TripsController < ApplicationController
   end
 
   def show
-    @expenses = @trip.expenses.includes(:payer).order(payment_date: :asc, created_at: :asc)
+    @expenses = @trip.expenses.includes(:payer, :currency).order(payment_date: :asc, created_at: :asc)
     @balances = BalanceCalculator.new(@trip).net_balances
   end
 
@@ -62,7 +62,7 @@ class TripsController < ApplicationController
     if @trip.expenses.empty?
     redirect_to trip_path(@trip), alert: "精算記録がありません。"
     else
-      @settlements = SettlementMatcher.new(@trip).grouped_settlements
+      @settlements = TripDecorator.new(@trip).grouped_settlements
     end
   end
 

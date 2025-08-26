@@ -32,7 +32,7 @@
       </div>
       <%# 金額 & 決済者情報 %>
       <p class="font-semibold text-2xl dark:text-black"><%= @expense.currency.symbol %><%= formatted_amount_local(@expense) %></p>
-      <% unless @expense.currency == Currency.find_by(code: "JPY") %>
+      <% unless @expense.currency == jpy_currency %>
       <div class="flex pt-1">
         <%= inline_svg("svg/exchange.svg", class:"w-5") %>
         <p>¥<%= number_with_delimiter(@expense.amount) %></p>

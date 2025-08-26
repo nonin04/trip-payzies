@@ -4,7 +4,7 @@ class Share::TripsController < ApplicationController
   before_action :set_trip
 
   def show
-    @expenses = @trip.expenses.includes(:payer).order(payment_date: :asc, created_at: :asc)
+    @expenses = @trip.expenses.includes(:payer, :currency).order(payment_date: :asc, created_at: :asc)
     @balances = BalanceCalculator.new(@trip).net_balances
   end
 
@@ -23,7 +23,7 @@ class Share::TripsController < ApplicationController
     if @trip.expenses.empty?
       redirect_to share_trip_path(@trip), alert: "精算記録がありません。"
     else
-      @settlements = SettlementMatcher.new(@trip).grouped_settlements
+      @settlements = TripDecorator.new(@trip).grouped_settlements
     end
   end
 

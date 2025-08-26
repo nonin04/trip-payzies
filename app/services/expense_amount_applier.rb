@@ -1,3 +1,4 @@
+# 対象者の負担額をadvance_paymentに保存するクラス
 class ExpenseAmountApplier
   def initialize(expense)
     @expense = expense
