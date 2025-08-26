@@ -8,7 +8,7 @@ class TripsController < ApplicationController
   end
 
   def show
-    @expenses = @trip.expenses.includes(:payer).order(payment_date: :asc, created_at: :asc)
+    @expenses = @trip.expenses.includes(:payer, :currency).order(payment_date: :asc, created_at: :asc)
     @balances = BalanceCalculator.new(@trip).net_balances
   end
 
