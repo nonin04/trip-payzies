@@ -43,6 +43,7 @@ ja:
         name: "メンバー名"
     errors:
       messages:
+        taken: "既に利用されています。"
         blank: "この項目は必須です。"
         not_saved: "%{resource}を保存できませんでした。"
         confirmation: "確認用の内容と一致しません。"

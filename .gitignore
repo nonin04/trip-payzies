@@ -42,3 +42,6 @@
 /node_modules
 
 /config/credentials/production.key
+
+# macOS system files
+.DS_Store
