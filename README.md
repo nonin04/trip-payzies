@@ -1,5 +1,5 @@
 # TripPayzies
-<img src="public/images/ogp-image.png">
+[![Image from Gyazo](https://i.gyazo.com/dd0014216293e95a6adc027568bbe713.png)](https://gyazo.com/dd0014216293e95a6adc027568bbe713)
 
 ###  サービスURL：<a href="https://www.trippayzies.com/" target="_blank">trippayzies.com</a>
 
