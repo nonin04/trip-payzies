@@ -1,5 +1,4 @@
 class ExchangeRateUpdater
-
   def self.update_from_api(data)
     date = Date.parse(data["meta"]["last_updated_at"])
 
@@ -17,7 +16,5 @@ class ExchangeRateUpdater
       end
       Rails.logger.info("#{code}:#{date}時点の為替レートを保存しました。")
     end
-    
   end
-
 end

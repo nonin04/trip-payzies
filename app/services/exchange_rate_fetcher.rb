@@ -9,6 +9,5 @@ class ExchangeRateFetcher
       Rails.logger.error("為替レート取得/保存中にエラー: #{e.message}")
       raise
     end
-
   end
 end
