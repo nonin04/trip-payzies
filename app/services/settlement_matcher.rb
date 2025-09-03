@@ -2,8 +2,6 @@
 class SettlementMatcher
   def initialize(trip)
     @trip = trip
-    @expenses = trip.expenses
-    @participants = trip.participants
     @net_balances = BalanceCalculator.new(trip).net_balances
   end
 
