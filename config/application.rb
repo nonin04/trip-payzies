@@ -16,7 +16,7 @@ module Myapp
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
 
-    config.autoload_paths << Rails.root.join("app/decorators")
+    config.autoload_paths << Rails.root.join("app/decorators").to_s
 
     # エラー表示
     # config.exceptions_app = self.routes
