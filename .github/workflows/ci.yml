@@ -46,7 +46,7 @@ jobs:
           bin/rails db:schema:load
 
       - name: Run RSpec
-        run: bundle exec rspec
+        run: bundle exec rspec --backtrace
 
       - name: Run RuboCop
         run: bundle exec rubocop
