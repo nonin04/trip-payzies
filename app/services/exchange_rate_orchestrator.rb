@@ -1,4 +1,5 @@
-class ExchangeRateFetcher
+# curencyAPIを叩いて為替レートを取得し、保存するサービスクラス(orchestration layer))
+class ExchangeRateOrchestrator
   def self.call
     codes_str = Currency.all.map(&:code).join(",")
 

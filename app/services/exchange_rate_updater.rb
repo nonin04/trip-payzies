@@ -1,3 +1,4 @@
+# currencyAPIのレスポンスデータをもとに、ExchangeRateモデルに為替レートを保存するクラス
 class ExchangeRateUpdater
   def self.update_from_api(data)
     date = Date.parse(data["meta"]["last_updated_at"])

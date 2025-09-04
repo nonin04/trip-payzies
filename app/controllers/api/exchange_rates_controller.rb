@@ -8,7 +8,7 @@ class Api::ExchangeRatesController < ApplicationController
 
 
   def fetch
-    ExchangeRateFetcher.call
+    ExchangeRateOrchestrator.call
     head :ok
   end
 
@@ -17,8 +17,7 @@ class Api::ExchangeRatesController < ApplicationController
   def authenticated_secret_key!
     key = request.headers["X-Secret-Key"]
     unless key == ENV["RATE_FETCH_SECRET_KEY"]
-      head :unauthorized
-      nil
+      head :unauthorized and return
     end
   end
 end

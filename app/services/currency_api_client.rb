@@ -1,3 +1,4 @@
+# currencuAPIをたたいてデータを取得するクラス
 require "json"
 
 class CurrencyApiClient
