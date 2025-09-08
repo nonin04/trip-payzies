@@ -6,16 +6,7 @@ class BalanceCalculator
 
   def balances
     @participants.map do |p|
-      paid_total = p.paid_expenses.sum(&:amount)
-      owed_total = p.advance_payments.sum(&:amount)
-      { participant: p, paid_total: paid_total, owed_total: owed_total }
-    end
-  end
-
-  def net_balances
-    balances.map do |b|
-      difference = b[:paid_total] - b[:owed_total]
-      { participant: b[:participant], difference: difference }
+      { participant: p, paid_total: p.paid_total, owed_total: p.owed_total, difference: p.difference }
     end
   end
 end

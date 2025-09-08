@@ -23,18 +23,14 @@ export default class extends Controller {
   
 
   connect() {
-    const balances = this.balancesValue.map(b => ({
-      name: b.participant.name,
-      paidTotal: b.paid_total,
-    }))
 
     new Chart(this.canvasContext(), {
 
       type: 'doughnut',
       data: {
-        labels: [...balances.map(b => b.name)],
+        labels: [...this.balancesValue.map(b => b.participant.name)],
         datasets: [{
-          data: [...balances.map(b => b.paidTotal)],
+          data: [...this.balancesValue.map(b => b.paid_total)],
           backgroundColor: [
             '#4F6783',
             '#e6bfb1',

@@ -9,7 +9,6 @@ class TripsController < ApplicationController
 
   def show
     @expenses_by_date = @trip.expenses.includes(:payer, :currency).order(payment_date: :asc, created_at: :asc).group_by(&:payment_date)
-    @balances = BalanceCalculator.new(@trip).net_balances
   end
 
   def new
@@ -53,9 +52,8 @@ class TripsController < ApplicationController
     if @trip.expenses.empty?
        flash.now[:alert] = "精算記録がありません。"
     end
-    balances = BalanceCalculator.new(@trip)
-    @balances = balances.balances
-    @net_balances = balances.net_balances
+    @balances = BalanceCalculator.new(@trip).balances
+    @participants = @trip.participants
   end
 
   def result
