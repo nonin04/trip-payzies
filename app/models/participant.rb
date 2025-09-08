@@ -27,5 +27,4 @@ class Participant < ApplicationRecord
   def debtor?
     difference < 0
   end
-  
 end
