@@ -10,11 +10,11 @@
 
     <div class="mb-4 py-2 rounded-md bg-white px-8 text-sm dark:text-black">
       <h2 class="text-center text-sm font-bold"><%= t('pages.trips.insight.trip_amount')%></h2>
-      <% @balances.each do |b| %>
+      <% @participants.each do |p| %>
       <div class="h-0.5 w-full bg-neutral-200 mt-2"></div>
       <div class="flex my-1 justify-between">
-        <p><%= b[:participant].name%></p>
-        <p>¥<%= number_with_delimiter(b[:owed_total])%></p>
+        <p><%= p.name%></p>
+        <p>¥<%= number_with_delimiter(p.owed_total)%></p>
       </div>
       <% end %>
     </div>
@@ -28,7 +28,7 @@
     </div>
 
     <div class="mb-4 rounded-md bg-white h-120">
-      <div class="w-full h-full" data-controller="barchart" data-barchart-net-balances-value="<%= @net_balances.to_json %>" data-barchart-title-value="<%= t('stimulus.barchart.title')%>" >
+      <div class="w-full h-full" data-controller="barchart" data-barchart-balances-value="<%= @balances.to_json %>" data-barchart-title-value="<%= t('stimulus.barchart.title')%>" >
         <canvas id="bar-chart" data-barchart-target="myChart" class="mx-4">
         </canvas>
       </div>

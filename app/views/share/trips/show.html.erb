@@ -52,7 +52,7 @@
 
     <%# 立替カード一覧 ------------------ %>
     <div class="flex-1 flex flex-col pb-2">
-      <% @expenses.group_by{|expense| expense.payment_date}.each do |date, expense|%>
+      <% @expenses_by_date.each do |date, expense|%>
         <div class="mt-2 font-bold px-2"><%= date.strftime("%m/%d") %></div>
           <div class="flex flex-col gap-4">
             <% expense.each do |e| %>

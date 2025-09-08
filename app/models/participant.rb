@@ -7,4 +7,24 @@ class Participant < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 15, message: "は15字以内で入力してください" }
   validates :name, uniqueness: { scope: :trip_id, message: "が既に存在します。" }
+
+  def paid_total
+    paid_expenses.sum(:amount)
+  end
+
+  def owed_total
+    advance_payments.sum(:amount)
+  end
+
+  def difference
+    paid_total - owed_total
+  end
+
+  def creditor?
+    difference > 0
+  end
+
+  def debtor?
+    difference < 0
+  end
 end

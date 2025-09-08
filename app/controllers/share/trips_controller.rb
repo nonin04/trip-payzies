@@ -4,19 +4,15 @@ class Share::TripsController < ApplicationController
   before_action :set_trip
 
   def show
-    @expenses = @trip.expenses.includes(:payer, :currency).order(payment_date: :asc, created_at: :asc)
-    @balances = BalanceCalculator.new(@trip).net_balances
+    @expenses_by_date = @trip.expenses.includes(:payer, :currency).order(payment_date: :asc, created_at: :asc).group_by(&:payment_date)
   end
 
   def insights
     if @trip.expenses.empty?
        flash.now[:alert] = "精算記録がありません。"
     end
+    @balances = BalanceCalculator.new(@trip).balances
     @participants = @trip.participants
-    balances = BalanceCalculator.new(@trip)
-    @balances = balances.balances
-    @net_balances = balances.net_balances
-    @amount = @trip.expenses.sum(:amount)
   end
 
   def result

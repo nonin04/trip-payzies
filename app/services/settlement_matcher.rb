@@ -2,18 +2,18 @@
 class SettlementMatcher
   def initialize(trip)
     @trip = trip
-    @net_balances = BalanceCalculator.new(trip).net_balances
+    @balances = BalanceCalculator.new(trip).balances
   end
 
   def spliter
     creditor = [] # 債権者のハッシュ
     debtor = [] # 負債者のハッシュ
       # 差額の正負によって各参加者を仕分ける [参加者と差額のハッシュ] ※差額が0の参加者は精算に関係ないため無視
-      @net_balances.each do |nb|
-        if nb[:difference] > 0
-          creditor << { participant: nb[:participant], difference: nb[:difference] }
-        elsif nb[:difference] < 0
-          debtor << { participant: nb[:participant], difference: nb[:difference] }
+      @balances.each do |b|
+        if b[:difference] > 0
+          creditor << { participant: b[:participant], difference: b[:difference] }
+        elsif b[:difference] < 0
+          debtor << { participant: b[:participant], difference: b[:difference] }
         end
       end
     { creditor: creditor, debtor: debtor }

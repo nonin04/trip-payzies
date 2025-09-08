@@ -9,7 +9,7 @@ export default class extends Controller {
 
   static targets =["myChart"]
   static values ={
-    netBalances: Array,
+    balances: Array,
     title: String,
   }
 
@@ -23,17 +23,13 @@ export default class extends Controller {
   
 
   connect() {
-    const net_balances = this.netBalancesValue.map(nb => ({
-      name: nb.participant.name,
-      difference: nb.difference,
-    }))
 
     new Chart(this.canvasContext(), {
       type: 'bar',
       data: {
-        labels: net_balances.map(nb => nb.name),
+        labels: this.balancesValue.map(b => b.participant.name),
         datasets: [{
-          data: net_balances.map(nb => nb.difference),
+          data: this.balancesValue.map(b => b.difference),
           backgroundColor: [
             '#4F6783',
             '#e6bfb1',
